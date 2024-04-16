@@ -70,26 +70,26 @@ public class CamerShaker : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!shaking)
-        {
-            return;
-        }
-        if (shakeTimeRemaining > 0)
-        {
-            shakeTimeRemaining -= Time.deltaTime;
-            float xAmount = Random.Range(-1f, 1f) * shakePower;
-            float yAmount = Random.Range(-1f, 1f) * shakePower;
-            transform.localPosition += new Vector3(xAmount, yAmount, 0);
-            shakePower = Mathf.MoveTowards(shakePower, 0, shakeFadeTime * Time.deltaTime);
-        }
-        else
-        {
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition,Vector3.zero,0.1f);
-            if (transform.localPosition == Vector3.zero)
-            {
-                shaking = false;
-            }
-        }
+        // if (!shaking)
+        // {
+        //     return;
+        // }
+        // if (shakeTimeRemaining > 0)
+        // {
+        //     shakeTimeRemaining -= Time.deltaTime;
+        //     float xAmount = Random.Range(-1f, 1f) * shakePower;
+        //     float yAmount = Random.Range(-1f, 1f) * shakePower;
+        //     transform.localPosition += new Vector3(xAmount, yAmount, 0);
+        //     shakePower = Mathf.MoveTowards(shakePower, 0, shakeFadeTime * Time.deltaTime);
+        // }
+        // else
+        // {
+        //     transform.localPosition = Vector3.MoveTowards(transform.localPosition,Vector3.zero,0.1f);
+        //     if (transform.localPosition == Vector3.zero)
+        //     {
+        //         shaking = false;
+        //     }
+        // }
     }
     public void ShakeLateUpdate(float lenght = 0.5f, float power = 0.3f)
     {

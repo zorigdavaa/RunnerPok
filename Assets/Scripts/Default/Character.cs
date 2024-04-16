@@ -45,4 +45,11 @@ public abstract class Character : Mb, IHealth
         rb.isKinematic = true;
         healthBar.transform.parent.gameObject.SetActive(false);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<ICollisionAction>() != null)
+        {
+            other.gameObject.GetComponent<ICollisionAction>().CollisionAction(this);
+        }
+    }
 }

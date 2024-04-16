@@ -17,6 +17,7 @@ public class MovementForgeRun : Mb
     public LayerMask groundLayer; // Layer mask for ground objects
     public float minXLimit = -5f; // Minimum X position limit
     public float maxXLimit = 5f; // Maximum X position limit
+    public float rotSpeed = 50f; // Maximum X position limit
 
     private Rigidbody rb;
     private bool isGrounded;
@@ -24,6 +25,7 @@ public class MovementForgeRun : Mb
     private void Start()
     {
         childModel = transform.GetChild(0);
+        rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
@@ -40,39 +42,47 @@ public class MovementForgeRun : Mb
                 // Move the player left and right
                 if (IsClick)
                 {
-                    horizontalInput = Input.GetAxis("Mouse X");
+                    horizontalInput = Input.GetAxisRaw("Mouse X");
                 }
-                print(horizontalInput);
+                // print(horizontalInput);
                 float newPositionX = transform.position.x + (horizontalInput * sideSpeed * Time.deltaTime);
                 newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
                 Vector3 targetPos = new Vector3(newPositionX, transform.position.y, transform.position.z);
-                transform.position = Vector3.Lerp(transform.position, targetPos, 0.2f);
-
-                // Rotate the player to face the movement direction
-                if (Mathf.Abs(horizontalInput) > 0.1f)
+                transform.position = Vector3.Lerp(transform.position, targetPos, 0.35f);
+                if (Mathf.Abs(horizontalInput) > 0)
                 {
-                    Vector3 moveDirection = new Vector3(horizontalInput, 0f, 1f).normalized;
+                    float rot = Mathf.Sign(horizontalInput);
+                    // print(rot);
+                    Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
+                    print(moveDirection);
                     Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 1000f);
+                    childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
                 }
-
-                // Jump when the spacebar is pressed and the player is grounded
-                if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+                else
                 {
-                    Jump();
+                    childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
                 }
             }
             else if (targetPos)
             {
                 ForwardMove(targetPos.position);
-                childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
+                // childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
             }
             else if (NoLookTaget != null)
             {
                 MoveNoLook();
-                childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
+                // childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
             }
         }
+    }
+    float CheckSign(float value)
+    {
+        if (value <= -0.01f)
+            return -1f;
+        else if (value >= 0.01f)
+            return 1f;
+        else
+            return 0f; // Or handle other cases as needed
     }
     private void Jump()
     {

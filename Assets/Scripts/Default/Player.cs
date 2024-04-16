@@ -9,9 +9,8 @@ using UnityEngine.Pool;
 using ZPackage.Utility;
 using System.Linq;
 
-public class Player : Mb
+public class Player : Character
 {
-    MovementForgeRun movement;
     ObjectPool<GameObject> Pool;
     CameraController cameraController;
     SoundManager soundManager;
@@ -25,7 +24,7 @@ public class Player : Mb
         movement = GetComponent<MovementForgeRun>();
         // animationController.OnSpearShoot += SpearShoot;
         soundManager = FindObjectOfType<SoundManager>();
-        cameraController = FindObjectOfType<CameraController>();
+        // cameraController = FindObjectOfType<CameraController>();
         GameManager.Instance.GameOverEvent += OnGameOver;
         GameManager.Instance.GamePlay += OnGamePlay;
         GameManager.Instance.LevelCompleted += OnGameOver;
@@ -51,14 +50,6 @@ public class Player : Mb
         return center -  nearestPoint;
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-
-    }
 
 
     private void Update()
