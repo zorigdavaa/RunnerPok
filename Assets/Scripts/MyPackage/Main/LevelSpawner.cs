@@ -14,6 +14,8 @@ namespace ZPackage
         float spawnDistance = 50f; // Distance ahead of the player to spawn new tiles
         private float nextSpawnPosition = 0f; // Position to spawn the next tile
         public List<GameObject> SpawnedTiles = new List<GameObject>();
+        public SpawnTileType Type = SpawnTileType.Random;
+
         private void Start()
         {
             for (int i = 0; i < 5; i++)
@@ -29,9 +31,26 @@ namespace ZPackage
             if (playerPosition > nextSpawnPosition - 150)
             {
                 // Spawn a new tile
-                SpawnTile();
+                SpawnTile(Type);
 
             }
+        }
+        private void SpawnTile(SpawnTileType type)
+        {
+            int index = 0;
+            if (type == SpawnTileType.None)
+            {
+
+                index = 0;
+            }
+            else if (type == SpawnTileType.Random)
+            {
+                index = Random.Range(0, tilePrefabs.Length);
+            }
+            // Randomly select a tile prefab from the array
+
+            // Spawn the selected tile prefab at the next spawn position
+            SpawnTile(index);
         }
 
         private void SpawnTile(int index = -1)
@@ -49,6 +68,11 @@ namespace ZPackage
             // Randomly select a tile prefab from the array
 
             // Spawn the selected tile prefab at the next spawn position
+            SpawnTile(tilePrefab);
+        }
+
+        private void SpawnTile(GameObject tilePrefab)
+        {
             GameObject tile = Instantiate(tilePrefab, new Vector3(0, 0, nextSpawnPosition), Quaternion.identity, transform);
             SpawnedTiles.Add(tile);
             nextSpawnPosition += spawnDistance;
@@ -59,5 +83,9 @@ namespace ZPackage
             }
         }
     }
+}
+public enum SpawnTileType
+{
+    None, Random
 }
 

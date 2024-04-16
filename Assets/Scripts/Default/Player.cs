@@ -11,11 +11,12 @@ using System.Linq;
 
 public class Player : Character
 {
-    ObjectPool<GameObject> Pool;
+    ObjectPool<Shuriken> Pool;
     CameraController cameraController;
     SoundManager soundManager;
     UIBar bar;
     public AnimationController animController;
+    public Shuriken Shuriken;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class Player : Character
     public Vector2 FindNearestCenterOffset(List<Vector2> ToFindPoints)
     {
         Vector2 nearestPoint = ToFindPoints[0];
-        Vector2 center = new Vector2(2,2);
+        Vector2 center = new Vector2(2, 2);
         float nearestDistance = Vector2.Distance(center, nearestPoint);
 
         foreach (Vector2 point in ToFindPoints)
@@ -47,13 +48,17 @@ public class Player : Character
             }
         }
 
-        return center -  nearestPoint;
+        return center - nearestPoint;
     }
 
 
-
+    public bool UseAttack = false;
     private void Update()
     {
+        if (UseAttack)
+        {
+            Attack();
+        }
     }
 
     private void FindNearestEnemy()
@@ -73,16 +78,17 @@ public class Player : Character
 
     private void InitPool()
     {
-        Pool = new ObjectPool<GameObject>(() =>
+        Pool = new ObjectPool<Shuriken>(() =>
         {
-            // GameObject spear = Instantiate(Spear, Vector3.zero, Spear.transform.rotation);
-            // spear.SetPool(Pool);
-            // return spear;
-            return new GameObject();
+            Shuriken spear = Instantiate(Shuriken, transform.position, Quaternion.identity, transform.parent);
+            spear.SetPool(Pool);
+            return spear;
+            // return new GameObject();
         }, (s) =>
         {
-            // s.transform.position = Spear.transform.position;
-            // // s.transform.rotation = Spear.transform.rotation;
+            s.transform.position = transform.position + new Vector3(0, 1, 0);
+            s.GetFrompool();
+            // s.transform.rotation = Spear.transform.rotation;
             // if (Target)
             // {
             //     s.Throw(Target);
@@ -93,11 +99,11 @@ public class Player : Character
             // }
         }, (s) =>
         {
-            //release
-            // s.GotoPool();
+            // release
+            s.GotoPool();
         });
     }
-    public void Die()
+    public override void Die()
     {
         GameManager.Instance.GameOver(this, EventArgs.Empty);
     }
@@ -106,6 +112,20 @@ public class Player : Character
     {
         movement.SetSpeed(1);
         movement.SetControlAble(true);
+    }
+    float attackTimer = 0;
+    float InitialAttackTimer = 0.5f;
+    public override void Attack()
+    {
+        attackTimer -= Time.deltaTime;
+        if (attackTimer <= 0)
+        {
+            animationController.Attack();
+            attackTimer = InitialAttackTimer;
+            // Shuriken = Instantiate(Shuriken, transform.position, Quaternion.identity, transform.parent);
+            Shuriken = Pool.Get();
+            // Destroy(Shuriken.gameObject, 5);
+        }
     }
 
     private void OnGameOver(object sender, EventArgs e)
