@@ -10,9 +10,16 @@ public class MovementForgeRun : Mb
     [SerializeField] float MaxSpeed = 10;
     [SerializeField] Transform targetPos;
     [SerializeField] Vector3? NoLookTaget;
-    [SerializeField] bool shouldROt;
-    [SerializeField] float targetX, speed = 0, lastFrameFingerPositionX, controlSensitivity, speedX;
-    [SerializeField] float Xlimit = 6;
+    public float Speed = 5f; // Speed at which the player moves forward
+    public float sideSpeed = 5f; // Speed at which the player moves left and right
+    public float jumpForce = 8f; // Force applied when jumping
+    public Transform groundCheck; // Transform representing a point at the bottom of the player to check for ground
+    public LayerMask groundLayer; // Layer mask for ground objects
+    public float minXLimit = -5f; // Minimum X position limit
+    public float maxXLimit = 5f; // Maximum X position limit
+
+    private Rigidbody rb;
+    private bool isGrounded;
     Transform childModel;
     private void Start()
     {
@@ -24,89 +31,72 @@ public class MovementForgeRun : Mb
         {
             if (ControlAble)
             {
-                transform.position += Vector3.forward * speed * Time.fixedDeltaTime;
+                // Check if the player is grounded
+                isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
 
-                if (IsDown)
+                // Move the player forward
+                transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+                float horizontalInput = 0;
+                // Move the player left and right
+                if (IsClick)
                 {
-                    LastFrameFingerPos();
+                    horizontalInput = Input.GetAxis("Mouse X");
                 }
-                // && transform.position.x >= -Xlimit && transform.position.x <= Xlimit
-                if (IsClick && !shouldROt && Mathf.Abs(transform.position.x) <= Xlimit)
+                print(horizontalInput);
+                float newPositionX = transform.position.x + (horizontalInput * sideSpeed * Time.deltaTime);
+                newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
+                Vector3 targetPos = new Vector3(newPositionX, transform.position.y, transform.position.z);
+                transform.position = Vector3.Lerp(transform.position, targetPos, 0.2f);
+
+                // Rotate the player to face the movement direction
+                if (Mathf.Abs(horizontalInput) > 0.1f)
                 {
-                    targetX += (Input.mousePosition.x - lastFrameFingerPositionX) * controlSensitivity;
-
-                    // LastFrameFingerPos();
-
-                    transform.position = new Vector3(
-                        Mathf.Lerp(transform.position.x, targetX, Time.deltaTime * speedX),
-                        transform.position.y, transform.position.z);
-
-                    if (targetX - transform.position.x > 0.01f)
-                        childModel.localRotation = Quaternion.Lerp(
-                            childModel.localRotation, Quaternion.Euler(0, 24, 0), Time.fixedDeltaTime * 10);
-                    else if (targetX - transform.position.x < -0.01f)
-                        childModel.localRotation = Quaternion.Lerp(
-                            childModel.localRotation, Quaternion.Euler(0, -24, 0), Time.fixedDeltaTime * 10);
-                    else
-                        childModel.localRotation = Quaternion.Lerp(
-                            childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
-
+                    Vector3 moveDirection = new Vector3(horizontalInput, 0f, 1f).normalized;
+                    Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 1000f);
                 }
-                else if (!IsClick && !shouldROt)
-                    childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
 
-                if (Mathf.Abs(transform.position.x) > Xlimit - 0.02f)
+                // Jump when the spacebar is pressed and the player is grounded
+                if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
                 {
-                    transform.position = transform.position.ChangeX(Mathf.Clamp(transform.position.x, -Xlimit + 0.02f, Xlimit - 0.02f));
+                    Jump();
                 }
-                // else if (transform.position.x >= Xlimit)
-                // {
-                //     transform.position.ChangeX(Xlimit - 0.02f);
-                // }
             }
             else if (targetPos)
             {
                 ForwardMove(targetPos.position);
                 childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
-                SetTargetX();
             }
             else if (NoLookTaget != null)
             {
                 MoveNoLook();
                 childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
-                SetTargetX();
             }
-            LastFrameFingerPos();
         }
     }
-
-    public void LastFrameFingerPos()
+    private void Jump()
     {
-        lastFrameFingerPositionX = Input.mousePosition.x;
-    }
-    public void SetTargetX()
-    {
-        targetX = transform.position.x;
+        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
     }
 
     internal void SetSpeedDirect(float value)
     {
-        speed = value;
+        Speed = value;
     }
 
     public void SetSpeed(float percent)
     {
-        speed = MaxSpeed * percent;
-        foreach (var node in player.Nodes)
-        {
-            node.SetSpeed(speed / MaxSpeed);
-        }        
+        Speed = MaxSpeed * percent;
+        // foreach (var node in player.Nodes)
+        // {
+        //     node.SetSpeed(speed / MaxSpeed);
+        // }        
         //Todo Players Node move
-        // player.SetSpeed(speed / MaxSpeed);
+        player.animController.SetSpeed(Speed / MaxSpeed);
     }
     public float GetSpeed()
     {
-        return speed;
+        return Speed;
     }
     public void GoToPosition(Vector3 _target, bool noLook, float speedPercent = 1, Action afterAction = null)
     {
@@ -210,7 +200,7 @@ public class MovementForgeRun : Mb
         lookTaget.y = 0;
         transform.LookAt(lookTaget);
         // Vector3 forwardMove = Vector3.forward * Speed * Time.fixedDeltaTime;
-        Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
+        Vector3 forwardMove = transform.forward * Speed * Time.fixedDeltaTime;
         // rb.MovePosition(transform.position + forwardMove);
         rb.position += forwardMove;
         float distance = Vector3.Distance(transform.position, _targetPos);
@@ -223,7 +213,7 @@ public class MovementForgeRun : Mb
     }
     private void MoveNoLook()
     {
-        rb.position = Vector3.MoveTowards(rb.position, NoLookTaget.Value, speed * Time.fixedDeltaTime);
+        rb.position = Vector3.MoveTowards(rb.position, NoLookTaget.Value, Speed * Time.fixedDeltaTime);
         float distance = Vector3.Distance(transform.position, NoLookTaget.Value);
         if (distance < CancelDistance)
         {

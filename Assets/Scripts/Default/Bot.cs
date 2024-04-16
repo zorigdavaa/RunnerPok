@@ -35,6 +35,5 @@ public class Bot : Character
     {
         base.Die();
         // rb.isKinematic = true;
-        FindObjectOfType<Player>().IncreaseKillCount();
     }
 }

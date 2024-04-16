@@ -17,7 +17,7 @@ namespace ZPackage
         float lastMultPos = 35;
         private void Start()
         {
-            InstantiateBot(10);
+            // InstantiateBot(10);
         }
         private void InstantiateBot(int v)
         {
