@@ -20,14 +20,17 @@ public class MovementForgeRun : Mb
     public float rotSpeed = 50f; // Maximum X position limit
 
     private Rigidbody rb;
-    private bool isGrounded;
+    public bool isGrounded;
     Transform childModel;
+    public Transform playerParent;
     private void Start()
     {
+        groundLayer = LayerMask.GetMask("Road");
         childModel = transform.GetChild(0);
+        playerParent = transform.parent;
         rb = GetComponent<Rigidbody>();
     }
-    void Update()
+    void FixedUpdate()
     {
         if (IsPlaying)
         {
@@ -35,9 +38,18 @@ public class MovementForgeRun : Mb
             {
                 // Check if the player is grounded
                 isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+                if (isGrounded)
+                {
+                    player.animationController.Jump(false);
+                }
+                else
+                {
+                    player.animationController.Jump(true);
+                }
 
                 // Move the player forward
-                transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+                // transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+                playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
                 float horizontalInput = 0;
                 // Move the player left and right
                 if (IsClick)
@@ -45,10 +57,10 @@ public class MovementForgeRun : Mb
                     horizontalInput = Input.GetAxisRaw("Mouse X");
                 }
                 // print(horizontalInput);
-                float newPositionX = transform.position.x + (horizontalInput * sideSpeed * Time.deltaTime);
+                float newPositionX = transform.localPosition.x + (horizontalInput * sideSpeed * Time.deltaTime);
                 newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
-                Vector3 targetPos = new Vector3(newPositionX, transform.position.y, transform.position.z);
-                transform.position = Vector3.Lerp(transform.position, targetPos, 0.35f);
+                Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.35f);
                 if (Mathf.Abs(horizontalInput) > 0)
                 {
                     float rot = Mathf.Sign(horizontalInput);

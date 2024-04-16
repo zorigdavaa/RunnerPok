@@ -81,12 +81,12 @@ public class AnimationController : MonoBehaviour
         }
     }
 
-    internal void Jump()
+    internal void Jump(bool value)
     {
         // animationState = AnimationState.Jump;
         // ResetJump();
         // animator.ResetTrigger("down");
-        animator.SetTrigger("jump");
+        animator.SetBool("isJumping", value);
     }
 }
 public enum AnimationState

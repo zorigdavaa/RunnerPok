@@ -6,6 +6,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
 {
     public void CollisionAction(Character character)
     {
-        character.GetComponent<Rigidbody>().AddForce(Vector3.up * 500);
+        character.GetComponent<Rigidbody>().velocity = Vector3.up * 15;
+        // character.GetComponent<Rigidbody>().AddForce(Vector3.up * 400);
     }
 }
