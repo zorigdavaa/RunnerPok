@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MovementForgeRun
+{
+
+    public float sideSpeed = 5f; // Speed at which the player moves left and right
+
+    public Transform groundCheck; // Transform representing a point at the bottom of the player to check for ground
+    public LayerMask groundLayer; // Layer mask for ground objects
+    public float minXLimit = -5f; // Minimum X position limit
+    public float maxXLimit = 5f; // Maximum X position limit
+    public float rotSpeed = 50f; // Maximum X position limit
+
+    Transform childModel;
+    private void Start()
+    {
+        groundLayer = LayerMask.GetMask("Road");
+        childModel = transform.GetChild(0);
+        playerParent = transform.parent;
+    }
+
+    void FixedUpdate()
+    {
+        if (IsPlaying)
+        {
+            if (ControlAble)
+            {
+                // Check if the player is grounded
+                isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+                if (isGrounded)
+                {
+                    animController.Jump(false);
+                }
+                else
+                {
+                    animController.Jump(true);
+                    // if (rb.velocity.y < 0f)
+                    // {
+                    //     rb.velocity += Vector3.down * 0.8f;
+                    // }
+                    // rb.velocity += Vector3.down * 1.2f;
+                }
+
+                // Move the player forward
+                // transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+                playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
+                float horizontalInput = 0;
+                // Move the player left and right
+                if (IsClick)
+                {
+                    horizontalInput = Input.GetAxisRaw("Mouse X");
+                }
+                // print(horizontalInput);
+                float newPositionX = transform.localPosition.x + (horizontalInput * sideSpeed * Time.deltaTime);
+                newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
+                Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.35f);
+                if (Mathf.Abs(horizontalInput) > 0)
+                {
+                    float rot = Mathf.Sign(horizontalInput);
+                    // print(rot);
+                    Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
+                    print(moveDirection);
+                    Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+                    childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
+                }
+                else
+                {
+                    childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
+                }
+            }
+        }
+    }
+}

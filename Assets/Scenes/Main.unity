@@ -1145,14 +1145,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1463407924}
     m_Modifications:
-    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-      propertyPath: Shuriken
-      value: 
-      objectReference: {fileID: 6389107011502510898, guid: 17064762389015a44b6fef87e074c9af, type: 3}
-    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2420573646999065348, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1197,15 +1189,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2997560626975897644, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-      propertyPath: Speed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2997560626975897644, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-      propertyPath: MaxSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2997560626975897644, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+    - target: {fileID: 6477016897789823786, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: playerParent
       value: 
       objectReference: {fileID: 1463407924}
@@ -2160,7 +2144,7 @@ MonoBehaviour:
   - {fileID: 1435350070108198175, guid: 6a416fb891fea0e4095436a8b0231548, type: 3}
   player: {fileID: 1463407924}
   SpawnedTiles: []
-  Type: 1
+  Type: 2
 --- !u!114 &1957703004 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8372993599008088273, guid: 96d741273b7459b48a613eb2e086da9b, type: 3}

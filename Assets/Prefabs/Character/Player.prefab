@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -76,13 +76,17 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6786864731064016781, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6206288944597300388, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 408932022187032878}
+    - targetCorrespondingSourceObject: {fileID: 6206288944597300388, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6477016897789823786}
   m_SourcePrefab: {fileID: 100100000, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
 --- !u!114 &1796597889774504815 stripped
 MonoBehaviour:
@@ -118,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
-  movement: {fileID: 2997560626975897644}
+  movement: {fileID: 6477016897789823786}
   data:
     name: 
     score: 0
@@ -128,22 +132,40 @@ MonoBehaviour:
     col: {r: 0, g: 0, b: 0, a: 0}
   animationController: {fileID: 3721101946601302100}
   inventory: {fileID: 0}
-  maxHealth: 0
+  maxHealth: 100
   healthBar: {fileID: 1796597889774504815}
   animController: {fileID: 3721101946601302100}
-  Shuriken: {fileID: 0}
+  Shuriken: {fileID: 6389107011502510898, guid: 17064762389015a44b6fef87e074c9af, type: 3}
   UseAttack: 0
---- !u!114 &2997560626975897644 stripped
+--- !u!114 &6477016897789823786
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6786864731064016781, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
-  m_PrefabInstance: {fileID: 8626275657068504993}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2420573646999065349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f88b4aa86c33948b795f96158e9b8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 64357212b192907459f738cf7abebbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mp: {x: 0, y: 0, z: 0}
+  Speed: 5
+  animController: {fileID: 3721101946601302100}
+  jumpForce: 8
+  MaxSpeed: 20
+  targetPos: {fileID: 0}
+  isGrounded: 0
+  playerParent: {fileID: 0}
+  ControlAble: 0
+  sideSpeed: 80
+  groundCheck: {fileID: 2420573646999065348}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  minXLimit: -5
+  maxXLimit: 5
+  rotSpeed: 50
 --- !u!114 &3721101946601302100 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4905179210307702773, guid: 52525fa3141136f4480fff6735ff618b, type: 3}

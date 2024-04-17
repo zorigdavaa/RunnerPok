@@ -12,11 +12,11 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        insParent = Z.Player.transform.parent;
-        for (int i = 0; i < 6; i++)
-        {
-            Vector3 pos = insParent.position + new Vector3(Random.onUnitSphere.x, 0, Random.onUnitSphere.z) * 3;
-            GameObject insEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], pos, Quaternion.Euler(0, 180, 0), insParent);
-        }
+        // insParent = Z.Player.transform.parent;
+        // for (int i = 0; i < 6; i++)
+        // {
+        //     Vector3 pos = insParent.position + new Vector3(Random.onUnitSphere.x, 0, Random.onUnitSphere.z) * 3;
+        //     GameObject insEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], pos, Quaternion.Euler(0, 180, 0), insParent);
+        // }
     }
 }

@@ -47,6 +47,10 @@ namespace ZPackage
             {
                 index = Random.Range(0, tilePrefabs.Length);
             }
+            else if (type == SpawnTileType.Jump)
+            {
+                index = 1;
+            }
             // Randomly select a tile prefab from the array
 
             // Spawn the selected tile prefab at the next spawn position
@@ -86,6 +90,6 @@ namespace ZPackage
 }
 public enum SpawnTileType
 {
-    None, Random
+    None, Random, Jump
 }
 
