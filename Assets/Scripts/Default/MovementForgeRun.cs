@@ -45,6 +45,11 @@ public class MovementForgeRun : Mb
                 else
                 {
                     player.animationController.Jump(true);
+                    if (rb.velocity.y < 0f)
+                    {
+                        rb.velocity += Vector3.down * 0.8f;
+                    }
+                    // rb.velocity += Vector3.down * 1.2f;
                 }
 
                 // Move the player forward

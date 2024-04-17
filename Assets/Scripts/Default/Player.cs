@@ -31,7 +31,11 @@ public class Player : Character
         GameManager.Instance.LevelCompleted += OnGameOver;
         InitPool();
         GameManager.Instance.Coin = 10;
+        animationController.OnAttackEvent += AttackProjectile;
     }
+
+
+
     public Vector2 FindNearestCenterOffset(List<Vector2> ToFindPoints)
     {
         Vector2 nearestPoint = ToFindPoints[0];
@@ -55,10 +59,10 @@ public class Player : Character
     public bool UseAttack = false;
     private void Update()
     {
-        if (UseAttack)
-        {
-            Attack();
-        }
+        // if (UseAttack)
+        // {
+        //     Attack();
+        // }
     }
 
     private void FindNearestEnemy()
@@ -113,19 +117,22 @@ public class Player : Character
         movement.SetSpeed(1);
         movement.SetControlAble(true);
     }
-    float attackTimer = 0;
-    float InitialAttackTimer = 0.5f;
-    public override void Attack()
+    private void AttackProjectile(object sender, EventArgs e)
     {
-        attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0)
-        {
-            animationController.Attack();
-            attackTimer = InitialAttackTimer;
-            // Shuriken = Instantiate(Shuriken, transform.position, Quaternion.identity, transform.parent);
-            Shuriken = Pool.Get();
-            // Destroy(Shuriken.gameObject, 5);
-        }
+        Pool.Get();
+    }
+    public void StartThrow(bool val = true)
+    {
+        animationController.AttackAnim(val);
+        // attackTimer -= Time.deltaTime;
+        // if (attackTimer <= 0)
+        // {
+        //     animationController.Attack();
+        //     attackTimer = InitialAttackTimer;
+        //     // Shuriken = Instantiate(Shuriken, transform.position, Quaternion.identity, transform.parent);
+
+        //     // Destroy(Shuriken.gameObject, 5);
+        // }
     }
 
     private void OnGameOver(object sender, EventArgs e)

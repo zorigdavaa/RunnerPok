@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5251567383407730794, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dac86f607eceafb41b4e1fcd5efc473a, type: 2}
     - target: {fileID: 6206288944597300388, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_Name
       value: Player
@@ -115,6 +119,8 @@ MonoBehaviour:
   inventory: {fileID: 0}
   healthBar: {fileID: 0}
   animController: {fileID: 3721101946601302100}
+  Shuriken: {fileID: 0}
+  UseAttack: 0
 --- !u!114 &3721101946601302100 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4905179210307702773, guid: 52525fa3141136f4480fff6735ff618b, type: 3}

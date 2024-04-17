@@ -10,12 +10,22 @@ public class Bot : Character
     public Transform Target;
     [SerializeField] Transform Chest;
     public bool UseAI = false;
-
+    public Projectile ProjectilePf;
     private void Start()
     {
         // Target = FindObjectOfType<Player>().transform;
         // movement.GoToPosition(Target);
-        animationController.Set8WayLayerWeight(false);
+        // animationController.Set8WayLayerWeight(false);
+    }
+    float attackTimer = 3;
+    private void Update()
+    {
+        attackTimer -= Time.deltaTime;
+        if (attackTimer < 0)
+        {
+            attackTimer = 3;
+            AttackProjectile();
+        }
     }
 
     public void GotoTarget()
@@ -35,5 +45,9 @@ public class Bot : Character
     {
         base.Die();
         // rb.isKinematic = true;
+    }
+    public override void AttackProjectile()
+    {
+        Instantiate(ProjectilePf, transform.position, transform.rotation, transform.parent);
     }
 }

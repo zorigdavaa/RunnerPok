@@ -32,9 +32,17 @@ public class AnimationController : MonoBehaviour
         animator.SetFloat("Y", y);
     }
 
-    public void Attack()
+    public void AttackAnim(bool val)
     {
-        animator.SetTrigger("attack");
+        // animator.SetBool("attack", val);
+        if (val)
+        {
+            animator.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            animator.SetLayerWeight(1, 0);
+        }
     }
     public EventHandler OnAttackEvent;
     public void OnAttack()
@@ -58,27 +66,19 @@ public class AnimationController : MonoBehaviour
     {
         animator.SetBool("death", true);
     }
-    public EventHandler OnSpearShoot;
-    public void SpearShoot()
-    {
-        OnSpearShoot?.Invoke(this, EventArgs.Empty);
-    }
-    public void Stretch(bool value)
-    {
-        animator.SetBool("stretch", value);
-    }
+
     public void Set8WayLayerWeight(bool value)
     {
-        if (value)
-        {
-            animator.SetLayerWeight(0, 1);
-            animator.SetLayerWeight(1, 0);
-        }
-        else
-        {
-            animator.SetLayerWeight(0, 0);
-            animator.SetLayerWeight(1, 1);
-        }
+        // if (value)
+        // {
+        //     animator.SetLayerWeight(0, 1);
+        //     animator.SetLayerWeight(1, 0);
+        // }
+        // else
+        // {
+        //     animator.SetLayerWeight(0, 0);
+        //     animator.SetLayerWeight(1, 1);
+        // }
     }
 
     internal void Jump(bool value)
