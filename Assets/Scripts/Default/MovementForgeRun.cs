@@ -5,7 +5,7 @@ using ZPackage;
 ///<Summary>Forge Run Controller 1<Summary>
 public class MovementForgeRun : Mb
 {
-    public Player player;
+    public AnimationController animController;
     bool ControlAble;
     [SerializeField] float MaxSpeed = 10;
     [SerializeField] Transform targetPos;
@@ -40,11 +40,11 @@ public class MovementForgeRun : Mb
                 isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
                 if (isGrounded)
                 {
-                    player.animationController.Jump(false);
+                    animController.Jump(false);
                 }
                 else
                 {
-                    player.animationController.Jump(true);
+                    animController.Jump(true);
                     if (rb.velocity.y < 0f)
                     {
                         rb.velocity += Vector3.down * 0.8f;
@@ -119,7 +119,7 @@ public class MovementForgeRun : Mb
         //     node.SetSpeed(speed / MaxSpeed);
         // }        
         //Todo Players Node move
-        player.animController.SetSpeed(Speed / MaxSpeed);
+         animController.SetSpeed(Speed / MaxSpeed);
     }
     public float GetSpeed()
     {

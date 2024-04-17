@@ -4,17 +4,5 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    List<Shuriken> Shurikens = new List<Shuriken>();
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
 }

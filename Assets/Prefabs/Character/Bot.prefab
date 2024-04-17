@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6786864731064016781, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: animController
+      value: 
+      objectReference: {fileID: 1051130884051663088}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -114,8 +118,20 @@ MonoBehaviour:
     col: {r: 0, g: 0, b: 0, a: 0}
   animationController: {fileID: 1051130884051663088}
   inventory: {fileID: 0}
-  healthBar: {fileID: 0}
+  maxHealth: 20
+  healthBar: {fileID: 2728217351735598027}
   Target: {fileID: 0}
   Chest: {fileID: 0}
   UseAI: 0
   ProjectilePf: {fileID: 4163451653906148852, guid: 76e8d1620367e3d479b31f2b1b00d28d, type: 3}
+--- !u!114 &2728217351735598027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8023299361252519118, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+  m_PrefabInstance: {fileID: 5369679956728280837}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809f9cf60eff9a54189c0dbeff943be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

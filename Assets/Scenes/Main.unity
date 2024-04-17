@@ -1149,6 +1149,10 @@ PrefabInstance:
       propertyPath: Shuriken
       value: 
       objectReference: {fileID: 6389107011502510898, guid: 17064762389015a44b6fef87e074c9af, type: 3}
+    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2420573646999065348, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

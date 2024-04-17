@@ -21,7 +21,7 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
-
+        Health = MaxHealth;
         movement = GetComponent<MovementForgeRun>();
         // animationController.OnSpearShoot += SpearShoot;
         soundManager = FindObjectOfType<SoundManager>();

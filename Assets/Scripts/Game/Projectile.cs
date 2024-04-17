@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,15 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         // transform.Rotate(0, 360 * Time.deltaTime, 0);
-        transform.localPosition += transform.forward * 6 * Time.deltaTime;
+        transform.localPosition += transform.forward * 10 * Time.deltaTime;
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Player>())
+        {
+            other.GetComponent<Player>().TakeDamage(-1);
+            Destroy(gameObject);
+        }
+    }
+
 }

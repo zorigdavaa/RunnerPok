@@ -10,23 +10,30 @@ public abstract class Character : Mb, IHealth
 {
     public MovementForgeRun movement;
     public LeaderBoardData data;
-    private int health;
-    public int Health
+    private float health;
+    public float Health
     {
         get { return health; }
         set
         {
             health = value;
-            healthBar.fillAmount = value * 0.01f;
+             healthBar.FillHealthBar(Health / MaxHealth);
         }
     }
-
     public AnimationController animationController;
     public Inventory inventory;
 
-    int IHealth.Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public float maxHealth;
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+        set { maxHealth = value; }
+    }
 
-    [SerializeField] Image healthBar;
+
+    public bool IsAlive => Health > 0;
+
+    [SerializeField] UIBar healthBar;
 
     public virtual void TakeDamage(float amount)
     {
@@ -43,7 +50,7 @@ public abstract class Character : Mb, IHealth
         gameObject.layer = 2;
         movement.Cancel();
         rb.isKinematic = true;
-        healthBar.transform.parent.gameObject.SetActive(false);
+        healthBar.gameObject.SetActive(false);
     }
     public virtual void AttackProjectile()
     {

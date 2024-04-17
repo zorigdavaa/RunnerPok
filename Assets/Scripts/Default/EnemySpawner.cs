@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             Vector3 pos = insParent.position + new Vector3(Random.onUnitSphere.x, 0, Random.onUnitSphere.z) * 3;
-            GameObject insEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], pos, Quaternion.Euler(Vector3.back), insParent);
+            GameObject insEnemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], pos, Quaternion.Euler(0, 180, 0), insParent);
         }
     }
 }

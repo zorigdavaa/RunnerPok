@@ -84,6 +84,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 408932022187032878}
   m_SourcePrefab: {fileID: 100100000, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+--- !u!114 &1796597889774504815 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8023299361252519118, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+  m_PrefabInstance: {fileID: 8626275657068504993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809f9cf60eff9a54189c0dbeff943be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2420573646999065348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
@@ -107,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
-  movement: {fileID: 0}
+  movement: {fileID: 2997560626975897644}
   data:
     name: 
     score: 0
@@ -117,10 +128,22 @@ MonoBehaviour:
     col: {r: 0, g: 0, b: 0, a: 0}
   animationController: {fileID: 3721101946601302100}
   inventory: {fileID: 0}
-  healthBar: {fileID: 0}
+  maxHealth: 0
+  healthBar: {fileID: 1796597889774504815}
   animController: {fileID: 3721101946601302100}
   Shuriken: {fileID: 0}
   UseAttack: 0
+--- !u!114 &2997560626975897644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6786864731064016781, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+  m_PrefabInstance: {fileID: 8626275657068504993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2420573646999065349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f88b4aa86c33948b795f96158e9b8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3721101946601302100 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4905179210307702773, guid: 52525fa3141136f4480fff6735ff618b, type: 3}

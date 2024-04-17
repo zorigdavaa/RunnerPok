@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8291986225370935513, guid: d89507eda19cfb04fab838d8cbfb60c4, type: 3}
+      propertyPath: animController
+      value: 
+      objectReference: {fileID: 4905179210307702773}
     - target: {fileID: 8871509487102450672, guid: d89507eda19cfb04fab838d8cbfb60c4, type: 3}
       propertyPath: m_Name
       value: Character

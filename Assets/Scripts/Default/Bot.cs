@@ -5,7 +5,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Pathfinding;
 
-public class Bot : Character
+public class Bot : Enemy
 {
     public Transform Target;
     [SerializeField] Transform Chest;
@@ -48,6 +48,6 @@ public class Bot : Character
     }
     public override void AttackProjectile()
     {
-        Instantiate(ProjectilePf, transform.position, transform.rotation, transform.parent);
+        Instantiate(ProjectilePf, transform.position + Vector3.up, transform.rotation, transform.parent);
     }
 }
