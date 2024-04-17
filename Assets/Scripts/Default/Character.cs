@@ -17,7 +17,7 @@ public abstract class Character : Mb, IHealth
         set
         {
             health = value;
-             healthBar.FillHealthBar(Health / MaxHealth);
+              healthBar.FillHealthBar(Health / MaxHealth);
         }
     }
     public AnimationController animationController;

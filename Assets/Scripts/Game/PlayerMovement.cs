@@ -11,14 +11,25 @@ public class PlayerMovement : MovementForgeRun
     public LayerMask groundLayer; // Layer mask for ground objects
     public float minXLimit = -5f; // Minimum X position limit
     public float maxXLimit = 5f; // Maximum X position limit
-    public float rotSpeed = 50f; // Maximum X position limit
-
+    public float rotSpeed = 10f; // Maximum X position limit
+    bool ParentedMove = true;
     Transform childModel;
     private void Start()
     {
         groundLayer = LayerMask.GetMask("Road");
         childModel = transform.GetChild(0);
         playerParent = transform.parent;
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            UseParentedMovement(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            UseParentedMovement(false);
+        }
     }
 
     void FixedUpdate()
@@ -45,7 +56,26 @@ public class PlayerMovement : MovementForgeRun
 
                 // Move the player forward
                 // transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-                playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
+                if (ParentedMove)
+                {
+                    playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
+                    Vector3 vel = rb.velocity;
+                    vel.z = 0;
+                    rb.velocity = vel;
+                }
+                else
+                {
+                    Vector3 vel = rb.velocity;
+                    if (vel.z < Speed)
+                    {
+                        vel.z = Speed;
+                    }
+                    else
+                    {
+                        vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
+                    }
+                    rb.velocity = vel;
+                }
                 float horizontalInput = 0;
                 // Move the player left and right
                 if (IsClick)
@@ -72,5 +102,22 @@ public class PlayerMovement : MovementForgeRun
                 }
             }
         }
+    }
+    public void UseParentedMovement(bool val)
+    {
+        if (val)
+        {
+            Vector3 toBeParentPos = new Vector3(0, 0, transform.position.z);
+            playerParent.transform.position = toBeParentPos;
+            transform.SetParent(playerParent);
+            Vector3 tobeLocaPos = transform.localPosition;
+            tobeLocaPos.z = 0;
+            transform.localPosition = tobeLocaPos;
+        }
+        else
+        {
+            transform.SetParent(null);
+        }
+        ParentedMove = val;
     }
 }
