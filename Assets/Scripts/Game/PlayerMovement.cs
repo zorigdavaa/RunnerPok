@@ -43,6 +43,7 @@ public class PlayerMovement : MovementForgeRun
                 if (isGrounded)
                 {
                     animController.Jump(false);
+                    // UseParentedMovement(true);
                 }
                 else
                 {
@@ -65,16 +66,20 @@ public class PlayerMovement : MovementForgeRun
                 }
                 else
                 {
-                    Vector3 vel = rb.velocity;
-                    if (vel.z < Speed)
+                    if (isGrounded && rb.velocity.y < 1)
                     {
-                        vel.z = Speed;
+                        Vector3 vel = rb.velocity;
+                        if (vel.z < Speed)
+                        {
+                            vel.z = Speed;
+                        }
+                        else
+                        {
+                            vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
+                        }
+                        rb.velocity = vel;
                     }
-                    else
-                    {
-                        vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
-                    }
-                    rb.velocity = vel;
+
                 }
                 float horizontalInput = 0;
                 // Move the player left and right
@@ -92,7 +97,7 @@ public class PlayerMovement : MovementForgeRun
                     float rot = Mathf.Sign(horizontalInput);
                     // print(rot);
                     Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
-                    print(moveDirection);
+                    // print(moveDirection);
                     Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
                     childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
                 }
@@ -103,21 +108,26 @@ public class PlayerMovement : MovementForgeRun
             }
         }
     }
-    public void UseParentedMovement(bool val)
+    public override void UseParentedMovement(bool val)
     {
-        if (val)
+        if (ParentedMove != val)
         {
-            Vector3 toBeParentPos = new Vector3(0, 0, transform.position.z);
-            playerParent.transform.position = toBeParentPos;
-            transform.SetParent(playerParent);
-            Vector3 tobeLocaPos = transform.localPosition;
-            tobeLocaPos.z = 0;
-            transform.localPosition = tobeLocaPos;
+            if (val)
+            {
+                Vector3 toBeParentPos = new Vector3(0, 0, transform.position.z);
+                playerParent.transform.position = toBeParentPos;
+                transform.SetParent(playerParent);
+                Vector3 tobeLocaPos = transform.localPosition;
+                tobeLocaPos.z = 0;
+                transform.localPosition = tobeLocaPos;
+            }
+            else
+            {
+                transform.SetParent(null);
+            }
+            ParentedMove = val;
         }
-        else
-        {
-            transform.SetParent(null);
-        }
-        ParentedMove = val;
+        // print(rb.velocity);
+
     }
 }

@@ -30,11 +30,11 @@ public class Bot : Enemy
 
     public void GotoTarget()
     {
-        movement.GoToPosition(Target);
+        Movement.GoToPosition(Target);
     }
     public void GotoPos(Vector3 pos)
     {
-        movement.GoToPosition(pos);
+        Movement.GoToPosition(pos);
     }
     public void GotoPath(List<Vector3> path)
     {

@@ -9,12 +9,13 @@ namespace ZPackage
 {
     public class LevelSpawner : GenericSingleton<LevelSpawner>
     {
-        public GameObject[] tilePrefabs; // Array of tile prefabs to spawn
+        public Tile[] tilePrefabs; // Array of tile prefabs to spawn
         public Transform player; // Reference to the player's transform
         float spawnDistance = 50f; // Distance ahead of the player to spawn new tiles
         private float nextSpawnPosition = 0f; // Position to spawn the next tile
-        public List<GameObject> SpawnedTiles = new List<GameObject>();
+        public List<Tile> SpawnedTiles = new List<Tile>();
         public SpawnTileType Type = SpawnTileType.Random;
+        Tile lastSpawnedTile;
 
         private void Start()
         {
@@ -59,7 +60,7 @@ namespace ZPackage
 
         private void SpawnTile(int index = -1)
         {
-            GameObject tilePrefab;
+            Tile tilePrefab;
             if (index != -1 && index < tilePrefabs.Length)
             {
 
@@ -75,9 +76,19 @@ namespace ZPackage
             SpawnTile(tilePrefab);
         }
 
-        private void SpawnTile(GameObject tilePrefab)
+        private void SpawnTile(Tile tilePrefab)
         {
-            GameObject tile = Instantiate(tilePrefab, new Vector3(0, 0, nextSpawnPosition), Quaternion.identity, transform);
+            Tile tile = Instantiate(tilePrefab, new Vector3(0, 0, nextSpawnPosition), Quaternion.identity, transform);
+            if (lastSpawnedTile)
+            {
+                // lastSpawnedTile.Nexttile = tile;
+                lastSpawnedTile.SetNextTile(tile);
+            }
+            lastSpawnedTile = tile;
+            if (SpawnedTiles.Count > 0)
+            {
+                lastSpawnedTile.BeforeTile = SpawnedTiles[SpawnedTiles.Count - 1];
+            }
             SpawnedTiles.Add(tile);
             nextSpawnPosition += spawnDistance;
             if (SpawnedTiles.Count > 10)

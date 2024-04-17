@@ -150,4 +150,9 @@ public class MovementForgeRun : Mb
         }
 
     }
+
+    public virtual void UseParentedMovement(bool v)
+    {
+
+    }
 }

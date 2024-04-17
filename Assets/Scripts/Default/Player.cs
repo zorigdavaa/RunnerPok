@@ -22,7 +22,7 @@ public class Player : Character
     void Start()
     {
         Health = MaxHealth;
-        movement = GetComponent<MovementForgeRun>();
+        Movement = GetComponent<PlayerMovement>();
         // animationController.OnSpearShoot += SpearShoot;
         soundManager = FindObjectOfType<SoundManager>();
         // cameraController = FindObjectOfType<CameraController>();
@@ -114,8 +114,8 @@ public class Player : Character
 
     private void OnGamePlay(object sender, EventArgs e)
     {
-        movement.SetSpeed(1);
-        movement.SetControlAble(true);
+        Movement.SetSpeed(1);
+        Movement.SetControlAble(true);
     }
     private void AttackProjectile(object sender, EventArgs e)
     {
@@ -144,4 +144,5 @@ public class Player : Character
     {
         throw new NotImplementedException();
     }
+
 }
