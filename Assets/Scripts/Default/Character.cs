@@ -29,7 +29,7 @@ public abstract class Character : Mb, IHealth
     public AnimationController animationController;
     public Inventory inventory;
 
-    public float maxHealth;
+    [SerializeField] float maxHealth;
     public float MaxHealth
     {
         get { return maxHealth; }

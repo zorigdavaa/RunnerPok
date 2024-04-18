@@ -39,7 +39,7 @@ public class PlayerMovement : MovementForgeRun
             if (ControlAble)
             {
                 // Check if the player is grounded
-                isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+                isGrounded = Physics.CheckSphere(groundCheck.position, 0.12f, groundLayer);
                 if (isGrounded)
                 {
                     animController.Jump(false);

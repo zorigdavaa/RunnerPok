@@ -13,6 +13,7 @@ public class Bot : Enemy
     public Projectile ProjectilePf;
     private void Start()
     {
+        Health = MaxHealth;
         // Target = FindObjectOfType<Player>().transform;
         // movement.GoToPosition(Target);
         // animationController.Set8WayLayerWeight(false);
@@ -21,7 +22,7 @@ public class Bot : Enemy
     private void Update()
     {
         attackTimer -= Time.deltaTime;
-        if (attackTimer < 0)
+        if (attackTimer < 0 && IsAlive)
         {
             attackTimer = 3;
             AttackProjectile();
@@ -48,6 +49,7 @@ public class Bot : Enemy
     }
     public override void AttackProjectile()
     {
-        Instantiate(ProjectilePf, transform.position + Vector3.up, transform.rotation, transform.parent);
+        Projectile inSob = Instantiate(ProjectilePf, transform.position + Vector3.up, transform.rotation, transform.parent);
+        Destroy(inSob.gameObject, 10);
     }
 }

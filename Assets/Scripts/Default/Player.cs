@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 using UnityEngine.Pool;
 using ZPackage.Utility;
 using System.Linq;
+using Cinemachine;
 
 public class Player : Character
 {
@@ -17,6 +18,11 @@ public class Player : Character
     UIBar bar;
     public AnimationController animController;
     public Shuriken Shuriken;
+    public List<CinemachineVirtualCamera> cameras;
+    int currentCameraIndex = 0;
+    int OldCameraIndex = -1;
+    CinemachineVirtualCamera currentCamera;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,10 +65,10 @@ public class Player : Character
     public bool UseAttack = false;
     private void Update()
     {
-        // if (UseAttack)
-        // {
-        //     Attack();
-        // }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            StartThrow(true);
+        }
     }
 
     private void FindNearestEnemy()
@@ -77,6 +83,18 @@ public class Player : Character
                 nearest = item.transform;
                 shortest = Distance;
             }
+        }
+    }
+    public void ChangeCamera(int index)
+    {
+        OldCameraIndex = currentCameraIndex;
+        if (currentCameraIndex != index)
+        {
+            currentCamera.Priority = 0;
+            currentCamera = cameras[index];
+            currentCamera.Priority = 1;
+            currentCameraIndex = index;
+
         }
     }
 

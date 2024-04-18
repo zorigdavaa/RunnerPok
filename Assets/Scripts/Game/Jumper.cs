@@ -9,11 +9,13 @@ public class Jumper : MonoBehaviour, ICollisionAction
     [SerializeField] Vector3 JumperForce;
     public Tile CurrentTile;
     public Jumper NextJumper;
+    Vector3 NextJumpTarget;
     public void Start()
     {
         if (NextJumper)
         {
-            JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumper.transform.position, 45f);
+            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumper.transform.position, 60f);
+            NextJumpTarget = NextJumper.transform.position;
         }
         else
         {
@@ -28,7 +30,8 @@ public class Jumper : MonoBehaviour, ICollisionAction
     private void OnNextTileSet(object sender, EventArgs e)
     {
         Tile nextTile = (Tile)sender;
-        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 45f);
+        // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 60f);
+        NextJumpTarget = nextTile.start.position + Vector3.forward * 0.3f;
     }
 
     public void CollisionAction(Character character)
@@ -38,8 +41,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         {
             player.Movement.UseParentedMovement(false);
         }
-        character.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        character.GetComponent<Rigidbody>().inertiaTensor = Vector3.zero;
+        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(character.transform.position, NextJumpTarget, 60f);
         character.GetComponent<Rigidbody>().velocity = JumperForce;
         print(character.GetComponent<Rigidbody>().velocity);
         // Debug.Break();
