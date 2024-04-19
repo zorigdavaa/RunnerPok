@@ -6,7 +6,7 @@ using ZPackage;
 public class MovementForgeRun : Mb
 {
     public float Speed = 5f; // Speed at which the player moves forward
-    public AnimationController animController;
+    public BaseAnim animController;
     public float jumpForce = 8f; // Force applied when jumping
     [SerializeField] float MaxSpeed = 10;
     [SerializeField] Transform targetPos;

@@ -3,36 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour
+public class AnimationController : BaseAnim
 {
-    [SerializeField] Animator animator;
+
     public AnimationState animationState;
     public Transform LookTarget;
-    private void OnEnable()
-    {
-        animator = GetComponent<Animator>();
-    }
+
     private void Update()
     {
         // if (LookTarget)
         // {
 
         // }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            // Throw();
-            // animator.speed += 0.1f;
-            SetThrowSpeed(5);
-        }
-
     }
     public void SetXY(float x, float y)
     {
         animator.SetFloat("X", x);
         animator.SetFloat("Y", y);
     }
-
-    public void AttackAnim(bool val)
+    public void RightHandAttack(bool val)
     {
         // animator.SetBool("attack", val);
         if (val)
@@ -43,28 +32,6 @@ public class AnimationController : MonoBehaviour
         {
             animator.SetLayerWeight(1, 0);
         }
-    }
-    public EventHandler OnAttackEvent;
-    public void OnAttack()
-    {
-        OnAttackEvent?.Invoke(this, EventArgs.Empty);
-    }
-    public void SetThrowSpeed(float speed)
-    {
-        animator.SetFloat("throwSpeed", speed);
-    }
-
-    internal void SetSpeed(float value)
-    {
-        animator.SetFloat("speed", value);
-    }
-    public void Throw()
-    {
-        animator.SetTrigger("throw");
-    }
-    public void Die()
-    {
-        animator.SetBool("death", true);
     }
 
     public void Set8WayLayerWeight(bool value)
@@ -79,14 +46,6 @@ public class AnimationController : MonoBehaviour
         //     animator.SetLayerWeight(0, 0);
         //     animator.SetLayerWeight(1, 1);
         // }
-    }
-
-    internal void Jump(bool value)
-    {
-        // animationState = AnimationState.Jump;
-        // ResetJump();
-        // animator.ResetTrigger("down");
-        animator.SetBool("isJumping", value);
     }
 }
 public enum AnimationState

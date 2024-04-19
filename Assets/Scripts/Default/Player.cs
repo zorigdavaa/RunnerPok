@@ -141,7 +141,7 @@ public class Player : Character
     }
     public void StartThrow(bool val = true)
     {
-        animationController.AttackAnim(val);
+        animationController.RightHandAttack(val);
         // attackTimer -= Time.deltaTime;
         // if (attackTimer <= 0)
         // {
