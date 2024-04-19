@@ -1305,19 +1305,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1325,12 +1325,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: ProjectilePfs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: ProjectilePfs.Array.data[0]
+      value: 
+      objectReference: {fileID: 3500501074311751367, guid: 4d232715d67453344bbf0f2d1f14e28b, type: 3}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: ProjectilePfs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3500501074311751367, guid: 2605affd54e87bc4e9bda1dcf8dd5bff, type: 3}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: ProjectilePfs.Array.data[2]
+      value: 
+      objectReference: {fileID: 3500501074311751367, guid: 7007473c551363140a360e2dbec1c400, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

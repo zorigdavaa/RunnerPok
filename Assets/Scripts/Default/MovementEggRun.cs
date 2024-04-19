@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using ZPackage;
-using Pathfinding;
+// using Pathfinding;
 using System.Collections.Generic;
 
 public class MovementEggRun : Mb
@@ -14,8 +14,8 @@ public class MovementEggRun : Mb
     [SerializeField] Transform targetPos;
     [SerializeField] Vector3? NoLookTaget;
     [SerializeField] float speed = 0;
-    [SerializeField] Seeker seeker;
-    Path path;
+    // [SerializeField] Seeker seeker;
+    // Path path;
     List<Vector3> goPos = new List<Vector3>();
 
     private void Start()
@@ -34,7 +34,7 @@ public class MovementEggRun : Mb
             else if (targetPos)
             {
                 // ForwardMove(targetPos.position);
-                ForwardMovePathFind(targetPos.position);
+                // ForwardMovePathFind(targetPos.position);
             }
             else if (goPos.Count > 0)
             {
@@ -103,30 +103,30 @@ public class MovementEggRun : Mb
         CancelDistance = 0.1f;
         afterGoAction = afterAction;
     }
-    public void GoToPosition(Transform _target, float _cancelDistance = 0.1f, float speedPercent = 1, Action afterAction = null)
-    {
-        DestroyCreated();
-        SetSpeed(speedPercent);
-        NoLookTaget = null;
-        targetPos = _target;
-        CancelDistance = _cancelDistance;
-        afterGoAction = afterAction;
-        path = seeker.StartPath(transform.position, targetPos.position);
-        print(path.vectorPath.Count);
-        // Debug.Break();
-    }
+    // public void GoToPosition(Transform _target, float _cancelDistance = 0.1f, float speedPercent = 1, Action afterAction = null)
+    // {
+    //     DestroyCreated();
+    //     SetSpeed(speedPercent);
+    //     NoLookTaget = null;
+    //     targetPos = _target;
+    //     CancelDistance = _cancelDistance;
+    //     afterGoAction = afterAction;
+    //     path = seeker.StartPath(transform.position, targetPos.position);
+    //     print(path.vectorPath.Count);
+    //     // Debug.Break();
+    // }
     public Action afterGoAction;
-    public void GoToPosition(Vector3 _target, float _cancelDistance = 0.1f, float speedPer = 1, Action afterAction = null)
-    {
-        DestroyCreated();
-        SetSpeed(speedPer);
-        CancelDistance = _cancelDistance;
-        GameObject Goto = new GameObject("Goto");
-        Goto.transform.position = _target;
-        targetPos = Goto.transform;
-        afterGoAction = afterAction;
-        path = seeker.StartPath(transform.position, targetPos.position);
-    }
+    // public void GoToPosition(Vector3 _target, float _cancelDistance = 0.1f, float speedPer = 1, Action afterAction = null)
+    // {
+    //     DestroyCreated();
+    //     SetSpeed(speedPer);
+    //     CancelDistance = _cancelDistance;
+    //     GameObject Goto = new GameObject("Goto");
+    //     Goto.transform.position = _target;
+    //     targetPos = Goto.transform;
+    //     afterGoAction = afterAction;
+    //     path = seeker.StartPath(transform.position, targetPos.position);
+    // }
     public void Cancel(bool cancelAfterInvoke = false)
     {
         DestroyCreated();
@@ -140,7 +140,7 @@ public class MovementEggRun : Mb
         afterGoAction?.Invoke();
         // animationController.SetSpeed(0);
         animationController.SetXY(0, 0);
-        path = null;
+        // path = null;
         currentWaypoint = 0;
     }
 
@@ -266,54 +266,54 @@ public class MovementEggRun : Mb
     int currentWaypoint = 0;
     float distanceToWaypoint;
     float renewPathTime = 2;
-    public void ForwardMovePathFind(Vector3 _targetPos)
-    {
+    // public void ForwardMovePathFind(Vector3 _targetPos)
+    // {
 
-        if (path != null && path.vectorPath.Count > 0)
-        {
+    //     if (path != null && path.vectorPath.Count > 0)
+    //     {
 
-            // If you want maximum performance you can check the squared distance instead to get rid of a
-            // square root calculation. But that is outside the scope of this tutorial.
-            // if (path.vectorPath.Count <= currentWaypoint + 1)
-            // {
-            //     print(currentWaypoint);
-            //     print(path.vectorPath.Count);
-            //     Debug.Break();
-            // }
-            distanceToWaypoint = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
-            if (distanceToWaypoint < 0.2f)
-            {
-                // Check if there is another waypoint or if we have reached the end of the path
-                if (currentWaypoint + 1 < path.vectorPath.Count)
-                {
-                    currentWaypoint++;
-                }
-                else
-                {
-                    Cancel();
-                }
-            }
+    //         // If you want maximum performance you can check the squared distance instead to get rid of a
+    //         // square root calculation. But that is outside the scope of this tutorial.
+    //         // if (path.vectorPath.Count <= currentWaypoint + 1)
+    //         // {
+    //         //     print(currentWaypoint);
+    //         //     print(path.vectorPath.Count);
+    //         //     Debug.Break();
+    //         // }
+    //         distanceToWaypoint = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
+    //         if (distanceToWaypoint < 0.2f)
+    //         {
+    //             // Check if there is another waypoint or if we have reached the end of the path
+    //             if (currentWaypoint + 1 < path.vectorPath.Count)
+    //             {
+    //                 currentWaypoint++;
+    //             }
+    //             else
+    //             {
+    //                 Cancel();
+    //             }
+    //         }
 
-            Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.3f);
-            rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
-            animationController.SetSpeed(1);
-            // float distance = Vector3.Distance(transform.position, _targetPos);
-            // if (distance < CancelDistance)
-            // {
-            //     Cancel();
-            // }
-            renewPathTime -= Time.deltaTime;
-            if (renewPathTime < 0)
-            {
-                renewPathTime = 2;
-                path = seeker.StartPath(transform.position, targetPos.position);
-                currentWaypoint = 0;
-            }
-        }
-        // ClampPosition();
-    }
+    //         Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
+    //         Quaternion targetRotation = Quaternion.LookRotation(dir);
+    //         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.3f);
+    //         rb.MovePosition(transform.position + dir * speed * Time.deltaTime);
+    //         animationController.SetSpeed(1);
+    //         // float distance = Vector3.Distance(transform.position, _targetPos);
+    //         // if (distance < CancelDistance)
+    //         // {
+    //         //     Cancel();
+    //         // }
+    //         renewPathTime -= Time.deltaTime;
+    //         if (renewPathTime < 0)
+    //         {
+    //             renewPathTime = 2;
+    //             path = seeker.StartPath(transform.position, targetPos.position);
+    //             currentWaypoint = 0;
+    //         }
+    //     }
+    //     // ClampPosition();
+    // }
     private void MoveNoLook()
     {
         // transform.position += transform.forward * speed * Time.fixedDeltaTime;
