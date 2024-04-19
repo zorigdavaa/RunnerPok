@@ -12,6 +12,8 @@ using Cinemachine;
 
 public class Player : Character
 {
+    public PlayerMovement Movement;
+    [SerializeField] AnimationController animationController;
     ObjectPool<Shuriken> Pool;
     CameraController cameraController;
     SoundManager soundManager;

@@ -1,24 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
-using Pathfinding;
 
-public class Bot : Enemy
+public class Animal : Enemy
 {
-    [SerializeField] AnimationController animationController;
-    [SerializeField] MovementForgeRun movement;
-    public Transform Target;
-    [SerializeField] Transform Chest;
-    public bool UseAI = false;
     public Projectile ProjectilePf;
+    public new AnimalAnim animationController;
     private void Start()
     {
         Health = MaxHealth;
-        // Target = FindObjectOfType<Player>().transform;
-        // movement.GoToPosition(Target);
-        // animationController.Set8WayLayerWeight(false);
     }
     float attackTimer = 3;
     private void Update()

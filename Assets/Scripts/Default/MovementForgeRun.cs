@@ -19,37 +19,32 @@ public class MovementForgeRun : Mb
         rb = GetComponent<Rigidbody>();
     }
     public bool ControlAble;
-    void FixedUpdate()
-    {
-        if (targetPos)
-        {
-            ForwardMove(targetPos.position);
-            // childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
-        }
-        else if (NoLookTaget != null)
-        {
-            MoveNoLook();
-            // childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
-        }
+    // void FixedUpdate()
+    // {
+    //     if (targetPos)
+    //     {
+    //         ForwardMove(targetPos.position);
+    //         // childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
+    //     }
+    //     else if (NoLookTaget != null)
+    //     {
+    //         MoveNoLook();
+    //         // childModel.localRotation = Quaternion.Lerp(childModel.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 5);
+    //     }
 
-    }
-    float CheckSign(float value)
-    {
-        if (value <= -0.01f)
-            return -1f;
-        else if (value >= 0.01f)
-            return 1f;
-        else
-            return 0f; // Or handle other cases as needed
-    }
+    // }
+    // float CheckSign(float value)
+    // {
+    //     if (value <= -0.01f)
+    //         return -1f;
+    //     else if (value >= 0.01f)
+    //         return 1f;
+    //     else
+    //         return 0f; // Or handle other cases as needed
+    // }
     private void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-    }
-
-    internal void SetSpeedDirect(float value)
-    {
-        Speed = value;
     }
 
     public void SetSpeed(float percent)

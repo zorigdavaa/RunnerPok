@@ -8,13 +8,6 @@ using ZPackage;
 
 public abstract class Character : Mb, IHealth
 {
-    [SerializeField] MovementForgeRun movement;
-    public virtual MovementForgeRun Movement
-    {
-        get { return movement; }
-        set { movement = value; }
-    }
-
     public LeaderBoardData data;
     private float health;
     public float Health
@@ -26,7 +19,6 @@ public abstract class Character : Mb, IHealth
             healthBar.FillHealthBar(Health / MaxHealth);
         }
     }
-    public AnimationController animationController;
     public Inventory inventory;
 
     [SerializeField] float maxHealth;
@@ -52,9 +44,9 @@ public abstract class Character : Mb, IHealth
 
     public virtual void Die()
     {
-        animationController.Die();
+        // animationController.Die();
         gameObject.layer = 2;
-        Movement.Cancel();
+        // Movement.Cancel();
         rb.isKinematic = true;
         healthBar.gameObject.SetActive(false);
     }
