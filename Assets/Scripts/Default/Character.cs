@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using ZPackage;
@@ -55,6 +56,13 @@ public abstract class Character : Mb, IHealth
 
     }
     private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<ICollisionAction>() != null)
+        {
+            other.gameObject.GetComponent<ICollisionAction>().CollisionAction(this);
+        }
+    }
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.GetComponent<ICollisionAction>() != null)
         {

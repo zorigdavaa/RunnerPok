@@ -7,6 +7,7 @@ public class Animal : Enemy
     public List<GameObject> ProjectilePfs;
     public AnimalAnim animationController;
     public MovementForgeRun movement;
+    [SerializeField] float idleSpeed = -1;
     private void Start()
     {
         Health = MaxHealth;
@@ -47,6 +48,7 @@ public class Animal : Enemy
                 goPos = transform.localPosition + Vector3.right * Random.Range(1, 3);
 
             }
+            animationController.SetSpeed(-1);
             float t = 0;
             float duration = 0.5f;
             float time = 0;
@@ -59,7 +61,7 @@ public class Animal : Enemy
                 transform.localPosition = Vector3.Lerp(initPos, goPos, t);
                 yield return null;
             }
-            animationController.SetSpeed(0);
+            animationController.SetSpeed(idleSpeed);
         }
     }
     public void Attack()
