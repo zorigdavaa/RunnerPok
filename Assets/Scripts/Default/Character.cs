@@ -45,8 +45,8 @@ public abstract class Character : Mb, IHealth
     public virtual void Die()
     {
         // animationController.Die();
-        gameObject.layer = 2;
         // Movement.Cancel();
+        gameObject.layer = 2;
         rb.isKinematic = true;
         healthBar.gameObject.SetActive(false);
     }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Animal : Enemy
 {
-    public Projectile ProjectilePf;
-    public new AnimalAnim animationController;
+    public List<GameObject> ProjectilePfs;
+    public AnimalAnim animationController;
+    public MovementForgeRun movement;
     private void Start()
     {
         Health = MaxHealth;
@@ -24,11 +25,14 @@ public class Animal : Enemy
     public override void Die()
     {
         base.Die();
+        animationController.Die();
+        movement.Cancel();
         // rb.isKinematic = true;
     }
     public override void AttackProjectile()
     {
-        Projectile inSob = Instantiate(ProjectilePf, transform.position + Vector3.up, transform.rotation, transform.parent);
-        Destroy(inSob.gameObject, 10);
+        GameObject pf = ProjectilePfs[Random.Range(0, ProjectilePfs.Count)];
+        GameObject inSob = Instantiate(pf, transform.position + Vector3.up, transform.rotation, transform.parent);
+        Destroy(inSob, 10);
     }
 }

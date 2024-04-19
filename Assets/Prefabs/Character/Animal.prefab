@@ -182,7 +182,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
-  movement: {fileID: 888454670224166837}
   data:
     name: 
     score: 0
@@ -190,28 +189,19 @@ MonoBehaviour:
     isPlayer: 0
     isLive: 0
     col: {r: 0, g: 0, b: 0, a: 0}
-  animationController: {fileID: 1892589097971638443}
   inventory: {fileID: 0}
   maxHealth: 30
   healthBar: {fileID: 4405603529719168246}
-  ProjectilePf: {fileID: 0}
-  animationController: {fileID: 0}
+  ProjectilePfs:
+  - {fileID: 3500501074311751367, guid: 37d07a798a6d7c24c9f5ef301af9ac85, type: 3}
+  - {fileID: 3520682674040017975, guid: ad23fa84c2282864eb8471068520f1b5, type: 3}
+  animationController: {fileID: 1892589097971638443}
+  movement: {fileID: 0}
 --- !u!4 &313721155970851997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
   m_PrefabInstance: {fileID: 5943525909147226168}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &888454670224166837 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6786864731064016781, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
-  m_PrefabInstance: {fileID: 5943525909147226168}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313721155970851996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f88b4aa86c33948b795f96158e9b8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4405603529719168246 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8023299361252519118, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
