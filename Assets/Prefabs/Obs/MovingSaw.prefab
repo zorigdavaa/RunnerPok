@@ -59,7 +59,6 @@ GameObject:
   - component: {fileID: 5390272994380258138}
   - component: {fileID: 5840539406113221127}
   - component: {fileID: 918012718350959922}
-  - component: {fileID: 2861612530893698828}
   m_Layer: 0
   m_Name: Zam
   m_TagString: Untagged
@@ -132,27 +131,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2861612530893698828
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3838358002147669382}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5868003644069389469
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +184,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4008836187515761746
 MonoBehaviour:
@@ -229,6 +207,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4338493618669241228}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dcccae8e4d8234e82bebbb88f979ca13, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dcccae8e4d8234e82bebbb88f979ca13, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dcccae8e4d8234e82bebbb88f979ca13, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dcccae8e4d8234e82bebbb88f979ca13, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
