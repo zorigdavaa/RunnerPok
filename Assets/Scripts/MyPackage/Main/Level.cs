@@ -5,11 +5,14 @@ using ZPackage;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] GameObject Hana;
-    [SerializeField] int HanaCount;
-    [SerializeField] int zombieSpawnerCount;
+    public List<SubLevel> LevelObjects;
     private void OnEnable()
     {
 
     }
+}
+
+public class SubLevel : MonoBehaviour
+{
+    
 }
