@@ -13,52 +13,64 @@ public class Level : MonoBehaviour
     public Transform player; // Reference to the player's transform
     Transform nextSpawnPosition; // Position to spawn the next tile
     bool HasNextSection => LevelObjects.Count - 1 > SecIDX;
-    bool CurSectionHasTile => LevelObjects[SecIDX].levelTiles.Count - 1 > SecTileIDx;
+    // bool CurSectionHasTile => CurrentSection.levelTiles.Count - 1 > SecTileIDx;
+    LevelSection CurSection => LevelObjects[SecIDX];
 
     public void Start()
     {
         nextSpawnPosition = transform;
         SpawnedTiles = new List<Tile>();
         player = Z.Player.transform;
-        SectionStartTile();
+        StartNewSection();
     }
 
-    private void SectionStartTile()
+    private void StartNewSection()
     {
-        Tile tileToIns = LevelObjects[SecIDX].SectionStart;
-        SpawnTile(tileToIns);
+        CurSection.Start(this);
+        // Tile tileToIns = CurSection.SectionStart;
+        // SpawnTile(tileToIns);
     }
 
     public void Update()
     {
         bool isNearEndofLand = player.position.z > nextSpawnPosition.position.z - 150;
-        if (isNearEndofLand && CurSectionHasTile)
+        // if (isNearEndofLand && CurSectionHasTile)
+        if (CurSection.SectionType == SectionType.Obstacle)
         {
-            Tile tileToIns = LevelObjects[SecIDX].levelTiles[SecTileIDx];
-            SpawnTile(tileToIns);
-            SecTileIDx++;
-            if (!CurSectionHasTile)
+            if (isNearEndofLand && CurSection.HasNextTile(SecTileIDx))
             {
-                LevelObjects[SecIDX].Oncomplete?.Invoke(this, EventArgs.Empty);
-                SectionEndTile();
-                if (HasNextSection)
+                Tile tileToIns = CurSection.levelTiles[SecTileIDx];
+                SpawnTile(tileToIns);
+                SecTileIDx++;
+                if (!CurSection.HasNextTile(SecTileIDx))
                 {
-                    SecIDX++;
-                    SecTileIDx = 0;
+                    CurSection.Oncomplete?.Invoke(this, EventArgs.Empty);
+                    CurSection.End(this);
+                    if (HasNextSection)
+                    {
+                        SecIDX++;
+                        SecTileIDx = 0;
+                        StartNewSection();
+                    }
                 }
             }
         }
+        else if (CurSection.SectionType == SectionType.Fight)
+        {
+            if (isNearEndofLand && CurSection.HasNextTile(SecTileIDx))
+            {
+                Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
+                SpawnTile(tileToIns);
+                SecTileIDx++;
+
+            }
+        }
+
         // else if (!HasNextSection && isNearEndofLand)
         // {
         //     SpawnTile();
         // }
     }
-    private void SectionEndTile()
-    {
-        Tile tileToIns = LevelObjects[SecIDX].SectionEnd;
-        SpawnTile(tileToIns);
-    }
-
 
     // private void SpawnTile(SpawnTileType type)
     // {
@@ -101,7 +113,7 @@ public class Level : MonoBehaviour
     // }
     Tile lastSpawnedTile;
     List<Tile> SpawnedTiles;
-    private void SpawnTile(Tile tilePrefab)
+    public void SpawnTile(Tile tilePrefab)
     {
         Tile tile = Instantiate(tilePrefab, nextSpawnPosition.position, Quaternion.identity, transform);
         if (lastSpawnedTile)

@@ -45,7 +45,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         anim.Play();
         JumperForce = PhysicsHelper.CalcBallisticVelocityVector(character.transform.position, NextJumpTarget, 60f);
         character.GetComponent<Rigidbody>().velocity = JumperForce;
-        print(character.GetComponent<Rigidbody>().velocity);
+        // print(character.GetComponent<Rigidbody>().velocity);
         // Debug.Break();
         // character.GetComponent<Rigidbody>().AddForce(Vector3.up * 400);
     }

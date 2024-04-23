@@ -71,7 +71,8 @@ public class PlayerMovement : MovementForgeRun
                         Vector3 vel = rb.velocity;
                         if (vel.z < Speed)
                         {
-                            vel.z = Speed;
+                            // vel.z = Speed;
+                            vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
                         }
                         else
                         {

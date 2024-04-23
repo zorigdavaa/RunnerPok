@@ -45,7 +45,7 @@ public class RotatingSpikes : MonoBehaviour
             float angle = Mathf.PI * 2f / segments * i;
             float x = Mathf.Cos(angle);
             float y = Mathf.Sin(angle);
-            Debug.Log("Angle for segment " + i + ": " + angle + " degrees");
+            // Debug.Log("Angle for segment " + i + ": " + angle + " degrees");
             vertices[i * 2] = new Vector3(x * (radius - width * 0.5f), 0.01f, y * (radius - width * 0.5f));
             vertices[i * 2 + 1] = new Vector3(x * (radius + width * 0.5f), 0.01f, y * (radius + width * 0.5f));
 
