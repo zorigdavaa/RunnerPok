@@ -23,11 +23,11 @@ public class LevelSection : ScriptableObject
         throw new NotImplementedException();
     }
 
-    internal void Start(Level startingLevel)
+    internal void StartSection(Level startingLevel)
     {
         startingLevel.SpawnTile(SectionStart);
     }
-    internal void End(Level endingLevel)
+    internal void EndSection(Level endingLevel)
     {
         endingLevel.SpawnTile(SectionEnd);
     }

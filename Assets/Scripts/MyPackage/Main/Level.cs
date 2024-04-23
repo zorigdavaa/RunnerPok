@@ -26,7 +26,7 @@ public class Level : MonoBehaviour
 
     private void StartNewSection()
     {
-        CurSection.Start(this);
+        CurSection.StartSection(this);
         // Tile tileToIns = CurSection.SectionStart;
         // SpawnTile(tileToIns);
     }
@@ -45,7 +45,7 @@ public class Level : MonoBehaviour
                 if (!CurSection.HasNextTile(SecTileIDx))
                 {
                     CurSection.Oncomplete?.Invoke(this, EventArgs.Empty);
-                    CurSection.End(this);
+                    CurSection.EndSection(this);
                     if (HasNextSection)
                     {
                         SecIDX++;
