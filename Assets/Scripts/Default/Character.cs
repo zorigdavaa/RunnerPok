@@ -42,6 +42,7 @@ public abstract class Character : Mb, IHealth
             Die();
         }
     }
+    public EventHandler Ondeath;
 
     public virtual void Die()
     {
@@ -50,6 +51,7 @@ public abstract class Character : Mb, IHealth
         gameObject.layer = 2;
         rb.isKinematic = true;
         healthBar.gameObject.SetActive(false);
+        Ondeath?.Invoke(this, EventArgs.Empty);
     }
     public virtual void AttackProjectile()
     {

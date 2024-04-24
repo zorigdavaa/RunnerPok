@@ -10,30 +10,40 @@ public class Level : MonoBehaviour
     int SecIDX = 0;
     int SecTileIDx = 0;
     public List<LevelSection> LevelObjects;
-    public Transform player; // Reference to the player's transform
-    Transform nextSpawnPosition; // Position to spawn the next tile
+    public Player player; // Reference to the player's transform
+    [SerializeField] Transform nextSpawnPosition; // Position to spawn the next tile
     bool HasNextSection => LevelObjects.Count - 1 > SecIDX;
     // bool CurSectionHasTile => CurrentSection.levelTiles.Count - 1 > SecTileIDx;
-    LevelSection CurSection => LevelObjects[SecIDX];
+    // [SerializeField] LevelSection CurSection => LevelObjects[SecIDX];
+    [SerializeField] LevelSection CurSection;
 
     public void Start()
     {
         nextSpawnPosition = transform;
         SpawnedTiles = new List<Tile>();
-        player = Z.Player.transform;
+        player = Z.Player;
         StartNewSection();
     }
 
     private void StartNewSection()
     {
+        CurSection = LevelObjects[SecIDX];
         CurSection.StartSection(this);
+        print("Started " + CurSection.SectionType + " " + CurSection.name);
+        if (CurSection.SectionType == SectionType.Fight)
+        {
+            print("Start Insing");
+            StartInstantiateEnemies();
+        }
         // Tile tileToIns = CurSection.SectionStart;
         // SpawnTile(tileToIns);
     }
 
+
+
     public void Update()
     {
-        bool isNearEndofLand = player.position.z > nextSpawnPosition.position.z - 150;
+        bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.position.z - 30;
         // if (isNearEndofLand && CurSectionHasTile)
         if (CurSection.SectionType == SectionType.Obstacle)
         {
@@ -57,7 +67,8 @@ public class Level : MonoBehaviour
         }
         else if (CurSection.SectionType == SectionType.Fight)
         {
-            if (isNearEndofLand && CurSection.HasNextTile(SecTileIDx))
+            // if (isNearEndofLand && CurSection.HasNextTile(SecTileIDx))
+            if (isNearEndofLand)
             {
                 Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
                 SpawnTile(tileToIns);
@@ -70,6 +81,43 @@ public class Level : MonoBehaviour
         // {
         //     SpawnTile();
         // }
+    }
+    int EnemyWaveIdx = 0;
+    int RemainingEnemy = 0;
+    private void StartInstantiateEnemies()
+    {
+        List<Enemy> Wave = CurSection.LevelEnemies[EnemyWaveIdx].EnemyPF;
+        Transform playerParent = player.GetComponent<PlayerMovement>().playerParent;
+        RemainingEnemy = Wave.Count;
+        for (int i = 0; i < Wave.Count; i++)
+        {
+            Enemy insEnemy = Instantiate(Wave[i], playerParent.position + Vector3.forward * 20, Quaternion.Euler(0, 180, 0), playerParent);
+            insEnemy.Ondeath += OnEnemyDeath;
+        }
+    }
+
+
+    private void OnEnemyDeath(object sender, EventArgs e)
+    {
+        RemainingEnemy--;
+        if (RemainingEnemy == 0)
+        {
+            if (CurSection.HasNextWave(EnemyWaveIdx))
+            {
+                EnemyWaveIdx++;
+                StartInstantiateEnemies();
+            }
+            else
+            {
+                CurSection.EndSection(this);
+                if (HasNextSection)
+                {
+                    SecIDX++;
+                    SecTileIDx = 0;
+                    StartNewSection();
+                }
+            }
+        }
     }
 
     // private void SpawnTile(SpawnTileType type)

@@ -9,25 +9,23 @@ public class LevelSection : ScriptableObject
     public SectionType SectionType;
     public EventHandler Oncomplete;
     public List<Tile> levelTiles;
-    public List<EnemyWave> LevelEnemies;
     public Tile SectionEnd;
     public Tile SectionStart;
-
+    public List<EnemyWave> LevelEnemies;
+    internal bool HasNextWave(int secTileIDx)
+    {
+        return levelTiles.Count - 1 > secTileIDx;
+    }
     internal bool HasNextTile(int TileIDx)
     {
         return levelTiles.Count - 1 > TileIDx;
     }
-
-    internal bool HasNextWave(int secTileIDx)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void StartSection(Level startingLevel)
+    internal virtual void StartSection(Level startingLevel)
     {
         startingLevel.SpawnTile(SectionStart);
     }
-    internal void EndSection(Level endingLevel)
+
+    internal virtual void EndSection(Level endingLevel)
     {
         endingLevel.SpawnTile(SectionEnd);
     }
