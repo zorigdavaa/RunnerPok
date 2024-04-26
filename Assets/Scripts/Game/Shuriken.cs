@@ -26,6 +26,7 @@ public class Shuriken : MonoBehaviour
     {
         gameObject.SetActive(false);
         transform.position = Vector3.zero;
+        SideMovement = 0;
         // StartCoroutine(LocalCoroutine());
         // IEnumerator LocalCoroutine()
         // {
@@ -44,12 +45,13 @@ public class Shuriken : MonoBehaviour
     {
 
     }
-
+    public float SideMovement;
     // Update is called once per frame
     void Update()
     {
         transform.Rotate(0, 360 * Time.deltaTime, 0);
-        transform.localPosition += Vector3.forward * 8 * Time.deltaTime;
+        transform.localPosition += Vector3.forward * 12 * Time.deltaTime;
+        transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {

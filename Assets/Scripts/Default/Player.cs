@@ -29,13 +29,15 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
+        currentCamera = cameras[currentCameraIndex];
         Health = MaxHealth;
         Movement = GetComponent<PlayerMovement>();
+        Movement.SetSpeed(1);
         // animationController.OnSpearShoot += SpearShoot;
         soundManager = FindObjectOfType<SoundManager>();
         // cameraController = FindObjectOfType<CameraController>();
         GameManager.Instance.GameOverEvent += OnGameOver;
-        GameManager.Instance.GamePlay += OnGamePlay;
+        GameManager.Instance.OnGamePlay += OnGamePlay;
         GameManager.Instance.LevelCompleted += OnGameOver;
         InitPool();
         GameManager.Instance.Coin = 10;
@@ -134,12 +136,44 @@ public class Player : Character
 
     private void OnGamePlay(object sender, EventArgs e)
     {
-        Movement.SetSpeed(1);
+        // Movement.SetSpeed(1);
         Movement.SetControlAble(true);
     }
     private void AttackProjectile(object sender, EventArgs e)
     {
-        Pool.Get();
+        Shuriken shuriken = Pool.Get();
+        Collider[] enemies = Physics.OverlapSphere(transform.position + transform.forward * 20, 3, 1 << 6);
+        float nearestDistance = Mathf.Infinity; // Initialize with a very large value
+        Transform nearestEnemy = null;
+
+        foreach (var enemy in enemies)
+        {
+            Vector3 point = new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
+            // Calculate the distance between the shuriken and the current enemy
+            float distance = Vector3.Distance(point, enemy.transform.position);
+
+            // Check if the current enemy is closer than the nearest one found so far
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestEnemy = enemy.transform;
+            }
+        }
+        if (nearestEnemy != null)
+        {
+            Vector3 dirToNearest = transform.position - nearestEnemy.position;
+            float half = nearestDistance / 2;
+            if (Vector3.Dot(dirToNearest, transform.right) > 0) // right
+
+            {
+                shuriken.SideMovement = -half;
+            }
+            else
+            {
+                shuriken.SideMovement = half;
+            }
+
+        }
     }
     public void StartThrow(bool val = true)
     {
@@ -165,4 +199,18 @@ public class Player : Character
         throw new NotImplementedException();
     }
 
+    internal void GoingToFight(bool v)
+    {
+        Movement.UseParentedMovement(v);
+        if (v)
+        {
+            StartThrow(true);
+            ChangeCamera(1);
+        }
+        else
+        {
+            StartThrow(false);
+            ChangeCamera(0);
+        }
+    }
 }

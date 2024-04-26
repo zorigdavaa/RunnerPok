@@ -14,7 +14,7 @@ public class LevelSection : ScriptableObject
     public List<EnemyWave> LevelEnemies;
     internal bool HasNextWave(int secTileIDx)
     {
-        return levelTiles.Count - 1 > secTileIDx;
+        return LevelEnemies.Count - 1 > secTileIDx;
     }
     internal bool HasNextTile(int TileIDx)
     {

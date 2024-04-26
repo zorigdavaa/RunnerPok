@@ -14,9 +14,9 @@ public class CanvasManager : GenericSingleton<CanvasManager>
         CoinText = Coin.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         LevelText = Level.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         GameManager.Instance.LevelCompleted += OnLevelCompleted;
-        GameManager.Instance.GamePlay += OnGamePlay;
+        GameManager.Instance.OnGamePlay += OnGamePlay;
         GameManager.Instance.GameOverEvent += OnGameOver;
-        GameManager.Instance.GameStart += OnGameStart;
+        GameManager.Instance.OnGameStart += OnGameStart;
     }
     private void Start()
     {

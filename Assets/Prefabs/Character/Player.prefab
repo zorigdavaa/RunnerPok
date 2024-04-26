@@ -12,9 +12,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dac86f607eceafb41b4e1fcd5efc473a, type: 2}
+    - target: {fileID: 5543355099279209163, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206288944329419906, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6206288944597300388, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206288944597300388, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6206288945272364717, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6786864731064016781, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: player
       value: 
@@ -76,6 +92,22 @@ PrefabInstance:
       propertyPath: groundCheck
       value: 
       objectReference: {fileID: 2420573646999065348}
+    - target: {fileID: 8023299361252519116, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023299361260624586, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023299362185309803, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8023299362885183355, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9096648755038600335, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0

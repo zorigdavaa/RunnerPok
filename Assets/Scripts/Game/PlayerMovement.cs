@@ -34,54 +34,55 @@ public class PlayerMovement : MovementForgeRun
 
     void FixedUpdate()
     {
+        // Check if the player is grounded
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.12f, groundLayer);
+        if (isGrounded)
+        {
+            animController.Jump(false);
+            // UseParentedMovement(true);
+        }
+        else
+        {
+            animController.Jump(true);
+            // if (rb.velocity.y < 0f)
+            // {
+            //     rb.velocity += Vector3.down * 0.8f;
+            // }
+            // rb.velocity += Vector3.down * 1.2f;
+        }
+
+        // Move the player forward
+        // transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+        if (ParentedMove)
+        {
+            playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
+            Vector3 vel = rb.velocity;
+            vel.z = 0;
+            rb.velocity = vel;
+        }
+        else
+        {
+            if (isGrounded && rb.velocity.y < 1)
+            {
+                Vector3 vel = rb.velocity;
+                if (vel.z < Speed)
+                {
+                    // vel.z = Speed;
+                    vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
+                }
+                else
+                {
+                    vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
+                }
+                rb.velocity = vel;
+            }
+
+        }
         if (IsPlaying)
         {
             if (ControlAble)
             {
-                // Check if the player is grounded
-                isGrounded = Physics.CheckSphere(groundCheck.position, 0.12f, groundLayer);
-                if (isGrounded)
-                {
-                    animController.Jump(false);
-                    // UseParentedMovement(true);
-                }
-                else
-                {
-                    animController.Jump(true);
-                    // if (rb.velocity.y < 0f)
-                    // {
-                    //     rb.velocity += Vector3.down * 0.8f;
-                    // }
-                    // rb.velocity += Vector3.down * 1.2f;
-                }
 
-                // Move the player forward
-                // transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-                if (ParentedMove)
-                {
-                    playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
-                    Vector3 vel = rb.velocity;
-                    vel.z = 0;
-                    rb.velocity = vel;
-                }
-                else
-                {
-                    if (isGrounded && rb.velocity.y < 1)
-                    {
-                        Vector3 vel = rb.velocity;
-                        if (vel.z < Speed)
-                        {
-                            // vel.z = Speed;
-                            vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
-                        }
-                        else
-                        {
-                            vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
-                        }
-                        rb.velocity = vel;
-                    }
-
-                }
                 float horizontalInput = 0;
                 // Move the player left and right
                 if (IsClick)

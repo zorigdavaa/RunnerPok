@@ -11,6 +11,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
     public Jumper NextJumper;
     Vector3 NextJumpTarget;
     [SerializeField] Animation anim;
+    public Transform pointer;
     public void Start()
     {
         if (NextJumper)
@@ -26,6 +27,19 @@ public class Jumper : MonoBehaviour, ICollisionAction
                 CurrentTile.OnNextTileSet += OnNextTileSet;
             }
         }
+        Direction();
+    }
+
+    private void Direction()
+    {
+        if (JumperForce.z > 0)
+        {
+            pointer.LookAt(pointer.position + Vector3.forward);
+        }
+        else
+        {
+            pointer.LookAt(pointer.position - Vector3.forward);
+        }
     }
 
     private void OnNextTileSet(object sender, EventArgs e)
@@ -33,6 +47,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         Tile nextTile = (Tile)sender;
         // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 60f);
         NextJumpTarget = nextTile.start.position + Vector3.forward * 0.3f;
+        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 60f);
     }
 
     public void CollisionAction(Character character)
@@ -43,9 +58,10 @@ public class Jumper : MonoBehaviour, ICollisionAction
             player.Movement.UseParentedMovement(false);
         }
         anim.Play();
-        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(character.transform.position, NextJumpTarget, 60f);
+        // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(character.transform.position, NextJumpTarget, 60f);
+        Direction();
         character.GetComponent<Rigidbody>().velocity = JumperForce;
-        // print(character.GetComponent<Rigidbody>().velocity);
+        print(character.GetComponent<Rigidbody>().velocity);
         // Debug.Break();
         // character.GetComponent<Rigidbody>().AddForce(Vector3.up * 400);
     }

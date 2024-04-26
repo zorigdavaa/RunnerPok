@@ -25,11 +25,11 @@ public class ProgressBar : MonoBehaviour
     {
         InitColor();
         barFill.fillAmount = currentAmount;
-        GameManager.Instance.GameStart += OnGameStarted;
+        GameManager.Instance.OnGameStart += OnGameStarted;
     }
     private void OnApplicationQuit()
     {
-        GameManager.Instance.GameStart -= OnGameStarted;
+        GameManager.Instance.OnGameStart -= OnGameStarted;
     }
     private void OnGameStarted(object sender, EventArgs e)
     {

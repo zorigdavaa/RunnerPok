@@ -99,8 +99,9 @@ public class Animal : Enemy
     public override void Die()
     {
         base.Die();
+        transform.SetParent(null);
         animationController.Die();
-        movement.Cancel();
+        movement?.Cancel();
         // rb.isKinematic = true;
     }
     public override void AttackProjectile()

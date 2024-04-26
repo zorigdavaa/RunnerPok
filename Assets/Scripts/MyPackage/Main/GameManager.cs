@@ -19,10 +19,10 @@ namespace ZPackage
         // [SerializeField] ProgressBar progressBar;
         #region Events
         public event EventHandler<GameState> StateChanged;
-        public event EventHandler GameStart;
-        public event EventHandler GamePlay;
-        public event EventHandler GamePaused;
-        public event EventHandler GameResumed;
+        public event EventHandler OnGameStart;
+        public event EventHandler OnGamePlay;
+        public event EventHandler OnGamePaused;
+        public event EventHandler OnGameResumed;
         public event EventHandler<LevelCompletedEventArgs> LevelCompleted;
         public event EventHandler GameOverEvent;
         public event EventHandler Settings;
@@ -52,14 +52,14 @@ namespace ZPackage
                 if (value)
                 {
                     //Time.timeScale = 0;
-                    GamePaused?.Invoke(this, EventArgs.Empty);
+                    OnGamePaused?.Invoke(this, EventArgs.Empty);
                     State = GameState.Pause;
 
                 }
                 else
                 {
                     //Time.timeScale = 1;
-                    GameResumed?.Invoke(this, EventArgs.Empty);
+                    OnGameResumed?.Invoke(this, EventArgs.Empty);
                     PlayGame();
                     //State = GameState.Playing;
                 }
@@ -182,7 +182,7 @@ namespace ZPackage
         {
             GAStartEvent();
             State = GameState.Starting;
-            GameStart?.Invoke(this, EventArgs.Empty);
+            OnGameStart?.Invoke(this, EventArgs.Empty);
         }
         public void Fly()
         {
@@ -192,7 +192,7 @@ namespace ZPackage
         public async void PlayGame()
         {
             GAPlayEvent();
-            GamePlay?.Invoke(this, EventArgs.Empty);
+            OnGamePlay?.Invoke(this, EventArgs.Empty);
             await Task.Yield();
             State = GameState.Playing;
         }

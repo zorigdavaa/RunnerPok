@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace ZPackage
         public List<Level> Levels;
         Level LastInstLvl;
         Vector3 pos = Vector3.zero;
+
         private void Start()
         {
             // for (int i = 0; i < 5; i++)
@@ -19,6 +21,12 @@ namespace ZPackage
             //     SpawnTile(0);
             // }
             SpawnLevel(Levels[0]);
+            GameManager.Instance.OnGamePlay += OnGamePlay;
+        }
+
+        private void OnGamePlay(object sender, EventArgs e)
+        {
+            LastInstLvl.StartNewSection();
         }
 
         private void SpawnLevel(Level level)

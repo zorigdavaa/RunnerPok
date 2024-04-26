@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7575097222021754785}
   - component: {fileID: 7278324688581108722}
   m_Layer: 0
-  m_Name: Level - 1
+  m_Name: Level - 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelObjects:
-  - {fileID: 11400000, guid: 3786e0ab74066ff49aa0bf23a6c0066d, type: 2}
   - {fileID: 11400000, guid: 2e2afcf4dde3ad8468e3fce61f7f7f76, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {fileID: 0}
