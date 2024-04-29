@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelObjects:
-  - {fileID: 11400000, guid: 2e2afcf4dde3ad8468e3fce61f7f7f76, type: 2}
+  - {fileID: 11400000, guid: daebde2ea813a4541bb4007dca56150c, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {fileID: 0}
   BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
