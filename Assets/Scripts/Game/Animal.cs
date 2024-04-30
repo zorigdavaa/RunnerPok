@@ -74,6 +74,10 @@ public class Animal : Enemy
             float duration = 0.5f;
             float time = 0;
             Vector3 initPos = transform.localPosition;
+            if (Mathf.Abs(attackPos.x) > 6)
+            {
+                attackPos.x = Mathf.Clamp(attackPos.x, -6, 6);
+            }
             while (time < duration)
             {
                 time += Time.deltaTime;

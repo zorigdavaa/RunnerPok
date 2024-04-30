@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using ZPackage;
+using Random = UnityEngine.Random;
 
 public class Level : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class Level : MonoBehaviour
         }
         else
         {
-            player.GoingToFight(false);
+            // player.GoingToFight(false);
+            player.ChangeState(PlayerState.Obs);
         }
         // Tile tileToIns = CurSection.SectionStart;
         // SpawnTile(tileToIns);
@@ -118,7 +120,8 @@ public class Level : MonoBehaviour
     int RemainingEnemy = 0;
     private void StartInstantiateEnemies()
     {
-        player.GoingToFight(true);
+        // player.GoingToFight(true);
+        player.ChangeState(PlayerState.Fight);
         StartCoroutine(LocalCoroutine());
         IEnumerator LocalCoroutine()
         {
@@ -133,7 +136,8 @@ public class Level : MonoBehaviour
             print(EnemyWaveIdx + " new Wave");
             for (int i = 0; i < InsEnems.Count; i++)
             {
-                Enemy insEnemy = Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 20, Quaternion.Euler(0, 180, 0), playerParent);
+                Vector3 RandomPosXZ = new Vector3(Random.Range(-4, 4), 0, 0);
+                Enemy insEnemy = Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
                 insEnemy.Ondeath += OnEnemyDeath;
                 RemainingEnemy++;
             }

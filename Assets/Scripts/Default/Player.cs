@@ -24,6 +24,7 @@ public class Player : Character
     int currentCameraIndex = 0;
     int OldCameraIndex = -1;
     CinemachineVirtualCamera currentCamera;
+    PlayerState State = PlayerState.None;
 
 
     // Start is called before the first frame update
@@ -42,9 +43,16 @@ public class Player : Character
         InitPool();
         GameManager.Instance.Coin = 10;
         animationController.OnAttackEvent += AttackProjectile;
+        ChangeState(PlayerState.Wait);
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            StartThrow(true);
+        }
+    }
 
     public Vector2 FindNearestCenterOffset(List<Vector2> ToFindPoints)
     {
@@ -63,16 +71,6 @@ public class Player : Character
         }
 
         return center - nearestPoint;
-    }
-
-
-    public bool UseAttack = false;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartThrow(true);
-        }
     }
 
     private void FindNearestEnemy()
@@ -196,6 +194,31 @@ public class Player : Character
         }
 
     }
+    public void ChangeState(PlayerState _state)
+    {
+        if (State != _state)
+        {
+            if (_state == PlayerState.Wait)
+            {
+                StartThrow(false);
+                ChangeCamera(0);
+                Movement.UseParentedMovement(false);
+            }
+            else if (_state == PlayerState.Obs)
+            {
+                StartThrow(false);
+                ChangeCamera(1);
+                Movement.UseParentedMovement(false);
+            }
+            else if (_state == PlayerState.Fight)
+            {
+                StartThrow(true);
+                ChangeCamera(2);
+                Movement.UseParentedMovement(true);
+            }
+            State = _state;
+        }
+    }
     public void StartThrow(bool val = true)
     {
         animationController.RightHandAttack(val);
@@ -213,6 +236,7 @@ public class Player : Character
     private void OnGameOver(object sender, EventArgs e)
     {
         // throw new NotImplementedException();
+        ChangeState(PlayerState.Wait);
     }
 
     internal void DoneBoard()
@@ -234,4 +258,9 @@ public class Player : Character
             ChangeCamera(0);
         }
     }
+}
+
+public enum PlayerState
+{
+    None, Wait, Obs, Fight
 }

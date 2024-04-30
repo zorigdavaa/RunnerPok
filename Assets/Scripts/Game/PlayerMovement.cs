@@ -18,7 +18,10 @@ public class PlayerMovement : MovementForgeRun
     {
         groundLayer = LayerMask.GetMask("Road");
         childModel = transform.GetChild(0);
-        playerParent = transform.parent;
+        if (playerParent == null)
+        {
+            playerParent = transform.parent;
+        }
     }
     private void Update()
     {
