@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7575097222021754785}
   - component: {fileID: 7278324688581108722}
   m_Layer: 0
-  m_Name: Level - 1
+  m_Name: BaseLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3786e0ab74066ff49aa0bf23a6c0066d, type: 2}
   - {fileID: 11400000, guid: 2e2afcf4dde3ad8468e3fce61f7f7f76, type: 2}
   player: {fileID: 0}
-  nextSpawnPosition: {fileID: 0}
+  nextSpawnPosition: {x: 0, y: 0, z: 0}
+  PlayerBeingTile: {fileID: 0}
+  speedUpPF: {fileID: 1846571084168223024, guid: 0736c67bd4164044fbe8f25c7711ef16, type: 3}
   BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   CurSection: {fileID: 0}
   SpawnedTiles: []

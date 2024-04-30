@@ -53,6 +53,35 @@ public class Player : Character
             StartThrow(true);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<ICollisionAction>() != null)
+        {
+            other.gameObject.GetComponent<ICollisionAction>().CollisionAction(this);
+        }
+        else if (other.gameObject.CompareTag("Respawn"))
+        {
+            Respawn();
+        }
+    }
+
+    private void Respawn()
+    {
+        StartCoroutine(LocalCoroutine());
+        IEnumerator LocalCoroutine()
+        {
+            yield return new WaitForSeconds(1);
+            transform.position = Z.LS.LastInstLvl.PlayerBeingTile.start.position + Vector3.up;
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<ICollisionAction>() != null)
+        {
+            other.gameObject.GetComponent<ICollisionAction>().CollisionAction(this);
+        }
+    }
 
     public Vector2 FindNearestCenterOffset(List<Vector2> ToFindPoints)
     {

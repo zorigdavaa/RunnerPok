@@ -11,7 +11,7 @@ namespace ZPackage
     public class LevelSpawner : GenericSingleton<LevelSpawner>
     {
         public List<Level> Levels;
-        Level LastInstLvl;
+        public Level LastInstLvl;
         Vector3 pos = Vector3.zero;
 
         private void Start()
@@ -33,7 +33,7 @@ namespace ZPackage
         {
             if (LastInstLvl)
             {
-                pos = LastInstLvl.nextSpawnPosition.position;
+                pos = LastInstLvl.nextSpawnPosition;
                 LastInstLvl.DestSelf();
             }
             LastInstLvl = Instantiate(level, pos, Quaternion.identity, transform);

@@ -66,7 +66,7 @@ public class Shuriken : MonoBehaviour
         RightAcc = 0;
         if (enemy && enemy.IsAlive)
         {
-            enemy.TakeDamage(-2);
+            enemy.TakeDamage(-5);
             Pool.Release(this);
             if (AutoGotoPoolCor != null)
             {

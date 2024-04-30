@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3605026524838981926}
   - component: {fileID: 8209108399054310361}
-  - component: {fileID: 5869701348714478928}
+  - component: {fileID: 3126707477135180982}
   m_Layer: 0
   m_Name: Jumper
   m_TagString: Untagged
@@ -134,10 +134,11 @@ MonoBehaviour:
   JumperForce: {x: 0, y: 20.8, z: 13}
   CurrentTile: {fileID: 0}
   NextJumper: {fileID: 0}
+  NextJumpTarget: {x: 0, y: 0, z: 0}
   anim: {fileID: 8288916332612200749}
   pointer: {fileID: 6914614130054523929}
---- !u!135 &5869701348714478928
-SphereCollider:
+--- !u!65 &3126707477135180982
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -155,7 +156,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4546749576120328735
 GameObject:

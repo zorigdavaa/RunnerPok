@@ -162,7 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a72885d73178d49965de390c8a744e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextureAnimrenderer: {fileID: 2804530977217047587}
+  TextureAnimrenderer:
+  - {fileID: 2804530977217047587}
 --- !u!65 &2345326472501296835
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -81,37 +81,37 @@ public class PlayerMovement : MovementForgeRun
             }
 
         }
-        if (IsPlaying)
+        // if (IsPlaying)
+        // {
+        if (ControlAble)
         {
-            if (ControlAble)
-            {
 
-                float horizontalInput = 0;
-                // Move the player left and right
-                if (IsClick)
-                {
-                    horizontalInput = Input.GetAxisRaw("Mouse X");
-                }
-                // print(horizontalInput);
-                float newPositionX = transform.localPosition.x + (horizontalInput * sideSpeed * Time.deltaTime);
-                newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
-                Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
-                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.35f);
-                if (Mathf.Abs(horizontalInput) > 0)
-                {
-                    float rot = Mathf.Sign(horizontalInput);
-                    // print(rot);
-                    Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
-                    // print(moveDirection);
-                    Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-                    childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
-                }
-                else
-                {
-                    childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
-                }
+            float horizontalInput = 0;
+            // Move the player left and right
+            if (IsClick)
+            {
+                horizontalInput = Input.GetAxisRaw("Mouse X");
+            }
+            // print(horizontalInput);
+            float newPositionX = transform.localPosition.x + (horizontalInput * sideSpeed * Time.deltaTime);
+            newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
+            Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.35f);
+            if (Mathf.Abs(horizontalInput) > 0)
+            {
+                float rot = Mathf.Sign(horizontalInput);
+                // print(rot);
+                Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
+                // print(moveDirection);
+                Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+                childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
+            }
+            else
+            {
+                childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
             }
         }
+        // }
     }
     public override void UseParentedMovement(bool val)
     {

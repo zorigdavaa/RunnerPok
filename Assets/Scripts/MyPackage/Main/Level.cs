@@ -12,8 +12,11 @@ public class Level : MonoBehaviour
     int SecTileIDx = 0;
     public List<LevelSection> LevelObjects;
     public Player player; // Reference to the player's transform
-    public Transform nextSpawnPosition; // Position to spawn the next tile
+    public Vector3 nextSpawnPosition; // Position to spawn the next tile
     bool HasNextSection => LevelObjects.Count - 1 > SecIDX;
+    public Tile PlayerBeingTile;
+    public SpeedUp speedUpPF;
+
     public Tile BaseTilePf;
     // bool CurSectionHasTile => CurrentSection.levelTiles.Count - 1 > SecTileIDx;
     // [SerializeField] LevelSection CurSection => LevelObjects[SecIDX];
@@ -22,47 +25,15 @@ public class Level : MonoBehaviour
     public void Start()
     {
         // BaseTilePf = 
-        nextSpawnPosition = transform;
+        nextSpawnPosition = transform.position;
         SpawnedTiles = new List<Tile>();
         player = Z.Player;
         // StartNewSection();
     }
 
-    public void StartNewSection()
-    {
-        BeforSectionTiles.Clear();
-        BeforSectionTiles = new List<Tile>(SpawnedTiles);
-        for (int i = BeforSectionTiles.Count - 1; i >= 0; i--)
-        {
-            Destroy(BeforSectionTiles[i].gameObject, i + 20);
-            // BeforSectionTiles.RemoveAt(i);
-        }
-        SpawnedTiles.Clear();
-        CurSection = LevelObjects[SecIDX];
-        CurSection.StartSection(this);
-        print("Started " + CurSection.SectionType + " " + CurSection.name);
-        if (CurSection.SectionType == SectionType.Fight)
-        {
-            SpawnedTiles[0].OnTileEnter += OnFightSectionEnter;
-        }
-        else
-        {
-            // player.GoingToFight(false);
-            player.ChangeState(PlayerState.Obs);
-        }
-        // Tile tileToIns = CurSection.SectionStart;
-        // SpawnTile(tileToIns);
-    }
-
-    private void OnFightSectionEnter(object sender, EventArgs e)
-    {
-        print("Start Insing");
-        StartInstantiateEnemies();
-    }
-
     public void Update()
     {
-        bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.position.z - 70;
+        bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;
         // if (isNearEndofLand && CurSectionHasTile)
         if (CurSection == null)
         {
@@ -115,6 +86,82 @@ public class Level : MonoBehaviour
         // {
         //     SpawnTile();
         // }
+    }
+
+    public void StartNewSection()
+    {
+        BeforSectionTiles.Clear();
+        BeforSectionTiles = new List<Tile>(SpawnedTiles);
+        for (int i = BeforSectionTiles.Count - 1; i >= 0; i--)
+        {
+            Destroy(BeforSectionTiles[i].gameObject, i + 20);
+            // BeforSectionTiles.RemoveAt(i);
+        }
+        SpawnedTiles.Clear();
+
+        CurSection = LevelObjects[SecIDX];
+        if (SecIDX > 0)
+        {
+            LevelSection PrevSection = null;
+            PrevSection = LevelObjects[SecIDX - 1];
+            if (PrevSection.SectionType == SectionType.Fight)
+            {
+                InsSpeedUp();
+            }
+
+            // Vector3 NearPlayerPos = GetNearPlayerPos(BeforSectionTiles);
+        }
+        else
+        {
+            InsSpeedUp();
+        }
+        CurSection.StartSection(this);
+        print("Started " + CurSection.SectionType + " " + CurSection.name);
+        if (CurSection.SectionType == SectionType.Fight)
+        {
+            SpawnedTiles[0].OnTileEnter += OnFightSectionEnter;
+        }
+        else
+        {
+            // player.GoingToFight(false);
+            player.ChangeState(PlayerState.Obs);
+        }
+        // Tile tileToIns = CurSection.SectionStart;
+        // SpawnTile(tileToIns);
+    }
+
+    private void InsSpeedUp()
+    {
+        Vector3 pos = player.transform.position + Vector3.forward * 10;
+        pos.x = 0;
+        SpeedUp sp = Instantiate(speedUpPF, pos, Quaternion.identity, transform);
+        Destroy(sp, 10);
+    }
+
+    // private Vector3 GetNearPlayerPos(List<Tile> beforSectionTiles)
+    // {
+    //     Vector3 pos = beforSectionTiles[beforSectionTiles.Count - 2].end.position;
+    //     // float nearDistance = Mathf.Infinity;
+    //     float nearDistance = Vector3.Distance(beforSectionTiles[beforSectionTiles.Count - 2].end.position, player.transform.position);
+    //     foreach (var item in beforSectionTiles)
+    //     {
+    //         if (item.end.position.z > player.transform.position.z)
+    //         {
+    //             float dis = Vector3.Distance(item.end.position, player.transform.position);
+    //             if (dis < nearDistance)
+    //             {
+    //                 pos = item.end.position;
+    //             }
+
+    //         }
+    //     }
+    //     return pos;
+    // }
+
+    private void OnFightSectionEnter(object sender, EventArgs e)
+    {
+        print("Start Insing");
+        StartInstantiateEnemies();
     }
     int EnemyWaveIdx = 0;
     int RemainingEnemy = 0;
@@ -232,7 +279,7 @@ public class Level : MonoBehaviour
     public List<Tile> BeforSectionTiles;
     public Tile SpawnTile(Tile tilePrefab)
     {
-        Tile tile = Instantiate(tilePrefab, nextSpawnPosition.position, Quaternion.identity, transform);
+        Tile tile = Instantiate(tilePrefab, nextSpawnPosition, Quaternion.identity, transform);
         if (lastSpawnedTile)
         {
             // lastSpawnedTile.Nexttile = tile;
@@ -249,8 +296,8 @@ public class Level : MonoBehaviour
         }
         SpawnedTiles.Add(tile);
         // nextSpawnPosition += spawnDistance;
-        nextSpawnPosition = tile.end;
-        if (SpawnedTiles.Count > 10)
+        nextSpawnPosition = tile.end.position;
+        if (SpawnedTiles.Count > 5)
         {
             Destroy(SpawnedTiles[0].gameObject);
             SpawnedTiles.RemoveAt(0);
