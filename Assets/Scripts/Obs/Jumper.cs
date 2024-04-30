@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using ZPackage.Helper;
 
@@ -12,6 +13,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
     public Vector3 NextJumpTarget;
     [SerializeField] Animation anim;
     public Transform pointer;
+    public bool Test;
     public void Start()
     {
         if (NextJumper)
@@ -20,14 +22,14 @@ public class Jumper : MonoBehaviour, ICollisionAction
             NextJumpTarget = NextJumper.position;
             // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
         }
-        else
-        {
-            if (CurrentTile)
-            {
+        // else
+        // {
+        //     if (CurrentTile)
+        //     {
 
-                CurrentTile.OnNextTileSet += OnNextTileSet;
-            }
-        }
+        //         CurrentTile.OnNextTileSet += OnNextTileSet;
+        //     }
+        // }
         Direction();
     }
 
@@ -43,19 +45,26 @@ public class Jumper : MonoBehaviour, ICollisionAction
         }
     }
 
-    private void OnNextTileSet(object sender, EventArgs e)
-    {
-        if (!NextJumper)
-        {
-            Tile nextTile = (Tile)sender;
-            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 60f);
-            NextJumpTarget = nextTile.start.position + Vector3.forward * 1f;
-            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 60f);
-            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
-            CalcForce(transform.position);
-            Direction();
-        }
-    }
+    // private void OnNextTileSet(object sender, EventArgs e)
+    // {
+    //     if (!NextJumper)
+    //     {
+    //         Tile nextTile = (Tile)sender;
+    //         // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 60f);
+    //         NextJumpTarget = nextTile.start.position + Vector3.forward * 1f;
+    //         // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 60f);
+    //         // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
+    //         CalcForce(transform.position);
+    //         Direction();
+    //     }
+    // }
+    // public void OnTriggerEnter(Collider other)
+    // {
+    //     if (Test && other.GetComponent<Rigidbody>())
+    //     {
+    //         other.GetComponent<Rigidbody>().velocity = JumperForce;
+    //     }
+    // }
 
     public void CollisionAction(Character character)
     {
@@ -68,13 +77,18 @@ public class Jumper : MonoBehaviour, ICollisionAction
         CalcForce(character.transform.position);
 
         character.GetComponent<Rigidbody>().velocity = JumperForce;
-        print(character.GetComponent<Rigidbody>().velocity);
+        // print(character.GetComponent<Rigidbody>().velocity);
         // Debug.Break();
         // character.GetComponent<Rigidbody>().AddForce(Vector3.up * 400);
     }
 
     private void CalcForce(Vector3 From)
     {
-        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 50f);
+        // if (!NextJumper.gameObject.GetComponent<Jumper>())
+        // {
+        //     NextJumpTarget += Vector3.forward * 2;
+        // }
+        NextJumpTarget.x = transform.position.x;
+        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 45f);
     }
 }

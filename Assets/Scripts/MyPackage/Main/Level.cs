@@ -92,12 +92,12 @@ public class Level : MonoBehaviour
     {
         BeforSectionTiles.Clear();
         BeforSectionTiles = new List<Tile>(SpawnedTiles);
-        for (int i = BeforSectionTiles.Count - 1; i >= 0; i--)
-        {
-            Destroy(BeforSectionTiles[i].gameObject, i + 20);
-            // BeforSectionTiles.RemoveAt(i);
-        }
-        SpawnedTiles.Clear();
+        // for (int i = BeforSectionTiles.Count - 1; i >= 0; i--)
+        // {
+        //     Destroy(BeforSectionTiles[i].gameObject, i + 20);
+        //     // BeforSectionTiles.RemoveAt(i);
+        // }
+        // SpawnedTiles.Clear();
 
         CurSection = LevelObjects[SecIDX];
         if (SecIDX > 0)
@@ -119,7 +119,11 @@ public class Level : MonoBehaviour
         print("Started " + CurSection.SectionType + " " + CurSection.name);
         if (CurSection.SectionType == SectionType.Fight)
         {
-            SpawnedTiles[0].OnTileEnter += OnFightSectionEnter;
+            Tile tileToIns = CurSection.levelTiles[SecTileIDx];
+            // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
+            SpawnTile(tileToIns);
+            // SpawnedTiles[0].OnTileEnter += OnFightSectionEnter;
+            SpawnedTiles[SpawnedTiles.Count - 1].OnTileEnter += OnFightSectionEnter;
         }
         else
         {
@@ -297,7 +301,7 @@ public class Level : MonoBehaviour
         SpawnedTiles.Add(tile);
         // nextSpawnPosition += spawnDistance;
         nextSpawnPosition = tile.end.position;
-        if (SpawnedTiles.Count > 5)
+        if (SpawnedTiles.Count > 8)
         {
             Destroy(SpawnedTiles[0].gameObject);
             SpawnedTiles.RemoveAt(0);
