@@ -8,8 +8,8 @@ public class Jumper : MonoBehaviour, ICollisionAction
 {
     [SerializeField] Vector3 JumperForce;
     public Tile CurrentTile;
-    public Jumper NextJumper;
-    Vector3 NextJumpTarget;
+    public Transform NextJumper;
+    public Vector3 NextJumpTarget;
     [SerializeField] Animation anim;
     public Transform pointer;
     public void Start()
@@ -17,7 +17,8 @@ public class Jumper : MonoBehaviour, ICollisionAction
         if (NextJumper)
         {
             // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumper.transform.position, 60f);
-            NextJumpTarget = NextJumper.transform.position;
+            NextJumpTarget = NextJumper.position;
+            JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
         }
         else
         {
@@ -44,10 +45,15 @@ public class Jumper : MonoBehaviour, ICollisionAction
 
     private void OnNextTileSet(object sender, EventArgs e)
     {
-        Tile nextTile = (Tile)sender;
-        // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 60f);
-        NextJumpTarget = nextTile.start.position + Vector3.forward * 0.3f;
-        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 60f);
+        if (!NextJumper)
+        {
+            Tile nextTile = (Tile)sender;
+            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 60f);
+            NextJumpTarget = nextTile.start.position + Vector3.forward * 1f;
+            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 60f);
+            JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
+            Direction();
+        }
     }
 
     public void CollisionAction(Character character)
@@ -59,7 +65,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         }
         anim.Play();
         // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(character.transform.position, NextJumpTarget, 60f);
-        Direction();
+
         character.GetComponent<Rigidbody>().velocity = JumperForce;
         print(character.GetComponent<Rigidbody>().velocity);
         // Debug.Break();

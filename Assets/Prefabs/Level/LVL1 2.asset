@@ -15,13 +15,25 @@ MonoBehaviour:
   SectionType: 2
   levelTiles:
   - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
-  LevelEnemies:
-  - EnemyPF:
-    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
-    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
-    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
-  - EnemyPF:
-    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
-    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
   SectionEnd: {fileID: 1152342366785983181, guid: 7dceca1d5acb74646b675093aec19448, type: 3}
   SectionStart: {fileID: 1152342366785983181, guid: 3fbbefc02e713e64f91ab0a0bef2c7c2, type: 3}
+  LevelEnemies:
+  - Wait: 0
+    AfterDelay: 0
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+  - Wait: 1
+    AfterDelay: 5
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+  - Wait: 0
+    AfterDelay: 0
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}

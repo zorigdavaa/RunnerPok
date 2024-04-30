@@ -27,6 +27,7 @@ public class Shuriken : MonoBehaviour
         gameObject.SetActive(false);
         transform.position = Vector3.zero;
         SideMovement = 0;
+        RightAcc = 0;
         // StartCoroutine(LocalCoroutine());
         // IEnumerator LocalCoroutine()
         // {
@@ -46,16 +47,23 @@ public class Shuriken : MonoBehaviour
 
     }
     public float SideMovement;
+    float RightAcc = 0;
     // Update is called once per frame
     void Update()
     {
         transform.Rotate(0, 360 * Time.deltaTime, 0);
-        transform.localPosition += Vector3.forward * 12 * Time.deltaTime;
-        transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
+        transform.localPosition += Vector3.forward * 15 * Time.deltaTime;
+        // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
+        if (RightAcc < Mathf.Abs(SideMovement * 2))
+        {
+            RightAcc += Time.deltaTime;
+        }
+        transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
     }
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
+        RightAcc = 0;
         if (enemy && enemy.IsAlive)
         {
             enemy.TakeDamage(-2);

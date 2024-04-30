@@ -11,7 +11,7 @@ public class Level : MonoBehaviour
     int SecTileIDx = 0;
     public List<LevelSection> LevelObjects;
     public Player player; // Reference to the player's transform
-    [SerializeField] Transform nextSpawnPosition; // Position to spawn the next tile
+    public Transform nextSpawnPosition; // Position to spawn the next tile
     bool HasNextSection => LevelObjects.Count - 1 > SecIDX;
     public Tile BaseTilePf;
     // bool CurSectionHasTile => CurrentSection.levelTiles.Count - 1 > SecTileIDx;
@@ -29,7 +29,13 @@ public class Level : MonoBehaviour
 
     public void StartNewSection()
     {
-        BeforSectionTiles = SpawnedTiles;
+        BeforSectionTiles.Clear();
+        BeforSectionTiles = new List<Tile>(SpawnedTiles);
+        for (int i = BeforSectionTiles.Count - 1; i >= 0; i--)
+        {
+            Destroy(BeforSectionTiles[i].gameObject, i + 20);
+            // BeforSectionTiles.RemoveAt(i);
+        }
         SpawnedTiles.Clear();
         CurSection = LevelObjects[SecIDX];
         CurSection.StartSection(this);
@@ -54,7 +60,7 @@ public class Level : MonoBehaviour
 
     public void Update()
     {
-        bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.position.z - 30;
+        bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.position.z - 70;
         // if (isNearEndofLand && CurSectionHasTile)
         if (CurSection == null)
         {
@@ -113,14 +119,36 @@ public class Level : MonoBehaviour
     private void StartInstantiateEnemies()
     {
         player.GoingToFight(true);
-        List<Enemy> Wave = CurSection.LevelEnemies[EnemyWaveIdx].EnemyPF;
-        Transform playerParent = player.GetComponent<PlayerMovement>().playerParent;
-        RemainingEnemy = Wave.Count;
-        print(EnemyWaveIdx + " new Wave");
-        for (int i = 0; i < Wave.Count; i++)
+        StartCoroutine(LocalCoroutine());
+        IEnumerator LocalCoroutine()
         {
-            Enemy insEnemy = Instantiate(Wave[i], playerParent.position + Vector3.forward * 20, Quaternion.Euler(0, 180, 0), playerParent);
-            insEnemy.Ondeath += OnEnemyDeath;
+            EnemyWave Wave = CurSection.LevelEnemies[EnemyWaveIdx];
+            List<Enemy> InsEnems = Wave.EnemyPF;
+            Transform playerParent = player.GetComponent<PlayerMovement>().playerParent;
+            if (Wave.Beforedelay > 0)
+            {
+                yield return new WaitForSeconds(Wave.Beforedelay);
+            }
+            // RemainingEnemy = Wave.Count;
+            print(EnemyWaveIdx + " new Wave");
+            for (int i = 0; i < InsEnems.Count; i++)
+            {
+                Enemy insEnemy = Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 20, Quaternion.Euler(0, 180, 0), playerParent);
+                insEnemy.Ondeath += OnEnemyDeath;
+                RemainingEnemy++;
+            }
+            if (CurSection.HasNextWave(EnemyWaveIdx))
+            {
+                EnemyWave NextWave = CurSection.LevelEnemies[EnemyWaveIdx + 1];
+                if (NextWave.Wait)
+                {
+                    yield return new WaitForSeconds(NextWave.AfterDelay);
+                    print("Next Wave");
+                    EnemyWaveIdx++;
+                    StartInstantiateEnemies();
+                }
+            }
+            yield return null;
         }
     }
 
@@ -213,7 +241,7 @@ public class Level : MonoBehaviour
         }
         else if (BeforSectionTiles.Count > 0)
         {
-            lastSpawnedTile.BeforeTile = BeforSectionTiles[SpawnedTiles.Count - 1];
+            lastSpawnedTile.BeforeTile = BeforSectionTiles[BeforSectionTiles.Count - 1];
         }
         SpawnedTiles.Add(tile);
         // nextSpawnPosition += spawnDistance;
@@ -224,5 +252,14 @@ public class Level : MonoBehaviour
             SpawnedTiles.RemoveAt(0);
         }
         return tile;
+    }
+
+    internal void DestSelf()
+    {
+        for (int i = SpawnedTiles.Count - 1; i >= 0; i--)
+        {
+            Destroy(SpawnedTiles[i].gameObject, i);
+        }
+
     }
 }

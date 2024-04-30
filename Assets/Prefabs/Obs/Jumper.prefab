@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a4514c8ccc84d44a3287c6f40ae38b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumperForce: {x: 0, y: 20.8, z: 12.2}
+  JumperForce: {x: 0, y: 20.8, z: 13}
   CurrentTile: {fileID: 0}
   NextJumper: {fileID: 0}
   anim: {fileID: 8288916332612200749}

@@ -33,7 +33,8 @@ namespace ZPackage
         {
             if (LastInstLvl)
             {
-                pos = LastInstLvl.transform.position;
+                pos = LastInstLvl.nextSpawnPosition.position;
+                LastInstLvl.DestSelf();
             }
             LastInstLvl = Instantiate(level, pos, Quaternion.identity, transform);
         }

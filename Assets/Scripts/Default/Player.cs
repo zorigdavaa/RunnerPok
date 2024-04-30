@@ -142,27 +142,13 @@ public class Player : Character
     private void AttackProjectile(object sender, EventArgs e)
     {
         Shuriken shuriken = Pool.Get();
-        Collider[] enemies = Physics.OverlapSphere(transform.position + transform.forward * 20, 3, 1 << 6);
-        float nearestDistance = Mathf.Infinity; // Initialize with a very large value
-        Transform nearestEnemy = null;
-
-        foreach (var enemy in enemies)
+        if (Physics.SphereCast(transform.position + Vector3.up, 2f, transform.forward, out RaycastHit hit, 20, 1 << 6))
         {
-            Vector3 point = new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
-            // Calculate the distance between the shuriken and the current enemy
-            float distance = Vector3.Distance(point, enemy.transform.position);
+            Vector3 point = new Vector3(transform.position.x, hit.transform.position.y, hit.transform.position.z);
+            float distance = Vector3.Distance(point, hit.transform.position);
 
-            // Check if the current enemy is closer than the nearest one found so far
-            if (distance < nearestDistance)
-            {
-                nearestDistance = distance;
-                nearestEnemy = enemy.transform;
-            }
-        }
-        if (nearestEnemy != null)
-        {
-            Vector3 dirToNearest = transform.position - nearestEnemy.position;
-            float half = nearestDistance / 2;
+            Vector3 dirToNearest = transform.position - hit.transform.position;
+            float half = distance * 0.7f;
             if (Vector3.Dot(dirToNearest, transform.right) > 0) // right
 
             {
@@ -173,7 +159,42 @@ public class Player : Character
                 shuriken.SideMovement = half;
             }
 
+
+            // Collider[] enemies = Physics.OverlapSphere(transform.position + transform.forward * 20, 2f, 1 << 6);
+            // float nearestDistance = Mathf.Infinity; // Initialize with a very large value
+            // Transform nearestEnemy = null;
+
+            // foreach (var enemy in enemies)
+            // {
+            //     Vector3 point = new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
+            //     // Calculate the distance between the shuriken and the current enemy
+            //     float distance = Vector3.Distance(point, enemy.transform.position);
+
+            //     // Check if the current enemy is closer than the nearest one found so far
+            //     if (distance < nearestDistance)
+            //     {
+            //         nearestDistance = distance;
+            //         nearestEnemy = enemy.transform;
+            //     }
+            // }
+            // float distance = Vector3.Distance(point, enemy.transform.position);
+            // if (nearestEnemy != null)
+            // {
+            //     Vector3 dirToNearest = transform.position - nearestEnemy.position;
+            //     float half = nearestDistance * 0.7f;
+            //     if (Vector3.Dot(dirToNearest, transform.right) > 0) // right
+
+            //     {
+            //         shuriken.SideMovement = -half;
+            //     }
+            //     else
+            //     {
+            //         shuriken.SideMovement = half;
+            //     }
+
+            // }
         }
+
     }
     public void StartThrow(bool val = true)
     {
