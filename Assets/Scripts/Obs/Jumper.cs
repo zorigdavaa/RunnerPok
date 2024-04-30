@@ -18,7 +18,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         {
             // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumper.transform.position, 60f);
             NextJumpTarget = NextJumper.position;
-            JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
+            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
         }
         else
         {
@@ -51,7 +51,8 @@ public class Jumper : MonoBehaviour, ICollisionAction
             // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, nextTile.start.position, 60f);
             NextJumpTarget = nextTile.start.position + Vector3.forward * 1f;
             // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 60f);
-            JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
+            // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
+            CalcForce(transform.position);
             Direction();
         }
     }
@@ -64,11 +65,16 @@ public class Jumper : MonoBehaviour, ICollisionAction
             player.Movement.UseParentedMovement(false);
         }
         anim.Play();
-        // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(character.transform.position, NextJumpTarget, 60f);
+        CalcForce(character.transform.position);
 
         character.GetComponent<Rigidbody>().velocity = JumperForce;
         print(character.GetComponent<Rigidbody>().velocity);
         // Debug.Break();
         // character.GetComponent<Rigidbody>().AddForce(Vector3.up * 400);
+    }
+
+    private void CalcForce(Vector3 From)
+    {
+        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 50f);
     }
 }

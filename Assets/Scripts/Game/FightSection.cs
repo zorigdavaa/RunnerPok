@@ -5,11 +5,7 @@ using UnityEngine;
 
 public class FightSection : LevelSection
 {
-    public List<EnemyWave> LevelEnemies;
-    internal bool HasNextWave(int secTileIDx)
-    {
-        throw new NotImplementedException();
-    }
+
     // Start is called before the first frame update
     void Start()
     {
