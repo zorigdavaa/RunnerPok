@@ -9,14 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8621f79b46e0d2f49bba09543657a619, type: 3}
+  m_Script: {fileID: 11500000, guid: 959b7aca431168f42bd95f3b56d23ede, type: 3}
   m_Name: LVL1 3
   m_EditorClassIdentifier: 
-  SectionType: 2
-  levelTiles:
-  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
-  SectionEnd: {fileID: 1152342366785983181, guid: 7dceca1d5acb74646b675093aec19448, type: 3}
-  SectionStart: {fileID: 1152342366785983181, guid: 3fbbefc02e713e64f91ab0a0bef2c7c2, type: 3}
+  levelTiles: []
+  SectionEnd: {fileID: 1152342366785983181, guid: 9eccb436512f1484580e9d52d8b66e38, type: 3}
+  SectionStart: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+  curLevel: {fileID: 0}
   LevelEnemies:
-  - EnemyPF:
+  - Wait: 0
+    AfterDelay: 0
+    Beforedelay: 0
+    EnemyPF:
     - {fileID: 6548548230059938734, guid: 04861249c1317c749940dc95cd251855, type: 3}

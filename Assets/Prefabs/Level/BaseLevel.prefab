@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb18150c93af1584c9fa5f2bfe56d53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SecIDX: 0
+  SecTileIDx: 0
   LevelObjects:
   - {fileID: 11400000, guid: 3786e0ab74066ff49aa0bf23a6c0066d, type: 2}
-  - {fileID: 11400000, guid: 2e2afcf4dde3ad8468e3fce61f7f7f76, type: 2}
+  - {fileID: 11400000, guid: d1df522f64c9af4428853029508cf17b, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}
