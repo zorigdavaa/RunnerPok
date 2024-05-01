@@ -20,9 +20,17 @@ public class LevelSection : ScriptableObject
     public virtual void StartSection(Level level)
     {
         Debug.Log("Start of " + name);
-        level.SpawnTile(SectionStart);
-        curLevel = level;
+        Init(level);
         level.player.ChangeState(PlayerState.Obs);
+    }
+
+    public void Init(Level level)
+    {
+        if (SectionStart)
+        {
+            level.SpawnTile(SectionStart);
+        }
+        curLevel = level;
     }
 
     public virtual void UpdateSection(Level level)
@@ -55,7 +63,10 @@ public class LevelSection : ScriptableObject
 
     public virtual void EndSection(Level leve)
     {
-        leve.SpawnTile(SectionEnd);
+        if (SectionEnd)
+        {
+            leve.SpawnTile(SectionEnd);
+        }
         Oncomplete?.Invoke(this, EventArgs.Empty);
         Reset();
     }
@@ -66,6 +77,6 @@ public class LevelSection : ScriptableObject
 }
 public enum SectionType
 {
-    None, Obstacle, Fight
+    None, Obstacle, Fight, Collect
 }
 
