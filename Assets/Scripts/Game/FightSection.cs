@@ -20,13 +20,11 @@ public class FightSection : LevelSection
         Tile tileToIns = levelTiles[0];
         // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
         Tile tile = level.SpawnTile(tileToIns);
-        // SpawnedTiles[0].OnTileEnter += OnFightSectionEnter;
         tile.OnTileEnter += OnFightSectionEnter;
     }
     public override void UpdateSection(Level level)
     {
         bool isNearEndofLand = level.player.transform.position.z > level.nextSpawnPosition.z - 50;
-        // if (isNearEndofLand && CurSection.HasNextTile(SecTileIDx))
         if (isNearEndofLand)
         {
             Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
