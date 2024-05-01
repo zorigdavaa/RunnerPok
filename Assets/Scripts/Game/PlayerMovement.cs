@@ -23,19 +23,25 @@ public class PlayerMovement : MovementForgeRun
             playerParent = transform.parent;
         }
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            UseParentedMovement(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            UseParentedMovement(false);
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Q))
+    //     {
+    //         UseParentedMovement(true);
+    //     }
+    //     else if (Input.GetKeyDown(KeyCode.E))
+    //     {
+    //         UseParentedMovement(false);
+    //     }
+    // }
 
-    void FixedUpdate()
+    // void FixedUpdate()
+    // {
+    //     PlayerControl();
+    //     // }
+    // }
+
+    public void PlayerControl()
     {
         // Check if the player is grounded
         isGrounded = Physics.CheckSphere(groundCheck.position, 0.12f, groundLayer);
@@ -111,8 +117,8 @@ public class PlayerMovement : MovementForgeRun
                 childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
             }
         }
-        // }
     }
+
     public override void UseParentedMovement(bool val)
     {
         if (ParentedMove != val)

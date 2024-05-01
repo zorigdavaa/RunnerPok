@@ -53,6 +53,10 @@ public class Player : Character
             StartThrow(true);
         }
     }
+    private void FixedUpdate()
+    {
+        Movement.PlayerControl();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<ICollisionAction>() != null)
@@ -232,18 +236,21 @@ public class Player : Character
                 StartThrow(false);
                 ChangeCamera(0);
                 Movement.UseParentedMovement(false);
+                Movement.SetControlAble(false);
             }
             else if (_state == PlayerState.Obs)
             {
                 StartThrow(false);
                 ChangeCamera(1);
                 Movement.UseParentedMovement(false);
+                Movement.SetControlAble(true);
             }
             else if (_state == PlayerState.Fight)
             {
                 StartThrow(true);
                 ChangeCamera(2);
                 Movement.UseParentedMovement(true);
+                Movement.SetControlAble(true);
             }
             State = _state;
         }
