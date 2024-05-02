@@ -190,7 +190,7 @@ MonoBehaviour:
     isLive: 0
     col: {r: 0, g: 0, b: 0, a: 0}
   inventory: {fileID: 0}
-  maxHealth: 30
+  maxHealth: 100
   healthBar: {fileID: 4405603529719168246}
   ProjectilePfs:
   - {fileID: 3500501074311751367, guid: 37d07a798a6d7c24c9f5ef301af9ac85, type: 3}

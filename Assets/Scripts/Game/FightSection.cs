@@ -51,6 +51,7 @@ public class FightSection : LevelSection
         EnemyWaveIdx = 0;
         AllEnemyCount = 0;
         RemEnemyCount = 0;
+
     }
 
     void OnFightSectionEnter(object sender, EventArgs e)
@@ -108,17 +109,22 @@ public class FightSection : LevelSection
         Debug.Log("deatj " + AllEnemyCount);
         if (RemEnemyCount == 0)
         {
-            if (HasNextWave(EnemyWaveIdx))
-            {
-                Debug.Log("Next Wave");
-                EnemyWaveIdx++;
-                InsEnemsBeforePlayer();
-            }
-            else
-            {
+            NextorEnd();
+        }
+    }
 
-                EndSection(curLevel);
-            }
+    public void NextorEnd()
+    {
+        if (HasNextWave(EnemyWaveIdx))
+        {
+            Debug.Log("Next Wave");
+            EnemyWaveIdx++;
+            InsEnemsBeforePlayer();
+        }
+        else
+        {
+
+            EndSection(curLevel);
         }
     }
 }

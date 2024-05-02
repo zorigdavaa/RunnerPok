@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[CreateAssetMenu(fileName = "BossSection", menuName = "ScriptableObjects/BossSection")]
 public class BossSection : FightSection
 {
     public EnemyWave Boss;
@@ -20,9 +21,14 @@ public class BossSection : FightSection
     private void OnFightSectionEnter(object sender, EventArgs e)
     {
         curLevel.player.ChangeState(PlayerState.Fight);
-        InsEnemsBeforePlayer();
+        InsBoss();
+        Transform parnet = curLevel.player.GetComponent<PlayerMovement>().playerParent;
+        foreach (var item in InsEnemies)
+        {
+            item.transform.SetParent(parnet);
+        }
     }
-    // List<Enemy> InsEnemies = new List<Enemy>();
+    List<Enemy> InsEnemies = new List<Enemy>();
     public void InsEnemsAtTile(Tile tile)
     {
         // player.GoingToFight(true);
@@ -38,10 +44,12 @@ public class BossSection : FightSection
             }
             for (int i = 0; i < InsEnems.Count; i++)
             {
-                Vector3 pos = new Vector3(Random.Range(-4, 4), 0, 0);
+                Vector3 tileCenter = (tile.start.position + tile.end.position) / 2;
+                Vector3 pos = tileCenter + new Vector3(Random.Range(-4, 4), 0, 0);
                 Enemy insEnemy = Instantiate(InsEnems[i], pos, Quaternion.Euler(0, 180, 0), tile.transform);
                 // insEnemy.Ondeath += OnEnemyDeath;
                 // RemainingEnemy++;
+                InsEnemies.Add(insEnemy);
             }
             if (HasNextWave(EnemyWaveIdx))
             {
@@ -90,5 +98,19 @@ public class BossSection : FightSection
             }
             yield return null;
         }
+    }
+    public override void Reset()
+    {
+        base.Reset();
+        InsEnemies = new List<Enemy>();
+    }
+    public override void OnEnemyDeath(object sender, EventArgs e)
+    {
+        foreach (var item in InsEnemies)
+        {
+            item.Health = 1;
+            item.TakeDamage(-1);
+        }
+        EndSection(curLevel);
     }
 }
