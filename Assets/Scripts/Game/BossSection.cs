@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class BossSection : FightSection
 {
-    public Enemy Boss;
+    public EnemyWave Boss;
     public override void StartSection(Level level)
     {
         Reset();
@@ -14,14 +14,16 @@ public class BossSection : FightSection
         Tile tileToIns = levelTiles[0];
         Tile tile = level.SpawnTile(tileToIns);
         tile.OnTileEnter += OnFightSectionEnter;
-        InsSoldiers(tile);
+        InsEnemsAtTile(tile);
     }
 
     private void OnFightSectionEnter(object sender, EventArgs e)
     {
         curLevel.player.ChangeState(PlayerState.Fight);
+        InsEnemsBeforePlayer();
     }
-    public void InsSoldiers(Tile tile)
+    // List<Enemy> InsEnemies = new List<Enemy>();
+    public void InsEnemsAtTile(Tile tile)
     {
         // player.GoingToFight(true);
 
@@ -38,8 +40,8 @@ public class BossSection : FightSection
             {
                 Vector3 pos = new Vector3(Random.Range(-4, 4), 0, 0);
                 Enemy insEnemy = Instantiate(InsEnems[i], pos, Quaternion.Euler(0, 180, 0), tile.transform);
-                insEnemy.Ondeath += OnEnemyDeath;
-                RemainingEnemy++;
+                // insEnemy.Ondeath += OnEnemyDeath;
+                // RemainingEnemy++;
             }
             if (HasNextWave(EnemyWaveIdx))
             {
@@ -49,7 +51,41 @@ public class BossSection : FightSection
                     yield return new WaitForSeconds(NextWave.AfterDelay);
                     Debug.Log("Next Wave");
                     EnemyWaveIdx++;
-                    StartInstantiateEnemies();
+                    InsEnemsAtTile(tile);
+                }
+            }
+            yield return null;
+        }
+    }
+    public void InsBoss()
+    {
+        // player.GoingToFight(true);
+        curLevel.player.ChangeState(PlayerState.Fight);
+        curLevel.StartCoroutine(LocalCoroutine());
+        IEnumerator LocalCoroutine()
+        {
+            Transform playerParent = curLevel.player.GetComponent<PlayerMovement>().playerParent;
+            if (Boss.Beforedelay > 0)
+            {
+                yield return new WaitForSeconds(Boss.Beforedelay);
+            }
+            Debug.Log(EnemyWaveIdx + " new Wave");
+            for (int i = 0; i < Boss.EnemyPF.Count; i++)
+            {
+                Vector3 RandomPosXZ = new Vector3(Random.Range(-4, 4), 0, 0);
+                Enemy insEnemy = Instantiate(Boss.EnemyPF[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
+                insEnemy.Ondeath += OnEnemyDeath;
+                AllEnemyCount++;
+            }
+            if (HasNextWave(EnemyWaveIdx))
+            {
+                EnemyWave NextWave = LevelEnemies[EnemyWaveIdx + 1];
+                if (NextWave.Wait)
+                {
+                    yield return new WaitForSeconds(NextWave.AfterDelay);
+                    Debug.Log("Next Wave");
+                    EnemyWaveIdx++;
+                    InsEnemsBeforePlayer();
                 }
             }
             yield return null;

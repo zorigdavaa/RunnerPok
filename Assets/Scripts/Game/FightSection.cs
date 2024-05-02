@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,8 +13,10 @@ public class FightSection : LevelSection
     [NonSerialized]
     public int EnemyWaveIdx = 0;
     [NonSerialized]
-    public int RemainingEnemy = 0;
-    
+    public int AllEnemyCount = 0;
+    [NonSerialized]
+    public int RemEnemyCount = 0;
+
     internal bool HasNextWave(int secTileIDx)
     {
         return LevelEnemies.Count - 1 > secTileIDx;
@@ -40,13 +43,14 @@ public class FightSection : LevelSection
     {
         Debug.Log("End Fight " + EnemyWaveIdx);
         base.EndSection(leve);
-
+        leve.player.ChangeState(PlayerState.Obs);
     }
     public override void Reset()
     {
         // base.Reset();
         EnemyWaveIdx = 0;
-        RemainingEnemy = 0;
+        AllEnemyCount = 0;
+        RemEnemyCount = 0;
     }
 
     void OnFightSectionEnter(object sender, EventArgs e)
@@ -54,10 +58,12 @@ public class FightSection : LevelSection
         Tile casted = (Tile)sender;
         casted.OnTileEnter -= OnFightSectionEnter;
         // print("Start Insing");
-        StartInstantiateEnemies();
+        InsEnemsBeforePlayer();
+        AllEnemyCount = LevelEnemies.Sum(x => x.EnemyPF.Count);
+        Debug.Log("Rem enem " + AllEnemyCount);
     }
 
-    public virtual void StartInstantiateEnemies()
+    public virtual void InsEnemsBeforePlayer()
     {
         // player.GoingToFight(true);
         curLevel.player.ChangeState(PlayerState.Fight);
@@ -77,7 +83,7 @@ public class FightSection : LevelSection
                 Vector3 RandomPosXZ = new Vector3(Random.Range(-4, 4), 0, 0);
                 Enemy insEnemy = Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
                 insEnemy.Ondeath += OnEnemyDeath;
-                RemainingEnemy++;
+                RemEnemyCount++;
             }
             if (HasNextWave(EnemyWaveIdx))
             {
@@ -87,7 +93,7 @@ public class FightSection : LevelSection
                     yield return new WaitForSeconds(NextWave.AfterDelay);
                     Debug.Log("Next Wave");
                     EnemyWaveIdx++;
-                    StartInstantiateEnemies();
+                    InsEnemsBeforePlayer();
                 }
             }
             yield return null;
@@ -98,15 +104,15 @@ public class FightSection : LevelSection
     public virtual void OnEnemyDeath(object sender, EventArgs e)
     {
 
-        RemainingEnemy--;
-        Debug.Log("deatj " + RemainingEnemy);
-        if (RemainingEnemy == 0)
+        RemEnemyCount--;
+        Debug.Log("deatj " + AllEnemyCount);
+        if (RemEnemyCount == 0)
         {
             if (HasNextWave(EnemyWaveIdx))
             {
                 Debug.Log("Next Wave");
                 EnemyWaveIdx++;
-                StartInstantiateEnemies();
+                InsEnemsBeforePlayer();
             }
             else
             {
