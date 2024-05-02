@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959b7aca431168f42bd95f3b56d23ede, type: 3}
   m_Name: LVL1 3
   m_EditorClassIdentifier: 
-  levelTiles: []
+  levelTiles:
+  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   SectionEnd: {fileID: 1152342366785983181, guid: 9eccb436512f1484580e9d52d8b66e38, type: 3}
   SectionStart: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   curLevel: {fileID: 0}
