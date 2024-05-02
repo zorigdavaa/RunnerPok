@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06db93af52e641d48be7564123185161, type: 3}
-  m_Name: LVL1 Collect
+  m_Script: {fileID: 11500000, guid: 18fdbebe2330b0a41892c4db75223500, type: 3}
+  m_Name: Lvl1Collect
   m_EditorClassIdentifier: 
   levelTiles:
-  - {fileID: 5044468542435672352, guid: 0315c3bd8b4a9a44b80c46e26eff99cd, type: 3}
-  - {fileID: 5044468542435672352, guid: 0315c3bd8b4a9a44b80c46e26eff99cd, type: 3}
-  - {fileID: 5044468542435672352, guid: 0315c3bd8b4a9a44b80c46e26eff99cd, type: 3}
-  - {fileID: 5044468542435672352, guid: 0315c3bd8b4a9a44b80c46e26eff99cd, type: 3}
   - {fileID: 5044468542435672352, guid: 0315c3bd8b4a9a44b80c46e26eff99cd, type: 3}
   - {fileID: 5044468542435672352, guid: 0315c3bd8b4a9a44b80c46e26eff99cd, type: 3}
   - {fileID: 5044468542435672352, guid: 0315c3bd8b4a9a44b80c46e26eff99cd, type: 3}

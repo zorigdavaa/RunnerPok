@@ -47,14 +47,14 @@ MonoBehaviour:
   SecIDX: 0
   SecTileIDx: 0
   LevelObjects:
-  - {fileID: 11400000, guid: 12ed87e0556710d4ab57633df2e30d29, type: 2}
-  - {fileID: 11400000, guid: 12ed87e0556710d4ab57633df2e30d29, type: 2}
-  - {fileID: 11400000, guid: 12ed87e0556710d4ab57633df2e30d29, type: 2}
+  - {fileID: 11400000, guid: cf727b755d2cda0468be14de9576d11b, type: 2}
+  - {fileID: 11400000, guid: d636391f373a556499b7669c92fa14ea, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}
   speedUpPF: {fileID: 1846571084168223024, guid: 0736c67bd4164044fbe8f25c7711ef16, type: 3}
   BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   CurSection: {fileID: 0}
+  lastSpawnedTile: {fileID: 0}
   SpawnedTiles: []
   BeforSectionTiles: []

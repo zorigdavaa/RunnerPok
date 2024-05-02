@@ -14,6 +14,7 @@ public class Level : MonoBehaviour
     public Player player; // Reference to the player's transform
     public Vector3 nextSpawnPosition; // Position to spawn the next tile
     bool HasNextSection => LevelObjects.Count - 1 > SecIDX;
+
     public Tile PlayerBeingTile;
     public SpeedUp speedUpPF;
     public Tile BaseTilePf;
@@ -53,18 +54,27 @@ public class Level : MonoBehaviour
         if (HasNextSection)
         {
             SecIDX++;
-            SecTileIDx = 0;
             StartNewSection();
         }
         else
         {
             CurSection = null;
-            Z.GM.LevelComplete(this, 0);
+            Tile tile = SpawnTile(BaseTilePf);
+            tile.OnTileEnter += LevelComplete;
+
         }
+    }
+
+    private void LevelComplete(object sender, EventArgs e)
+    {
+        Tile tile = sender as Tile;
+        tile.OnTileEnter -= LevelComplete;
+        Z.GM.LevelComplete(this, 0);
     }
 
     public void StartNewSection()
     {
+        SecTileIDx = 0;
         BeforSectionTiles.Clear();
         BeforSectionTiles = new List<Tile>(SpawnedTiles);
         CurSection = LevelObjects[SecIDX];
@@ -85,7 +95,7 @@ public class Level : MonoBehaviour
         }
         CurSection.StartSection(this);
         CurSection.Oncomplete += NextSection;
-        print("Started " + CurSection.SectionType + " " + CurSection.name);
+        print("Start Of From Level " + CurSection.SectionType + " " + CurSection.name);
     }
 
     private void InsSpeedUp()
@@ -96,26 +106,22 @@ public class Level : MonoBehaviour
         Destroy(sp, 10);
     }
 
-    Tile lastSpawnedTile;
+    public Tile lastSpawnedTile;
     public List<Tile> SpawnedTiles;
     public List<Tile> BeforSectionTiles;
     public Tile SpawnTile(Tile tilePrefab)
     {
         Tile tile = Instantiate(tilePrefab, nextSpawnPosition, Quaternion.identity, transform);
-        if (lastSpawnedTile)
-        {
-            // lastSpawnedTile.Nexttile = tile;
-            lastSpawnedTile.SetNextTile(tile);
-        }
-        lastSpawnedTile = tile;
         if (SpawnedTiles.Count > 0)
         {
+            lastSpawnedTile.SetNextTile(tile);
             lastSpawnedTile.BeforeTile = SpawnedTiles[SpawnedTiles.Count - 1];
         }
         else if (BeforSectionTiles.Count > 0)
         {
             lastSpawnedTile.BeforeTile = BeforSectionTiles[BeforSectionTiles.Count - 1];
         }
+        lastSpawnedTile = tile;
         SpawnedTiles.Add(tile);
         // nextSpawnPosition += spawnDistance;
         nextSpawnPosition = tile.end.position;

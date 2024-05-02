@@ -13,7 +13,7 @@ public class LevelSection : ScriptableObject
     public Tile SectionStart;
     public Level curLevel;
 
-    internal bool HasNextTile(int TileIDx)
+    public bool HasNextTile(int TileIDx)
     {
         return levelTiles.Count - 1 > TileIDx;
     }
@@ -67,8 +67,8 @@ public class LevelSection : ScriptableObject
         {
             leve.SpawnTile(SectionEnd);
         }
-        Oncomplete?.Invoke(this, EventArgs.Empty);
         Reset();
+        Oncomplete?.Invoke(this, EventArgs.Empty);
     }
     public virtual void Reset()
     {
