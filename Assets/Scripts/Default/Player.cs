@@ -45,13 +45,14 @@ public class Player : Character
         animationController.OnAttackEvent += AttackProjectile;
         ChangeState(PlayerState.Wait);
     }
-
+    Action UpdateAction = null;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
             StartThrow(true);
         }
+        UpdateAction?.Invoke();
     }
     private void FixedUpdate()
     {
@@ -237,6 +238,7 @@ public class Player : Character
                 ChangeCamera(0);
                 Movement.UseParentedMovement(false);
                 Movement.SetControlAble(false);
+                UpdateAction = null;
             }
             else if (_state == PlayerState.Obs)
             {
@@ -244,6 +246,7 @@ public class Player : Character
                 ChangeCamera(1);
                 Movement.UseParentedMovement(false);
                 Movement.SetControlAble(true);
+                UpdateAction = null;
             }
             else if (_state == PlayerState.Fight)
             {
@@ -251,8 +254,28 @@ public class Player : Character
                 ChangeCamera(2);
                 Movement.UseParentedMovement(true);
                 Movement.SetControlAble(true);
+                UpdateAction = null;
+            }
+            else if (_state == PlayerState.Collect)
+            {
+                StartThrow(false);
+                ChangeCamera(1);
+                Movement.UseParentedMovement(true);
+                Movement.SetControlAble(true);
+                UpdateAction = CollectUpdate;
             }
             State = _state;
+        }
+    }
+    public void CollectUpdate()
+    {
+        if (Physics.SphereCast(transform.position + Vector3.up, 3, Vector3.forward, out RaycastHit hit, 30f, 1 << 6))
+        {
+            StartThrow(true);
+        }
+        else
+        {
+            StartThrow(false);
         }
     }
     public void StartThrow(bool val = true)
@@ -298,5 +321,6 @@ public class Player : Character
 
 public enum PlayerState
 {
-    None, Wait, Obs, Fight
+    None, Wait, Obs, Fight,
+    Collect
 }

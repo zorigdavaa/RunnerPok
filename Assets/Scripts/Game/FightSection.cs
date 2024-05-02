@@ -9,6 +9,11 @@ public class FightSection : LevelSection
 {
     public override SectionType SectionType => SectionType.Fight;
     public List<EnemyWave> LevelEnemies;
+    [NonSerialized]
+    public int EnemyWaveIdx = 0;
+    [NonSerialized]
+    public int RemainingEnemy = 0;
+    
     internal bool HasNextWave(int secTileIDx)
     {
         return LevelEnemies.Count - 1 > secTileIDx;
@@ -44,16 +49,15 @@ public class FightSection : LevelSection
         RemainingEnemy = 0;
     }
 
-    private void OnFightSectionEnter(object sender, EventArgs e)
+    void OnFightSectionEnter(object sender, EventArgs e)
     {
         Tile casted = (Tile)sender;
         casted.OnTileEnter -= OnFightSectionEnter;
         // print("Start Insing");
         StartInstantiateEnemies();
     }
-    int EnemyWaveIdx = 0;
-    int RemainingEnemy = 0;
-    private void StartInstantiateEnemies()
+
+    public virtual void StartInstantiateEnemies()
     {
         // player.GoingToFight(true);
         curLevel.player.ChangeState(PlayerState.Fight);
@@ -91,7 +95,7 @@ public class FightSection : LevelSection
     }
 
 
-    private void OnEnemyDeath(object sender, EventArgs e)
+    public virtual void OnEnemyDeath(object sender, EventArgs e)
     {
 
         RemainingEnemy--;

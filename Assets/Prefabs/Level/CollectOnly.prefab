@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7575097222021754785}
   - component: {fileID: 7278324688581108722}
   m_Layer: 0
-  m_Name: Dumb Fight level
+  m_Name: CollectOnly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,9 @@ MonoBehaviour:
   SecIDX: 0
   SecTileIDx: 0
   LevelObjects:
-  - {fileID: 11400000, guid: 2d9be391d96a9b143a521810b22ef90c, type: 2}
+  - {fileID: 11400000, guid: 12ed87e0556710d4ab57633df2e30d29, type: 2}
+  - {fileID: 11400000, guid: 12ed87e0556710d4ab57633df2e30d29, type: 2}
+  - {fileID: 11400000, guid: 12ed87e0556710d4ab57633df2e30d29, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}
