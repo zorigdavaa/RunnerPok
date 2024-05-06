@@ -47,6 +47,8 @@ MonoBehaviour:
   SecIDX: 0
   SecTileIDx: 0
   LevelObjects:
+  - {fileID: 11400000, guid: 2d9be391d96a9b143a521810b22ef90c, type: 2}
+  - {fileID: 11400000, guid: cf727b755d2cda0468be14de9576d11b, type: 2}
   - {fileID: 11400000, guid: 08cc4f85d203013498d247ac9a52c0ee, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}

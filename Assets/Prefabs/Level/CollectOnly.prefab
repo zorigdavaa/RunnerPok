@@ -47,6 +47,7 @@ MonoBehaviour:
   SecIDX: 0
   SecTileIDx: 0
   LevelObjects:
+  - {fileID: 11400000, guid: 3786e0ab74066ff49aa0bf23a6c0066d, type: 2}
   - {fileID: 11400000, guid: cf727b755d2cda0468be14de9576d11b, type: 2}
   - {fileID: 11400000, guid: d636391f373a556499b7669c92fa14ea, type: 2}
   player: {fileID: 0}

@@ -10,6 +10,9 @@ public class CollectSection : LevelSection
     public override void StartSection(Level level)
     {
         Init(level);
+        Tile tileToIns = levelTiles[0];
+        // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
+        Tile tile = level.SpawnTile(tileToIns);
         level.lastSpawnedTile.OnTileEnter += OnCollectSectionEnter;
         Debug.Log("Start Of From Section " + SectionType + " " + name);
         // Tile tileToIns = levelTiles[0];
