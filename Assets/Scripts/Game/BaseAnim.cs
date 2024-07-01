@@ -6,6 +6,9 @@ using UnityEngine;
 public class BaseAnim : MonoBehaviour
 {
     public Animator animator;
+    const string animIdle = "Idle";
+    public string currentAnimation;
+    string beforeAmimation = animIdle;
 
     private void OnEnable()
     {
@@ -36,5 +39,15 @@ public class BaseAnim : MonoBehaviour
         // ResetJump();
         // animator.ResetTrigger("down");
         animator.SetBool("isJumping", value);
+    }
+    public void ChangeAnimation(string animStr)
+    {
+        if (currentAnimation != animStr)
+        {
+            animator.CrossFade(animStr, 0f, 0);
+            beforeAmimation = currentAnimation;
+            currentAnimation = animStr;
+            // transitionToIdle = false;
+        }
     }
 }
