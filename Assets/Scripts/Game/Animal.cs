@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 public class Animal : Enemy
 {
@@ -8,27 +9,58 @@ public class Animal : Enemy
     public AnimalAnim animationController;
     public MovementForgeRun movement;
     [SerializeField] float idleSpeed = -1;
+    bool StartMove = false;
     private void Start()
     {
         Health = MaxHealth;
+        if (Vector3.Distance(Z.Player.transform.position, transform.position) < 10)
+        {
+            StartMove = true;
+        }
+        else
+        {
+            CheckPlayerDistance();
+        }
     }
+
+    private void CheckPlayerDistance()
+    {
+        StartCoroutine(LocalCor());
+        IEnumerator LocalCor()
+        {
+            // yield return new WaitUntil(() => Vector3.Distance(Z.Player.transform.position, transform.position) < 10);
+            while (Vector3.Distance(Z.Player.transform.position, transform.position) > 10)
+            {
+                yield return null;
+                // print("Waiting");
+            }
+            print("Moving");
+            StartMove = true;
+            attackTimer = 0;
+        }
+    }
+
     float attackTimer = 3;
     private void Update()
     {
-        attackTimer -= Time.deltaTime;
-        if (attackTimer < 0 && IsAlive)
+        if (StartMove)
         {
-            attackTimer = 5;
-            if (Random.value > 0.3f)
+            attackTimer -= Time.deltaTime;
+            if (attackTimer < 0 && IsAlive)
             {
+                attackTimer = 5;
+                if (Random.value > 0.3f)
+                {
 
-                Attack();
-            }
-            else
-            {
-                MovePositon();
+                    Attack();
+                }
+                else
+                {
+                    MovePositon();
+                }
             }
         }
+
     }
 
     public void MovePositon()

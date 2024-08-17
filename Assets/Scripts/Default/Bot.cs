@@ -9,8 +9,6 @@ public class Bot : Enemy
     [SerializeField] AnimationController animationController;
     [SerializeField] MovementForgeRun movement;
     public Transform Target;
-    [SerializeField] Transform Chest;
-    public bool UseAI = false;
     public Projectile ProjectilePf;
     private void Start()
     {

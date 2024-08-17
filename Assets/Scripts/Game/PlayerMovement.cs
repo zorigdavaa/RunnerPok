@@ -53,6 +53,7 @@ public class PlayerMovement : MovementForgeRun
         else
         {
             animController.Jump(true);
+            animController.VelY(rb.velocity.y);
             // if (rb.velocity.y < 0f)
             // {
             //     rb.velocity += Vector3.down * 0.8f;

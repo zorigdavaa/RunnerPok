@@ -50,4 +50,9 @@ public class BaseAnim : MonoBehaviour
             // transitionToIdle = false;
         }
     }
+
+    internal void VelY(float y)
+    {
+        animator.SetFloat("velY", y);
+    }
 }
