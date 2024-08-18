@@ -27,6 +27,7 @@ public class Level : MonoBehaviour
         SpawnedTiles = new List<Tile>();
         player = Z.Player;
         // StartNewSection();
+        
     }
 
     public void Update()

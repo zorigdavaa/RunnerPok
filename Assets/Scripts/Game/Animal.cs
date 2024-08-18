@@ -13,7 +13,7 @@ public class Animal : Enemy
     private void Start()
     {
         Health = MaxHealth;
-        if (Vector3.Distance(Z.Player.transform.position, transform.position) < 10)
+        if (Vector3.Distance(Z.Player.transform.position, transform.position) < 25)
         {
             StartMove = true;
         }
@@ -29,7 +29,7 @@ public class Animal : Enemy
         IEnumerator LocalCor()
         {
             // yield return new WaitUntil(() => Vector3.Distance(Z.Player.transform.position, transform.position) < 10);
-            while (Vector3.Distance(Z.Player.transform.position, transform.position) > 10)
+            while (Vector3.Distance(Z.Player.transform.position, transform.position) > 25)
             {
                 yield return null;
                 // print("Waiting");

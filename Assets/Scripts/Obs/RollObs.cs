@@ -19,7 +19,7 @@ public class RollObs : MonoBehaviour, ICollisionAction
     // Start is called before the first frame update
     void Start()
     {
-        Roller.transform.position += Vector3.right * Random.Range(-4, 4);
+        // Roller.transform.position += Vector3.right * Random.Range(-4, 4);
     }
 
     // Update is called once per frame
