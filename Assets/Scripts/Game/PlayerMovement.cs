@@ -14,6 +14,8 @@ public class PlayerMovement : MovementForgeRun
     public float rotSpeed = 10f; // Maximum X position limit
     bool ParentedMove = true;
     Transform childModel;
+    public bool ControlAble;
+    public ZControlType ControlType = ZControlType.None;
     private void Start()
     {
         groundLayer = LayerMask.GetMask("Road");
@@ -22,6 +24,14 @@ public class PlayerMovement : MovementForgeRun
         {
             playerParent = transform.parent;
         }
+    }
+    public void SetControlAble(bool value)
+    {
+        ControlAble = value;
+    }
+    public void SetControlType(ZControlType value)
+    {
+        ControlType = value;
     }
     // private void Update()
     // {
@@ -44,7 +54,7 @@ public class PlayerMovement : MovementForgeRun
     public void PlayerControl()
     {
         // Check if the player is grounded
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.12f, groundLayer);
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.13f, groundLayer);
         if (isGrounded)
         {
             animController.Jump(false);
@@ -90,9 +100,8 @@ public class PlayerMovement : MovementForgeRun
         }
         // if (IsPlaying)
         // {
-        if (ControlAble)
+        if (ControlType == ZControlType.TwoSide)
         {
-
             float horizontalInput = 0;
             // Move the player left and right
             if (IsClick)
@@ -117,6 +126,10 @@ public class PlayerMovement : MovementForgeRun
             {
                 childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
             }
+        }
+        else if (ControlType == ZControlType.FourSide)
+        {
+            
         }
     }
 

@@ -105,7 +105,10 @@ public class MovementForgeRun : Mb
     {
         ControlAble = value;
     }
-
+    public void SetControlType(bool value)
+    {
+        ControlAble = value;
+    }
     public void ClampPosition()
     {
         if (transform.position.x <= -6.8f || transform.position.x >= 6.8f)
