@@ -258,6 +258,7 @@ public class Player : Character
                 Movement.UseParentedMovement(true);
                 // Movement.SetControlAble(true);
                 Movement.SetControlType(ZControlType.FourSide);
+                Movement.ChildModelRotZero();
                 UpdateAction = null;
             }
             else if (_state == PlayerState.Collect)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -147,8 +148,10 @@ public class PlayerMovement : MovementForgeRun
 
                     //Move your cube GameObject to the point where you clicked
                     TargetLocalPos = transform.parent.InverseTransformPoint(hitPoint);
+                    TargetLocalPos.x = Mathf.Clamp(TargetLocalPos.x, -5, 5);
+                    TargetLocalPos.z = Mathf.Clamp(TargetLocalPos.z, -1, 8);
                 }
-                transform.localPosition = Vector3.Lerp(transform.position, TargetLocalPos, 0.3f);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, TargetLocalPos, 5 * Time.fixedDeltaTime);
             }
         }
     }
@@ -174,5 +177,10 @@ public class PlayerMovement : MovementForgeRun
         }
         // print(rb.velocity);
 
+    }
+
+    internal void ChildModelRotZero()
+    {
+        childModel.transform.rotation = Quaternion.identity;
     }
 }
