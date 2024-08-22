@@ -169,7 +169,8 @@ public class Player : Character
     private void OnGamePlay(object sender, EventArgs e)
     {
         // Movement.SetSpeed(1);
-        Movement.SetControlAble(true);
+        // Movement.SetControlAble(true); 
+        Movement.SetControlType(ZControlType.TwoSide);
     }
     private void AttackProjectile(object sender, EventArgs e)
     {
@@ -237,7 +238,8 @@ public class Player : Character
                 StartThrow(false);
                 ChangeCamera(0);
                 Movement.UseParentedMovement(false);
-                Movement.SetControlAble(false);
+                // Movement.SetControlAble(false);
+                Movement.SetControlType(ZControlType.None);
                 UpdateAction = null;
             }
             else if (_state == PlayerState.Obs)
@@ -245,7 +247,8 @@ public class Player : Character
                 StartThrow(false);
                 ChangeCamera(1);
                 Movement.UseParentedMovement(false);
-                Movement.SetControlAble(true);
+                // Movement.SetControlAble(true);
+                Movement.SetControlType(ZControlType.TwoSide);
                 UpdateAction = null;
             }
             else if (_state == PlayerState.Fight)
@@ -253,7 +256,8 @@ public class Player : Character
                 StartThrow(true);
                 ChangeCamera(2);
                 Movement.UseParentedMovement(true);
-                Movement.SetControlAble(true);
+                // Movement.SetControlAble(true);
+                Movement.SetControlType(ZControlType.FourSide);
                 UpdateAction = null;
             }
             else if (_state == PlayerState.Collect)
@@ -261,7 +265,8 @@ public class Player : Character
                 StartThrow(false);
                 ChangeCamera(1);
                 Movement.UseParentedMovement(true);
-                Movement.SetControlAble(true);
+                // Movement.SetControlAble(true);
+                Movement.SetControlType(ZControlType.TwoSide);
                 UpdateAction = CollectUpdate;
             }
             State = _state;

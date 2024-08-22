@@ -16,6 +16,7 @@ public class PlayerMovement : MovementForgeRun
     Transform childModel;
     public bool ControlAble;
     public ZControlType ControlType = ZControlType.None;
+    Camera cam;
     private void Start()
     {
         groundLayer = LayerMask.GetMask("Road");
@@ -24,6 +25,7 @@ public class PlayerMovement : MovementForgeRun
         {
             playerParent = transform.parent;
         }
+        cam = Camera.main;
     }
     public void SetControlAble(bool value)
     {
@@ -129,7 +131,25 @@ public class PlayerMovement : MovementForgeRun
         }
         else if (ControlType == ZControlType.FourSide)
         {
-            
+            if (IsClick)
+            {
+                Vector3 TargetLocalPos = Vector3.zero;
+                Plane plane = new Plane(Vector3.up, Vector3.zero);
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+                //Initialise the enter variable
+                float enter = 0.0f;
+
+                if (plane.Raycast(ray, out enter))
+                {
+                    //Get the point that is clicked
+                    Vector3 hitPoint = ray.GetPoint(enter);
+
+                    //Move your cube GameObject to the point where you clicked
+                    TargetLocalPos = transform.parent.InverseTransformPoint(hitPoint);
+                }
+                transform.localPosition = Vector3.Lerp(transform.position, TargetLocalPos, 0.3f);
+            }
         }
     }
 

@@ -18,7 +18,7 @@ public class MovementForgeRun : Mb
     {
         rb = GetComponent<Rigidbody>();
     }
-    public bool ControlAble;
+
     // void FixedUpdate()
     // {
     //     if (targetPos)
@@ -101,14 +101,7 @@ public class MovementForgeRun : Mb
         }
         afterGoAction?.Invoke();
     }
-    public void SetControlAble(bool value)
-    {
-        ControlAble = value;
-    }
-    public void SetControlType(bool value)
-    {
-        ControlAble = value;
-    }
+
     public void ClampPosition()
     {
         if (transform.position.x <= -6.8f || transform.position.x >= 6.8f)
