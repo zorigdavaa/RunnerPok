@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3222443538924880876}
+  currentAnimation: 
 --- !u!1001 &5943525909147226168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,6 +203,8 @@ MonoBehaviour:
   animationController: {fileID: 1892589097971638443}
   movement: {fileID: 0}
   idleSpeed: 0
+  Patterns:
+  - {fileID: 11400000, guid: 8162f63e9da596349b67ee7df0a5d9a5, type: 2}
 --- !u!4 &313721155970851997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}

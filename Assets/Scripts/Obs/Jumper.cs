@@ -90,5 +90,6 @@ public class Jumper : MonoBehaviour, ICollisionAction
         // }
         NextJumpTarget.x = transform.position.x;
         JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 45f);
+        // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 70f);
     }
 }

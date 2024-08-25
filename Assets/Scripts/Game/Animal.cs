@@ -10,6 +10,7 @@ public class Animal : Enemy
     public MovementForgeRun movement;
     [SerializeField] float idleSpeed = -1;
     bool StartMove = false;
+    public List<AttackPattern> Patterns;
     private void Start()
     {
         Health = MaxHealth;
@@ -51,8 +52,15 @@ public class Animal : Enemy
                 attackTimer = 5;
                 if (Random.value > 0.3f)
                 {
+                    if (Patterns.Count > 0)
+                    {
+                        PatterAttack(Patterns[Random.Range(0, Patterns.Count)]);
+                    }
+                    else
+                    {
 
-                    Attack();
+                        Attack();
+                    }
                 }
                 else
                 {
@@ -61,6 +69,11 @@ public class Animal : Enemy
             }
         }
 
+    }
+
+    private void PatterAttack(AttackPattern pattern)
+    {
+        StartCoroutine(pattern.Pattern(this));
     }
 
     public void MovePositon()
@@ -145,5 +158,10 @@ public class Animal : Enemy
         GameObject pf = ProjectilePfs[Random.Range(0, ProjectilePfs.Count)];
         GameObject inSob = Instantiate(pf, transform.position + Vector3.up, transform.rotation, transform.parent);
         Destroy(inSob, 10);
+    }
+
+    internal void AttackAnimation()
+    {
+        animationController.Attack();
     }
 }
