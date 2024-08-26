@@ -28,11 +28,11 @@ namespace ZPackage
         ///<Summary>
         ///1 is front -1 is back
         ///</Summary>
-        public static bool IsFront(this Vector3 position, Vector3 other, float dotValue)
+        public static bool IsRight(this Transform transform, Transform other, float dotValue)
         {
-            Vector3 toTarget = (other - position).normalized;
+            Vector3 toTarget = (other.position - transform.position).normalized;
 
-            if (Vector3.Dot(toTarget, position) > dotValue)//1 is fron -1 is back
+            if (Vector3.Dot(toTarget, transform.right) > dotValue)//1 is fron -1 is back
             {
                 // Debug.Log("Target is in front of this game object.");
                 return true;

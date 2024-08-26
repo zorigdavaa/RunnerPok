@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public float speed = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +16,14 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         // transform.Rotate(0, 360 * Time.deltaTime, 0);
-        transform.localPosition += transform.forward * 10 * Time.deltaTime;
+        ProjMove();
     }
+
+    public virtual void ProjMove()
+    {
+        transform.localPosition += transform.forward * speed * Time.deltaTime;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Player>())
