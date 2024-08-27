@@ -11,10 +11,11 @@ public class Animal : Enemy
     [SerializeField] float idleSpeed = -1;
     bool StartMove = false;
     public List<AttackPattern> Patterns;
+    float playerDistanceToStartMove = 30;
     private void Start()
     {
         Health = MaxHealth;
-        if (Vector3.Distance(Z.Player.transform.position, transform.position) < 25)
+        if (Vector3.Distance(Z.Player.transform.position, transform.position) < playerDistanceToStartMove)
         {
             StartMove = true;
         }
@@ -30,7 +31,7 @@ public class Animal : Enemy
         IEnumerator LocalCor()
         {
             // yield return new WaitUntil(() => Vector3.Distance(Z.Player.transform.position, transform.position) < 10);
-            while (Vector3.Distance(Z.Player.transform.position, transform.position) > 25)
+            while (Vector3.Distance(Z.Player.transform.position, transform.position) > playerDistanceToStartMove)
             {
                 yield return null;
                 // print("Waiting");
