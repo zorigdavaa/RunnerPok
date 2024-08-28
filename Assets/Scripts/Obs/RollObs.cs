@@ -6,6 +6,9 @@ using ZPackage;
 public class RollObs : MonoBehaviour, ICollisionAction
 {
     [SerializeField] Rigidbody Roller;
+    bool isRolling = false;
+    float selfTime;
+    float speed = 2;
     public void CollisionAction(Character character)
     {
         if (character is Player player)
@@ -13,6 +16,7 @@ public class RollObs : MonoBehaviour, ICollisionAction
             Roller.isKinematic = false;
             Roller.velocity = Vector3.back * 30;
             Roller.angularVelocity = new Vector3(10, 0, 0);
+            isRolling = true;
         }
     }
 
@@ -26,5 +30,12 @@ public class RollObs : MonoBehaviour, ICollisionAction
     void Update()
     {
 
+        if (!isRolling)
+        {
+            selfTime += Time.deltaTime * speed;
+            Vector3 pos = Roller.transform.position;
+            pos.x = Mathf.PingPong(selfTime, 4) - 2f;
+            Roller.transform.position = pos;
+        }
     }
 }
