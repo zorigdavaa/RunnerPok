@@ -20,7 +20,9 @@ namespace ZPackage
             // {
             //     SpawnTile(0);
             // }
-            SpawnLevel(Levels[0]);
+            int Level = GameManager.Instance.Level;
+            // SpawnLevel(Levels[0]);
+            SpawnLevel(Levels[Level]);
             GameManager.Instance.OnGamePlay += OnGamePlay;
         }
 

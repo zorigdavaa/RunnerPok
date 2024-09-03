@@ -65,7 +65,7 @@ namespace ZPackage
                 }
             }
         }
-        int level;
+        int level = 1;
         public int Level
         {
             get { return level; }

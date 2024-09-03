@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4271100086985549274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7575097222021754785}
+  - component: {fileID: 7278324688581108722}
+  m_Layer: 0
+  m_Name: Level 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7575097222021754785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271100086985549274}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7278324688581108722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271100086985549274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb18150c93af1584c9fa5f2bfe56d53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecIDX: 0
+  SecTileIDx: 0
+  LevelObjects:
+  - {fileID: 11400000, guid: 85d57bb4ec14049a3b6febfd33fdfdd1, type: 2}
+  - {fileID: 11400000, guid: a69cc128b61774d098a12124cb9aab50, type: 2}
+  - {fileID: 11400000, guid: 71e8ea99997a341b2a007ee2dafcf3ea, type: 2}
+  - {fileID: 11400000, guid: 1919c18de15014b0cb3e53ca32b95687, type: 2}
+  - {fileID: 11400000, guid: 440398affeeae46f1840db3f7c8ebce1, type: 2}
+  - {fileID: 11400000, guid: d42a5c4b8056d485da7f932baba74283, type: 2}
+  player: {fileID: 0}
+  nextSpawnPosition: {x: 0, y: 0, z: 0}
+  PlayerBeingTile: {fileID: 0}
+  speedUpPF: {fileID: 1846571084168223024, guid: 0736c67bd4164044fbe8f25c7711ef16, type: 3}
+  BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+  CurSection: {fileID: 0}
+  lastSpawnedTile: {fileID: 0}
+  SpawnedTiles: []
+  BeforSectionTiles: []
