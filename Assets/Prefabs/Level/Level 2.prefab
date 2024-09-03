@@ -49,8 +49,6 @@ MonoBehaviour:
   LevelObjects:
   - {fileID: 11400000, guid: 85d57bb4ec14049a3b6febfd33fdfdd1, type: 2}
   - {fileID: 11400000, guid: a69cc128b61774d098a12124cb9aab50, type: 2}
-  - {fileID: 11400000, guid: 71e8ea99997a341b2a007ee2dafcf3ea, type: 2}
-  - {fileID: 11400000, guid: 1919c18de15014b0cb3e53ca32b95687, type: 2}
   - {fileID: 11400000, guid: 440398affeeae46f1840db3f7c8ebce1, type: 2}
   - {fileID: 11400000, guid: d42a5c4b8056d485da7f932baba74283, type: 2}
   player: {fileID: 0}

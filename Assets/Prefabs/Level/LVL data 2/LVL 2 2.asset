@@ -25,10 +25,12 @@ MonoBehaviour:
     - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
     - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
     - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
   - Wait: 1
     AfterDelay: 5
     Beforedelay: 0
     EnemyPF:
+    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
     - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
     - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
   - Wait: 0
@@ -37,3 +39,12 @@ MonoBehaviour:
     EnemyPF:
     - {fileID: 8161862714446864042, guid: 887bc7c9ee65fa94da252c556948be6a, type: 3}
     - {fileID: 8161862714446864042, guid: 887bc7c9ee65fa94da252c556948be6a, type: 3}
+    - {fileID: 8161862714446864042, guid: 887bc7c9ee65fa94da252c556948be6a, type: 3}
+  - Wait: 0
+    AfterDelay: 1
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
