@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SimplePattern", menuName = "Patter/Simple")]
-public class AttackPattern : ScriptableObject
+[CreateAssetMenu(fileName = "ForwardAndAttack", menuName = "Patter/Simple")]
+public class AttackPattern : BaseAttackPattern
 {
     public List<GameObject> ProjectilePfs;
     public int AttackCount = 6;
