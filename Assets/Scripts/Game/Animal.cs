@@ -10,7 +10,7 @@ public class Animal : Enemy
     public MovementForgeRun movement;
     [SerializeField] float idleSpeed = -1;
     bool StartMove = false;
-    public List<AttackPattern> Patterns;
+    public List<BaseAttackPattern> Patterns;
     float playerDistanceToStartMove = 30;
     private void Start()
     {
@@ -72,7 +72,7 @@ public class Animal : Enemy
 
     }
 
-    private void PatterAttack(AttackPattern pattern)
+    private void PatterAttack(BaseAttackPattern pattern)
     {
         StartCoroutine(pattern.Pattern(this));
     }

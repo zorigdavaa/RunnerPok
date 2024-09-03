@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ForwardAndAttack", menuName = "Patter/Simple")]
-public class AttackPattern : BaseAttackPattern
+[CreateAssetMenu(fileName = "ForwardAndAttack", menuName = "Patter/ForwardAndAttack")]
+public class ForwardAttack : BaseAttackPattern
 {
     public List<GameObject> ProjectilePfs;
     public int AttackCount = 6;
@@ -11,13 +11,13 @@ public class AttackPattern : BaseAttackPattern
     public float WaitTimer = 0.2f;
     // Animal animal;
 
-    public void AttackProjectile(Animal animal)
+    public override void AttackProjectile(Animal animal)
     {
         GameObject pf = ProjectilePfs[Random.Range(0, ProjectilePfs.Count)];
         GameObject inSob = Instantiate(pf, animal.transform.position + Vector3.up, animal.transform.rotation, animal.transform.parent);
         Destroy(inSob, 10);
     }
-    public IEnumerator Pattern(Animal animal)
+    public override IEnumerator Pattern(Animal animal)
     {
 
         Vector3 attackPos = animal.transform.localPosition + Vector3.back * 10 + Vector3.right * Random.Range(-3, 3);
