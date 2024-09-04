@@ -12,6 +12,7 @@ public class Animal : Enemy
     bool StartMove = false;
     public List<BaseAttackPattern> Patterns;
     float playerDistanceToStartMove = 30;
+    Coroutine ActionCoroutine = null;
     private void Start()
     {
         Health = MaxHealth;
@@ -27,7 +28,8 @@ public class Animal : Enemy
 
     private void CheckPlayerDistance()
     {
-        StartCoroutine(LocalCor());
+        StopOtherAction();
+        ActionCoroutine = StartCoroutine(LocalCor());
         IEnumerator LocalCor()
         {
             // yield return new WaitUntil(() => Vector3.Distance(Z.Player.transform.position, transform.position) < 10);
@@ -39,6 +41,7 @@ public class Animal : Enemy
             print("Moving");
             StartMove = true;
             attackTimer = 0;
+            ActionCoroutine = null;
         }
     }
 
@@ -74,12 +77,22 @@ public class Animal : Enemy
 
     private void PatterAttack(BaseAttackPattern pattern)
     {
-        StartCoroutine(pattern.Pattern(this));
+        StopOtherAction();
+        ActionCoroutine = StartCoroutine(pattern.Pattern(this));
+    }
+
+    private void StopOtherAction()
+    {
+        if (ActionCoroutine != null)
+        {
+            StopCoroutine(ActionCoroutine);
+        }
     }
 
     public void MovePositon()
     {
-        StartCoroutine(LocalCor());
+        StopOtherAction();
+        ActionCoroutine = StartCoroutine(LocalCor());
         IEnumerator LocalCor()
         {
             animationController.SetSpeed(1);
@@ -112,7 +125,8 @@ public class Animal : Enemy
     }
     public void Attack()
     {
-        StartCoroutine(LocalCor());
+        StopOtherAction();
+        ActionCoroutine = StartCoroutine(LocalCor());
         IEnumerator LocalCor()
         {
             Vector3 attackPos = transform.localPosition + Vector3.back * 10 + Vector3.right * Random.Range(-3, 3);

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd329c0b4123a2c41b0ca9c53ce3f6ef, type: 3}
+  m_Name: lvl1 Boss
+  m_EditorClassIdentifier: 
+  ProjectilePfs:
+  - {fileID: 3500501074311751367, guid: 37d07a798a6d7c24c9f5ef301af9ac85, type: 3}
+  AttackCount: 6
+  animationWaitTimer: 0.2
+  WaitTimer: 0.2
