@@ -54,24 +54,26 @@ public class Animal : Enemy
             attackTimer -= Time.deltaTime;
             if (attackTimer < 0 && IsAlive)
             {
+                float cooldown = 0;
                 if (Random.value > 0.3f)
                 {
                     if (Patterns.Count > 0)
                     {
-                        PatterAttack(Patterns[Random.Range(0, Patterns.Count)]);
+                        int randomIndex = Random.Range(0, Patterns.Count);
+                        cooldown = Patterns[randomIndex].GetCoolDown();
+                        PatterAttack(Patterns[randomIndex]);
                     }
                     else
                     {
 
                         Attack();
                     }
-                    attackTimer = Random.Range(3f, 5f) + 1;
                 }
                 else
                 {
                     MovePositon();
-                    attackTimer = Random.Range(3f, 5f);
                 }
+                attackTimer = Random.Range(3f, 5f) + cooldown;
             }
         }
 
