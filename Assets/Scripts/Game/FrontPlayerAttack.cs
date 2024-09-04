@@ -17,6 +17,11 @@ public class FrontPlayerAttack : BaseAttackPattern
         Destroy(inSob, 10);
     }
 
+    public override float GetCoolDown()
+    {
+       return  AttackCount* WaitTimer;
+    }
+
     public override IEnumerator Pattern(Animal animal)
     {
         // Vector3 attackPos = animal.transform.localPosition + Vector3.back * 10 + Vector3.right * Random.Range(-3, 3);

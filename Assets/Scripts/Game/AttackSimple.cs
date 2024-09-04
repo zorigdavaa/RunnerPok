@@ -9,11 +9,17 @@ public class AttackSimple : BaseAttackPattern
     public int AttackCount = 6;
     public float animationWaitTimer = 0.2f;
     public float WaitTimer = 0.2f;
+    public float Cooldown = 0.2f;
     public override void AttackProjectile(Animal animal)
     {
         GameObject pf = ProjectilePfs[Random.Range(0, ProjectilePfs.Count)];
         GameObject inSob = Instantiate(pf, animal.transform.position + Vector3.up, animal.transform.rotation, animal.transform.parent);
         Destroy(inSob, 10);
+    }
+
+    public override float GetCoolDown()
+    {
+        return Cooldown;
     }
 
     public override IEnumerator Pattern(Animal animal)

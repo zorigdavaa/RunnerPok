@@ -19,6 +19,7 @@ public class Animal : Enemy
         if (Vector3.Distance(Z.Player.transform.position, transform.position) < playerDistanceToStartMove)
         {
             StartMove = true;
+            attackTimer = Random.Range(1f, 6f);
         }
         else
         {
@@ -53,7 +54,6 @@ public class Animal : Enemy
             attackTimer -= Time.deltaTime;
             if (attackTimer < 0 && IsAlive)
             {
-                attackTimer = Random.Range(3, 5);
                 if (Random.value > 0.3f)
                 {
                     if (Patterns.Count > 0)
@@ -65,10 +65,12 @@ public class Animal : Enemy
 
                         Attack();
                     }
+                    attackTimer = Random.Range(3f, 5f) + 1;
                 }
                 else
                 {
                     MovePositon();
+                    attackTimer = Random.Range(3f, 5f);
                 }
             }
         }
