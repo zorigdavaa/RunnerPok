@@ -27,7 +27,7 @@ public class BossSection : FightSection
         {
             item.transform.SetParent(parnet);
         }
-    }
+    } 
     List<Enemy> InsEnemies = new List<Enemy>();
     public void InsEnemsAtTile(Tile tile)
     {
