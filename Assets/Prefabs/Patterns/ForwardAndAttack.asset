@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ca60a66ca0ed4649bd14cd90ce94a31, type: 3}
-  m_Name: SimplePattern
+  m_Name: ForwardAndAttack
   m_EditorClassIdentifier: 
   ProjectilePfs:
   - {fileID: 90646647779934685, guid: 76e8d1620367e3d479b31f2b1b00d28d, type: 3}
