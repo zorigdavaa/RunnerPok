@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 [CreateAssetMenu(fileName = "Attack", menuName = "Patter/Simple")]
 public class AttackSimple : BaseAttackPattern
@@ -14,6 +15,12 @@ public class AttackSimple : BaseAttackPattern
     {
         GameObject pf = ProjectilePfs[Random.Range(0, ProjectilePfs.Count)];
         GameObject inSob = Instantiate(pf, animal.transform.position + Vector3.up, animal.transform.rotation, animal.transform.parent);
+        LocProj locProj = inSob.GetComponent<LocProj>();
+        if (locProj)
+        {
+            locProj.Target = Z.Player.transform;
+        }
+
         Destroy(inSob, 10);
     }
 

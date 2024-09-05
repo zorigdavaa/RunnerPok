@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd329c0b4123a2c41b0ca9c53ce3f6ef, type: 3}
-  m_Name: Attack
+  m_Name: Follow
   m_EditorClassIdentifier: 
   ProjectilePfs:
-  - {fileID: 0}
-  AttackCount: 6
+  - {fileID: 90646647779934685, guid: ea8b8f8bfa1cb4dc48a0bd0c07850ffb, type: 3}
+  AttackCount: 3
   animationWaitTimer: 0.2
   WaitTimer: 0.2
   Cooldown: 0.2

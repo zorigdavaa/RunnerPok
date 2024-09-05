@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Kicker: {fileID: 3861463085869065174}
-  forwardSpeed: 15
-  backwardSpeed: 6
+  forwardSpeed: 20
+  backwardSpeed: 10
   maxForwardDistance: 7
 --- !u!1 &2177261490814705437
 GameObject:

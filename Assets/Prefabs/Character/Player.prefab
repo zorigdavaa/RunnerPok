@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6206288944597300391, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_Mass
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6206288945272364717, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_Layer
@@ -172,8 +172,10 @@ MonoBehaviour:
   animationController: {fileID: 3721101946601302100}
   animController: {fileID: 3721101946601302100}
   Shuriken: {fileID: 6389107011502510898, guid: 17064762389015a44b6fef87e074c9af, type: 3}
-  cameras: []
-  UseAttack: 0
+  cameras:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &6477016897789823786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +196,6 @@ MonoBehaviour:
   targetPos: {fileID: 0}
   isGrounded: 0
   playerParent: {fileID: 0}
-  ControlAble: 0
   sideSpeed: 80
   groundCheck: {fileID: 2420573646999065348}
   groundLayer:
@@ -203,6 +204,8 @@ MonoBehaviour:
   minXLimit: -5
   maxXLimit: 5
   rotSpeed: 10
+  ControlAble: 0
+  ControlType: 0
 --- !u!114 &3721101946601302100 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4905179210307702773, guid: 52525fa3141136f4480fff6735ff618b, type: 3}

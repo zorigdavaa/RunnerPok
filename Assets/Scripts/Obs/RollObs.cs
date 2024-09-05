@@ -8,7 +8,7 @@ public class RollObs : MonoBehaviour, ICollisionAction
     [SerializeField] Rigidbody Roller;
     bool isRolling = false;
     float selfTime;
-    float speed = 2;
+    float speed = 10;
     public void CollisionAction(Character character)
     {
         if (character is Player player)

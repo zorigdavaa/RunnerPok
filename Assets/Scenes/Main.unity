@@ -1135,10 +1135,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1463407924}
     m_Modifications:
     - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-      propertyPath: cameras.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: cameras.Array.data[0]
       value: 
       objectReference: {fileID: 1157877927}
@@ -1193,10 +1189,6 @@ PrefabInstance:
     - target: {fileID: 2420573646999065349, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2420573646999065350, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-      propertyPath: m_Mass
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6477016897789823786, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: playerParent
@@ -2254,6 +2246,7 @@ MonoBehaviour:
   Levels:
   - {fileID: 7278324688581108722, guid: 6fd974ac1df82564aba0dab4a6f7a42a, type: 3}
   - {fileID: 7278324688581108722, guid: dd15f6b3e47dd40bbb2e56b648a6a5bb, type: 3}
+  - {fileID: 7278324688581108722, guid: 0d92b8cf79654448fa19e78770a805ed, type: 3}
   LastInstLvl: {fileID: 0}
 --- !u!1 &1832381454
 GameObject:

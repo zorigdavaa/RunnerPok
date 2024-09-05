@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 3770519715814557345}
+  currentAnimation: 
 --- !u!4 &3825779013756621137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4744821207475892, guid: f397a44c833ad65409eba4bce5ea62ed, type: 3}
@@ -198,6 +199,8 @@ MonoBehaviour:
   animationController: {fileID: 6345714814066453232}
   movement: {fileID: 888454670224166837}
   idleSpeed: -1
+  Patterns:
+  - {fileID: 11400000, guid: 4ec9e17aea4fe4e1bb5afd8117799eb6, type: 2}
 --- !u!4 &313721155970851997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
