@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b2560afe15c14906a556cab5daf2bad, type: 2}
   - {fileID: 11400000, guid: bca30f54d1a5f4da99f64ef7444b0a07, type: 2}
   - {fileID: 11400000, guid: b2988da233d0742d2824eecb36887352, type: 2}
+  - {fileID: 11400000, guid: 5f340e18d540c43f4b1a2fd4e6ef33f6, type: 2}
   - {fileID: 11400000, guid: f4887c2f262e7459eadc07c0c7bcce3b, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   ProjectilePfs:
-  - {fileID: 0}
+  - {fileID: 3500501074311751367, guid: 37d07a798a6d7c24c9f5ef301af9ac85, type: 3}
   AttackCount: 6
   animationWaitTimer: 0.2
   WaitTimer: 0.2

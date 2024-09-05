@@ -23,3 +23,7 @@ MonoBehaviour:
     Beforedelay: 0
     EnemyPF:
     - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
