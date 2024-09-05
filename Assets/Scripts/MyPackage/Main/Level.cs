@@ -19,7 +19,8 @@ public class Level : MonoBehaviour
     public SpeedUp speedUpPF;
     public Tile BaseTilePf;
     [SerializeField] LevelSection CurSection;
-
+    public float HealthMultiplier = 1;
+    public float DamageMultiplier = 1;
     public void Start()
     {
         // BaseTilePf = 

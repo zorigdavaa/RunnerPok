@@ -18,6 +18,7 @@ public class PlayerMovement : MovementForgeRun
     public bool ControlAble;
     public ZControlType ControlType = ZControlType.None;
     Camera cam;
+    Plane ControlRaycastPlane;
     private void Start()
     {
         groundLayer = LayerMask.GetMask("Road");
@@ -27,6 +28,7 @@ public class PlayerMovement : MovementForgeRun
             playerParent = transform.parent;
         }
         cam = Camera.main;
+        ControlRaycastPlane = new Plane(Vector3.up, Vector3.zero);
     }
     public void SetControlAble(bool value)
     {
@@ -106,20 +108,17 @@ public class PlayerMovement : MovementForgeRun
         if (ControlType == ZControlType.TwoSide)
         {
             // OldController();
-            NewController();
+            ViewPortControl();
+            // RaycastControl();
         }
         else if (ControlType == ZControlType.FourSide)
         {
             if (IsClick)
             {
                 Vector3 TargetLocalPos = Vector3.zero;
-                Plane plane = new Plane(Vector3.up, Vector3.zero);
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-                //Initialise the enter variable
-                float enter = 0.0f;
-
-                if (plane.Raycast(ray, out enter))
+                if (ControlRaycastPlane.Raycast(ray, out float enter))
                 {
                     //Get the point that is clicked
                     Vector3 hitPoint = ray.GetPoint(enter);
@@ -132,6 +131,39 @@ public class PlayerMovement : MovementForgeRun
                 transform.localPosition = Vector3.Lerp(transform.localPosition, TargetLocalPos, 5 * Time.fixedDeltaTime);
             }
         }
+    }
+    private void RaycastControl()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
+
+        if (IsClick)
+        {
+            Vector3 TargetPos = Vector3.zero;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (ControlRaycastPlane.Raycast(ray, out float enter))
+            {
+                //Get the point that is clicked
+                Vector3 hitPoint = ray.GetPoint(enter);
+
+                //Move your cube GameObject to the point where you clicked
+                // TargetPos = transform.InverseTransformPoint(hitPoint);
+                TargetPos = new Vector3(hitPoint.x, transform.position.y, transform.position.z); ;
+                TargetPos.x = Mathf.Clamp(TargetPos.x, -5, 5);
+            }
+            transform.position = Vector3.Lerp(transform.position, TargetPos, 5 * Time.fixedDeltaTime);
+
+            // Check for significant movement to determine the rotation
+            if (Mathf.Abs(transform.position.x - TargetPos.x) > 0.5f)
+            {
+                float directionSign = Mathf.Sign(TargetPos.x - transform.localPosition.x);
+                Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
+                targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
+            }
+        }
+
+        // Apply the target rotation smoothly in all cases
+        childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
     }
 
     private void OldController()
@@ -161,33 +193,37 @@ public class PlayerMovement : MovementForgeRun
             childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
         }
     }
-    private void NewController()
+    private void ViewPortControl()
     {
-        float horizontalInput = 0;
-        // Move the player left and right
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
+
         if (IsClick)
         {
-            horizontalInput = Input.GetAxisRaw("Mouse X");
+            // Convert mouse position to viewport position
+            Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
+            float inverse = Mathf.InverseLerp(0.1f, 0.9f, viewPortPos.x);
+            // Calculate new X position within the bounds (-5 to 5)
+            float newPositionX = Mathf.Lerp(-5f, 5f, inverse);
+            Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
+
+            // Smoothly move the player to the target position
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
+
+            // Check for significant movement to determine the rotation
+            if (Mathf.Abs(transform.localPosition.x - newPositionX) > 0.5f)
+            {
+                float directionSign = Mathf.Sign(newPositionX - transform.localPosition.x);
+                Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
+                targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
+            }
         }
-        // print(horizontalInput);
-        float newPositionX = transform.localPosition.x + (horizontalInput * sideSpeed * Time.deltaTime);
-        newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
-        Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
-        transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.35f);
-        if (Mathf.Abs(horizontalInput) > 0)
-        {
-            float rot = Mathf.Sign(horizontalInput);
-            // print(rot);
-            Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
-            // print(moveDirection);
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
-        }
-        else
-        {
-            childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
-        }
+
+        // Apply the target rotation smoothly in all cases
+        childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
     }
+
+
+
 
     public override void UseParentedMovement(bool val)
     {

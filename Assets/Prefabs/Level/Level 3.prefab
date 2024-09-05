@@ -58,6 +58,8 @@ MonoBehaviour:
   speedUpPF: {fileID: 1846571084168223024, guid: 0736c67bd4164044fbe8f25c7711ef16, type: 3}
   BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   CurSection: {fileID: 0}
+  HealthMultiplier: 1
+  DamageMultiplier: 1
   lastSpawnedTile: {fileID: 0}
   SpawnedTiles: []
   BeforSectionTiles: []

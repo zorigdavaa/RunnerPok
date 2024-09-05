@@ -164,6 +164,8 @@ public class Player : Character
     public override void Die()
     {
         GameManager.Instance.GameOver(this, EventArgs.Empty);
+        Movement.SetSpeed(0);
+        animationController.Die();
     }
 
     private void OnGamePlay(object sender, EventArgs e)

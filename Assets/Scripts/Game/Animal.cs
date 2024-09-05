@@ -15,6 +15,7 @@ public class Animal : Enemy
     Coroutine ActionCoroutine = null;
     private void Start()
     {
+        MaxHealth *= Z.LS.LastInstLvl.HealthMultiplier;
         Health = MaxHealth;
         if (Vector3.Distance(Z.Player.transform.position, transform.position) < playerDistanceToStartMove)
         {
