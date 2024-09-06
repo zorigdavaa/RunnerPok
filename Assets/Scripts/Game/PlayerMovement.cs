@@ -132,9 +132,21 @@ public class PlayerMovement : MovementForgeRun
             }
         }
     }
+    float beforeFrameX;
     private void RaycastControl()
     {
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
+        if (IsDown)
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if (ControlRaycastPlane.Raycast(ray, out float enter))
+            {
+                //Get the point that is clicked
+                beforeFrameX = ray.GetPoint(enter).x;
+
+            }
+        }
 
         if (IsClick)
         {
@@ -145,16 +157,20 @@ public class PlayerMovement : MovementForgeRun
             {
                 //Get the point that is clicked
                 Vector3 hitPoint = ray.GetPoint(enter);
+                // Vector3 LocalConvert  = transform.InverseTransformPoint(hitPoint);
+                float xDif = hitPoint.x - beforeFrameX;
 
                 //Move your cube GameObject to the point where you clicked
-                // TargetPos = transform.InverseTransformPoint(hitPoint);
-                TargetPos = new Vector3(hitPoint.x, transform.position.y, transform.position.z); ;
+                TargetPos = new Vector3(transform.localPosition.x + xDif, transform.localPosition.y, transform.localPosition.z); ;
                 TargetPos.x = Mathf.Clamp(TargetPos.x, -5, 5);
+                beforeFrameX = hitPoint.x;
             }
-            transform.position = Vector3.Lerp(transform.position, TargetPos, 5 * Time.fixedDeltaTime);
+            // transform.localPosition = Vector3.Lerp(transform.localPosition, TargetPos, 5 * Time.fixedDeltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, TargetPos, 0.5f);
+            // transform.localPosition = TargetPos;
 
             // Check for significant movement to determine the rotation
-            if (Mathf.Abs(transform.position.x - TargetPos.x) > 0.5f)
+            if (Mathf.Abs(transform.localPosition.x - TargetPos.x) > 0.1f)
             {
                 float directionSign = Mathf.Sign(TargetPos.x - transform.localPosition.x);
                 Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;

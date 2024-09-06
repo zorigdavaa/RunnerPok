@@ -34,7 +34,7 @@ public class RollObs : MonoBehaviour, ICollisionAction
         {
             selfTime += Time.deltaTime * speed;
             Vector3 pos = Roller.transform.position;
-            pos.x = Mathf.PingPong(selfTime, 4) - 2f;
+            pos.x = Mathf.PingPong(selfTime, 8) - 4f;
             Roller.transform.position = pos;
         }
     }
