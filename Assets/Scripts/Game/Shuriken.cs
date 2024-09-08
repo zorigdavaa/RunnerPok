@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Shuriken : MonoBehaviour
+public class Shuriken : PlayerItem
 {
     ObjectPool<Shuriken> Pool;
     Coroutine AutoGotoPoolCor;
@@ -44,7 +44,7 @@ public class Shuriken : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        RetrieveData();
     }
     public float SideMovement;
     float RightAcc = 0;
@@ -66,7 +66,7 @@ public class Shuriken : MonoBehaviour
         RightAcc = 0;
         if (enemy && enemy.IsAlive)
         {
-            enemy.TakeDamage(-5);
+            enemy.TakeDamage(-Damage);
             Pool.Release(this);
             if (AutoGotoPoolCor != null)
             {
