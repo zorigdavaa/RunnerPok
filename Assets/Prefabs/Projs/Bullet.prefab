@@ -381,8 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24f6f1dce11b324cb1dca585279486a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: shuriken
-  Damage: 0
+  data: {fileID: 11400000, guid: 860ce0b918cc0453b882cc4f386e16b2, type: 2}
   SideMovement: 0
 --- !u!135 &6503654501801992267
 SphereCollider:
