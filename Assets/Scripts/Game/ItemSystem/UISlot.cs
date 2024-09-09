@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UISlot : MonoBehaviour, IDropHandler, IBeginDragHandler,IEndDragHandler
+public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler
 {
     DragItem dragItem;
     // Start is called before the first frame update
@@ -22,16 +22,12 @@ public class UISlot : MonoBehaviour, IDropHandler, IBeginDragHandler,IEndDragHan
     {
         if (eventData.pointerDrag)
         {
-            
+            eventData.pointerDrag.transform.position = transform.position;
+            Debug.Log("Set");
         }
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData)
     {
         throw new System.NotImplementedException();
     }
