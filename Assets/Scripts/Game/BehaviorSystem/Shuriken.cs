@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Shuriken : MonoBehaviour, IUpgradeAble, ISaveAble
+public class Shuriken : MonoBehaviour, ISaveAble
 {
     ObjectPool<Shuriken> Pool;
     Coroutine AutoGotoPoolCor;
@@ -80,18 +80,9 @@ public class Shuriken : MonoBehaviour, IUpgradeAble, ISaveAble
         }
     }
 
-    public void Upgrade()
-    {
-        if (level < data.AddDamage.Count)
-        {
-            level++;
-            Damage = data.BaseDamage + data.AddDamage[level];
-        }
-    }
-
     public void SaveData()
     {
-        PlayerPrefs.SetInt(data.name, level);
+        // PlayerPrefs.SetInt(data.name, level);
     }
 
     public void RetrieveData()
