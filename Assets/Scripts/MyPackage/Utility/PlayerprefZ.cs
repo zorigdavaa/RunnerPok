@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // using Unity.Serialization.Json;
 
+
 public static class PlayerPrefZ
 {
     public static bool HasKey(string key)
@@ -94,52 +95,52 @@ public static class PlayerPrefZ
         float w = PlayerPrefs.GetFloat(key + "_W", 0);
         return new Quaternion(x, y, z, w);
     }
-    // public static void SetData<T>(string key, T data)
-    // {
-    //     string str = JsonSerialization.ToJson(data);
-    //     PlayerPrefs.SetString(key, str);
-    // }
-    // public static T GetData<T>(string key, T defaultData)
-    // {
-    //     if (HasKey(key))
-    //     {
-    //         string str = PlayerPrefs.GetString(key);
-    //         T data = JsonSerialization.FromJson<T>(str);
-    //         return data;
-    //     }
-    //     else
-    //     {
-    //         return defaultData;
-    //     }
-    // }
-    // public static T GetData<T>(string key)
-    // {
-    //     return GetData(key, default(T));
-    //     // if (HasKey(key))
-    //     // {
-    //     //     string str = PlayerPrefs.GetString(key);
-    //     //     T data = JsonSerialization.FromJson<T>(str);
-    //     //     return data;
-    //     // }
-    //     // else
-    //     // {
-    //     //     return default;
-    //     // }
-    // }
-    // public static void SaveDictionary<Tkey, TValue>(string key, Dictionary<Tkey, TValue> dictionary)
-    // {
-    //     string dictionaryJson = JsonSerialization.ToJson(dictionary);
-    //     PlayerPrefs.SetString(key, dictionaryJson);
-    // }
-    // // Load a dictionary from PlayerPrefs
-    // public static Dictionary<Tkey, TValue> LoadDictionary<Tkey, TValue>(string key, Dictionary<Tkey, TValue> defVal)
-    // {
-    //     if (PlayerPrefs.HasKey(key))
-    //     {
-    //         string dictionaryJson = PlayerPrefs.GetString(key);
-    //         return JsonSerialization.FromJson<Dictionary<Tkey, TValue>>(dictionaryJson);
-    //         // return serializableDictionary;
-    //     }
-    //     return defVal;
-    // }
+    public static void SetData<T>(string key, T data)
+    {
+        string str = JsonUtility.ToJson(data);
+        PlayerPrefs.SetString(key, str);
+    }
+    public static T GetData<T>(string key, T defaultData)
+    {
+        if (HasKey(key))
+        {
+            string str = PlayerPrefs.GetString(key);
+            T data = JsonUtility.FromJson<T>(str);
+            return data;
+        }
+        else
+        {
+            return defaultData;
+        }
+    }
+    public static T GetData<T>(string key)
+    {
+        return GetData(key, default(T));
+        // if (HasKey(key))
+        // {
+        //     string str = PlayerPrefs.GetString(key);
+        //     T data = JsonSerialization.FromJson<T>(str);
+        //     return data;
+        // }
+        // else
+        // {
+        //     return default;
+        // }
+    }
+    public static void SaveDictionary<Tkey, TValue>(string key, Dictionary<Tkey, TValue> dictionary)
+    {
+        string dictionaryJson = JsonUtility.ToJson(dictionary);
+        PlayerPrefs.SetString(key, dictionaryJson);
+    }
+    // Load a dictionary from PlayerPrefs
+    public static Dictionary<Tkey, TValue> LoadDictionary<Tkey, TValue>(string key, Dictionary<Tkey, TValue> defVal)
+    {
+        if (PlayerPrefs.HasKey(key))
+        {
+            string dictionaryJson = PlayerPrefs.GetString(key);
+            return JsonUtility.FromJson<Dictionary<Tkey, TValue>>(dictionaryJson);
+            // return serializableDictionary;
+        }
+        return defVal;
+    }
 }

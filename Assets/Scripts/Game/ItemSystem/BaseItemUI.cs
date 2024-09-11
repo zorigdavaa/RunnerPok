@@ -9,4 +9,8 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
     {
 
     }
+    public virtual void ShowInfo()
+    {
+        
+    }
 }

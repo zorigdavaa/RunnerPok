@@ -7,11 +7,17 @@ using UnityEngine.UI;
 
 public class ItemInfoCanvas : MonoBehaviour
 {
+    public static ItemInfoCanvas Instance;
     public TextMeshProUGUI txtName;
     BaseItemUI itemUI;
     [SerializeField] Button btnWear;
     [SerializeField] Button btnUpgrade;
     [SerializeField] Image Icon;
+    private void Awake()
+    {
+        Instance = this;
+        gameObject.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +32,15 @@ public class ItemInfoCanvas : MonoBehaviour
 
     private void WearorRemove()
     {
-        throw new NotImplementedException();
+        if (true)
+        {
+            PlayerBuffItems.Instance.GetByType(itemUI.data.Where);
+        }
     }
 
     public void ShowInfoOf(BaseItemUI _ItemUI)
     {
+        gameObject.SetActive(true);
         itemUI = _ItemUI;
         txtName.text = _ItemUI.data.name;
         Icon.sprite = _ItemUI.data.Icon;

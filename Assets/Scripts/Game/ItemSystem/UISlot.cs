@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler
+public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDownHandler
 {
-    BaseItemUI Item;
-    [SerializeField] PlayerItemSlot Where;
+    public BaseItemUI Item;
+    public PlayerItemSlot Where;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,21 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+    }
+
+    internal void AddItem(BaseItemUI baseItemUI)
+    {
+        Item = baseItemUI;
+        Item.transform.position = transform.position;
+        Item.transform.SetParent(transform);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (Item != null)
+        {
+            ItemInfoCanvas.Instance.ShowInfoOf(Item);
+        }
     }
 }
