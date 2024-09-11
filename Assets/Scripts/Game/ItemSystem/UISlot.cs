@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler
 {
-    DragItem dragItem;
+    BaseItemUI Item;
+    [SerializeField] PlayerItemSlot Where;
     // Start is called before the first frame update
     void Start()
     {
