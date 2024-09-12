@@ -18,3 +18,4 @@ MonoBehaviour:
   AddDamage: 020000000400000006000000080000000a000000
   pf: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
   pfUI: {fileID: 0}
+  Where: 1

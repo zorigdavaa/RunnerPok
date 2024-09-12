@@ -8,6 +8,7 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
 {
     public BaseItemUI Item;
     public PlayerItemSlot Where;
+    public bool WearSlot = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +37,18 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
 
     internal void AddItem(BaseItemUI baseItemUI)
     {
+        if (baseItemUI.currentSlot != null)
+        {
+            baseItemUI.currentSlot.RemoveItem();
+        }
         Item = baseItemUI;
         Item.transform.position = transform.position;
         Item.transform.SetParent(transform);
+        Item.currentSlot = this;
+    }
+    internal void RemoveItem()
+    {
+        Item = null;
     }
 
     public void OnPointerDown(PointerEventData eventData)

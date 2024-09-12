@@ -55,9 +55,28 @@ public class PlayerBuffItems : MonoBehaviour
         }
     }
 
-    internal void GetByType(PlayerItemSlot where)
+    internal UISlot GetByTypeFromEquiped(PlayerItemSlot where)
     {
-        throw new NotImplementedException();
+        foreach (var slot in equipSlots)
+        {
+            if (slot.Where == where && slot.Item == null)
+            {
+                return slot;
+            }
+        }
+        return null;
+    }
+
+    internal UISlot GetFreefromUnEquip()
+    {
+        foreach (var slot in unEquipslots)
+        {
+            if ( slot.Item == null)
+            {
+                return slot;
+            }
+        }
+        return null;
     }
 }
 public enum PlayerItemSlot
