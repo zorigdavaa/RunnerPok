@@ -11,6 +11,6 @@ public class ItemData : ScriptableObject
     public int BaseDamage;
     public List<int> AddDamage;
     public GameObject pf;
-    public GameObject pfUI;
+    public BaseItemUI pfUI;
     public PlayerItemSlot Where;
 }

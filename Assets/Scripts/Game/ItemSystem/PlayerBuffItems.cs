@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerBuffItems : MonoBehaviour
@@ -8,7 +9,7 @@ public class PlayerBuffItems : MonoBehaviour
     public static PlayerBuffItems Instance;
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
-    [SerializeField] List<BaseItemUI> buffItemDatas;
+    [SerializeField] List<ItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
     void Awake()
     {
@@ -17,12 +18,12 @@ public class PlayerBuffItems : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // RetrieveData();
-        for (int i = 0; i < buffItemDatas.Count; i++)
-        {
-            BaseItemUI insObj = Instantiate(buffItemDatas[i], transform.position, Quaternion.identity);
-            unEquipslots[i].AddItem(insObj);
-        }
+        RetrieveData();
+        // for (int i = 0; i < buffItemDatas.Count; i++)
+        // {
+        //     BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity);
+        //     unEquipslots[i].AddItem(insObj);
+        // }
     }
 
     // Update is called once per frame
@@ -39,18 +40,49 @@ public class PlayerBuffItems : MonoBehaviour
     }
     public void SaveData()
     {
-        PlayerPrefZ.SetData("buffData", equipSlots);
-        Debug.Log(equipSlots.Count);
+        // PlayerPrefZ.SetData("buffData", equipSlots);
+        SlotSave EquipedSaveSlot = new SlotSave();
+        for (int i = 0; i < equipSlots.Count; i++)
+        {
+            if (equipSlots[i].Item != null)
+            {
+                EquipedSaveSlot.saveNames.Add(equipSlots[i].Item.data.name);
+            }
+            else
+            {
+                EquipedSaveSlot.saveNames.Add(null);
+            }
+        }
+        PlayerPrefZ.SetData("equipedData", EquipedSaveSlot);
+        Debug.Log(EquipedSaveSlot.saveNames.Count);
     }
     public void RetrieveData()
     {
-        var saved = PlayerPrefZ.GetData("buffData", new List<UISlot>());
-        Debug.Log(saved.Count);
-        if (saved.Count > 0)
+        SlotSave defaultOne = new SlotSave();
+        defaultOne.saveNames.Add(buffItemDatas[0].itemName);
+        defaultOne.saveNames.Add(null);
+        defaultOne.saveNames.Add(null);
+        defaultOne.saveNames.Add(null);
+        defaultOne.saveNames.Add(null);
+
+        var saved = PlayerPrefZ.GetData("equipedData", defaultOne);
+        Debug.Log(saved.saveNames.Count);
+        if (saved.saveNames.Count > 0)
         {
-            for (int i = 0; i < saved.Count; i++)
+            for (int i = 0; i < saved.saveNames.Count; i++)
             {
-                equipSlots[i].Where = saved[i].Where;
+                if (saved.saveNames[i] == null)
+                {
+                    continue;
+                }
+                ItemData data = buffItemDatas.Where(x => x.itemName == saved.saveNames[i]).FirstOrDefault();
+                if (data)
+                {
+                    BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity, transform);
+                    insObj.transform.localScale = Vector3.one;
+                    unEquipslots[i].AddItem(insObj);
+                }
+
             }
         }
     }
@@ -71,7 +103,7 @@ public class PlayerBuffItems : MonoBehaviour
     {
         foreach (var slot in unEquipslots)
         {
-            if ( slot.Item == null)
+            if (slot.Item == null)
             {
                 return slot;
             }
