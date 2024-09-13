@@ -7,16 +7,29 @@ using UnityEngine.UI;
 
 public class ItemInfoCanvas : MonoBehaviour
 {
-    public static ItemInfoCanvas Instance;
+    private static ItemInfoCanvas _instance;
+    public static ItemInfoCanvas Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                return FindObjectOfType<ItemInfoCanvas>(true);
+            }
+            return _instance;
+        }
+        set { _instance = value; }
+    }
+
     public TextMeshProUGUI txtName;
     BaseItemUI itemUI;
     [SerializeField] Button btnWear;
     [SerializeField] Button btnUpgrade;
     [SerializeField] Image Icon;
-    private void Awake()
+    public void Awake()
     {
         Instance = this;
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()

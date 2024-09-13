@@ -14,6 +14,7 @@ public class PlayerBuffItems : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        itemInfoCanvas.Awake();
     }
     // Start is called before the first frame update
     void Start()
