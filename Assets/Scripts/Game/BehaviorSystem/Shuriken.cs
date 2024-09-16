@@ -10,7 +10,8 @@ public class Shuriken : MonoBehaviour, ISaveAble
     Coroutine AutoGotoPoolCor;
     [SerializeField] ItemData data;
     int level = 1;
-    int Damage = 5;
+    // int Damage = 5;
+    DamageData damageData;
 
     internal void GetFrompool()
     {
@@ -70,7 +71,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
         RightAcc = 0;
         if (enemy && enemy.IsAlive)
         {
-            enemy.TakeDamage(-Damage);
+            enemy.TakeDamage(data.damageData);
             Pool.Release(this);
             if (AutoGotoPoolCor != null)
             {
@@ -88,6 +89,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
     public void RetrieveData()
     {
         level = PlayerPrefs.GetInt(data.name, level);
-        Damage = data.BaseDamage + data.AddDamage[level];
+        damageData.damage = data.BaseDamage + data.AddDamage[level];
+        damageData.Type = data.damageData.Type;
     }
 }

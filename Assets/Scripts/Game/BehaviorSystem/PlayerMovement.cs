@@ -10,8 +10,8 @@ public class PlayerMovement : MovementForgeRun
 
     public Transform groundCheck; // Transform representing a point at the bottom of the player to check for ground
     public LayerMask groundLayer; // Layer mask for ground objects
-    public float minXLimit = -5f; // Minimum X position limit
-    public float maxXLimit = 5f; // Maximum X position limit
+    public float minXLimit = -8f; // Minimum X position limit
+    public float maxXLimit = 8f; // Maximum X position limit
     public float rotSpeed = 10f; // Maximum X position limit
     bool ParentedMove = true;
     Transform childModel;
@@ -125,7 +125,7 @@ public class PlayerMovement : MovementForgeRun
 
                     //Move your cube GameObject to the point where you clicked
                     TargetLocalPos = transform.parent.InverseTransformPoint(hitPoint);
-                    TargetLocalPos.x = Mathf.Clamp(TargetLocalPos.x, -5, 5);
+                    TargetLocalPos.x = Mathf.Clamp(TargetLocalPos.x, minXLimit, maxXLimit);
                     TargetLocalPos.z = Mathf.Clamp(TargetLocalPos.z, -1, 8);
                 }
                 transform.localPosition = Vector3.Lerp(transform.localPosition, TargetLocalPos, 5 * Time.fixedDeltaTime);
@@ -219,7 +219,7 @@ public class PlayerMovement : MovementForgeRun
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
             float inverse = Mathf.InverseLerp(0.1f, 0.9f, viewPortPos.x);
             // Calculate new X position within the bounds (-5 to 5)
-            float newPositionX = Mathf.Lerp(-5f, 5f, inverse);
+            float newPositionX = Mathf.Lerp(minXLimit, maxXLimit, inverse);
             Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
 
             // Smoothly move the player to the target position

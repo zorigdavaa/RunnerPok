@@ -104,6 +104,7 @@ public class BossSection : FightSection
         base.Reset();
         InsEnemies = new List<Enemy>();
     }
+    //When boss death killing ins enemies
     public override void OnEnemyDeath(object sender, EventArgs e)
     {
         foreach (var item in InsEnemies)

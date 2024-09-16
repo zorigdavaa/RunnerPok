@@ -9,7 +9,8 @@ using ZPackage;
 
 public abstract class Character : Mb, IHealth
 {
-    public LeaderBoardData data;
+    public ElementType _Element;
+    // public LeaderBoardData data;
     private float health;
     public float Health
     {
@@ -36,7 +37,18 @@ public abstract class Character : Mb, IHealth
 
     public virtual void TakeDamage(float amount)
     {
+
         Health += (int)amount;
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+    public virtual void TakeDamage(DamageData data)
+    {
+        float multiploer = data.Type.GetEffectiveMultiplier(_Element);
+        float finalDamage = data.damage * multiploer;
+        Health -= (int)finalDamage;
         if (Health <= 0)
         {
             Die();

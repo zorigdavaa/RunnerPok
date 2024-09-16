@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  damageData:
+    damage: 5
+    Type: 0
   Target: {fileID: 0}
   rotSpeed: 0.01
 --- !u!1 &3420912969371925109

@@ -11,5 +11,6 @@ public interface IHealth
     public bool IsAlive { get; }
     // public void TakeDamage(DamageData amount);
     public void TakeDamage(float amount);
+    public void TakeDamage(DamageData data);
     public void Die();
 }

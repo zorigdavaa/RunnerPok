@@ -7,11 +7,13 @@ using ZPackage;
 public class Projectile : MonoBehaviour
 {
     public float speed = 10;
-    public float Damage = 5;
+    // public float Damage = 5;
+    public DamageData damageData;
     // Start is called before the first frame update
     void Start()
     {
-        Damage *= Z.LS.LastInstLvl.DamageMultiplier;
+        // Damage *= Z.LS.LastInstLvl.DamageMultiplier;
+        damageData.damage *= Z.LS.LastInstLvl.DamageMultiplier;
     }
 
     // Update is called once per frame
@@ -30,7 +32,8 @@ public class Projectile : MonoBehaviour
     {
         if (other.GetComponent<Player>())
         {
-            other.GetComponent<Player>().TakeDamage(-Damage);
+            // other.GetComponent<Player>().TakeDamage(-Damage);
+            other.GetComponent<Player>().TakeDamage(damageData);
             Destroy(gameObject);
         }
     }

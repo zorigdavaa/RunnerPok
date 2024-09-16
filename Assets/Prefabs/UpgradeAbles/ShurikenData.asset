@@ -19,3 +19,6 @@ MonoBehaviour:
   pf: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
   pfUI: {fileID: 8257181611891360946, guid: c19807a3d53274d0b8c858b826041634, type: 3}
   Where: 1
+  damageData:
+    damage: 5
+    Type: 0
