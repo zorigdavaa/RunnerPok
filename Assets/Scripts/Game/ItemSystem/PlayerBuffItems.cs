@@ -42,41 +42,70 @@ public class PlayerBuffItems : MonoBehaviour
     public void SaveData()
     {
         // PlayerPrefZ.SetData("buffData", equipSlots);
-        SlotSave EquipedSaveSlot = new SlotSave();
+        SlotSave SavingData = new SlotSave();
         for (int i = 0; i < equipSlots.Count; i++)
         {
             if (equipSlots[i].Item != null)
             {
-                EquipedSaveSlot.saveNames.Add(equipSlots[i].Item.data.name);
+                SavingData.EquipedNames.Add(equipSlots[i].Item.data.name);
             }
             else
             {
-                EquipedSaveSlot.saveNames.Add(null);
+                SavingData.EquipedNames.Add(null);
             }
         }
-        PlayerPrefZ.SetData("equipedData", EquipedSaveSlot);
-        Debug.Log(EquipedSaveSlot.saveNames.Count);
+        for (int i = 0; i < unEquipslots.Count; i++)
+        {
+            if (unEquipslots[i].Item != null)
+            {
+                SavingData.UnEquipedNames.Add(unEquipslots[i].Item.data.name);
+            }
+            else
+            {
+                SavingData.UnEquipedNames.Add(null);
+            }
+        }
+        PlayerPrefZ.SetData("equipedData", SavingData);
+        Debug.Log(SavingData.EquipedNames.Count);
     }
     public void RetrieveData()
     {
         SlotSave defaultOne = new SlotSave();
-        defaultOne.saveNames.Add(buffItemDatas[0].itemName);
-        defaultOne.saveNames.Add(null);
-        defaultOne.saveNames.Add(null);
-        defaultOne.saveNames.Add(null);
-        defaultOne.saveNames.Add(null);
+        defaultOne.EquipedNames.Add(buffItemDatas[0].itemName);
+        defaultOne.EquipedNames.Add(null);
+        defaultOne.EquipedNames.Add(null);
+        defaultOne.EquipedNames.Add(null);
+        defaultOne.EquipedNames.Add(null);
 
         var saved = PlayerPrefZ.GetData("equipedData", defaultOne);
-        Debug.Log(saved.saveNames.Count);
-        if (saved.saveNames.Count > 0)
+        Debug.Log(saved.EquipedNames.Count);
+        if (saved.EquipedNames.Count > 0)
         {
-            for (int i = 0; i < saved.saveNames.Count; i++)
+            for (int i = 0; i < saved.EquipedNames.Count; i++)
             {
-                if (saved.saveNames[i] == null)
+                if (saved.EquipedNames[i] == null)
                 {
                     continue;
                 }
-                ItemData data = buffItemDatas.Where(x => x.itemName == saved.saveNames[i]).FirstOrDefault();
+                ItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipedNames[i]).FirstOrDefault();
+                if (data)
+                {
+                    BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity, transform);
+                    insObj.transform.localScale = Vector3.one;
+                    equipSlots[i].AddItem(insObj);
+                }
+
+            }
+        }
+        if (saved.UnEquipedNames.Count > 0)
+        {
+            for (int i = 0; i < saved.UnEquipedNames.Count; i++)
+            {
+                if (saved.UnEquipedNames[i] == null)
+                {
+                    continue;
+                }
+                ItemData data = buffItemDatas.Where(x => x.itemName == saved.UnEquipedNames[i]).FirstOrDefault();
                 if (data)
                 {
                     BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity, transform);

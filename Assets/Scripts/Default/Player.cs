@@ -25,6 +25,7 @@ public class Player : Character
     int OldCameraIndex = -1;
     CinemachineVirtualCamera currentCamera;
     PlayerState State = PlayerState.None;
+    public ItemData CurrentShurikenData;
 
 
     // Start is called before the first frame update
@@ -138,7 +139,7 @@ public class Player : Character
     {
         Pool = new ObjectPool<Shuriken>(() =>
         {
-            Shuriken spear = Instantiate(Shuriken, transform.position, Quaternion.identity, transform.parent);
+            Shuriken spear = Instantiate(CurrentShurikenData.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.SetPool(Pool);
             return spear;
             // return new GameObject();

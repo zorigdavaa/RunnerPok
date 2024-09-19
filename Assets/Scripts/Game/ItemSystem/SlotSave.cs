@@ -5,9 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class SlotSave
 {
-    public List<string> saveNames;
+    public List<string> EquipedNames;
+    public List<string> UnEquipedNames;
     public SlotSave()
     {
-        saveNames = new List<string>();
+        EquipedNames = new List<string>();
+        UnEquipedNames = new List<string>();
     }
 }

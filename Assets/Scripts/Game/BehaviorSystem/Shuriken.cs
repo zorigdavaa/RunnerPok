@@ -12,6 +12,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
     int level = 1;
     // int Damage = 5;
     DamageData damageData;
+    Transform Graphics;
 
     internal void GetFrompool()
     {
@@ -50,13 +51,14 @@ public class Shuriken : MonoBehaviour, ISaveAble
     void Start()
     {
         RetrieveData();
+        Graphics = transform.GetChild(0);
     }
     public float SideMovement;
     float RightAcc = 0;
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 360 * Time.deltaTime, 0);
+        Graphics.Rotate(0, 360 * Time.deltaTime, 0);
         transform.localPosition += Vector3.forward * 15 * Time.deltaTime;
         // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
         if (RightAcc < Mathf.Abs(SideMovement * 2))

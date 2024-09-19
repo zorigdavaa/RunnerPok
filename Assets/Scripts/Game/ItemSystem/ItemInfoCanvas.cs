@@ -40,7 +40,7 @@ public class ItemInfoCanvas : MonoBehaviour
 
     private void Upgrade()
     {
-        throw new NotImplementedException();
+        itemUI.Upgrade();
     }
 
     private void WearorRemove()
