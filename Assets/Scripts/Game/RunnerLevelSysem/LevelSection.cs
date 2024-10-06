@@ -74,6 +74,16 @@ public class LevelSection : ScriptableObject
     {
         curLevel = null;
     }
+
+    public virtual void GenerateSelf()
+    {
+        // int SectionTileCount = 5;
+        // for (int j = 0; j < SectionTileCount; j++)
+        // {
+        //     Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
+        //     levelTiles.Add(Tile);
+        // }
+    }
 }
 public enum SectionType
 {

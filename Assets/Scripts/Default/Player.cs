@@ -19,7 +19,7 @@ public class Player : Character
     SoundManager soundManager;
     UIBar bar;
     public AnimationController animController;
-    public Shuriken Shuriken;
+    // public Shuriken Shuriken;
     public List<CinemachineVirtualCamera> cameras;
     int currentCameraIndex = 0;
     int OldCameraIndex = -1;
