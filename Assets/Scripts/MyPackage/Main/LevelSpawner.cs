@@ -62,11 +62,6 @@ namespace ZPackage
             }
             return Level;
         }
-        public IEnumerable<Type> GetAllDerivedClassOf(Type type)
-        {
-            return Assembly.GetAssembly(type).GetTypes().Where(x => x.IsSubclassOf(type) && !x.IsAbstract);
-
-        }
         List<LevelSection> AvailAbleSection = new List<LevelSection>()
             {
                 new FightSection()
