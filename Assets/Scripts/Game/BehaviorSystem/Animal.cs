@@ -167,6 +167,7 @@ public class Animal : Enemy
 
     public override void Die()
     {
+        StopAllCoroutines();
         base.Die();
         transform.SetParent(null);
         animationController.Die();

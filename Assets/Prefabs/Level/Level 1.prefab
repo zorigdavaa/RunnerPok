@@ -46,18 +46,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecIDX: 0
   SecTileIDx: 0
-  LevelObjects:
-  - {fileID: 11400000, guid: 3786e0ab74066ff49aa0bf23a6c0066d, type: 2}
-  - {fileID: 11400000, guid: d1df522f64c9af4428853029508cf17b, type: 2}
-  - {fileID: 11400000, guid: 2d9be391d96a9b143a521810b22ef90c, type: 2}
-  - {fileID: 11400000, guid: cf727b755d2cda0468be14de9576d11b, type: 2}
-  - {fileID: 11400000, guid: c5d676251cb484b5d8023e5908408341, type: 2}
+  SectionDatas:
+  - {fileID: 11400000, guid: 933786c3ec8b1ff4daee8bfe0d9e74d5, type: 2}
+  - {fileID: 11400000, guid: fb6b54ea32230184994dff6bd3b94467, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}
   speedUpPF: {fileID: 1846571084168223024, guid: 0736c67bd4164044fbe8f25c7711ef16, type: 3}
   BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
-  CurSection: {fileID: 0}
   HealthMultiplier: 1
   DamageMultiplier: 1
   lastSpawnedTile: {fileID: 0}

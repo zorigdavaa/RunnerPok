@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8621f79b46e0d2f49bba09543657a619, type: 3}
-  m_Name: LVL 1 1
+  m_Script: {fileID: 11500000, guid: e1c5de76c262f0349946e62f536569c0, type: 3}
+  m_Name: lvl1 2
   m_EditorClassIdentifier: 
-  SectionType: 1
+  Type: 1
   levelTiles:
-  - {fileID: 6317272806129293980, guid: 6a416fb891fea0e4095436a8b0231548, type: 3}
+  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   - {fileID: 5044468542435672352, guid: 85a3a8df855b1d14d814a212a45caa40, type: 3}
-  - {fileID: 1152342366785983181, guid: 3245dd3cd9aa07646922280df34aaff3, type: 3}
+  - {fileID: 1152342366785983181, guid: 3fbbefc02e713e64f91ab0a0bef2c7c2, type: 3}
+  - {fileID: 1152342366785983181, guid: 722e594e48b78cd4ba131b981da948e0, type: 3}
   - {fileID: 1152342366785983181, guid: 3245dd3cd9aa07646922280df34aaff3, type: 3}
   - {fileID: 1152342366785983181, guid: 6d4d7ee984e20ea4eb6b78e2ed6e6f5f, type: 3}
   - {fileID: 1152342366785983181, guid: ae71ec917e81e934eb94964c6ffca414, type: 3}
-  SectionEnd: {fileID: 1152342366785983181, guid: 9eccb436512f1484580e9d52d8b66e38, type: 3}
-  SectionStart: {fileID: 1152342366785983181, guid: 3fbbefc02e713e64f91ab0a0bef2c7c2, type: 3}
-  LevelEnemies: []
+  - {fileID: 1152342366785983181, guid: f74aad4f2381847b68d4fd5fe6517738, type: 3}
+  SectionEnd: {fileID: 1152342366785983181, guid: 7dceca1d5acb74646b675093aec19448, type: 3}
+  SectionStart: {fileID: 0}

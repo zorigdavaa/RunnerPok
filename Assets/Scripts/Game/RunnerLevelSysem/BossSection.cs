@@ -27,7 +27,7 @@ public class BossSection : FightSection
         {
             item.transform.SetParent(parnet);
         }
-    } 
+    }
     List<Enemy> InsEnemies = new List<Enemy>();
     public void InsEnemsAtTile(Tile tile)
     {
@@ -46,7 +46,7 @@ public class BossSection : FightSection
             {
                 Vector3 tileCenter = (tile.start.position + tile.end.position) / 2;
                 Vector3 pos = tileCenter + new Vector3(Random.Range(-4, 4), 0, 0);
-                Enemy insEnemy = Instantiate(InsEnems[i], pos, Quaternion.Euler(0, 180, 0), tile.transform);
+                Enemy insEnemy = GameObject.Instantiate(InsEnems[i], pos, Quaternion.Euler(0, 180, 0), tile.transform);
                 // insEnemy.Ondeath += OnEnemyDeath;
                 // RemainingEnemy++;
                 InsEnemies.Add(insEnemy);
@@ -81,7 +81,7 @@ public class BossSection : FightSection
             for (int i = 0; i < Boss.EnemyPF.Count; i++)
             {
                 Vector3 RandomPosXZ = new Vector3(Random.Range(-4, 4), 0, 0);
-                Enemy insEnemy = Instantiate(Boss.EnemyPF[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
+                Enemy insEnemy = GameObject.Instantiate(Boss.EnemyPF[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
                 insEnemy.Ondeath += OnEnemyDeath;
                 AllEnemyCount++;
             }

@@ -82,7 +82,7 @@ public class FightSection : LevelSection
             for (int i = 0; i < InsEnems.Count; i++)
             {
                 Vector3 RandomPosXZ = new Vector3(Random.Range(-4, 4), 0, 0);
-                Enemy insEnemy = Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
+                Enemy insEnemy = GameObject.Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
                 insEnemy.Ondeath += OnEnemyDeath;
                 RemEnemyCount++;
             }

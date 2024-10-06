@@ -48,7 +48,6 @@ namespace ZPackage
             Random.InitState(GameManager.Instance.Level);
             Level Level = new Level();
             int SectionCount = 4;
-            // var AllTypes = GetAllDerivedClassOf(typeof(LevelSection));
             for (int i = 0; i < SectionCount; i++)
             {
                 LevelSection section = AvailAbleSection[Random.Range(0, AvailAbleSection.Count - 1)];//availLast Boss

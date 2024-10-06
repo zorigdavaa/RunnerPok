@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
-[CreateAssetMenu(fileName = "LevelSection", menuName = "ScriptableObjects/LvlSection")]
-public class LevelSection : ScriptableObject
+// [CreateAssetMenu(fileName = "ObstacleSection", menuName = "ScriptableObjects/ObstacleSection")]
+[System.Serializable]
+public class LevelSection : Object
 {
     public virtual SectionType SectionType { get => SectionType.Obstacle; }
     public EventHandler Oncomplete;
@@ -19,7 +21,7 @@ public class LevelSection : ScriptableObject
     }
     public virtual void StartSection(Level level)
     {
-        Debug.Log("Start of " + name);
+        // Debug.Log("Start of " + name);
         Init(level);
         level.player.ChangeState(PlayerState.Obs);
     }

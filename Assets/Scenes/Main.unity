@@ -5163,8 +5163,6 @@ MonoBehaviour:
   mp: {x: 0, y: 0, z: 0}
   Levels:
   - {fileID: 7278324688581108722, guid: 6fd974ac1df82564aba0dab4a6f7a42a, type: 3}
-  - {fileID: 7278324688581108722, guid: dd15f6b3e47dd40bbb2e56b648a6a5bb, type: 3}
-  - {fileID: 7278324688581108722, guid: 0d92b8cf79654448fa19e78770a805ed, type: 3}
   LastInstLvl: {fileID: 0}
   AllTiles:
   - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}

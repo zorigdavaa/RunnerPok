@@ -11,6 +11,7 @@ public class Level : MonoBehaviour
     public int SecIDX = 0;
     public int SecTileIDx = 0;
     public List<LevelSection> LevelObjects;
+    public List<SectionData> SectionDatas;
     public Player player; // Reference to the player's transform
     public Vector3 nextSpawnPosition; // Position to spawn the next tile
     bool HasNextSection => LevelObjects.Count - 1 > SecIDX;
@@ -28,8 +29,28 @@ public class Level : MonoBehaviour
         SpawnedTiles = new List<Tile>();
         player = Z.Player;
         // StartNewSection();
-        
+        foreach (var item in SectionDatas)
+        {
+            LevelSection section = item.CreateMono();
+            LevelObjects.Add(section);
+            // LevelObjects.Add(new LevelSection());
+        }
+
     }
+
+    // private LevelSection CreateAndGetSection(SectionData item)
+    // {
+    //     switch (item)
+    //     {
+    //         case item is SectionDataFight:
+    //             FightSection section = new FightSection();
+    //             section.levelTiles = item.levelTiles;
+    //             section.LevelEnemies = item.LevelEnemies;
+    //             return section;
+    //         case SectionType.Collect: return new CollectSection();
+    //         default: return new LevelSection();
+    //     }
+    // }
 
     public void Update()
     {
@@ -97,7 +118,7 @@ public class Level : MonoBehaviour
         }
         CurSection.StartSection(this);
         CurSection.Oncomplete += NextSection;
-        print("Start Of From Level " + CurSection.SectionType + " " + CurSection.name);
+        // print("Start Of From Level " + CurSection.SectionType + " " + CurSection.name);
     }
 
     private void InsSpeedUp()
