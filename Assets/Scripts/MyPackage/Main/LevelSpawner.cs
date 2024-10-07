@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using ZPackage.Utility;
 using Random = UnityEngine.Random;
 
@@ -25,7 +26,20 @@ namespace ZPackage
             // }
             int lvlIndex = GameManager.Instance.Level - 1;
             // SpawnLevel(Levels[0]);
-            SpawnLevel(Levels[lvlIndex]);
+            if (lvlIndex < Levels.Count)
+            {
+                SpawnLevel(Levels[lvlIndex]);
+            }
+            else
+            {
+                Level level = GenerateLevel();
+                if (LastInstLvl)
+                {
+                    pos = LastInstLvl.nextSpawnPosition;
+                    LastInstLvl.DestSelf();
+                }
+                LastInstLvl = level;
+            }
             GameManager.Instance.OnGamePlay += OnGamePlay;
         }
 
@@ -46,21 +60,27 @@ namespace ZPackage
         public Level GenerateLevel()
         {
             Random.InitState(GameManager.Instance.Level);
-            Level Level = new Level();
+            GameObject LevelGo = new GameObject();
+            LevelGo.name = GameManager.Instance.Level + " Level";
+            Level lvl = LevelGo.AddComponent<Level>();
+            lvl.LoadAssets();
+
             int SectionCount = 4;
+            lvl.Sections.Clear();
             for (int i = 0; i < SectionCount; i++)
             {
                 LevelSection section = AvailAbleSection[Random.Range(0, AvailAbleSection.Count - 1)];//availLast Boss
-                section.GenerateSelf();
+                section.LoadNGenerateSelf();
                 // int SectionTileCount = 5;
                 // for (int j = 0; j < SectionTileCount; j++)
                 // {
                 //     Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
                 //     section.levelTiles.Add(Tile);
                 // }
-                Level.LevelObjects.Add(section);
+                lvl.AddSection(section);
+                // lvl.Sections.Add(section);
             }
-            return Level;
+            return lvl;
         }
         List<LevelSection> AvailAbleSection = new List<LevelSection>()
             {

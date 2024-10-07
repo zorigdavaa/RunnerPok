@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9747879cd8db346efb76b20975da8729
+  m_SerializeEntries:
+  - m_GUID: 73e1efa74a7f04c779e55bf734b8d680
+    m_Address: Assets/Prefabs/Tiles/TileObs 8.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1983c63e378104dd7b552ecca9bf91ab
+    m_Address: Assets/Prefabs/Tiles/TileObs 7.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7380fa43c21684345866812f0a80aa0b
+    m_Address: Assets/Prefabs/Tiles/TileObs 6.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 309075768fce842bbbde18d398789008
+    m_Address: Assets/Prefabs/Tiles/TileObs 5.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f74aad4f2381847b68d4fd5fe6517738
+    m_Address: Assets/Prefabs/Tiles/TileObs 4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae71ec917e81e934eb94964c6ffca414
+    m_Address: Assets/Prefabs/Tiles/TileObs 3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d4d7ee984e20ea4eb6b78e2ed6e6f5f
+    m_Address: Assets/Prefabs/Tiles/TileObs 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3245dd3cd9aa07646922280df34aaff3
+    m_Address: Assets/Prefabs/Tiles/TileObs 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 722e594e48b78cd4ba131b981da948e0
+    m_Address: Assets/Prefabs/Tiles/TileObs.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CollectTile
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3fbbefc02e713e64f91ab0a0bef2c7c2
+    m_Address: Assets/Prefabs/Tiles/Start Jump.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - StartTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85a3a8df855b1d14d814a212a45caa40
+    m_Address: Assets/Prefabs/Tiles/SideObs.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a416fb891fea0e4095436a8b0231548
+    m_Address: Assets/Prefabs/Tiles/JumpTile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    - CollectTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9eccb436512f1484580e9d52d8b66e38
+    m_Address: Assets/Prefabs/Tiles/End 2 jump.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dceca1d5acb74646b675093aec19448
+    m_Address: Assets/Prefabs/Tiles/End 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EndTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0315c3bd8b4a9a44b80c46e26eff99cd
+    m_Address: Assets/Prefabs/Tiles/6 Bat.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CollectTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e7bc24e620875149adf2e7f54d10c58
+    m_Address: Assets/Prefabs/Tiles/0 BaseTile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FightTile
+    - ObsTile
+    - CollectTile
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d0cc749f5936b4fee86c8e90eddfc3ed, type: 2}
+    - {fileID: 11400000, guid: 71574262a7b764c37a084c05706730fa, type: 2}

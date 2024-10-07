@@ -127,4 +127,8 @@ public class FightSection : LevelSection
             EndSection(curLevel);
         }
     }
+    public override void SetLabel()
+    {
+        label.labelString = "FightTile";
+    }
 }

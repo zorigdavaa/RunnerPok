@@ -114,4 +114,8 @@ public class BossSection : FightSection
         }
         EndSection(curLevel);
     }
+    public override void SetLabel()
+    {
+        label.labelString = "FightTile";
+    }
 }

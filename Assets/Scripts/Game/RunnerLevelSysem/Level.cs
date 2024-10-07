@@ -5,17 +5,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using ZPackage;
 using Random = UnityEngine.Random;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class Level : MonoBehaviour
 {
     public int SecIDX = 0;
     public int SecTileIDx = 0;
-    public List<LevelSection> LevelObjects;
-    public List<SectionData> SectionDatas;
+    public List<LevelSection> Sections = new List<LevelSection>();
+    public List<SectionData> SectionDatas = new List<SectionData>();
     public Player player; // Reference to the player's transform
     public Vector3 nextSpawnPosition; // Position to spawn the next tile
-    bool HasNextSection => LevelObjects.Count - 1 > SecIDX;
-
+    bool HasNextSection => Sections.Count - 1 > SecIDX;
+    List<AsyncOperationHandle> OperationHandles = new List<AsyncOperationHandle>();
     public Tile PlayerBeingTile;
     public SpeedUp speedUpPF;
     public Tile BaseTilePf;
@@ -24,7 +26,6 @@ public class Level : MonoBehaviour
     public float DamageMultiplier = 1;
     public void Start()
     {
-        // BaseTilePf = 
         nextSpawnPosition = transform.position;
         SpawnedTiles = new List<Tile>();
         player = Z.Player;
@@ -32,7 +33,7 @@ public class Level : MonoBehaviour
         foreach (var item in SectionDatas)
         {
             LevelSection section = item.CreateMono();
-            LevelObjects.Add(section);
+            Sections.Add(section);
             // LevelObjects.Add(new LevelSection());
         }
 
@@ -63,10 +64,9 @@ public class Level : MonoBehaviour
                 SpawnTile(BaseTilePf);
             }
         }
-        else
+        else if (CurSection)
         {
             CurSection.UpdateSection(this);
-
         }
 
     }
@@ -100,11 +100,11 @@ public class Level : MonoBehaviour
         SecTileIDx = 0;
         BeforSectionTiles.Clear();
         BeforSectionTiles = new List<Tile>(SpawnedTiles);
-        CurSection = LevelObjects[SecIDX];
+        CurSection = Sections[SecIDX];
         if (SecIDX > 0)
         {
             LevelSection PrevSection = null;
-            PrevSection = LevelObjects[SecIDX - 1];
+            PrevSection = Sections[SecIDX - 1];
             if (PrevSection.SectionType == SectionType.Fight)
             {
                 InsSpeedUp();
@@ -130,8 +130,8 @@ public class Level : MonoBehaviour
     }
 
     public Tile lastSpawnedTile;
-    public List<Tile> SpawnedTiles;
-    public List<Tile> BeforSectionTiles;
+    public List<Tile> SpawnedTiles = new List<Tile>();
+    public List<Tile> BeforSectionTiles = new List<Tile>();
     public Tile SpawnTile(Tile tilePrefab)
     {
         Tile tile = Instantiate(tilePrefab, nextSpawnPosition, Quaternion.identity, transform);
@@ -163,5 +163,16 @@ public class Level : MonoBehaviour
             Destroy(SpawnedTiles[i].gameObject, i);
         }
 
+    }
+
+    internal void LoadAssets()
+    {
+        BaseTilePf = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Tiles/0 BaseTile.prefab").WaitForCompletion().GetComponent<Tile>();
+        speedUpPF = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Obs/SpeedUpBig.prefab").WaitForCompletion().GetComponent<SpeedUp>();
+    }
+
+    internal void AddSection(LevelSection section)
+    {
+        Sections.Add(section);
     }
 }
