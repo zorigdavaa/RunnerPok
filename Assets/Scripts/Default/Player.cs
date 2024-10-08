@@ -276,6 +276,10 @@ public class Player : Character
             State = _state;
         }
     }
+    public PlayerState GetState()
+    {
+        return State;
+    }
     public void CollectUpdate()
     {
         if (Physics.SphereCast(transform.position + Vector3.up, 3, Vector3.forward, out RaycastHit hit, 30f, 1 << 6))

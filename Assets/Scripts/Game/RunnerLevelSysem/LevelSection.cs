@@ -7,6 +7,7 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Threading.Tasks;
 
 // [CreateAssetMenu(fileName = "ObstacleSection", menuName = "ScriptableObjects/ObstacleSection")]
 [System.Serializable]
@@ -15,13 +16,14 @@ public class LevelSection : Object
     public virtual SectionType SectionType { get => SectionType.Obstacle; }
     public EventHandler Oncomplete;
     public List<Tile> levelTiles = new List<Tile>();
+    int index = 0;
     public Tile SectionEnd;
     public Tile SectionStart;
     public Level curLevel;
 
-    public bool HasNextTile(int TileIDx)
+    public bool HasNextTile()
     {
-        return levelTiles.Count - 1 > TileIDx;
+        return levelTiles.Count - 1 > index;
     }
     public virtual void StartSection(Level level)
     {
@@ -42,12 +44,12 @@ public class LevelSection : Object
     public virtual void UpdateSection(Level level)
     {
         bool isNearEndofLand = level.player.transform.position.z > level.nextSpawnPosition.z - 70;
-        if (isNearEndofLand && HasNextTile(level.SecTileIDx))
+        if (isNearEndofLand && HasNextTile())
         {
-            Tile tileToIns = levelTiles[level.SecTileIDx];
+            Tile tileToIns = levelTiles[index];
             level.SpawnTile(tileToIns);
-            level.SecTileIDx++;
-            if (!HasNextTile(level.SecTileIDx))
+            index++;
+            if (!HasNextTile())
             {
 
                 EndSection(level);
@@ -82,49 +84,54 @@ public class LevelSection : Object
     }
 
     public List<Tile> AllTiles;
-    public AssetLabelReference label;
-    public virtual void LoadNGenerateSelf()
+    public string key;
+    public virtual async Task LoadNGenerateSelf()
     {
         // label = AddressAbleLabelHolder.Instance.reference;
-        label = new AssetLabelReference();
 
         SetLabel();
         // Addressables.LoadAssetsAsync<Tile>(label, (tile) =>
         // {
         //     Debug.Log("Loaded " + tile.name);
         // }).Completed += GenerateSelf;
-        Addressables.LoadAssetsAsync<GameObject>(label, (tile) =>
+        AllTiles = new List<Tile>();
+        var operation = Addressables.LoadAssetsAsync<GameObject>(key, (tile) =>
+         {
+             Debug.Log("Loaded " + tile.name);
+             AllTiles.Add(tile.GetComponent<Tile>());
+         });
+        await operation.Task;
+        int SectionTileCount = 5;
+        for (int j = 0; j < SectionTileCount; j++)
         {
-            Debug.Log("Loaded " + tile.name);
-        }).Completed += GenerateSelf;
-        // AllTiles = Resources.LoadAll<Tile>("Tiles").ToList();
-
-
+            Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
+            levelTiles.Add(Tile);
+        }
     }
 
     public virtual void SetLabel()
     {
-        label.labelString = "ObsTile";
+        key = "ObsTile";
     }
 
-    public virtual void GenerateSelf(AsyncOperationHandle<IList<GameObject>> handle)
-    {
-        if (handle.Status == AsyncOperationStatus.Succeeded)
-        {
-            AllTiles = handle.Result.Select(x => x.GetComponent<Tile>()).ToList();
-            int SectionTileCount = 5;
-            for (int j = 0; j < SectionTileCount; j++)
-            {
-                Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
-                levelTiles.Add(Tile);
-            }
-            Debug.Log("Added them ALL");
-        }
-        else
-        {
-            Debug.LogError("Failed to Load Asset");
-        }
-    }
+    // public virtual void GenerateSelf(AsyncOperationHandle<IList<GameObject>> handle)
+    // {
+    //     if (handle.Status == AsyncOperationStatus.Succeeded)
+    //     {
+    //         AllTiles = handle.Result.Select(x => x.GetComponent<Tile>()).ToList();
+    //         int SectionTileCount = 5;
+    //         for (int j = 0; j < SectionTileCount; j++)
+    //         {
+    //             Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
+    //             levelTiles.Add(Tile);
+    //         }
+    //         Debug.Log("Added them ALL");
+    //     }
+    //     else
+    //     {
+    //         Debug.LogError("Failed to Load Asset");
+    //     }
+    // }
 }
 public enum SectionType
 {

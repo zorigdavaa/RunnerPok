@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CollectSection", menuName = "ScriptableObjects/CollectSection")]
+// [CreateAssetMenu(fileName = "CollectSection", menuName = "ScriptableObjects/CollectSection")]
 public class CollectSection : LevelSection
 {
     public override SectionType SectionType => SectionType.Collect;
@@ -42,6 +42,6 @@ public class CollectSection : LevelSection
     }
     public override void SetLabel()
     {
-        label.labelString = "CollectTile";
+        key = "CollectTile";
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "BossSection", menuName = "ScriptableObjects/BossSection")]
+// [CreateAssetMenu(fileName = "BossSection", menuName = "ScriptableObjects/BossSection")]
 public class BossSection : FightSection
 {
     public EnemyWave Boss;
@@ -116,6 +116,6 @@ public class BossSection : FightSection
     }
     public override void SetLabel()
     {
-        label.labelString = "FightTile";
+        key = "FightTile";
     }
 }

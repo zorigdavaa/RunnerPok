@@ -23,7 +23,7 @@ public class Tile : MonoBehaviour
         {
             // print(true);
             OnTileEnter?.Invoke(this, EventArgs.Empty);
-            transform.parent.GetComponent<Level>().PlayerBeingTile = this;
+            // transform.parent.GetComponent<Level>().PlayerBeingTile = this;
         }
     }
 }

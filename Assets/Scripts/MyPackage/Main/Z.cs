@@ -17,7 +17,7 @@ namespace ZPackage
             {
                 if (_player == null)
                 {
-                    _player = Mb.FindObjectOfType<Player>();
+                    _player = Object.FindObjectOfType<Player>();
                 }
                 return _player;
             }

@@ -117,6 +117,12 @@ MonoBehaviour:
     - ObsTile
     - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0736c67bd4164044fbe8f25c7711ef16
+    m_Address: Assets/Prefabs/Obs/SpeedUpBig.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpeedUp
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
   m_SchemaSet:

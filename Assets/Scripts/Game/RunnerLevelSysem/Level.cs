@@ -7,11 +7,12 @@ using ZPackage;
 using Random = UnityEngine.Random;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Threading.Tasks;
 
 public class Level : MonoBehaviour
 {
     public int SecIDX = 0;
-    public int SecTileIDx = 0;
+    // public int SecTileIDx = 0;
     public List<LevelSection> Sections = new List<LevelSection>();
     public List<SectionData> SectionDatas = new List<SectionData>();
     public Player player; // Reference to the player's transform
@@ -56,7 +57,7 @@ public class Level : MonoBehaviour
     public void Update()
     {
         // if (isNearEndofLand && CurSectionHasTile)
-        if (CurSection == null)
+        if (CurSection == null && BaseTilePf != null)
         {
             bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;
             if (isNearEndofLand)
@@ -82,8 +83,10 @@ public class Level : MonoBehaviour
         else
         {
             CurSection = null;
-            Tile tile = SpawnTile(BaseTilePf);
-            tile.OnTileEnter += LevelComplete;
+            //Todo Make it Wait Until
+            FunctionTimer.WaitAndCall(this, 2, () => { Z.GM.LevelComplete(this, 0); });
+            // Tile tile = SpawnTile(BaseTilePf);
+            // tile.OnTileEnter += LevelComplete;
 
         }
     }
@@ -91,13 +94,13 @@ public class Level : MonoBehaviour
     private void LevelComplete(object sender, EventArgs e)
     {
         Tile tile = sender as Tile;
-        tile.OnTileEnter -= LevelComplete;
+        // tile.OnTileEnter -= LevelComplete;
         Z.GM.LevelComplete(this, 0);
     }
 
     public void StartNewSection()
     {
-        SecTileIDx = 0;
+        // SecTileIDx = 0;
         BeforSectionTiles.Clear();
         BeforSectionTiles = new List<Tile>(SpawnedTiles);
         CurSection = Sections[SecIDX];
@@ -115,6 +118,10 @@ public class Level : MonoBehaviour
         else
         {
             InsSpeedUp();
+        }
+        if (Z.Player.GetState() == PlayerState.Wait)
+        {
+            Z.Player.ChangeState(PlayerState.Obs);
         }
         CurSection.StartSection(this);
         CurSection.Oncomplete += NextSection;
@@ -165,14 +172,40 @@ public class Level : MonoBehaviour
 
     }
 
-    internal void LoadAssets()
+    public async Task LoadAssets()
     {
-        BaseTilePf = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Tiles/0 BaseTile.prefab").WaitForCompletion().GetComponent<Tile>();
-        speedUpPF = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Obs/SpeedUpBig.prefab").WaitForCompletion().GetComponent<SpeedUp>();
+        // BaseTilePf = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Tiles/0 BaseTile.prefab").WaitForCompletion().GetComponent<Tile>();
+        // speedUpPF = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Obs/SpeedUpBig.prefab").WaitForCompletion().GetComponent<SpeedUp>();
+        var operation = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Tiles/0 BaseTile.prefab");
+        var operation2 = Addressables.LoadAssetAsync<GameObject>("Assets/Prefabs/Obs/SpeedUpBig.prefab");
+        await operation.Task;
+        await operation2.Task;
+        BaseTilePf = operation.Task.Result.GetComponent<Tile>();
+        speedUpPF = operation2.Task.Result.GetComponent<SpeedUp>();
     }
 
-    internal void AddSection(LevelSection section)
+    internal async Task GenerateSections(int sectionCount)
     {
-        Sections.Add(section);
+        Sections.Clear();
+        for (int i = 0; i < sectionCount; i++)
+        {
+            LevelSection section = AvailAbleSection[Random.Range(0, AvailAbleSection.Count - 1)];//availLast Boss
+            await section.LoadNGenerateSelf();
+            // int SectionTileCount = 5;
+            // for (int j = 0; j < SectionTileCount; j++)
+            // {
+            //     Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
+            //     section.levelTiles.Add(Tile);
+            // }
+            Sections.Add(section);
+            // lvl.Sections.Add(section);
+        }
     }
+    List<LevelSection> AvailAbleSection = new List<LevelSection>()
+            {
+                new FightSection()
+                ,new CollectSection()
+                ,new LevelSection()
+                // ,new BossSection()
+            };
 }

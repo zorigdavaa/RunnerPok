@@ -129,6 +129,6 @@ public class FightSection : LevelSection
     }
     public override void SetLabel()
     {
-        label.labelString = "FightTile";
+        key = "FightTile";
     }
 }

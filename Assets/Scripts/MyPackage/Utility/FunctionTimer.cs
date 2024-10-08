@@ -18,10 +18,19 @@ namespace ZPackage
                 activeTimers = new List<FunctionTimer>();
             }
         }
-        public static async void WaitAndFireAsync(float time,Action action)
+        public static async void WaitAndFireAsync(float time, Action action)
         {
             await Task.Delay(TimeSpan.FromSeconds(time));
             action();
+        }
+        public static void WaitAndCall(MonoBehaviour mone, float wait = 1, Action action = null)
+        {
+            mone.StartCoroutine(LocalCor());
+            IEnumerator LocalCor()
+            {
+                yield return new WaitForSeconds(wait);
+                action?.Invoke();
+            }
         }
         public static FunctionTimer Create(Action action, float timer, string name = null)
         {

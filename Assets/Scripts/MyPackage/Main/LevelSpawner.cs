@@ -18,7 +18,7 @@ namespace ZPackage
         Vector3 pos = Vector3.zero;
         public List<Tile> AllTiles;
 
-        private void Start()
+        private async Task Start()
         {
             // for (int i = 0; i < 5; i++)
             // {
@@ -32,13 +32,15 @@ namespace ZPackage
             }
             else
             {
-                Level level = GenerateLevel();
+                // Level level = GenerateLevel();
+                Task<Level> task = GenerateLevel();
                 if (LastInstLvl)
                 {
                     pos = LastInstLvl.nextSpawnPosition;
                     LastInstLvl.DestSelf();
                 }
-                LastInstLvl = level;
+                await task;
+                LastInstLvl = task.Result;
             }
             GameManager.Instance.OnGamePlay += OnGamePlay;
         }
@@ -57,38 +59,19 @@ namespace ZPackage
             }
             LastInstLvl = Instantiate(level, pos, Quaternion.identity, transform);
         }
-        public Level GenerateLevel()
+        public async Task<Level> GenerateLevel()
         {
             Random.InitState(GameManager.Instance.Level);
             GameObject LevelGo = new GameObject();
             LevelGo.name = GameManager.Instance.Level + " Level";
             Level lvl = LevelGo.AddComponent<Level>();
-            lvl.LoadAssets();
-
+            await lvl.LoadAssets();
             int SectionCount = 4;
-            lvl.Sections.Clear();
-            for (int i = 0; i < SectionCount; i++)
-            {
-                LevelSection section = AvailAbleSection[Random.Range(0, AvailAbleSection.Count - 1)];//availLast Boss
-                section.LoadNGenerateSelf();
-                // int SectionTileCount = 5;
-                // for (int j = 0; j < SectionTileCount; j++)
-                // {
-                //     Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
-                //     section.levelTiles.Add(Tile);
-                // }
-                lvl.AddSection(section);
-                // lvl.Sections.Add(section);
-            }
+            await lvl.GenerateSections(SectionCount);
+            lvl.transform.SetParent(transform);
             return lvl;
         }
-        List<LevelSection> AvailAbleSection = new List<LevelSection>()
-            {
-                new FightSection()
-                ,new CollectSection()
-                ,new LevelSection()
-                // ,new BossSection()
-            };
+
     }
 }
 public enum SpawnTileType

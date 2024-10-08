@@ -40,7 +40,7 @@ public class Animal : Enemy
                 yield return null;
                 // print("Waiting");
             }
-            print("Moving");
+            // print("Moving");
             StartMove = true;
             attackTimer = 0;
             ActionCoroutine = null;
