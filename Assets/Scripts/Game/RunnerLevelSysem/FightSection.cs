@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,7 +11,8 @@ using Random = UnityEngine.Random;
 public class FightSection : BaseSection
 {
     public override SectionType SectionType => SectionType.Fight;
-    [SerializeReference] public List<EnemyWave> LevelEnemies;
+
+
     [NonSerialized]
     public int EnemyWaveIdx = 0;
     [NonSerialized]
@@ -128,8 +130,12 @@ public class FightSection : BaseSection
             EndSection(curLevel);
         }
     }
-    public override void SetLabel()
+    public override void SetKey()
     {
         key = "FightTile";
+    }
+    public override Task LoadNGenerateSelf()
+    {
+        return base.LoadNGenerateSelf();
     }
 }

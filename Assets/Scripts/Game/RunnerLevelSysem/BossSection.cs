@@ -115,7 +115,7 @@ public class BossSection : FightSection
         }
         EndSection(curLevel);
     }
-    public override void SetLabel()
+    public override void SetKey()
     {
         key = "FightTile";
     }

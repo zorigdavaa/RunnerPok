@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using ZPackage;
 using Random = UnityEngine.Random;
@@ -22,7 +21,7 @@ public class Level : MonoBehaviour
     public Tile PlayerBeingTile;
     public SpeedUp speedUpPF;
     public Tile BaseTilePf;
-    [SerializeField] BaseSection CurSection;
+    BaseSection CurSection = null;
     public float HealthMultiplier = 1;
     public float DamageMultiplier = 1;
     public void Start()
@@ -59,6 +58,7 @@ public class Level : MonoBehaviour
         // if (isNearEndofLand && CurSectionHasTile)
         if (CurSection == null && BaseTilePf != null)
         {
+            Debug.Log("SS");
             bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;
             if (isNearEndofLand)
             {
@@ -189,7 +189,7 @@ public class Level : MonoBehaviour
         Sections.Clear();
         for (int i = 0; i < sectionCount; i++)
         {
-            BaseSection section = AvailAbleSection[Random.Range(0, AvailAbleSection.Count - 1)];//availLast Boss
+            BaseSection section = GetRandomSectionInstance();
             // BaseSection section = GetRandomSectionInstance();
             await section.LoadNGenerateSelf();
             // int SectionTileCount = 5;
@@ -211,19 +211,27 @@ public class Level : MonoBehaviour
         // Add more types as needed
     };
 
-    // public BaseSection GetRandomSectionInstance()
-    // {
-    //     // Randomly select a type from the list
-    //     Type randomType = sectionTypes[UnityEngine.Random.Range(0, sectionTypes.Count)];
-
-    //     // Create an instance of the randomly selected type
-    //     return (BaseSection)ScriptableObject.CreateInstance(randomType);
-    // }
-    List<BaseSection> AvailAbleSection = new List<BaseSection>()
-            {
-                new FightSection()
-                ,new CollectSection()
-                ,new LevelSection()
-                // ,new BossSection()
-            };
+    public BaseSection GetRandomSectionInstance()
+    {
+        float value = Random.value;
+        if (value < 0.2f)
+        {
+            return new FightSection();
+        }
+        else if (value < 0.5f)
+        {
+            return new CollectSection();
+        }   
+        else
+        {
+            return new LevelSection();
+        }
+    }
+    // List<Type> AvailAbleSection = new List<Type>()
+    //         {
+    //             typeof(FightSection)
+    //             ,typeof(CollectSection)
+    //             ,typeof(LevelSection)
+    //             // ,new BossSection()
+    //         };
 }

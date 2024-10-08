@@ -40,7 +40,7 @@ public class CollectSection : LevelSection
             curLevel.player.ChangeState(PlayerState.Collect);
         }
     }
-    public override void SetLabel()
+    public override void SetKey()
     {
         key = "CollectTile";
     }

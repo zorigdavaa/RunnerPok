@@ -17,7 +17,6 @@ namespace ZPackage
         public Level LastInstLvl;
         Vector3 pos = Vector3.zero;
         public List<Tile> AllTiles;
-
         private async Task Start()
         {
             // for (int i = 0; i < 5; i++)

@@ -7,12 +7,13 @@ using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class BaseSection 
+public class BaseSection
 {
 
     public virtual SectionType SectionType { get => SectionType.Obstacle; }
     public EventHandler Oncomplete;
     public List<Tile> levelTiles;
+    public List<EnemyWave> LevelEnemies;
     int index = 0;
     public Tile SectionEnd;
     public Tile SectionStart;
@@ -90,47 +91,29 @@ public class BaseSection
     {
         // label = AddressAbleLabelHolder.Instance.reference;
 
-        SetLabel();
+        SetKey();
         // Addressables.LoadAssetsAsync<Tile>(label, (tile) =>
         // {
         //     Debug.Log("Loaded " + tile.name);
         // }).Completed += GenerateSelf;
         AllTiles = new List<Tile>();
+        levelTiles.Clear();
         var operation = Addressables.LoadAssetsAsync<GameObject>(key, (tile) =>
          {
              Debug.Log("Loaded " + tile.name);
              AllTiles.Add(tile.GetComponent<Tile>());
          });
         await operation.Task;
-        int SectionTileCount = 5;
-        for (int j = 0; j < SectionTileCount; j++)
+        int SectionTileCount = 3;
+        for (int i = 0; i < SectionTileCount; i++)
         {
             Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
             levelTiles.Add(Tile);
         }
     }
 
-    public virtual void SetLabel()
+    public virtual void SetKey()
     {
         key = "ObsTile";
     }
-
-    // public virtual void GenerateSelf(AsyncOperationHandle<IList<GameObject>> handle)
-    // {
-    //     if (handle.Status == AsyncOperationStatus.Succeeded)
-    //     {
-    //         AllTiles = handle.Result.Select(x => x.GetComponent<Tile>()).ToList();
-    //         int SectionTileCount = 5;
-    //         for (int j = 0; j < SectionTileCount; j++)
-    //         {
-    //             Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
-    //             levelTiles.Add(Tile);
-    //         }
-    //         Debug.Log("Added them ALL");
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("Failed to Load Asset");
-    //     }
-    // }
 }
