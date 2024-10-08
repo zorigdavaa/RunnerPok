@@ -5,11 +5,12 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "FightSection", menuName = "ScriptableObjects/FightSection")]
-public class FightSection : LevelSection
+// [CreateAssetMenu(fileName = "FightSection", menuName = "ScriptableObjects/FightSection")]
+[Serializable]
+public class FightSection : BaseSection
 {
     public override SectionType SectionType => SectionType.Fight;
-    public List<EnemyWave> LevelEnemies;
+    [SerializeReference] public List<EnemyWave> LevelEnemies;
     [NonSerialized]
     public int EnemyWaveIdx = 0;
     [NonSerialized]

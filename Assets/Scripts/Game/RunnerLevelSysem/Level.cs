@@ -13,7 +13,7 @@ public class Level : MonoBehaviour
 {
     public int SecIDX = 0;
     // public int SecTileIDx = 0;
-    public List<LevelSection> Sections = new List<LevelSection>();
+    public List<BaseSection> Sections = new List<BaseSection>();
     public List<SectionData> SectionDatas = new List<SectionData>();
     public Player player; // Reference to the player's transform
     public Vector3 nextSpawnPosition; // Position to spawn the next tile
@@ -22,7 +22,7 @@ public class Level : MonoBehaviour
     public Tile PlayerBeingTile;
     public SpeedUp speedUpPF;
     public Tile BaseTilePf;
-    [SerializeField] LevelSection CurSection;
+    [SerializeField] BaseSection CurSection;
     public float HealthMultiplier = 1;
     public float DamageMultiplier = 1;
     public void Start()
@@ -33,7 +33,7 @@ public class Level : MonoBehaviour
         // StartNewSection();
         foreach (var item in SectionDatas)
         {
-            LevelSection section = item.CreateMono();
+            BaseSection section = item.CreateMono();
             Sections.Add(section);
             // LevelObjects.Add(new LevelSection());
         }
@@ -65,7 +65,7 @@ public class Level : MonoBehaviour
                 SpawnTile(BaseTilePf);
             }
         }
-        else if (CurSection)
+        else if (CurSection != null)
         {
             CurSection.UpdateSection(this);
         }
@@ -106,7 +106,7 @@ public class Level : MonoBehaviour
         CurSection = Sections[SecIDX];
         if (SecIDX > 0)
         {
-            LevelSection PrevSection = null;
+            BaseSection PrevSection = null;
             PrevSection = Sections[SecIDX - 1];
             if (PrevSection.SectionType == SectionType.Fight)
             {
@@ -189,7 +189,8 @@ public class Level : MonoBehaviour
         Sections.Clear();
         for (int i = 0; i < sectionCount; i++)
         {
-            LevelSection section = AvailAbleSection[Random.Range(0, AvailAbleSection.Count - 1)];//availLast Boss
+            BaseSection section = AvailAbleSection[Random.Range(0, AvailAbleSection.Count - 1)];//availLast Boss
+            // BaseSection section = GetRandomSectionInstance();
             await section.LoadNGenerateSelf();
             // int SectionTileCount = 5;
             // for (int j = 0; j < SectionTileCount; j++)
@@ -201,7 +202,24 @@ public class Level : MonoBehaviour
             // lvl.Sections.Add(section);
         }
     }
-    List<LevelSection> AvailAbleSection = new List<LevelSection>()
+    // List of all possible types that inherit from BaseSection
+    private List<Type> sectionTypes = new List<Type>
+    {
+        typeof(LevelSection),
+        typeof(FightSection),
+        typeof(CollectSection)
+        // Add more types as needed
+    };
+
+    // public BaseSection GetRandomSectionInstance()
+    // {
+    //     // Randomly select a type from the list
+    //     Type randomType = sectionTypes[UnityEngine.Random.Range(0, sectionTypes.Count)];
+
+    //     // Create an instance of the randomly selected type
+    //     return (BaseSection)ScriptableObject.CreateInstance(randomType);
+    // }
+    List<BaseSection> AvailAbleSection = new List<BaseSection>()
             {
                 new FightSection()
                 ,new CollectSection()

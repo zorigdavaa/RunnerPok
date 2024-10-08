@@ -5,9 +5,10 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 // [CreateAssetMenu(fileName = "BossSection", menuName = "ScriptableObjects/BossSection")]
+[Serializable]
 public class BossSection : FightSection
 {
-    public EnemyWave Boss;
+    [SerializeReference] public EnemyWave Boss;
     public override void StartSection(Level level)
     {
         Reset();

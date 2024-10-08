@@ -6,7 +6,7 @@ using UnityEngine;
 public class SectionDataFight : SectionData
 {
     public List<EnemyWave> LevelEnemies;
-    internal override LevelSection CreateMono()
+    internal override BaseSection CreateMono()
     {
         FightSection section = new FightSection();
 

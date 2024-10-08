@@ -11,7 +11,7 @@ public class SectionData : ScriptableObject
     public Tile SectionEnd;
     public Tile SectionStart;
 
-    internal virtual LevelSection CreateMono()
+    internal virtual BaseSection CreateMono()
     {
         LevelSection section;
 
