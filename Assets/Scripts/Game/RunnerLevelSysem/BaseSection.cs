@@ -25,7 +25,7 @@ public class BaseSection
 
     public bool HasNextTile()
     {
-        return levelTiles.Count - 1 > index;
+        return levelTiles.Count > index;
     }
     public virtual void StartSection(Level level)
     {
@@ -38,6 +38,7 @@ public class BaseSection
     {
         if (SectionStart)
         {
+            Debug.Log("Start spawned " + SectionStart.name );
             level.SpawnTile(SectionStart);
         }
         curLevel = level;
@@ -50,6 +51,7 @@ public class BaseSection
         {
             Tile tileToIns = levelTiles[index];
             level.SpawnTile(tileToIns);
+            Debug.Log("at index of " + index + " tiles of " + tileToIns.name);
             index++;
             if (!HasNextTile())
             {
@@ -100,7 +102,7 @@ public class BaseSection
         levelTiles.Clear();
         var operation = Addressables.LoadAssetsAsync<GameObject>(key, (tile) =>
          {
-             Debug.Log("Loaded " + tile.name);
+            //  Debug.Log("Loaded " + tile.name);
              AllTiles.Add(tile.GetComponent<Tile>());
          });
         await operation.Task;

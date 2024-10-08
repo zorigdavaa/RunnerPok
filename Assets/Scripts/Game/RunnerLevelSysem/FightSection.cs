@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using ZPackage;
 using Random = UnityEngine.Random;
 
 // [CreateAssetMenu(fileName = "FightSection", menuName = "ScriptableObjects/FightSection")]
@@ -28,10 +29,16 @@ public class FightSection : BaseSection
     {
         Reset();
         base.StartSection(level);
-        Tile tileToIns = levelTiles[0];
-        // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
-        Tile tile = level.SpawnTile(tileToIns);
-        tile.OnTileEnter += OnFightSectionEnter;
+        // Tile tileToIns = levelTiles[0];
+        // // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
+        // Tile tile = level.SpawnTile(tileToIns);
+        // tile.OnTileEnter += OnFightSectionEnter;
+        EnterThisSection();
+    }
+    private void EnterThisSection()
+    {
+        float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
+        FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnFightSectionEnter(this, EventArgs.Empty); });
     }
     public override void UpdateSection(Level level)
     {
@@ -59,8 +66,8 @@ public class FightSection : BaseSection
 
     void OnFightSectionEnter(object sender, EventArgs e)
     {
-        Tile casted = (Tile)sender;
-        casted.OnTileEnter -= OnFightSectionEnter;
+        // Tile casted = (Tile)sender;
+        // casted.OnTileEnter -= OnFightSectionEnter;
         // print("Start Insing");
         InsEnemsBeforePlayer();
         AllEnemyCount = LevelEnemies.Sum(x => x.EnemyPF.Count);

@@ -189,11 +189,10 @@ namespace ZPackage
             State = GameState.Flying;
             Flying?.Invoke(this, EventArgs.Empty);
         }
-        public async void PlayGame()
+        public void PlayGame()
         {
             GAPlayEvent();
             OnGamePlay?.Invoke(this, EventArgs.Empty);
-            await Task.Yield();
             State = GameState.Playing;
         }
 

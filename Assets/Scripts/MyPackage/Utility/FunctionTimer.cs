@@ -102,6 +102,16 @@ namespace ZPackage
             GameObject.Destroy(_gameObject);
             RemoveTimer(this);
         }
+
+        internal static void WaitUntilAndCall(MonoBehaviour level, Func<bool> predicate, Action value)
+        {
+            level.StartCoroutine(LocalCor());
+            IEnumerator LocalCor()
+            {
+                yield return new WaitUntil(predicate);
+                value.Invoke();
+            }
+        }
     }
 
 }

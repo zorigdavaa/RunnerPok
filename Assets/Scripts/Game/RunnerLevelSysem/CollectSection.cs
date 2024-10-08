@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 // [CreateAssetMenu(fileName = "CollectSection", menuName = "ScriptableObjects/CollectSection")]
 public class CollectSection : LevelSection
@@ -10,15 +11,17 @@ public class CollectSection : LevelSection
     public override void StartSection(Level level)
     {
         Init(level);
-        Tile tileToIns = levelTiles[0];
-        // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
-        Tile tile = level.SpawnTile(tileToIns);
-        level.lastSpawnedTile.OnTileEnter += OnCollectSectionEnter;
-        // Debug.Log("Start Of From Section " + SectionType + " " + name);
+        EnterThisSection();
         // Tile tileToIns = levelTiles[0];
         // // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
         // Tile tile = level.SpawnTile(tileToIns);
-        // tile.OnTileEnter += OnCollectSectionEnter;
+        // level.lastSpawnedTile.OnTileEnter += OnCollectSectionEnter;
+
+    }
+    private void EnterThisSection()
+    {
+        float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
+        FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnCollectSectionEnter(this, EventArgs.Empty); });
     }
 
     public override void UpdateSection(Level level)
@@ -32,8 +35,8 @@ public class CollectSection : LevelSection
     }
     private void OnCollectSectionEnter(object sender, EventArgs e)
     {
-        Tile casted = (Tile)sender;
-        casted.OnTileEnter -= OnCollectSectionEnter;
+        // Tile casted = (Tile)sender;
+        // casted.OnTileEnter -= OnCollectSectionEnter;
         // Debug.Log("Entering " + name);
         if (curLevel)
         {

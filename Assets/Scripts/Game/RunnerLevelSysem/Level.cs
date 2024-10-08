@@ -58,10 +58,10 @@ public class Level : MonoBehaviour
         // if (isNearEndofLand && CurSectionHasTile)
         if (CurSection == null && BaseTilePf != null)
         {
-            Debug.Log("SS");
             bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;
             if (isNearEndofLand)
             {
+                Debug.Log("SS");
                 SpawnTile(BaseTilePf);
             }
         }
@@ -84,18 +84,18 @@ public class Level : MonoBehaviour
         {
             CurSection = null;
             //Todo Make it Wait Until
-            FunctionTimer.WaitAndCall(this, 2, () => { Z.GM.LevelComplete(this, 0); });
+            // FunctionTimer.WaitAndCall(this, 2, () => { Z.GM.LevelComplete(this, 0); });
+            LevelComplete();
             // Tile tile = SpawnTile(BaseTilePf);
             // tile.OnTileEnter += LevelComplete;
 
         }
     }
 
-    private void LevelComplete(object sender, EventArgs e)
+    private void LevelComplete()
     {
-        Tile tile = sender as Tile;
-        // tile.OnTileEnter -= LevelComplete;
-        Z.GM.LevelComplete(this, 0);
+        float ztoTest = lastSpawnedTile.end.transform.position.z - 2;
+        FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > ztoTest, () => { Z.GM.LevelComplete(this, 0); });
     }
 
     public void StartNewSection()
@@ -141,6 +141,7 @@ public class Level : MonoBehaviour
     public List<Tile> BeforSectionTiles = new List<Tile>();
     public Tile SpawnTile(Tile tilePrefab)
     {
+        Debug.Log("Insing " + tilePrefab.name);
         Tile tile = Instantiate(tilePrefab, nextSpawnPosition, Quaternion.identity, transform);
         if (SpawnedTiles.Count > 0)
         {
@@ -221,7 +222,7 @@ public class Level : MonoBehaviour
         else if (value < 0.5f)
         {
             return new CollectSection();
-        }   
+        }
         else
         {
             return new LevelSection();
