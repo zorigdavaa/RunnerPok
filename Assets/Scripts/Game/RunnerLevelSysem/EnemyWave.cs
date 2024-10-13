@@ -9,4 +9,8 @@ public class EnemyWave
     public float AfterDelay = 0;
     public float Beforedelay = 0;
     public List<Enemy> EnemyPF;
+    public EnemyWave()
+    {
+        EnemyPF = new List<Enemy>();
+    }
 }

@@ -61,7 +61,7 @@ public class Level : MonoBehaviour
             bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;
             if (isNearEndofLand)
             {
-                Debug.Log("SS");
+                // Debug.Log("SS");
                 SpawnTile(BaseTilePf);
             }
         }
@@ -141,7 +141,7 @@ public class Level : MonoBehaviour
     public List<Tile> BeforSectionTiles = new List<Tile>();
     public Tile SpawnTile(Tile tilePrefab)
     {
-        Debug.Log("Insing " + tilePrefab.name);
+        // Debug.Log("Insing " + tilePrefab.name);
         Tile tile = Instantiate(tilePrefab, nextSpawnPosition, Quaternion.identity, transform);
         if (SpawnedTiles.Count > 0)
         {
@@ -192,6 +192,7 @@ public class Level : MonoBehaviour
         {
             BaseSection section = GetRandomSectionInstance();
             // BaseSection section = GetRandomSectionInstance();
+            Debug.Log(i + " wait " + section);
             await section.LoadNGenerateSelf();
             // int SectionTileCount = 5;
             // for (int j = 0; j < SectionTileCount; j++)
@@ -202,6 +203,7 @@ public class Level : MonoBehaviour
             Sections.Add(section);
             // lvl.Sections.Add(section);
         }
+        Debug.Log("Finish");
     }
     // List of all possible types that inherit from BaseSection
     private List<Type> sectionTypes = new List<Type>

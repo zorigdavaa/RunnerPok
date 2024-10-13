@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using ZPackage;
 using Random = UnityEngine.Random;
 
@@ -37,6 +38,7 @@ public class FightSection : BaseSection
     }
     private void EnterThisSection()
     {
+        Debug.Log("eNTER FIREsECTION");
         float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnFightSectionEnter(this, EventArgs.Empty); });
     }
@@ -141,8 +143,66 @@ public class FightSection : BaseSection
     {
         key = "FightTile";
     }
-    public override Task LoadNGenerateSelf()
+    public override async Task LoadNGenerateSelf()
     {
-        return base.LoadNGenerateSelf();
+        await base.LoadNGenerateSelf();
+
+        List<EnemyWave> waves = new List<EnemyWave>();
+        List<Animal> AllEnemyPF = new List<Animal>();
+        LevelEnemies = new List<EnemyWave>();
+        // Debug.Log("Loading assets...");
+
+        // Load assets asynchronously
+        var asynOperation = Addressables.LoadAssetsAsync<GameObject>("Animal", (Enemy) =>
+        {
+            if (Enemy != null && Enemy.GetComponent<Animal>() != null)
+            {
+                AllEnemyPF.Add(Enemy.GetComponent<Animal>());
+            }
+            else
+            {
+                Debug.LogError("Failed to get Animal component from loaded asset.");
+            }
+        });
+
+        await asynOperation.Task;
+
+        // Check if the asset loading succeeded
+        if (asynOperation.Status != UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+        {
+            Debug.LogError("Asset loading failed.");
+            return; // Exit early if loading fails
+        }
+
+        // Debug.Log("Assets loaded. Total Enemy prefabs: " + AllEnemyPF.Count);
+
+        if (AllEnemyPF.Count == 0)
+        {
+            Debug.LogError("No enemy prefabs were loaded. Cannot proceed.");
+            return; // Exit early if no enemies were loaded
+        }
+
+        // Outer loop to create enemy waves
+        for (int i = 0; i < 1; i++)
+        {
+            EnemyWave newWave = new EnemyWave();
+
+            // Debug.Log("Creating wave " + (i + 1));
+
+            // Inner loop to populate enemy prefabs in the wave
+            for (int j = 0; j < 3; j++)
+            {
+                // Randomly select an enemy prefab
+                Enemy randomEnemy = AllEnemyPF[Random.Range(0, AllEnemyPF.Count)];
+                newWave.EnemyPF.Add(randomEnemy);
+                // Debug.Log("randomEnemy " + (j + 1) + " added.");
+            }
+
+            LevelEnemies.Add(newWave);
+            Debug.Log("Wave " + (i + 1) + " created.");
+        }
+
+        Debug.Log("Finished creating all waves.");
     }
+
 }

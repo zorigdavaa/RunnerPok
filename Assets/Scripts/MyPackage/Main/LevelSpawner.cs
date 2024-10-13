@@ -68,6 +68,7 @@ namespace ZPackage
             int SectionCount = 4;
             await lvl.GenerateSections(SectionCount);
             lvl.transform.SetParent(transform);
+            Debug.Log("Done Level generate");
             return lvl;
         }
 

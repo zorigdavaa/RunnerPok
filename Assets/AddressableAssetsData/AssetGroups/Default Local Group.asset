@@ -123,6 +123,42 @@ MonoBehaviour:
     m_SerializedLabels:
     - SpeedUp
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e34300d56777ff74c82894cdefa313e4
+    m_Address: Assets/Prefabs/Character/Bat.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Animal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4707ec0635c80a84aa68381589a24b2b
+    m_Address: Assets/Prefabs/Character/Bat 1 shoot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Animal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd4bb3c81c58ed34bba6d56ee05bc431
+    m_Address: Assets/Prefabs/Character/Dragon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Animal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 887bc7c9ee65fa94da252c556948be6a
+    m_Address: Assets/Prefabs/Character/Mage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Animal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0da1edc07e6f44540b5a83be05bf6f8e
+    m_Address: Assets/Prefabs/Character/Plant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Animal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b38fad85ffd557348b0e35ef28d7aa91
+    m_Address: Assets/Prefabs/Character/Spide.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Animal
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
   m_SchemaSet:
