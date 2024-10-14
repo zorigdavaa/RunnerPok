@@ -21,7 +21,8 @@ public class Level : MonoBehaviour
     public Tile PlayerBeingTile;
     public SpeedUp speedUpPF;
     public Tile BaseTilePf;
-    [NonSerialized][HideInInspector]// It was serilized and become newOBJ when selecting in inspector
+    [NonSerialized]
+    [HideInInspector]// It was serilized and become newOBJ when selecting in inspector
     BaseSection CurSection = null;
     public float HealthMultiplier = 1;
     public float DamageMultiplier = 1;
@@ -57,7 +58,6 @@ public class Level : MonoBehaviour
     public void Update()
     {
         // if (isNearEndofLand && CurSectionHasTile)
-        Debug.Log(CurSection);
         if (CurSection == null && BaseTilePf != null)
         {
             bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;
@@ -190,9 +190,11 @@ public class Level : MonoBehaviour
     internal async Task GenerateSections(int sectionCount)
     {
         Sections.Clear();
+        BaseSection beforeSectoin = null;
         for (int i = 0; i < sectionCount; i++)
         {
-            BaseSection section = GetRandomSectionInstance();
+            BaseSection section = GetRandomSectionInstance(beforeSectoin);
+            beforeSectoin = section;
             // BaseSection section = GetRandomSectionInstance();
             Debug.Log(i + " wait " + section);
             await section.LoadNGenerateSelf();
@@ -207,20 +209,24 @@ public class Level : MonoBehaviour
         }
         Debug.Log("Finish");
     }
-    // List of all possible types that inherit from BaseSection
-    private List<Type> sectionTypes = new List<Type>
-    {
-        typeof(LevelSection),
-        typeof(FightSection),
-        typeof(CollectSection)
-        // Add more types as needed
-    };
 
-    public BaseSection GetRandomSectionInstance()
+    public BaseSection GetRandomSectionInstance(BaseSection before)
     {
         float value = Random.value;
         if (value < 0.2f)
         {
+            if (before is FightSection)
+            {
+                value = Random.value;
+                if (value < 0.5f)
+                {
+                    return new CollectSection();
+                }
+                else
+                {
+                    return new LevelSection();
+                }
+            }
             return new FightSection();
         }
         else if (value < 0.5f)
