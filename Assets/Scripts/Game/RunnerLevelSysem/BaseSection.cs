@@ -21,6 +21,7 @@ public class BaseSection
     public BaseSection()
     {
         levelTiles = new List<Tile>();
+        LevelEnemies = new List<EnemyWave>();
     }
 
     public bool HasNextTile()
@@ -38,7 +39,7 @@ public class BaseSection
     {
         if (SectionStart)
         {
-            Debug.Log("Start spawned " + SectionStart.name );
+            Debug.Log("Start spawned " + SectionStart.name);
             level.SpawnTile(SectionStart);
         }
         curLevel = level;
@@ -91,6 +92,7 @@ public class BaseSection
     public string key;
     public virtual async Task LoadNGenerateSelf()
     {
+        // Initialize();
         // label = AddressAbleLabelHolder.Instance.reference;
 
         SetKey();
@@ -102,7 +104,7 @@ public class BaseSection
         levelTiles.Clear();
         var operation = Addressables.LoadAssetsAsync<GameObject>(key, (tile) =>
          {
-            //  Debug.Log("Loaded " + tile.name);
+             //  Debug.Log("Loaded " + tile.name);
              AllTiles.Add(tile.GetComponent<Tile>());
          });
         await operation.Task;

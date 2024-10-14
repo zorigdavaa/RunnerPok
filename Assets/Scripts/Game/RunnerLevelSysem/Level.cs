@@ -21,6 +21,7 @@ public class Level : MonoBehaviour
     public Tile PlayerBeingTile;
     public SpeedUp speedUpPF;
     public Tile BaseTilePf;
+    [NonSerialized][HideInInspector]// It was serilized and become newOBJ when selecting in inspector
     BaseSection CurSection = null;
     public float HealthMultiplier = 1;
     public float DamageMultiplier = 1;
@@ -56,6 +57,7 @@ public class Level : MonoBehaviour
     public void Update()
     {
         // if (isNearEndofLand && CurSectionHasTile)
+        Debug.Log(CurSection);
         if (CurSection == null && BaseTilePf != null)
         {
             bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;

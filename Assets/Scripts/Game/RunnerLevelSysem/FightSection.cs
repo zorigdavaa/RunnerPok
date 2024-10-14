@@ -149,7 +149,7 @@ public class FightSection : BaseSection
 
         List<EnemyWave> waves = new List<EnemyWave>();
         List<Animal> AllEnemyPF = new List<Animal>();
-        LevelEnemies = new List<EnemyWave>();
+
         // Debug.Log("Loading assets...");
 
         // Load assets asynchronously
