@@ -53,8 +53,18 @@ public class Player : Character
         {
             StartThrow(true);
         }
+        // if (Input.GetMouseButtonUp(0))
+        // {
+        //     if (GetState() == PlayerState.Obs && Movement.IsGrounded())
+        //     {
+        //         Movement.Jump();
+        //     }
+        // }
         UpdateAction?.Invoke();
     }
+
+
+
     private void FixedUpdate()
     {
         Movement.PlayerControl();

@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 public class PlayerMovement : MovementForgeRun
 {
 
     public float sideSpeed = 5f; // Speed at which the player moves left and right
-
+    Player Player;
     public Transform groundCheck; // Transform representing a point at the bottom of the player to check for ground
     public LayerMask groundLayer; // Layer mask for ground objects
     public float minXLimit = -8f; // Minimum X position limit
@@ -21,6 +22,7 @@ public class PlayerMovement : MovementForgeRun
     Plane ControlRaycastPlane;
     private void Start()
     {
+        Player = Z.Player;
         groundLayer = LayerMask.GetMask("Road");
         childModel = transform.GetChild(0);
         if (playerParent == null)
@@ -108,7 +110,8 @@ public class PlayerMovement : MovementForgeRun
         if (ControlType == ZControlType.TwoSide)
         {
             // OldController();
-            ViewPortControl();
+            // ViewPortControl();
+            ViewPortControl2();
             // RaycastControl();
         }
         else if (ControlType == ZControlType.FourSide)
@@ -209,6 +212,7 @@ public class PlayerMovement : MovementForgeRun
             childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
         }
     }
+
     private void ViewPortControl()
     {
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
@@ -232,12 +236,44 @@ public class PlayerMovement : MovementForgeRun
                 Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
                 targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
             }
-        }
 
+        }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
     }
+    Vector3 befFrameMous;
+    float targetX;
+    private void ViewPortControl2()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
+        if (IsDown)
+        {
+            befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
+            targetX = transform.localPosition.x;
+        }
+        if (IsClick)
+        {
+            // Convert mouse position to viewport position
+            Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
+            float xDif = (viewPortPos.x - befFrameMous.x) * 20;
+            targetX = targetX + xDif;
+            Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
+            targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
+            befFrameMous = viewPortPos;
+            // Smoothly move the player to the target position
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
+            // Check for significant movement to determine the rotation
+            if (Mathf.Abs(transform.localPosition.x - targetPos.x) > 0.5f)
+            {
+                float directionSign = Mathf.Sign(targetPos.x - transform.localPosition.x);
+                Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
+                targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
+            }
 
+        }
+        // Apply the target rotation smoothly in all cases
+        childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
+    }
 
 
 
@@ -267,5 +303,17 @@ public class PlayerMovement : MovementForgeRun
     internal void ChildModelRotZero()
     {
         childModel.transform.rotation = Quaternion.identity;
+    }
+    public void Jump()
+    {
+        if (Player.GetState() == PlayerState.Obs && IsGrounded())
+        {
+            rb.velocity += Vector3.up * 10;
+        }
+    }
+
+    public bool IsGrounded()
+    {
+        return Physics.CheckSphere(transform.position, 0.2f, LayerMask.GetMask("Road"));
     }
 }
