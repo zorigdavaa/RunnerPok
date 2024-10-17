@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ZPackage;
 
 public class UIBar : MonoBehaviour
 {
@@ -26,5 +28,10 @@ public class UIBar : MonoBehaviour
     public void FillHealthBar(float value)
     {
         Fill.fillAmount = value;
+    }
+
+    internal void OnTop()
+    {
+        Z.CanM.SetLastDamageCanvas(Fill.canvas);
     }
 }

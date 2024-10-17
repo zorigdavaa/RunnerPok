@@ -22,6 +22,16 @@ public class CanvasManager : GenericSingleton<CanvasManager>
     {
         Hud.SetActive(false);
     }
+    Canvas damageCanvas;
+    public void SetLastDamageCanvas(Canvas canv)
+    {
+        if (damageCanvas)
+        {
+            damageCanvas.sortingOrder = 0;
+        }
+        damageCanvas = canv;
+        damageCanvas.sortingOrder = 1;
+    }
 
     private void OnGamePlay(object sender, EventArgs e)
     {

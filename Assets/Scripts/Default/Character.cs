@@ -33,7 +33,7 @@ public abstract class Character : Mb, IHealth
 
     public bool IsAlive => Health > 0;
 
-    [SerializeField] UIBar healthBar;
+    public UIBar healthBar;
 
     public virtual void TakeDamage(float amount)
     {
