@@ -74,7 +74,7 @@ public class EditorTools
             obj.position = obj.position.Round(0.25f);
         }
     }
-    [MenuItem("Edit/Reset Selected Objects Position")]
+    [MenuItem("Tools/Reset Selected Objects Position")]
     static void ResetPosition()
     {
         var transforms = Selection.gameObjects.Select(go => go.transform).ToArray();
@@ -82,6 +82,27 @@ public class EditorTools
         // you can Shift+Right Click on property names in the Inspector to see their paths
         so.FindProperty("m_LocalPosition").vector3Value = Vector3.zero;
         so.ApplyModifiedProperties();
+    }
+    [MenuItem("Tools/Order by Name")]
+    static void OrderByName()
+    {
+        // Get selected game objects' transforms
+        var transforms = Selection.gameObjects.Select(go => go.transform).ToArray();
+
+        // Sort the transforms by name
+        List<Transform> ordered = transforms.OrderBy(x => x.name).ToList();
+
+        // Get the minimum sibling index from the selected transforms
+        int minSiblingIndex = transforms.Min(t => t.GetSiblingIndex());
+
+        // Reorder the transforms by setting their sibling index relative to the minimum index
+        for (int i = 0; i < ordered.Count; i++)
+        {
+            ordered[i].SetSiblingIndex(minSiblingIndex + i);
+        }
+
+        // If changes are needed in the Editor, mark the scene dirty
+        EditorUtility.SetDirty(ordered.First().gameObject);
     }
 
     public static void CreateDirectory(string path)
