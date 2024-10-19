@@ -26,6 +26,7 @@ public class Player : Character
     CinemachineVirtualCamera currentCamera;
     PlayerState State = PlayerState.None;
     public ItemData CurrentShurikenData;
+    public EventHandler<PlayerState> OnStateChanged;
 
 
     // Start is called before the first frame update
@@ -284,6 +285,7 @@ public class Player : Character
                 UpdateAction = CollectUpdate;
             }
             State = _state;
+            OnStateChanged?.Invoke(this, State);
         }
     }
     public PlayerState GetState()

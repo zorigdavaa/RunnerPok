@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using ZPackage;
 
 public class Shuriken : MonoBehaviour, ISaveAble
 {
@@ -52,14 +53,26 @@ public class Shuriken : MonoBehaviour, ISaveAble
     {
         RetrieveData();
         Graphics = transform.GetChild(0);
+        // Z.Player.OnStateChanged += OnPlayerStateChange;
     }
+
+
     public float SideMovement;
     float RightAcc = 0;
+    float speed = 15;
     // Update is called once per frame
     void Update()
     {
         Graphics.Rotate(0, 360 * Time.deltaTime, 0);
-        transform.localPosition += Vector3.forward * 15 * Time.deltaTime;
+        if (Z.Player.GetState() == PlayerState.Fight)
+        {
+
+            transform.localPosition += Vector3.forward * speed * Time.deltaTime;
+        }
+        else
+        {
+            transform.localPosition += Vector3.forward * speed * 3 * Time.deltaTime;
+        }
         // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
         if (RightAcc < Mathf.Abs(SideMovement * 2))
         {
