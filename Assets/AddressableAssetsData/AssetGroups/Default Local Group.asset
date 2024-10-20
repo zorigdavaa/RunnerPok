@@ -159,6 +159,23 @@ MonoBehaviour:
     m_SerializedLabels:
     - Animal
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9d2860a2869849eab48cde5238ca3d5
+    m_Address: Assets/Prefabs/Tiles/TileObs 9.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a6de2ef3f9fec4aa492f230f7a2d54be
+    m_Address: Assets/Prefabs/Tiles/TileObs 10.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bff4778e19d14357b37931ae9b5598c
+    m_Address: Assets/Prefabs/Tiles/SideObs 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
   m_SchemaSet:
