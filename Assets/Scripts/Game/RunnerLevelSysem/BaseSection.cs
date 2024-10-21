@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class BaseSection
+public abstract class BaseSection
 {
 
     public virtual SectionType SectionType { get => SectionType.Obstacle; }
