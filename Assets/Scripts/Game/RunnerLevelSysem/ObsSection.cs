@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using ZPackage;
 using Random = UnityEngine.Random;
 
-public class ObsSection : BaseSection
+public class ObsSection : LevelSection
 {
+    public List<GameObject> Obstacles;
+    public bool HasNextObs => Obstacles.Count > index;
+
     // implement this section this is runtime baseTile spawner and instantiate obstacle based on situation
     public override void StartSection(Level level)
     {
@@ -16,27 +21,52 @@ public class ObsSection : BaseSection
         // // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
         // Tile tile = level.SpawnTile(tileToIns);
         // tile.OnTileEnter += OnFightSectionEnter;
+        insPos = curLevel.nextSpawnPosition - Vector3.forward * 40;
         EnterThisSection();
+        SpawnObs();
     }
+    int index = 0;
+    Vector3 insPos;
+    private void SpawnObs()
+    {
+
+        GameObject obs = Obstacles[index];
+        GameObject.Instantiate(obs, insPos, Quaternion.identity, curLevel.transform);
+        insPos += Vector3.forward * 25;
+        index++;
+    }
+
     private void EnterThisSection()
     {
         Debug.Log("eNTER FIREsECTION");
         float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnObsSectionEnter(this, EventArgs.Empty); });
     }
-    public override void UpdateSection(Level level)
+    public override void UpdateSection()
     {
-        bool isNearEndofLand = level.player.transform.position.z > level.nextSpawnPosition.z - 50;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 50;
         if (isNearEndofLand)
         {
-            Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
-            level.SpawnTile(tileToIns);
+            Tile tileToIns = curLevel.BaseTilePf;
+            curLevel.SpawnTile(tileToIns);
+        }
+        bool isNearOfObs = curLevel.player.transform.position.z > insPos.z - 25;
+        if (isNearOfObs)
+        {
+            if (HasNextObs)
+            {
+                SpawnObs();
+            }
+            else
+            {
+                EndSection();
+            }
         }
     }
-    public override void EndSection(Level leve)
+    public override void EndSection()
     {
-        base.EndSection(leve);
-        leve.player.ChangeState(PlayerState.Obs);
+        curLevel.player.ChangeState(PlayerState.Obs);
+        base.EndSection();
     }
     void OnObsSectionEnter(object sender, EventArgs e)
     {
@@ -75,5 +105,47 @@ public class ObsSection : BaseSection
         //     }
         //     yield return null;
         // }
+    }
+    public override void SetKey()
+    {
+        key = "Obstacle";
+    }
+    public override async Task LoadNGenerateSelf()
+    {
+        await base.LoadNGenerateSelf();
+        List<GameObject> AllObs = new List<GameObject>();
+        // Debug.Log("Loading assets...");
+
+        // Load assets asynchronously
+        var asynOperation = Addressables.LoadAssetsAsync<GameObject>(key, (Obs) =>
+        {
+            if (Obs != null)
+            {
+                AllObs.Add(Obs);
+            }
+        });
+
+        await asynOperation.Task;
+        int ObsCount = 8;
+        for (int i = 0; i < ObsCount; i++)
+        {
+
+            Obstacles.Add(AllObs[Random.Range(0, AllObs.Count)]);
+        }
+
+        // Check if the asset loading succeeded
+        if (asynOperation.Status != UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+        {
+            Debug.LogError("Asset loading failed.");
+            return; // Exit early if loading fails
+        }
+
+        // Debug.Log("Assets loaded. Total Enemy prefabs: " + AllEnemyPF.Count);
+
+        if (AllObs.Count == 0)
+        {
+            Debug.LogError("No enemy prefabs were loaded.");
+            return; // Exit early if no enemies were loaded
+        }
     }
 }

@@ -69,7 +69,7 @@ public class Level : MonoBehaviour
         }
         else if (CurSection != null)
         {
-            CurSection.UpdateSection(this);
+            CurSection.UpdateSection();
         }
 
     }

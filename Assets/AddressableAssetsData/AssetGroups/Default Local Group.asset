@@ -113,15 +113,7 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Tiles/0 BaseTile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
-    - FightTile
-    - ObsTile
-    - CollectTile
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0736c67bd4164044fbe8f25c7711ef16
-    m_Address: Assets/Prefabs/Obs/SpeedUpBig.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - SpeedUp
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e34300d56777ff74c82894cdefa313e4
     m_Address: Assets/Prefabs/Character/Bat.prefab
@@ -174,7 +166,8 @@ MonoBehaviour:
   - m_GUID: 3bff4778e19d14357b37931ae9b5598c
     m_Address: Assets/Prefabs/Tiles/SideObs 1.prefab
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - ObsTile
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}

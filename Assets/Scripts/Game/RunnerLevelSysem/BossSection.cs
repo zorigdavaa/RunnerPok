@@ -113,7 +113,7 @@ public class BossSection : FightSection
             item.Health = 1;
             item.TakeDamage(-1);
         }
-        EndSection(curLevel);
+        EndSection();
     }
     public override void SetKey()
     {

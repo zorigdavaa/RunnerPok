@@ -24,13 +24,13 @@ public class CollectSection : LevelSection
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnCollectSectionEnter(this, EventArgs.Empty); });
     }
 
-    public override void UpdateSection(Level level)
+    public override void UpdateSection()
     {
-        base.UpdateSection(level);
+        base.UpdateSection();
     }
-    public override void EndSection(Level leve)
+    public override void EndSection()
     {
-        base.EndSection(leve);
+        base.EndSection();
         // Debug.Log("End of Collect " + name);
     }
     private void OnCollectSectionEnter(object sender, EventArgs e)

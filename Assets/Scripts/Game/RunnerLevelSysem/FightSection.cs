@@ -42,20 +42,20 @@ public class FightSection : BaseSection
         float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnFightSectionEnter(this, EventArgs.Empty); });
     }
-    public override void UpdateSection(Level level)
+    public override void UpdateSection()
     {
-        bool isNearEndofLand = level.player.transform.position.z > level.nextSpawnPosition.z - 50;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 50;
         if (isNearEndofLand)
         {
             Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
-            level.SpawnTile(tileToIns);
+            curLevel.SpawnTile(tileToIns);
         }
     }
-    public override void EndSection(Level leve)
+    public override void EndSection()
     {
         Debug.Log("End Fight " + EnemyWaveIdx);
-        base.EndSection(leve);
-        leve.player.ChangeState(PlayerState.Obs);
+        base.EndSection();
+        curLevel.player.ChangeState(PlayerState.Obs);
     }
     public override void Reset()
     {
@@ -136,12 +136,12 @@ public class FightSection : BaseSection
         else
         {
 
-            EndSection(curLevel);
+            EndSection();
         }
     }
     public override void SetKey()
     {
-        key = "FightTile";
+        key = "default";
     }
     public override async Task LoadNGenerateSelf()
     {

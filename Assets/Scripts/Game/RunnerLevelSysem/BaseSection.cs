@@ -45,19 +45,19 @@ public abstract class BaseSection
         curLevel = level;
     }
 
-    public virtual void UpdateSection(Level level)
+    public virtual void UpdateSection()
     {
-        bool isNearEndofLand = level.player.transform.position.z > level.nextSpawnPosition.z - 70;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 70;
         if (isNearEndofLand && HasNextTile())
         {
             Tile tileToIns = levelTiles[index];
-            level.SpawnTile(tileToIns);
+            curLevel.SpawnTile(tileToIns);
             Debug.Log("at index of " + index + " tiles of " + tileToIns.name);
             index++;
             if (!HasNextTile())
             {
 
-                EndSection(level);
+                EndSection();
                 // if (HasNextSection)
                 // {
                 //     SecIDX++;
@@ -74,11 +74,11 @@ public abstract class BaseSection
         // level.SpawnTile(SectionStart);
     }
 
-    public virtual void EndSection(Level leve)
+    public virtual void EndSection()
     {
         if (SectionEnd)
         {
-            leve.SpawnTile(SectionEnd);
+            curLevel.SpawnTile(SectionEnd);
         }
         Reset();
         Oncomplete?.Invoke(this, EventArgs.Empty);
