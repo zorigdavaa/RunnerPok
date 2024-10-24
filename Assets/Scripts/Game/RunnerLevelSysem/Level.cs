@@ -233,6 +233,10 @@ public class Level : MonoBehaviour
         {
             return new CollectSection();
         }
+        else if (value < 1f)
+        {
+            return new ObsSection();
+        }
         else
         {
             return new LevelSection();

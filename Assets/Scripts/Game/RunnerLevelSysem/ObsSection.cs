@@ -112,17 +112,19 @@ public class ObsSection : LevelSection
     }
     public override async Task LoadNGenerateSelf()
     {
-        await base.LoadNGenerateSelf();
+        //TODO FIX
+        // await base.LoadNGenerateSelf();
         List<GameObject> AllObs = new List<GameObject>();
-        // Debug.Log("Loading assets...");
+        Obstacles = new List<GameObject>();
+        Debug.Log("Loading assets...");
 
         // Load assets asynchronously
         var asynOperation = Addressables.LoadAssetsAsync<GameObject>(key, (Obs) =>
         {
-            if (Obs != null)
-            {
-                AllObs.Add(Obs);
-            }
+
+            Debug.LogError("Asset loading Obstacle " + Obs.name);
+            AllObs.Add(Obs);
+
         });
 
         await asynOperation.Task;

@@ -47,7 +47,8 @@ public class FightSection : BaseSection
         bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 50;
         if (isNearEndofLand)
         {
-            Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
+            // Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
+            Tile tileToIns = curLevel.BaseTilePf;
             curLevel.SpawnTile(tileToIns);
         }
     }
@@ -145,7 +146,7 @@ public class FightSection : BaseSection
     }
     public override async Task LoadNGenerateSelf()
     {
-        await base.LoadNGenerateSelf();
+        // await base.LoadNGenerateSelf();
 
         List<EnemyWave> waves = new List<EnemyWave>();
         List<Animal> AllEnemyPF = new List<Animal>();
