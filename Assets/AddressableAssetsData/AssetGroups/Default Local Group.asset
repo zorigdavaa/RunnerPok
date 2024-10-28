@@ -185,7 +185,7 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Obs/Jumper.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Obstacle
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8b0c71da65c78049aa7c2f13deccd56
     m_Address: Assets/Prefabs/Obs/MovingSaw.prefab
