@@ -313,5 +313,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveObj: {fileID: 4711146887721336371}
-  speed: 40
+  speed: 5
   ZRot: 60
+  ownTime: 0

@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using ZPackage;
 using Random = UnityEngine.Random;
 
-public class ObsSection : LevelSection
+public class ObsSection : BaseSection
 {
     public List<GameObject> Obstacles;
     public bool HasNextObs => Obstacles.Count > index;
@@ -112,17 +112,16 @@ public class ObsSection : LevelSection
     }
     public override async Task LoadNGenerateSelf()
     {
-        //TODO FIX
         // await base.LoadNGenerateSelf();
         List<GameObject> AllObs = new List<GameObject>();
         Obstacles = new List<GameObject>();
         Debug.Log("Loading assets...");
-
+        SetKey();
         // Load assets asynchronously
         var asynOperation = Addressables.LoadAssetsAsync<GameObject>(key, (Obs) =>
         {
 
-            Debug.LogError("Asset loading Obstacle " + Obs.name);
+            // Debug.LogError("Asset loading Obstacle " + Obs.name);
             AllObs.Add(Obs);
 
         });

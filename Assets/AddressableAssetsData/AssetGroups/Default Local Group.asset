@@ -223,12 +223,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Obstacle
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ad58d697acd38874290ce7dd5661ba54
-    m_Address: Assets/Prefabs/Obs/SpeedUp.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Obstacle
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0736c67bd4164044fbe8f25c7711ef16
     m_Address: Assets/Prefabs/Obs/SpeedUpBig.prefab
     m_ReadOnly: 0
