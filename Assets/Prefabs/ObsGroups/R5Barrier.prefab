@@ -49,6 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae7a5bd2a1474f809a9615ddcd58c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childObjs:
+  - {fileID: 1709797041687372512}
+  - {fileID: 346991013330547051}
+  - {fileID: 5819846777005048994}
+  - {fileID: 7054596664609167107}
+  - {fileID: 1274901862745116760}
+  minMaxX: {x: 0, y: 0}
 --- !u!1001 &2351520271998393637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2626308070674394190, guid: b67534568e7f2cd43bc5a07395ea8745, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.25
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 2626308070674394190, guid: b67534568e7f2cd43bc5a07395ea8745, type: 3}
       propertyPath: m_LocalPosition.y
@@ -257,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2626308070674394190, guid: b67534568e7f2cd43bc5a07395ea8745, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.25
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2626308070674394190, guid: b67534568e7f2cd43bc5a07395ea8745, type: 3}
       propertyPath: m_LocalPosition.y
@@ -319,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2626308070674394190, guid: b67534568e7f2cd43bc5a07395ea8745, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.25
+      value: -2.25
       objectReference: {fileID: 0}
     - target: {fileID: 2626308070674394190, guid: b67534568e7f2cd43bc5a07395ea8745, type: 3}
       propertyPath: m_LocalPosition.y
