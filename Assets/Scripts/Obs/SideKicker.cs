@@ -5,41 +5,26 @@ using UnityEngine;
 public class SideKicker : MonoBehaviour
 {
     [SerializeField] Transform Kicker;
-    public float forwardSpeed = 5f;         // Speed when moving forward
-    public float backwardSpeed = 1f;        // Speed when moving backward
-    public float maxForwardDistance = 5f;   // Maximum distance to move forward
-
-    private bool movingForward = true;      // Flag to track movement direction
-
+    float ownTime;
+    public float speed = 5;
+    public bool Oppozit;
+    [Range(0, Mathf.PI / 2)]
+    public float startOffset = 0;
     void Start()
     {
-
+        if (Oppozit)
+        {
+            ownTime = Mathf.PI / 2;
+        }
+        ownTime += startOffset;
     }
-
+    public Vector3 min = new Vector3(0, 0, 0);
+    public Vector3 max = new Vector3(7, 0, 0);
     void Update()
     {
-        // Move the obstacle
-        if (movingForward)
-        {
-            // Move forward
-            Kicker.localPosition -= Vector3.right * forwardSpeed * Time.deltaTime;
-
-            // Check if reached max distance
-            if (Kicker.localPosition.x < 0)
-            {
-                movingForward = false; // Change direction
-            }
-        }
-        else
-        {
-            // Move backward
-            Kicker.localPosition += Vector3.right * backwardSpeed * Time.deltaTime;
-
-            // Check if reached initial position
-            if (Kicker.localPosition.x > maxForwardDistance)
-            {
-                movingForward = true; // Change direction
-            }
-        }
+        ownTime += Time.deltaTime;
+        float t = Mathf.InverseLerp(-1, 1, Mathf.Sin(ownTime * speed));
+        Kicker.localPosition = Vector3.Lerp(min, max, t);
     }
+
 }
