@@ -241,6 +241,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - Obstacle
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9028ad5f5a704fc29f2310206046864
+    m_Address: Assets/Prefabs/ObsGroups/R5Barrier.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbfa8b526f8e53e47932940f9f033037
+    m_Address: Assets/Prefabs/ObsGroups/SidePushers.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17afc05afb4407a429fa4d486c2f56dc
+    m_Address: Assets/Prefabs/ObsGroups/SidePushersWide.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
   m_SchemaSet:
