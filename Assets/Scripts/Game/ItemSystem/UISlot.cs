@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDownHandler
 {
     public BaseItemUI Item;
-    public PlayerItemSlot Where;
+    public WhereSlot Where;
     public bool WearSlot = false;
     // Start is called before the first frame update
     void Start()
@@ -45,6 +45,15 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
         Item.transform.position = transform.position;
         Item.transform.SetParent(transform);
         Item.currentSlot = this;
+        if (WearSlot)
+        {
+            Item.EquipItem();
+        }
+        else
+        {
+            Item.UnEquipItem();
+        }
+
     }
     internal void RemoveItem()
     {

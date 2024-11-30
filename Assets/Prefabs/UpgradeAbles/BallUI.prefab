@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 366361091648280149}
   - component: {fileID: 8257181611891360946}
   m_Layer: 5
-  m_Name: ShurikenUI 1
+  m_Name: BallUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70c93a813ebc5f747b6054afcc43820b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9904af8a30d708439e8a61858633326, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,5 +88,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620a1ddb7a2d36b488a565914eb7920c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: c86178781af2c4243b3dd1e3179912c0, type: 2}
+  data: {fileID: 11400000, guid: cf431123145469a49926cb2857b28c8f, type: 2}
   currentSlot: {fileID: 0}

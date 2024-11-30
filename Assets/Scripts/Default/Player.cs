@@ -25,7 +25,11 @@ public class Player : Character
     int OldCameraIndex = -1;
     CinemachineVirtualCamera currentCamera;
     PlayerState State = PlayerState.None;
-    public ItemData CurrentShurikenData;
+    public ItemData HandItem;
+    public OffHandItem OffHandItem; // Odoohondoo ingeed ywj baiya daraa list bolgoj magadgui
+    public ItemData HeadItem;
+    public ItemData FootItem;
+    public ItemData ChestItem;
     public EventHandler<PlayerState> OnStateChanged;
 
 
@@ -150,7 +154,7 @@ public class Player : Character
     {
         Pool = new ObjectPool<Shuriken>(() =>
         {
-            Shuriken spear = Instantiate(CurrentShurikenData.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+            Shuriken spear = Instantiate(HandItem.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.SetPool(Pool);
             return spear;
             // return new GameObject();
@@ -273,7 +277,7 @@ public class Player : Character
                 // Movement.SetControlAble(true);
                 Movement.SetControlType(ZControlType.FourSide);
                 Movement.ChildModelRotZero();
-                UpdateAction = null;
+                UpdateAction = FightUpdate;
             }
             else if (_state == PlayerState.Collect)
             {
@@ -302,6 +306,10 @@ public class Player : Character
         {
             StartThrow(false);
         }
+    }
+    public void FightUpdate()
+    {
+        OffHandItem?.Update();
     }
     public void StartThrow(bool val = true)
     {

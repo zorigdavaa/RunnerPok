@@ -1,17 +1,60 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
 {
     public ItemData data;
-    public UISlot currentSlot; 
+    public UISlot currentSlot;
     public virtual void Upgrade()
     {
 
     }
     public virtual void ShowInfo()
     {
-        
+
+    }
+
+    public virtual void EquipItem()
+    {
+        Debug.Log("Eqiopped " + data.name);
+        switch (data.Where)
+        {
+            case WhereSlot.Hand: Z.Player.HandItem = data; break;
+            case WhereSlot.OtherHand:
+                if (data is OffHandItem castData)
+                {
+                    Z.Player.OffHandItem = castData;
+                }
+                break;
+            case WhereSlot.Chest:
+
+                Z.Player.ChestItem = data;
+
+                break;
+            default: break;
+        }
+    }
+    public virtual void UnEquipItem()
+    {
+        Debug.Log("Unequiped " + data.name);
+        switch (data.Where)
+        {
+            case WhereSlot.Hand: Z.Player.HandItem = null; break;
+            case WhereSlot.OtherHand:
+                if (data is OffHandItem castData)
+                {
+                    Z.Player.OffHandItem = null;
+                }
+                break;
+            case WhereSlot.Chest:
+
+                Z.Player.ChestItem = null;
+
+                break;
+            default: break;
+        }
     }
 }

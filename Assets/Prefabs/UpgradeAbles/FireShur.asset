@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c0284e4e62aff42afaaec225317cb1, type: 3}
   m_Name: FireShur
   m_EditorClassIdentifier: 
-  itemName: fireShuriken
+  itemName: FireShur
   Icon: {fileID: 21300000, guid: 70c93a813ebc5f747b6054afcc43820b, type: 3}
   BaseDamage: 5
   AddDamage: 020000000400000006000000080000000a000000

@@ -116,7 +116,7 @@ public class ObsSection : BaseSection
         List<GameObject> AllObs = new List<GameObject>();
         Obstacles = new List<GameObject>();
         Debug.Log("Loading assets...");
-        SetKey();
+        SetKey();  
         // Load assets asynchronously
         var asynOperation = Addressables.LoadAssetsAsync<GameObject>(key, (Obs) =>
         {

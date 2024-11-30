@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,6 @@ public class ItemData : ScriptableObject
     public List<int> AddDamage;
     public GameObject pf;
     public BaseItemUI pfUI;
-    public PlayerItemSlot Where;
+    public WhereSlot Where;
     public DamageData damageData;
 }

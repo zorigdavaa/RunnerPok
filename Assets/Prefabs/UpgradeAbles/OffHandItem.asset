@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e788f50685ed94388cdffbcce3b968, type: 3}
+  m_Name: OffHandItem
+  m_EditorClassIdentifier: 
+  itemName: OffHandBall
+  Icon: {fileID: 21300000, guid: b9904af8a30d708439e8a61858633326, type: 3}
+  BaseDamage: 20
+  AddDamage: 0a000000140000001e0000002800000032000000
+  pf: {fileID: 7901734791091592274, guid: 59e4573c3522a3c49b19cd45a6cb4798, type: 3}
+  pfUI: {fileID: 8257181611891360946, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
+  Where: 3
+  damageData:
+    damage: 0
+    Type: 0
+  Timer: 3

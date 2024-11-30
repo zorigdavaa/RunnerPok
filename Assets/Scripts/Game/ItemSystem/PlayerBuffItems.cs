@@ -72,13 +72,33 @@ public class PlayerBuffItems : MonoBehaviour
     {
         SlotSave defaultOne = new SlotSave();
         defaultOne.EquipedNames.Add(buffItemDatas[0].itemName);
-        defaultOne.EquipedNames.Add(null);
-        defaultOne.EquipedNames.Add(null);
-        defaultOne.EquipedNames.Add(null);
-        defaultOne.EquipedNames.Add(null);
+        // defaultOne.EquipedNames.Add(null);
+        // defaultOne.EquipedNames.Add(null);
+        // defaultOne.EquipedNames.Add(null);
+        // defaultOne.EquipedNames.Add(null);
+
+        defaultOne.UnEquipedNames.Add(buffItemDatas[1].itemName);
+        defaultOne.UnEquipedNames.Add(buffItemDatas[2].itemName);
 
         var saved = PlayerPrefZ.GetData("equipedData", defaultOne);
         Debug.Log(saved.EquipedNames.Count);
+        if (saved.UnEquipedNames.Count > 0)
+        {
+            for (int i = 0; i < saved.UnEquipedNames.Count; i++)
+            {
+                if (saved.UnEquipedNames[i] == null)
+                {
+                    continue;
+                }
+                ItemData data = buffItemDatas.Where(x => x.itemName == saved.UnEquipedNames[i]).FirstOrDefault();
+                if (data)
+                {
+                    BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity, transform);
+                    insObj.transform.localScale = Vector3.one;
+                    unEquipslots[i].AddItem(insObj);
+                }
+            }
+        }
         if (saved.EquipedNames.Count > 0)
         {
             for (int i = 0; i < saved.EquipedNames.Count; i++)
@@ -97,27 +117,10 @@ public class PlayerBuffItems : MonoBehaviour
 
             }
         }
-        if (saved.UnEquipedNames.Count > 0)
-        {
-            for (int i = 0; i < saved.UnEquipedNames.Count; i++)
-            {
-                if (saved.UnEquipedNames[i] == null)
-                {
-                    continue;
-                }
-                ItemData data = buffItemDatas.Where(x => x.itemName == saved.UnEquipedNames[i]).FirstOrDefault();
-                if (data)
-                {
-                    BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity, transform);
-                    insObj.transform.localScale = Vector3.one;
-                    unEquipslots[i].AddItem(insObj);
-                }
 
-            }
-        }
     }
 
-    internal UISlot GetByTypeFromEquiped(PlayerItemSlot where)
+    internal UISlot GetByTypeFromEquiped(WhereSlot where)
     {
         foreach (var slot in equipSlots)
         {
@@ -141,7 +144,7 @@ public class PlayerBuffItems : MonoBehaviour
         return null;
     }
 }
-public enum PlayerItemSlot
+public enum WhereSlot
 {
     Any, Hand, Head, OtherHand, Chest, Foot
 }
