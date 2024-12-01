@@ -46,7 +46,7 @@ public class Player : Character
         GameManager.Instance.GameOverEvent += OnGameOver;
         GameManager.Instance.OnGamePlay += OnGamePlay;
         GameManager.Instance.LevelCompleted += OnGameOver;
-        InitPool();
+
         GameManager.Instance.Coin = 10;
         animationController.OnAttackEvent += AttackProjectile;
         ChangeState(PlayerState.Wait);
@@ -149,13 +149,40 @@ public class Player : Character
 
         }
     }
-
-    private void InitPool()
+    private void InitHandPool()
     {
         Pool = new ObjectPool<Shuriken>(() =>
         {
             Shuriken spear = Instantiate(HandItem.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.SetPool(Pool);
+            return spear;
+            // return new GameObject();
+        }, (s) =>
+        {
+            s.transform.position = transform.position + new Vector3(0, 1, 0);
+            s.GetFrompool();
+            // s.transform.rotation = Spear.transform.rotation;
+            // if (Target)
+            // {
+            //     s.Throw(Target);
+            // }
+            // else
+            // {
+            //     s.Throw(transform.forward);
+            // }
+        }, (s) =>
+        {
+            // release
+            s.GotoPool();
+        });
+    }
+    ObjectPool<Shuriken> OffHandPool;
+    private void InitOffHandPool()
+    {
+        OffHandPool = new ObjectPool<Shuriken>(() =>
+        {
+            Shuriken spear = Instantiate(OffHandItem.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+            spear.SetPool(OffHandPool);
             return spear;
             // return new GameObject();
         }, (s) =>
@@ -190,6 +217,8 @@ public class Player : Character
         // Movement.SetControlAble(true); 
         Movement.SetControlType(ZControlType.TwoSide);
         SubscribeWeaponEvents();
+        InitHandPool();
+        InitOffHandPool();
     }
 
     private void SubscribeWeaponEvents()
@@ -199,7 +228,8 @@ public class Player : Character
 
     private void OnOffhandItemInvoke(object sender, EventArgs e)
     {
-         Instantiate(OffHandItem.pf, transform.position, Quaternion.identity);
+        // Instantiate(OffHandItem.pf, transform.position, Quaternion.identity);
+        OffHandPool.Get();
     }
 
     private void AttackProjectile(object sender, EventArgs e)
