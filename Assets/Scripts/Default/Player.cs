@@ -189,7 +189,19 @@ public class Player : Character
         // Movement.SetSpeed(1);
         // Movement.SetControlAble(true); 
         Movement.SetControlType(ZControlType.TwoSide);
+        SubscribeWeaponEvents();
     }
+
+    private void SubscribeWeaponEvents()
+    {
+        OffHandItem.OnOffHandItem += OnOffhandItemInvoke;
+    }
+
+    private void OnOffhandItemInvoke(object sender, EventArgs e)
+    {
+         Instantiate(OffHandItem.pf, transform.position, Quaternion.identity);
+    }
+
     private void AttackProjectile(object sender, EventArgs e)
     {
         Shuriken shuriken = Pool.Get();

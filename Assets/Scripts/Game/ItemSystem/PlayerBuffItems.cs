@@ -79,6 +79,7 @@ public class PlayerBuffItems : MonoBehaviour
 
         defaultOne.UnEquipedNames.Add(buffItemDatas[1].itemName);
         defaultOne.UnEquipedNames.Add(buffItemDatas[2].itemName);
+        Debug.Log(buffItemDatas[2].itemName);
 
         var saved = PlayerPrefZ.GetData("equipedData", defaultOne);
         Debug.Log(saved.EquipedNames.Count);
@@ -93,7 +94,7 @@ public class PlayerBuffItems : MonoBehaviour
                 ItemData data = buffItemDatas.Where(x => x.itemName == saved.UnEquipedNames[i]).FirstOrDefault();
                 if (data)
                 {
-                    BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity, transform);
+                    BaseItemUI insObj = Instantiate(data.pfUI, transform.position, Quaternion.identity, transform);
                     insObj.transform.localScale = Vector3.one;
                     unEquipslots[i].AddItem(insObj);
                 }
@@ -110,7 +111,7 @@ public class PlayerBuffItems : MonoBehaviour
                 ItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipedNames[i]).FirstOrDefault();
                 if (data)
                 {
-                    BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity, transform);
+                    BaseItemUI insObj = Instantiate(data.pfUI, transform.position, Quaternion.identity, transform);
                     insObj.transform.localScale = Vector3.one;
                     equipSlots[i].AddItem(insObj);
                 }

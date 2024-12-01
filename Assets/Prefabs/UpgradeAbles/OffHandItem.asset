@@ -20,6 +20,6 @@ MonoBehaviour:
   pfUI: {fileID: 8257181611891360946, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
   Where: 3
   damageData:
-    damage: 0
+    damage: 20
     Type: 0
   Timer: 3
