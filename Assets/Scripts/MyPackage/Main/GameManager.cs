@@ -104,7 +104,7 @@ namespace ZPackage
                 Z.CanM.HudScore(value.ToString());
             }
         }
-        
+
         private int throwCount;
         public int ThrowCount
         {
@@ -183,6 +183,7 @@ namespace ZPackage
             GAStartEvent();
             State = GameState.Starting;
             OnGameStart?.Invoke(this, EventArgs.Empty);
+            PlayerBuffItems.Instance.RetrieveData();
         }
         public void Fly()
         {

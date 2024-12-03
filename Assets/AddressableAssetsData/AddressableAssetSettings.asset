@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 9747879cd8db346efb76b20975da8729
   m_currentHash:
     serializedVersion: 2
-    Hash: 0c68d0864b791330c0cfde416dd99e40
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
     - SpeedUp
     - Animal
     - Obstacle
+    - Coin
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0cef7a3f7dac1457f9075aad07333120, type: 2}

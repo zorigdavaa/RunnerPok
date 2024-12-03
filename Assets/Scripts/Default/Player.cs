@@ -223,7 +223,10 @@ public class Player : Character
 
     private void SubscribeWeaponEvents()
     {
-        OffHandItem.OnOffHandItem += OnOffhandItemInvoke;
+        if (OffHandItem)
+        {
+            OffHandItem.OnOffHandItem += OnOffhandItemInvoke;
+        }
     }
 
     private void OnOffhandItemInvoke(object sender, EventArgs e)

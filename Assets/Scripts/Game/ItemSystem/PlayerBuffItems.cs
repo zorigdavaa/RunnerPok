@@ -2,24 +2,36 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBuffItems : MonoBehaviour
 {
-    public static PlayerBuffItems Instance;
+    private static PlayerBuffItems _instacne;
+    public static PlayerBuffItems Instance
+    {
+        get
+        {
+            if (_instacne == null)
+            {
+                _instacne = FindObjectOfType<PlayerBuffItems>(true);
+            }
+            return _instacne;
+        }
+    }
+
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
     [SerializeField] List<ItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
     void Awake()
     {
-        Instance = this;
         itemInfoCanvas.Awake();
     }
     // Start is called before the first frame update
     void Start()
     {
-        RetrieveData();
+        // RetrieveData();
         // for (int i = 0; i < buffItemDatas.Count; i++)
         // {
         //     BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity);
