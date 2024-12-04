@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
         rotChild = transform.GetChild(0);
         // rotateSpeed = Settings.Instance.CoinRotationSpeed;
         rotateSpeed = 45;
-        GotoPosAndAdd();
+        // GotoPosAndAdd();
     }
     // Update is called once per frame
     void Update()
@@ -31,7 +31,6 @@ public class Coin : MonoBehaviour
         StartCoroutine(LocalCoroutine());
         IEnumerator LocalCoroutine()
         {
-            yield return new WaitForSeconds(2);
             shouldRot = false;
             transform.SetParent(null);
             float t = 0;
@@ -55,8 +54,9 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.Coin++;
-            Destroy(gameObject);
+            // GameManager.Instance.Coin++;
+            // Destroy(gameObject);
+            GotoPosAndAdd();
         }
     }
 

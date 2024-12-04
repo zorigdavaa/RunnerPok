@@ -264,30 +264,35 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Coin
+    - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4a1b22dc702dc2c4a9a9de1d2ee5406e
     m_Address: Assets/Prefabs/Tiles/CoinTile 1.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Coin
+    - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: df2e931f58893b248a7b550f9b91509b
     m_Address: Assets/Prefabs/Tiles/CoinTile 2.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Coin
+    - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4e9b582d7f337545ad5a10151968ca4
     m_Address: Assets/Prefabs/Tiles/CoinTile 3.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Coin
+    - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a5a3905b180dcf54aa6f9effdfa4724c
     m_Address: Assets/Prefabs/Tiles/CoinTile 4.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Coin
+    - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
