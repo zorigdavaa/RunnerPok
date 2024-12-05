@@ -31,6 +31,7 @@ public class Player : Character
     public ItemData FootItem;
     public ItemData ChestItem;
     public EventHandler<PlayerState> OnStateChanged;
+    public Coin CoinPF;
 
 
     // Start is called before the first frame update
@@ -394,6 +395,12 @@ public class Player : Character
             StartThrow(false);
             ChangeCamera(0);
         }
+    }
+
+    internal void TakeCoin(Transform posTransform)
+    {
+        Coin coin = Instantiate(CoinPF, posTransform.position, Quaternion.identity);
+        coin.GotoPosAndAdd();
     }
 }
 

@@ -172,6 +172,7 @@ public class Animal : Enemy
         transform.SetParent(null);
         animationController.Die();
         movement?.Cancel();
+        Z.Player.TakeCoin(transform);
         // rb.isKinematic = true;
     }
     public override void AttackProjectile()
