@@ -49,7 +49,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         RetrieveData();
         Graphics = transform.GetChild(0);
@@ -89,15 +89,15 @@ public class Shuriken : MonoBehaviour, ISaveAble
 
     private void OnTriggerEnter(Collider other)
     {
-        Impact(other);
+        Enemy enemy = other.GetComponent<Enemy>();
+        Impact(enemy);
     }
 
-    public virtual void Impact(Collider other)
+    public virtual void Impact(Enemy enemy)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
-        RightAcc = 0;
         if (enemy && enemy.IsAlive)
         {
+            RightAcc = 0;
             enemy.TakeDamage(data.damageData);
             Pool.Release(this);
             if (AutoGotoPoolCor != null)

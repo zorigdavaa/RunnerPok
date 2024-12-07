@@ -1,14 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using ZPackage;
 
 public class ShurikenBounce : Shuriken
 {
+    Transform Target;
+    public int BounceAmount = 3;
+    public bool firstImpacted = false;
+    DamageData damageDataCopy;
+    List<Enemy> impactedEnemy = new List<Enemy>();
     // Start is called before the first frame update
     void Start()
     {
-
+        // firstImpacted = false;
+        damageDataCopy = data.damageData;
+        base.Start();
     }
 
     // Update is called once per frame
@@ -19,6 +28,23 @@ public class ShurikenBounce : Shuriken
     public override void ShurikenBehavior()
     {
         Graphics.Rotate(0, 360 * Time.deltaTime, 0);
+        if (Target)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, Target.position, speed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, Target.position) < 0.2f)
+            {
+                Enemy enemyScript = Target.GetComponent<Enemy>();
+                if (enemyScript)
+                {
+                    // enemyScript.TakeDamage(data.damageData);
+                    damageDataCopy.damage *= 0.5f;
+                    enemyScript.TakeDamage(damageDataCopy);
+                    impactedEnemy.Add(enemyScript);
+                }
+                FindTarget();
+            }
+        }
+        else
         if (Z.Player.GetState() == PlayerState.Fight)
         {
 
@@ -36,14 +62,78 @@ public class ShurikenBounce : Shuriken
         }
         transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
     }
-    public override void Impact(Collider other)
+
+    private void FindTarget()
+    {
+        Collider[] AroundObs = Physics.OverlapSphere(transform.position, 5, LayerMask.GetMask("Bot"));
+        bool FoundNewOne = false;
+        if (AroundObs.Length > 0)
+        {
+            float nearDistance = 1000;
+            foreach (var item in AroundObs)
+            {
+                float itemDistance = Vector3.Distance(transform.position, item.transform.position);
+                if (itemDistance < nearDistance)
+                {
+                    Enemy enemyScript = item.GetComponent<Enemy>();
+                    if (enemyScript && !impactedEnemy.Contains(enemyScript))
+                    {
+                        Target = item.transform;
+                        nearDistance = itemDistance;
+                        FoundNewOne = true;
+                    }
+                }
+            }
+            if (!FoundNewOne)
+            {
+                ReleaseToPool();
+            }
+        }
+        else
+        {
+            ReleaseToPool();
+        }
+
+    }
+
+    private void ReleaseToPool()
+    {
+        Pool.Release(this);
+        BounceAmount = 3;
+        damageDataCopy = data.damageData;
+        GetComponent<Collider>().enabled = true;
+        firstImpacted = false;
+        impactedEnemy.Clear();
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
-        RightAcc = 0;
         if (enemy && enemy.IsAlive)
         {
+            if (!impactedEnemy.Any())
+            {
+                Impact(enemy);
+                GetComponent<Collider>().enabled = false;
+            }
+        }
+    }
+    public override void Impact(Enemy enemy)
+    {
+        if (enemy && enemy.IsAlive)
+        {
+            BounceAmount--;
+            impactedEnemy.Add(enemy);
             enemy.TakeDamage(data.damageData);
-            Pool.Release(this);
+            RightAcc = 0;
+            if (BounceAmount < 1)
+            {
+                ReleaseToPool();
+            }
+            else
+            {
+                FindTarget();
+            }
             if (AutoGotoPoolCor != null)
             {
                 StopCoroutine(AutoGotoPoolCor);

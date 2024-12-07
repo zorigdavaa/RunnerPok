@@ -12,7 +12,7 @@ public class ItemData : ScriptableObject
     public int BaseDamage;
     public List<int> AddDamage;
     public GameObject pf;
-    public BaseItemUI pfUI;
+    // public BaseItemUI pfUI;
     public WhereSlot Where;
     public DamageData damageData;
 }

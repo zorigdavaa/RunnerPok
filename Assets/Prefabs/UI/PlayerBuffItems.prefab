@@ -306,6 +306,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 860ce0b918cc0453b882cc4f386e16b2, type: 2}
   - {fileID: 11400000, guid: c86178781af2c4243b3dd1e3179912c0, type: 2}
   - {fileID: 11400000, guid: cf431123145469a49926cb2857b28c8f, type: 2}
+  - {fileID: 11400000, guid: 16ac036759fdca64b8e733e5e95de45b, type: 2}
   itemInfoCanvas: {fileID: 2265352457835810741}
 --- !u!1 &2931334336188232774
 GameObject:

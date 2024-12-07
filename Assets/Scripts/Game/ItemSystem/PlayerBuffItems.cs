@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class PlayerBuffItems : MonoBehaviour
     [SerializeField] List<UISlot> unEquipslots;
     [SerializeField] List<ItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
+    public ShurikenUI UIPF;
     void Awake()
     {
         itemInfoCanvas.Awake();
@@ -87,7 +89,7 @@ public class PlayerBuffItems : MonoBehaviour
     public void RetrieveData()
     {
         SlotSave defaultOne = new SlotSave();
-        defaultOne.EquipedNames.Add(buffItemDatas[0].itemName);
+        defaultOne.EquipedNames.Add(buffItemDatas[3].itemName);
         defaultOne.EquipedNames.Add(String.Empty);
         defaultOne.EquipedNames.Add(String.Empty);
         defaultOne.EquipedNames.Add(String.Empty);
@@ -95,10 +97,11 @@ public class PlayerBuffItems : MonoBehaviour
 
         defaultOne.UnEquipedNames.Add(buffItemDatas[1].itemName);
         defaultOne.UnEquipedNames.Add(buffItemDatas[2].itemName);
+        defaultOne.UnEquipedNames.Add(buffItemDatas[0].itemName);
 
         var saved = PlayerPrefZ.GetData("equipedData", defaultOne);
 
-        Debug.Log(saved.EquipedNames.Count);
+        // Debug.Log(saved.EquipedNames.Count);
         if (saved.UnEquipedNames.Count > 0)
         {
             for (int i = 0; i < saved.UnEquipedNames.Count; i++)
@@ -112,7 +115,10 @@ public class PlayerBuffItems : MonoBehaviour
                 if (data)
                 {
                     // Debug.Log("Insed " + data.name);
-                    BaseItemUI insObj = Instantiate(data.pfUI, transform.position, Quaternion.identity, transform);
+                    // BaseItemUI insObj = Instantiate(data.pfUI, transform.position, Quaternion.identity, transform);
+                    ShurikenUI insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    insObj.data = data;
+                    insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
                     unEquipslots[i].AddItem(insObj);
                 }
@@ -135,7 +141,9 @@ public class PlayerBuffItems : MonoBehaviour
                 if (data)
                 {
                     // Debug.Log("Insed equip " + data.name);
-                    BaseItemUI insObj = Instantiate(data.pfUI, transform.position, Quaternion.identity, transform);
+                    ShurikenUI insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    insObj.data = data;
+                    insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
                     equipSlots[i].AddItem(insObj);
                 }

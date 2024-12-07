@@ -50,11 +50,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
       propertyPath: m_Name
-      value: Bullet Variant
+      value: Bullet Bounce
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6389107011502510898, guid: 17064762389015a44b6fef87e074c9af, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7028440474471561700}
   m_SourcePrefab: {fileID: 100100000, guid: 17064762389015a44b6fef87e074c9af, type: 3}
+--- !u!1 &3727168934407258221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
+  m_PrefabInstance: {fileID: 6778209408475946047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7028440474471561700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727168934407258221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ffe22bfa51589042b3d77a42973ca94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 16ac036759fdca64b8e733e5e95de45b, type: 2}
+  SideMovement: 0
+  BounceAmount: 3

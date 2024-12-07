@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShurikenUI : BaseItemUI
 {
@@ -33,5 +35,10 @@ public class ShurikenUI : BaseItemUI
     public void Equip()
     {
 
+    }
+
+    internal void SetIcon(Sprite icon)
+    {
+        GetComponent<Image>().sprite = icon;
     }
 }

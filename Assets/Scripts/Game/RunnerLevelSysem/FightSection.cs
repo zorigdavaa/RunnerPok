@@ -38,7 +38,7 @@ public class FightSection : BaseSection
     }
     private void EnterThisSection()
     {
-        Debug.Log("eNTER FIREsECTION");
+        // Debug.Log("eNTER FIREsECTION");
         float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnFightSectionEnter(this, EventArgs.Empty); });
     }
@@ -74,7 +74,7 @@ public class FightSection : BaseSection
         // print("Start Insing");
         InsEnemsBeforePlayer();
         AllEnemyCount = LevelEnemies.Sum(x => x.EnemyPF.Count);
-        Debug.Log("Rem enem " + AllEnemyCount);
+        // Debug.Log("Rem enem " + AllEnemyCount);
     }
 
     public virtual void InsEnemsBeforePlayer()
@@ -91,7 +91,7 @@ public class FightSection : BaseSection
             {
                 yield return new WaitForSeconds(Wave.Beforedelay);
             }
-            Debug.Log(EnemyWaveIdx + " new Wave");
+            // Debug.Log(EnemyWaveIdx + " new Wave");
             for (int i = 0; i < InsEnems.Count; i++)
             {
                 Vector3 RandomPosXZ = new Vector3(Random.Range(-4, 4), 0, 0);
