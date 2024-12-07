@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb9e127ded5240aeafc849917e91fc7, type: 3}
+  m_Name: BossSection
+  m_EditorClassIdentifier: 
+  Type: 2
+  levelTiles: []
+  SectionEnd: {fileID: 0}
+  SectionStart: {fileID: 0}
+  LevelEnemies: []
+  Boss:
+    Wait: 0
+    AfterDelay: 0
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: 9018762004420704877, guid: 7cf5d2a0021a04acb8bd19524f110584, type: 3}

@@ -19,7 +19,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
 
     public virtual void EquipItem()
     {
-        Debug.Log("Eqiopped " + data.name);
+        // Debug.Log("Eqiopped " + data.name);
         switch (data.Where)
         {
             case WhereSlot.Hand: Z.Player.HandItem = data; break;
@@ -39,7 +39,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
     }
     public virtual void UnEquipItem()
     {
-        Debug.Log("Unequiped " + data.name);
+        // Debug.Log("Unequiped " + data.name);
         switch (data.Where)
         {
             case WhereSlot.Hand: Z.Player.HandItem = null; break;

@@ -118,23 +118,23 @@ public class PlayerBuffItems : MonoBehaviour
                 }
             }
         }
-        foreach (var item in saved.EquipedNames)
-        {
-            Debug.Log("Retrieve " + item);
-        }
+        // foreach (var item in saved.EquipedNames)
+        // {
+        //     Debug.Log("Retrieve " + item);
+        // }
         if (saved.EquipedNames.Count > 0)
         {
             for (int i = 0; i < saved.EquipedNames.Count; i++)
             {
                 if (saved.EquipedNames[i] == String.Empty)
                 {
-                    Debug.Log("Contunued equip");
+                    // Debug.Log("Contunued equip");
                     continue;
                 }
                 ItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipedNames[i]).FirstOrDefault();
                 if (data)
                 {
-                    Debug.Log("Insed equip " + data.name);
+                    // Debug.Log("Insed equip " + data.name);
                     BaseItemUI insObj = Instantiate(data.pfUI, transform.position, Quaternion.identity, transform);
                     insObj.transform.localScale = Vector3.one;
                     equipSlots[i].AddItem(insObj);

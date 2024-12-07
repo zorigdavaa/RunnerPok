@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "BossSection", menuName = "ScriptableObjects/BossSection")]
 public class SectionDataBoss : SectionDataFight
 {
     public EnemyWave Boss;

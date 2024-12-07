@@ -31,8 +31,17 @@ public class ObsSection : BaseSection
     {
 
         GameObject obs = Obstacles[index];
-        GameObject.Instantiate(obs, insPos, Quaternion.identity, curLevel.transform);
-        insPos += Vector3.forward * 25;
+        GameObject insGO = GameObject.Instantiate(obs, insPos, Quaternion.identity, curLevel.transform);
+        ObsData data = insGO.GetComponent<ObsData>();
+        if (data)
+        {
+            insPos += (Vector3.forward * data.ownLengh);
+            insPos += Vector3.forward * 10;
+        }
+        else
+        {
+            insPos += Vector3.forward * 25;
+        }
         index++;
     }
 
@@ -116,7 +125,7 @@ public class ObsSection : BaseSection
         List<GameObject> AllObs = new List<GameObject>();
         Obstacles = new List<GameObject>();
         Debug.Log("Loading assets...");
-        SetKey();  
+        SetKey();
         // Load assets asynchronously
         var asynOperation = Addressables.LoadAssetsAsync<GameObject>(key, (Obs) =>
         {

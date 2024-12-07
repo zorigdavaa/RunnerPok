@@ -18,5 +18,3 @@ public class SectionDataFight : SectionData
         return section;
     }
 }
-
-

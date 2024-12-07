@@ -31,6 +31,7 @@ public class Coin : MonoBehaviour
         StartCoroutine(LocalCoroutine());
         IEnumerator LocalCoroutine()
         {
+            yield return null;
             shouldRot = false;
             transform.SetParent(null);
             float t = 0;

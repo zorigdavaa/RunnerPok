@@ -399,7 +399,7 @@ public class Player : Character
 
     internal void TakeCoin(Transform posTransform)
     {
-        Coin coin = Instantiate(CoinPF, posTransform.position, Quaternion.identity);
+        Coin coin = Instantiate(CoinPF, posTransform.position + Vector3.up, Quaternion.identity);
         coin.GotoPosAndAdd();
     }
 }

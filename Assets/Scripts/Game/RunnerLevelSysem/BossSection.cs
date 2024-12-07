@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 // [CreateAssetMenu(fileName = "BossSection", menuName = "ScriptableObjects/BossSection")]
@@ -13,10 +15,20 @@ public class BossSection : FightSection
     {
         Reset();
         Init(level);
+        if (levelTiles == null || !levelTiles.Any())
+        {
+            levelTiles = new List<Tile>();
+            GameObject loadTile = Addressables.LoadAssetAsync<GameObject>("default").WaitForCompletion();
+            levelTiles.Add(loadTile.GetComponent<Tile>());
+            Debug.Log("Loaded");
+        }
         Tile tileToIns = levelTiles[0];
         Tile tile = level.SpawnTile(tileToIns);
         tile.OnTileEnter += OnFightSectionEnter;
-        InsEnemsAtTile(tile);
+        if (InsEnemies.Any())
+        {
+            InsEnemsAtTile(tile);
+        }
     }
 
     private void OnFightSectionEnter(object sender, EventArgs e)

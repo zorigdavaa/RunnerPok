@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 9150680192912339760}
   - component: {fileID: 7629835925925257237}
   - component: {fileID: 5014869209464790267}
+  - component: {fileID: 5771577822138098576}
   m_Layer: 0
   m_Name: RollObs
   m_TagString: Untagged
@@ -249,3 +250,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5771577822138098576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2156008215045183929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d5f4b9c2c05884bb167f8ac389bfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownLengh: 30

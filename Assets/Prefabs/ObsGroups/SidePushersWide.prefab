@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8414627455040139843}
   - component: {fileID: 570083806678337576}
+  - component: {fileID: 5786410345891931986}
   m_Layer: 0
   m_Name: SidePushersWide
   m_TagString: Untagged
@@ -50,6 +51,19 @@ MonoBehaviour:
   LeftPf: {fileID: 1716368933760031085}
   Count: 5
   step: 0.1
+--- !u!114 &5786410345891931986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7711093006480926846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d5f4b9c2c05884bb167f8ac389bfae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownLengh: 30
 --- !u!1001 &1987578272571724267
 PrefabInstance:
   m_ObjectHideFlags: 0
