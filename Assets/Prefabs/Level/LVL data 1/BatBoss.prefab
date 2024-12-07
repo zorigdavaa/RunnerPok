@@ -77,6 +77,14 @@ PrefabInstance:
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: attackCoolDownRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: attackCoolDownRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: Patterns.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 88636fa068c8ae14194a25e9e0955279, type: 2}

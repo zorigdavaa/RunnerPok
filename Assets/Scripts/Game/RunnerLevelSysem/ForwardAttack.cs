@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "ForwardAndAttack", menuName = "Patter/ForwardAndAttack")]
 public class ForwardAttack : BaseAttackPattern
@@ -24,7 +26,7 @@ public class ForwardAttack : BaseAttackPattern
         return Cooldown;
     }
 
-    public override IEnumerator Pattern(Animal animal)
+    public override IEnumerator Pattern(Animal animal, Action action)
     {
 
         Vector3 attackPos = animal.transform.localPosition + Vector3.back * 10 + Vector3.right * Random.Range(-3, 3);
@@ -60,6 +62,6 @@ public class ForwardAttack : BaseAttackPattern
             animal.transform.localPosition = Vector3.Lerp(attackPos, initPos, t);
             yield return null;
         }
-
+        action?.Invoke();
     }
 }

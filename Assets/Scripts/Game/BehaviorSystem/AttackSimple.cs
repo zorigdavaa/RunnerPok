@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZPackage;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "Attack", menuName = "Patter/Simple")]
 public class AttackSimple : BaseAttackPattern
@@ -29,7 +31,7 @@ public class AttackSimple : BaseAttackPattern
         return Cooldown;
     }
 
-    public override IEnumerator Pattern(Animal animal)
+    public override IEnumerator Pattern(Animal animal, Action afterAction)
     {
         Vector3 initPos = animal.transform.localPosition;
         for (int i = 0; i < AttackCount; i++)
@@ -39,5 +41,6 @@ public class AttackSimple : BaseAttackPattern
             AttackProjectile(animal);
             yield return new WaitForSeconds(WaitTimer);
         }
+        afterAction?.Invoke();
     }
 }

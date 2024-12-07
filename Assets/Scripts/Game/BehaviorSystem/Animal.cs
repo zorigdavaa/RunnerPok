@@ -48,11 +48,15 @@ public class Animal : Enemy
     }
 
     float attackTimer = 3;
+    public Vector2 attackCoolDownRange = new Vector2(3, 5);
     private void Update()
     {
         if (StartMove)
         {
-            attackTimer -= Time.deltaTime;
+            if (ActionCoroutine == null)
+            {
+                attackTimer -= Time.deltaTime;
+            }
             if (attackTimer < 0 && IsAlive)
             {
                 float cooldown = 0;
@@ -74,7 +78,7 @@ public class Animal : Enemy
                 {
                     MovePositon();
                 }
-                attackTimer = Random.Range(3f, 5f) + cooldown;
+                attackTimer = Random.Range(attackCoolDownRange.x, attackCoolDownRange.y) + cooldown;
             }
         }
 
@@ -83,7 +87,10 @@ public class Animal : Enemy
     private void PatterAttack(BaseAttackPattern pattern)
     {
         StopOtherAction();
-        ActionCoroutine = StartCoroutine(pattern.Pattern(this));
+        ActionCoroutine = StartCoroutine(pattern.Pattern(this, () =>
+        {
+            ActionCoroutine = null;
+        }));
     }
 
     private void StopOtherAction()
@@ -126,6 +133,7 @@ public class Animal : Enemy
                 yield return null;
             }
             animationController.SetSpeed(idleSpeed);
+            ActionCoroutine = null;
         }
     }
     public void Attack()
@@ -162,6 +170,7 @@ public class Animal : Enemy
                 transform.localPosition = Vector3.Lerp(attackPos, initPos, t);
                 yield return null;
             }
+            ActionCoroutine = null;
         }
     }
 

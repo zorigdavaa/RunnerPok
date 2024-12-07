@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZPackage;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "FrontPlayerAttack", menuName = "Patter/FrontPlayerAttack")]
 public class FrontPlayerAttack : BaseAttackPattern
@@ -19,10 +21,10 @@ public class FrontPlayerAttack : BaseAttackPattern
 
     public override float GetCoolDown()
     {
-       return  AttackCount* WaitTimer;
+        return AttackCount * WaitTimer;
     }
 
-    public override IEnumerator Pattern(Animal animal)
+    public override IEnumerator Pattern(Animal animal, Action action)
     {
         // Vector3 attackPos = animal.transform.localPosition + Vector3.back * 10 + Vector3.right * Random.Range(-3, 3);
         Vector3 playerPos = Z.Player.transform.localPosition;
@@ -59,5 +61,6 @@ public class FrontPlayerAttack : BaseAttackPattern
             animal.transform.localPosition = Vector3.Lerp(attackPos, initPos, t);
             yield return null;
         }
+        action?.Invoke();
     }
 }
