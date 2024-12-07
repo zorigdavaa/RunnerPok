@@ -53,13 +53,13 @@ public class ObsSection : BaseSection
     }
     public override void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 50;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 100;
         if (isNearEndofLand)
         {
             Tile tileToIns = curLevel.BaseTilePf;
             curLevel.SpawnTile(tileToIns);
         }
-        bool isNearOfObs = curLevel.player.transform.position.z > insPos.z - 25;
+        bool isNearOfObs = curLevel.player.transform.position.z > insPos.z - 70;
         if (isNearOfObs)
         {
             if (HasNextObs)

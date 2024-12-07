@@ -47,7 +47,7 @@ public abstract class BaseSection
 
     public virtual void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 70;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 100;
         if (isNearEndofLand && HasNextTile())
         {
             Tile tileToIns = levelTiles[index];

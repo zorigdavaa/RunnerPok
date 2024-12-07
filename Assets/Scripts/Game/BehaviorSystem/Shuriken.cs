@@ -7,13 +7,13 @@ using ZPackage;
 
 public class Shuriken : MonoBehaviour, ISaveAble
 {
-    ObjectPool<Shuriken> Pool;
-    Coroutine AutoGotoPoolCor;
-    [SerializeField] ItemData data;
-    int level = 1;
+    protected ObjectPool<Shuriken> Pool;
+    protected Coroutine AutoGotoPoolCor;
+    [SerializeField] protected ItemData data;
+    protected int level = 1;
     // int Damage = 5;
-    DamageData damageData;
-    Transform Graphics;
+    protected DamageData damageData;
+    protected Transform Graphics;
 
     internal void GetFrompool()
     {
@@ -58,10 +58,15 @@ public class Shuriken : MonoBehaviour, ISaveAble
 
 
     public float SideMovement;
-    float RightAcc = 0;
-    float speed = 15;
+    protected float RightAcc = 0;
+    protected float speed = 15;
     // Update is called once per frame
     void Update()
+    {
+        ShurikenBehavior();
+    }
+
+    public virtual void ShurikenBehavior()
     {
         Graphics.Rotate(0, 360 * Time.deltaTime, 0);
         if (Z.Player.GetState() == PlayerState.Fight)
@@ -72,6 +77,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
         else
         {
             transform.localPosition += Vector3.forward * speed * 3 * Time.deltaTime;
+            // Pool.Release(this);
         }
         // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
         if (RightAcc < Mathf.Abs(SideMovement * 2))
@@ -80,7 +86,13 @@ public class Shuriken : MonoBehaviour, ISaveAble
         }
         transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
     }
+
     private void OnTriggerEnter(Collider other)
+    {
+        Impact(other);
+    }
+
+    public virtual void Impact(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
         RightAcc = 0;
