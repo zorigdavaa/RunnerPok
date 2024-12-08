@@ -5,13 +5,15 @@ using System.Linq;
 using UnityEngine;
 using ZPackage;
 
+
 public class ShurikenBounce : Shuriken
 {
-    Transform Target;
+    protected Transform Target;
     public int BounceAmount = 3;
     public bool firstImpacted = false;
     DamageData damageDataCopy;
     List<Enemy> impactedEnemy = new List<Enemy>();
+    public float FindDistance = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,6 @@ public class ShurikenBounce : Shuriken
         base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        ShurikenBehavior();
-    }
     public override void ShurikenBehavior()
     {
         Graphics.Rotate(0, 360 * Time.deltaTime, 0);
@@ -62,9 +59,9 @@ public class ShurikenBounce : Shuriken
         // transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
     }
 
-    private void FindTarget()
+    public void FindTarget()
     {
-        Collider[] AroundObs = Physics.OverlapSphere(transform.position, 5, LayerMask.GetMask("Bot"));
+        Collider[] AroundObs = Physics.OverlapSphere(transform.position, FindDistance, LayerMask.GetMask("Bot"));
         bool FoundNewOne = false;
         if (AroundObs.Length > 0)
         {

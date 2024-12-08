@@ -16,6 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 4227053565995980960, guid: 7261f09847d319b479a032a61f199148, type: 3}
   BaseDamage: 5
   BaseSpeed: 1
+  BaseRange: 2
   AddDamage: 020000000400000006000000080000000a000000
   AddSpeed: 
   pf: {fileID: 3727168934407258221, guid: 4cf787b8cc797f8429f5ada25d2a4631, type: 3}

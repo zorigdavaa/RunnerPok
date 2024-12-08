@@ -89,15 +89,16 @@ public class PlayerBuffItems : MonoBehaviour
     public void RetrieveData()
     {
         SlotSave defaultOne = new SlotSave();
-        defaultOne.EquipedNames.Add(buffItemDatas[3].itemName);
+        defaultOne.EquipedNames.Add(buffItemDatas[4].itemName);
         defaultOne.EquipedNames.Add(String.Empty);
         defaultOne.EquipedNames.Add(String.Empty);
         defaultOne.EquipedNames.Add(String.Empty);
         defaultOne.EquipedNames.Add(String.Empty);
 
+        defaultOne.UnEquipedNames.Add(buffItemDatas[0].itemName);
         defaultOne.UnEquipedNames.Add(buffItemDatas[1].itemName);
         defaultOne.UnEquipedNames.Add(buffItemDatas[2].itemName);
-        defaultOne.UnEquipedNames.Add(buffItemDatas[0].itemName);
+        defaultOne.UnEquipedNames.Add(buffItemDatas[3].itemName);
 
         var saved = PlayerPrefZ.GetData("equipedData", defaultOne);
 

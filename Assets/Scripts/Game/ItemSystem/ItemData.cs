@@ -11,6 +11,7 @@ public class ItemData : ScriptableObject
     public Sprite Icon;
     public int BaseDamage;
     public float BaseSpeed = 1;
+    public float BaseRange = 1;//calculated in second
     public List<int> AddDamage;
     public List<int> AddSpeed;
     public GameObject pf;
