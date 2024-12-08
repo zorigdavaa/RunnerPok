@@ -10,7 +10,9 @@ public class ItemData : ScriptableObject
     public string itemName;
     public Sprite Icon;
     public int BaseDamage;
+    public float BaseSpeed = 1;
     public List<int> AddDamage;
+    public List<int> AddSpeed;
     public GameObject pf;
     // public BaseItemUI pfUI;
     public WhereSlot Where;

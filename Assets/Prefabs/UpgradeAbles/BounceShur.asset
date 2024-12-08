@@ -15,9 +15,10 @@ MonoBehaviour:
   itemName: BounceShur
   Icon: {fileID: 4227053565995980960, guid: 7261f09847d319b479a032a61f199148, type: 3}
   BaseDamage: 5
+  BaseSpeed: 1
   AddDamage: 020000000400000006000000080000000a000000
+  AddSpeed: 
   pf: {fileID: 3727168934407258221, guid: 4cf787b8cc797f8429f5ada25d2a4631, type: 3}
-  pfUI: {fileID: 8257181611891360946, guid: 091c3e7cd1dfaca439b92c3b47fd7df6, type: 3}
   Where: 1
   damageData:
     damage: 5

@@ -360,6 +360,8 @@ public class Player : Character
     public void StartThrow(bool val = true)
     {
         animationController.RightHandAttack(val);
+        Debug.Log("Hand speed " + HandItem.BaseSpeed);
+        animationController.SetHandSpeed(HandItem.BaseSpeed);
         // attackTimer -= Time.deltaTime;
         // if (attackTimer <= 0)
         // {

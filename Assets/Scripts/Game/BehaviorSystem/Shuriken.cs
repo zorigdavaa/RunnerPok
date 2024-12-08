@@ -5,6 +5,13 @@ using UnityEngine;
 using UnityEngine.Pool;
 using ZPackage;
 
+//IDea 
+//BounceShuriken
+//PiercingShuriken
+//PoisonShuriken
+//BombShuriken
+//LightningShuriken
+//SeekingShuriken
 public class Shuriken : MonoBehaviour, ISaveAble
 {
     protected ObjectPool<Shuriken> Pool;

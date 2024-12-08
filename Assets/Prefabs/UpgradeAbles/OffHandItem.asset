@@ -15,9 +15,10 @@ MonoBehaviour:
   itemName: OffHandBall
   Icon: {fileID: 21300000, guid: b9904af8a30d708439e8a61858633326, type: 3}
   BaseDamage: 20
+  BaseSpeed: 1
   AddDamage: 0a000000140000001e0000002800000032000000
+  AddSpeed: 
   pf: {fileID: 7901734791091592274, guid: 59e4573c3522a3c49b19cd45a6cb4798, type: 3}
-  pfUI: {fileID: 8257181611891360946, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
   Where: 3
   damageData:
     damage: 20

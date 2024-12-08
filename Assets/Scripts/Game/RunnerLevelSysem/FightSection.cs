@@ -119,7 +119,7 @@ public class FightSection : BaseSection
     {
 
         RemEnemyCount--;
-        Debug.Log("deatj " + AllEnemyCount);
+        // Debug.Log("deatj " + AllEnemyCount);
         if (RemEnemyCount == 0)
         {
             NextorEnd();

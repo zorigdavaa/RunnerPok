@@ -55,12 +55,11 @@ public class ShurikenBounce : Shuriken
             transform.localPosition += Vector3.forward * speed * 3 * Time.deltaTime;
             // Pool.Release(this);
         }
-        // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
-        if (RightAcc < Mathf.Abs(SideMovement * 2))
-        {
-            RightAcc += Time.deltaTime;
-        }
-        transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
+        // if (RightAcc < Mathf.Abs(SideMovement * 2))
+        // {
+        //     RightAcc += Time.deltaTime;
+        // }
+        // transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
     }
 
     private void FindTarget()
@@ -104,6 +103,7 @@ public class ShurikenBounce : Shuriken
         GetComponent<Collider>().enabled = true;
         firstImpacted = false;
         impactedEnemy.Clear();
+        Target = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -125,7 +125,7 @@ public class ShurikenBounce : Shuriken
             BounceAmount--;
             impactedEnemy.Add(enemy);
             enemy.TakeDamage(data.damageData);
-            RightAcc = 0;
+            // RightAcc = 0;
             if (BounceAmount < 1)
             {
                 ReleaseToPool();

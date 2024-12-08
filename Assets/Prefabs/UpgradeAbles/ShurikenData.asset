@@ -15,9 +15,10 @@ MonoBehaviour:
   itemName: shuriken
   Icon: {fileID: -3358933203163112000, guid: b05ec452725e99f439d95604debfed6a, type: 3}
   BaseDamage: 5
+  BaseSpeed: 1
   AddDamage: 020000000400000006000000080000000a000000
+  AddSpeed: 
   pf: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
-  pfUI: {fileID: 8257181611891360946, guid: c19807a3d53274d0b8c858b826041634, type: 3}
   Where: 1
   damageData:
     damage: 5

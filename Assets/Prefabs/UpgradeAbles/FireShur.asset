@@ -15,9 +15,10 @@ MonoBehaviour:
   itemName: FireShur
   Icon: {fileID: 21300000, guid: 70c93a813ebc5f747b6054afcc43820b, type: 3}
   BaseDamage: 5
+  BaseSpeed: 1
   AddDamage: 020000000400000006000000080000000a000000
+  AddSpeed: 
   pf: {fileID: 7901734791091592274, guid: 69b12077b2d8f0648866e2715b38ebba, type: 3}
-  pfUI: {fileID: 8257181611891360946, guid: acc5833bb8aa2214d8f62e3afe213fe6, type: 3}
   Where: 1
   damageData:
     damage: 5

@@ -47,6 +47,11 @@ public class AnimationController : BaseAnim
         //     animator.SetLayerWeight(1, 1);
         // }
     }
+
+    internal void SetHandSpeed(float v)
+    {
+        animator.SetFloat("handSpeed", v);
+    }
 }
 public enum AnimationState
 {
