@@ -11,11 +11,6 @@ public class ShurSeeker : ShurikenBounce
         base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public override void ShurikenBehavior()
     {
         Graphics.Rotate(0, 360 * Time.deltaTime, 0);
