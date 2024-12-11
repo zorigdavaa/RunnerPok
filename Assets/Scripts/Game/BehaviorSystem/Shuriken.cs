@@ -104,15 +104,20 @@ public class Shuriken : MonoBehaviour, ISaveAble
     {
         if (enemy && enemy.IsAlive)
         {
-            RightAcc = 0;
             enemy.TakeDamage(data.damageData);
-            Pool.Release(this);
+            RightAcc = 0;
+            ReleaseToPool();
             if (AutoGotoPoolCor != null)
             {
                 StopCoroutine(AutoGotoPoolCor);
                 AutoGotoPoolCor = null;
             }
         }
+    }
+
+    public virtual void ReleaseToPool()
+    {
+        Pool.Release(this);
     }
 
     public void SaveData()
@@ -124,7 +129,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
     {
         level = PlayerPrefs.GetInt(data.name, level);
         //To do
-        
+
         // damageData.damage = data.BaseDamage + data.AddDamage[level];
         // damageData.Type = data.damageData.Type;
     }

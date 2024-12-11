@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZPackage;
 
-public class ShurSeeker : ShurikenBounce
+public class ShurSeeker : Shuriken
 {
+    Transform Target;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +44,34 @@ public class ShurSeeker : ShurikenBounce
         //     RightAcc += Time.deltaTime;
         // }
         // transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
+    }
+    float FindDistance = 5;
+    public void FindTarget()
+    {
+        Collider[] AroundObs = Physics.OverlapSphere(transform.position, FindDistance, LayerMask.GetMask("Bot"));
+        if (AroundObs.Length > 0)
+        {
+            float nearDistance = 1000;
+            foreach (var item in AroundObs)
+            {
+                float itemDistance = Vector3.Distance(transform.position, item.transform.position);
+                if (itemDistance < nearDistance)
+                {
+                    Enemy enemyScript = item.GetComponent<Enemy>();
+                    if (enemyScript && enemyScript.IsAlive)
+                    {
+
+                        Target = item.transform;
+                        nearDistance = itemDistance;
+                    }
+                }
+            }
+
+        }
+    }
+    public override void ReleaseToPool()
+    {
+        base.ReleaseToPool();
+        Target = null;
     }
 }

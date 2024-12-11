@@ -10,7 +10,6 @@ public class ShurikenBounce : Shuriken
 {
     protected Transform Target;
     public int BounceAmount = 3;
-    public bool firstImpacted = false;
     DamageData damageDataCopy;
     List<Enemy> impactedEnemy = new List<Enemy>();
     public float FindDistance = 5;
@@ -92,13 +91,12 @@ public class ShurikenBounce : Shuriken
 
     }
 
-    private void ReleaseToPool()
+    public override void ReleaseToPool()
     {
-        Pool.Release(this);
+        base.ReleaseToPool();
         BounceAmount = 3;
         damageDataCopy = data.damageData;
         GetComponent<Collider>().enabled = true;
-        firstImpacted = false;
         impactedEnemy.Clear();
         Target = null;
     }
