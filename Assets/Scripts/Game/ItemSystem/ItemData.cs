@@ -18,4 +18,9 @@ public class ItemData : ScriptableObject
     // public BaseItemUI pfUI;
     public WhereSlot Where;
     public DamageData damageData;
+
+    public virtual void Wear(Player player)
+    {
+        // throw new NotImplementedException();
+    }
 }

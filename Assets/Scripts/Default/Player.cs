@@ -25,11 +25,47 @@ public class Player : Character
     int OldCameraIndex = -1;
     CinemachineVirtualCamera currentCamera;
     PlayerState State = PlayerState.None;
-    public ItemData HandItem;
-    public OffHandItem OffHandItem; // Odoohondoo ingeed ywj baiya daraa list bolgoj magadgui
-    public ItemData HeadItem;
-    public ItemData FootItem;
-    public ItemData ChestItem;
+
+    #region BearintItems
+    private ItemData _handItem;
+    public ItemData HandItem
+    {
+        get { return _handItem; }
+        set { _handItem = value; }
+    }
+    private OffHandItem _offHandItem;
+    public OffHandItem OffHandItem
+    {
+        get { return _offHandItem; }
+        set { _offHandItem = value; }
+    }
+    private ItemData _headItem;
+    public ItemData HeadItem
+    {
+        get { return _headItem; }
+        set { _headItem = value; }
+    }
+    private ItemData _FootItem;
+    public ItemData FootItem
+    {
+        get { return _FootItem; }
+        set { _FootItem = value; }
+    }
+    private ItemData _chestItem;
+    public ItemData ChestItem
+    {
+        get { return _chestItem; }
+        set
+        {
+            _chestItem = value;
+            if (_chestItem != null)
+            {
+                _chestItem.Wear(this);
+            }
+        }
+    }
+    #endregion
+
     public EventHandler<PlayerState> OnStateChanged;
     public Coin CoinPF;
 
@@ -357,9 +393,12 @@ public class Player : Character
     }
     public void StartThrow(bool val = true)
     {
-        animationController.RightHandAttack(val);
-        Debug.Log("Hand speed " + HandItem.BaseSpeed);
-        animationController.SetHandSpeed(HandItem.BaseSpeed);
+        if (HandItem)
+        {
+            animationController.RightHandAttack(val);
+            Debug.Log("Hand speed " + HandItem.BaseSpeed);
+            animationController.SetHandSpeed(HandItem.BaseSpeed);
+        }
         // attackTimer -= Time.deltaTime;
         // if (attackTimer <= 0)
         // {

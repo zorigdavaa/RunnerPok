@@ -3956,10 +3956,14 @@ PrefabInstance:
       objectReference: {fileID: 8257181611891360946, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
     - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: buffItemDatas.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: buffItemDatas.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: edeb4423a40784f24ba76b7edbbea68b, type: 2}
+    - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
+      propertyPath: buffItemDatas.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: 7954fe66d6f88ca41b5ce35baa687134, type: 2}
     m_RemovedComponents: []

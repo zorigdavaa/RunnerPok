@@ -9,17 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95c0284e4e62aff42afaaec225317cb1, type: 3}
-  m_Name: ArmorData
+  m_Script: {fileID: 11500000, guid: aa8e836ea9af34454a81c6db3e0b8e07, type: 3}
+  m_Name: ChestItemData
   m_EditorClassIdentifier: 
   itemName: Armor
-  Icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  BaseDamage: 5
+  Icon: {fileID: 2530564911472380330, guid: 8a619fd04331cb54989d7c054c0a4225, type: 3}
+  BaseDamage: 0
   BaseSpeed: 1
-  AddDamage: 020000000400000006000000080000000a000000
+  BaseRange: 1
+  AddDamage: 
   AddSpeed: 
   pf: {fileID: 4856505954130395814, guid: b8cee5eb7c4cf4ed0bfc21fcee1c00dc, type: 3}
   Where: 4
   damageData:
-    damage: 5
+    damage: 0
     Type: 0
