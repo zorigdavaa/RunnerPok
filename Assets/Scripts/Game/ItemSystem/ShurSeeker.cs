@@ -69,9 +69,9 @@ public class ShurSeeker : Shuriken
 
         }
     }
-    public override void ReleaseToPool()
+    public override void GotoPool()
     {
-        base.ReleaseToPool();
+        base.GotoPool();
         Target = null;
     }
 }

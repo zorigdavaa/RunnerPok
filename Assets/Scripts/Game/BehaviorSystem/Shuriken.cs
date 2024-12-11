@@ -12,9 +12,10 @@ using ZPackage;
 //BombShuriken
 //LightningShuriken
 //SeekingShuriken
-public class Shuriken : MonoBehaviour, ISaveAble
+public class Shuriken : MonoBehaviour, ISaveAble, IPoolItem<Shuriken>
 {
-    protected ObjectPool<Shuriken> Pool;
+    public ObjectPool<Shuriken> Pool { get; set; }
+
     protected Coroutine AutoGotoPoolCor;
     [SerializeField] protected ItemData data;
     protected int level = 1;
@@ -22,7 +23,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
     // protected DamageData damageData;
     protected Transform Graphics;
 
-    internal void GetFrompool()
+    public void GetFrompool()
     {
         gameObject.SetActive(true);
         // transform.position = Vector3.zero;
@@ -36,7 +37,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
         }
     }
     //Should Only called from Release
-    internal void GotoPool()
+    public virtual void GotoPool()
     {
         gameObject.SetActive(false);
         transform.position = Vector3.zero;
@@ -48,11 +49,6 @@ public class Shuriken : MonoBehaviour, ISaveAble
         //     yield return new WaitForSeconds(wait);
 
         // }
-    }
-
-    internal void SetPool(ObjectPool<Shuriken> pool)
-    {
-        Pool = pool;
     }
 
     // Start is called before the first frame update
@@ -105,19 +101,14 @@ public class Shuriken : MonoBehaviour, ISaveAble
         if (enemy && enemy.IsAlive)
         {
             enemy.TakeDamage(data.damageData);
-            RightAcc = 0;
-            ReleaseToPool();
+
+            Pool.Release(this);
             if (AutoGotoPoolCor != null)
             {
                 StopCoroutine(AutoGotoPoolCor);
                 AutoGotoPoolCor = null;
             }
         }
-    }
-
-    public virtual void ReleaseToPool()
-    {
-        Pool.Release(this);
     }
 
     public void SaveData()

@@ -81,19 +81,18 @@ public class ShurikenBounce : Shuriken
             }
             if (!FoundNewOne)
             {
-                ReleaseToPool();
+                Pool.Release(this);
             }
         }
         else
         {
-            ReleaseToPool();
+            Pool.Release(this);
         }
 
     }
-
-    public override void ReleaseToPool()
+    public override void GotoPool()
     {
-        base.ReleaseToPool();
+        base.GotoPool();
         BounceAmount = 3;
         damageDataCopy = data.damageData;
         GetComponent<Collider>().enabled = true;
@@ -123,7 +122,7 @@ public class ShurikenBounce : Shuriken
             // RightAcc = 0;
             if (BounceAmount < 1)
             {
-                ReleaseToPool();
+                Pool.Release(this);
             }
             else
             {

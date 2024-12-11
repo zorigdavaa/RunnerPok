@@ -153,7 +153,7 @@ public class Player : Character
         Pool = new ObjectPool<Shuriken>(() =>
         {
             Shuriken spear = Instantiate(HandItem.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
-            spear.SetPool(Pool);
+            spear.Pool = Pool;
             return spear;
             // return new GameObject();
         }, (s) =>
@@ -181,7 +181,7 @@ public class Player : Character
         OffHandPool = new ObjectPool<Shuriken>(() =>
         {
             Shuriken spear = Instantiate(OffHandItem.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
-            spear.SetPool(OffHandPool);
+            spear.Pool = OffHandPool;
             return spear;
             // return new GameObject();
         }, (s) =>
