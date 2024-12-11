@@ -23,7 +23,7 @@ public class PlayerBuffItems : MonoBehaviour
 
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
-    [SerializeField] List<ItemData> buffItemDatas;
+    [SerializeField] List<BaseItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
     public ShurikenUI UIPF;
     void Awake()
@@ -112,7 +112,7 @@ public class PlayerBuffItems : MonoBehaviour
                     // Debug.Log("Contunued uneqiop");
                     continue;
                 }
-                ItemData data = buffItemDatas.Where(x => x.itemName == saved.UnEquipedNames[i]).FirstOrDefault();
+                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.UnEquipedNames[i]).FirstOrDefault();
                 if (data)
                 {
                     // Debug.Log("Insed " + data.name);
@@ -138,7 +138,7 @@ public class PlayerBuffItems : MonoBehaviour
                     // Debug.Log("Contunued equip");
                     continue;
                 }
-                ItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipedNames[i]).FirstOrDefault();
+                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipedNames[i]).FirstOrDefault();
                 if (data)
                 {
                     // Debug.Log("Insed equip " + data.name);

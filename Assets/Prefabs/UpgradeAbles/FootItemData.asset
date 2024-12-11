@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8e836ea9af34454a81c6db3e0b8e07, type: 3}
-  m_Name: FootItem
+  m_Script: {fileID: 11500000, guid: e1844f90caccfc445ab43713017a9775, type: 3}
+  m_Name: FootItemData
   m_EditorClassIdentifier: 
   itemName: FootItem
   Icon: {fileID: 21300000, guid: 76d102225a5b4574e8827a3a25370806, type: 3}
@@ -24,4 +24,5 @@ MonoBehaviour:
   damageData:
     damage: 0
     Type: 0
-  wearPos: {x: 0, y: 0.2, z: 0}
+  RightFootPos: {x: 0, y: 0.1, z: 0}
+  LeftFootPos: {x: 0, y: 0.1, z: 0}

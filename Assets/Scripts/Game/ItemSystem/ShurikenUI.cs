@@ -22,7 +22,8 @@ public class ShurikenUI : BaseItemUI
     }
     public override void Upgrade()
     {
-        if (level < data.AddDamage.Count)
+        // if (level < data.AddDamage.Count)
+        if (data.IsUpgradeAble(level))
         {
             level++;
             SaveData();

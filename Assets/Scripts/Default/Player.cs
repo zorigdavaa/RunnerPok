@@ -55,21 +55,33 @@ public class Player : Character
             }
         }
     }
-    private ItemData _FootItem;
-    public ItemData FootItem
+    public GameObject RightFootObj;
+    public GameObject LeftFootObj;
+    private FootItemdata _FootItem;
+    public FootItemdata FootItem
     {
         get { return _FootItem; }
         set
         {
-            _FootItem = value;
-            if (_FootItem != null)
+            if (_FootItem != value)
             {
-                _FootItem.Wear(this);
+                if (value != null)
+                {
+                    value.Wear(this);
+                }
+                else
+                {
+                    if (_FootItem)
+                    {
+                        _FootItem.Unwear(this);
+                    }
+                }
             }
+            _FootItem = value;
         }
     }
-    private ItemData _chestItem;
-    public ItemData ChestItem
+    private ChestItemData _chestItem;
+    public ChestItemData ChestItem
     {
         get { return _chestItem; }
         set

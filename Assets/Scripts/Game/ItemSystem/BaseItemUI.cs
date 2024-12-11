@@ -6,7 +6,7 @@ using ZPackage;
 
 public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
 {
-    public ItemData data;
+    public BaseItemData data;
     public UISlot currentSlot;
     public virtual void Upgrade()
     {
@@ -22,7 +22,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
         // Debug.Log("Eqiopped " + data.name);
         switch (data.Where)
         {
-            case WhereSlot.Hand: Z.Player.HandItem = data; break;
+            case WhereSlot.Hand: Z.Player.HandItem = (ItemData)data; break;
             case WhereSlot.OtherHand:
                 if (data is OffHandItem castData)
                 {
@@ -30,13 +30,13 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
                 }
                 break;
             case WhereSlot.Chest:
-                Z.Player.ChestItem = data;
+                Z.Player.ChestItem = (ChestItemData)data;
                 break;
             case WhereSlot.Foot:
-                Z.Player.FootItem = data;
+                Z.Player.FootItem = (FootItemdata)data;
                 break;
             case WhereSlot.Head:
-                Z.Player.HeadItem = data;
+                Z.Player.HeadItem = (ItemData)data;
                 break;
             default: break;
         }
@@ -54,9 +54,13 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
                 }
                 break;
             case WhereSlot.Chest:
-
                 Z.Player.ChestItem = null;
-
+                break;
+            case WhereSlot.Foot:
+                Z.Player.FootItem = null;
+                break;
+            case WhereSlot.Head:
+                Z.Player.HeadItem = null;
                 break;
             default: break;
         }
