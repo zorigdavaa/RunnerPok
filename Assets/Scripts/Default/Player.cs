@@ -69,8 +69,6 @@ public class Player : Character
         UpdateAction?.Invoke();
     }
 
-
-
     private void FixedUpdate()
     {
         Movement.PlayerControl();
