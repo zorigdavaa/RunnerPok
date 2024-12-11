@@ -30,9 +30,13 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
                 }
                 break;
             case WhereSlot.Chest:
-
                 Z.Player.ChestItem = data;
-
+                break;
+            case WhereSlot.Foot:
+                Z.Player.FootItem = data;
+                break;
+            case WhereSlot.Head:
+                Z.Player.HeadItem = data;
                 break;
             default: break;
         }

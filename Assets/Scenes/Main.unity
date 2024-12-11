@@ -158,6 +158,11 @@ Transform:
   - {fileID: 246099924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &65009716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8674372675957171830, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+  m_PrefabInstance: {fileID: 777851598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &87034606
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +443,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!4 &129918962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7275136855570774489, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+  m_PrefabInstance: {fileID: 777851598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &136681505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +887,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
+--- !u!4 &392859414 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4389056550311191412, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+  m_PrefabInstance: {fileID: 777851598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &463869250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1560,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1463407924}
     m_Modifications:
     - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 65009716}
+    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: chest
+      value: 
+      objectReference: {fileID: 392859414}
+    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: CoinPF
       value: 
       objectReference: {fileID: 9165944809720320796, guid: 787b15b9028cc6745a08b25a6b26da90, type: 3}
@@ -1552,6 +1575,14 @@ PrefabInstance:
       propertyPath: HandItem
       value: 
       objectReference: {fileID: 11400000, guid: 860ce0b918cc0453b882cc4f386e16b2, type: 2}
+    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: leftFoot
+      value: 
+      objectReference: {fileID: 1645832165}
+    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: rightFoot
+      value: 
+      objectReference: {fileID: 129918962}
     - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: CurrentShurikenData
       value: 
@@ -2815,6 +2846,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1645832165 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2424320737499044007, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+  m_PrefabInstance: {fileID: 777851598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1661421626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,14 +3992,18 @@ PrefabInstance:
       objectReference: {fileID: 8257181611891360946, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
     - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: buffItemDatas.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: buffItemDatas.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: edeb4423a40784f24ba76b7edbbea68b, type: 2}
+      objectReference: {fileID: 11400000, guid: ebc58b7e553b34d4d901dace0deecd60, type: 2}
     - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: buffItemDatas.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: edeb4423a40784f24ba76b7edbbea68b, type: 2}
+    - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
+      propertyPath: buffItemDatas.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: 7954fe66d6f88ca41b5ce35baa687134, type: 2}
     m_RemovedComponents: []

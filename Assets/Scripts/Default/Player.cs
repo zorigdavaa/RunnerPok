@@ -18,7 +18,10 @@ public class Player : Character
     CameraController cameraController;
     SoundManager soundManager;
     UIBar bar;
-    public AnimationController animController;
+    public Transform rightFoot;
+    public Transform leftFoot;
+    public Transform head;
+    public Transform chest;
     // public Shuriken Shuriken;
     public List<CinemachineVirtualCamera> cameras;
     int currentCameraIndex = 0;
@@ -43,13 +46,27 @@ public class Player : Character
     public ItemData HeadItem
     {
         get { return _headItem; }
-        set { _headItem = value; }
+        set
+        {
+            _headItem = value;
+            if (_headItem != null)
+            {
+                _headItem.Wear(this);
+            }
+        }
     }
     private ItemData _FootItem;
     public ItemData FootItem
     {
         get { return _FootItem; }
-        set { _FootItem = value; }
+        set
+        {
+            _FootItem = value;
+            if (_FootItem != null)
+            {
+                _FootItem.Wear(this);
+            }
+        }
     }
     private ItemData _chestItem;
     public ItemData ChestItem
@@ -196,15 +213,6 @@ public class Player : Character
         {
             s.transform.position = transform.position + new Vector3(0, 1, 0);
             s.GetFrompool();
-            // s.transform.rotation = Spear.transform.rotation;
-            // if (Target)
-            // {
-            //     s.Throw(Target);
-            // }
-            // else
-            // {
-            //     s.Throw(transform.forward);
-            // }
         }, (s) =>
         {
             // release
@@ -224,15 +232,6 @@ public class Player : Character
         {
             s.transform.position = transform.position + new Vector3(0, 1, 0);
             s.GetFrompool();
-            // s.transform.rotation = Spear.transform.rotation;
-            // if (Target)
-            // {
-            //     s.Throw(Target);
-            // }
-            // else
-            // {
-            //     s.Throw(transform.forward);
-            // }
         }, (s) =>
         {
             // release
@@ -289,41 +288,6 @@ public class Player : Character
             {
                 shuriken.SideMovement = half;
             }
-
-
-            // Collider[] enemies = Physics.OverlapSphere(transform.position + transform.forward * 20, 2f, 1 << 6);
-            // float nearestDistance = Mathf.Infinity; // Initialize with a very large value
-            // Transform nearestEnemy = null;
-
-            // foreach (var enemy in enemies)
-            // {
-            //     Vector3 point = new Vector3(transform.position.x, enemy.transform.position.y, enemy.transform.position.z);
-            //     // Calculate the distance between the shuriken and the current enemy
-            //     float distance = Vector3.Distance(point, enemy.transform.position);
-
-            //     // Check if the current enemy is closer than the nearest one found so far
-            //     if (distance < nearestDistance)
-            //     {
-            //         nearestDistance = distance;
-            //         nearestEnemy = enemy.transform;
-            //     }
-            // }
-            // float distance = Vector3.Distance(point, enemy.transform.position);
-            // if (nearestEnemy != null)
-            // {
-            //     Vector3 dirToNearest = transform.position - nearestEnemy.position;
-            //     float half = nearestDistance * 0.7f;
-            //     if (Vector3.Dot(dirToNearest, transform.right) > 0) // right
-
-            //     {
-            //         shuriken.SideMovement = -half;
-            //     }
-            //     else
-            //     {
-            //         shuriken.SideMovement = half;
-            //     }
-
-            // }
         }
 
     }
@@ -399,15 +363,6 @@ public class Player : Character
             Debug.Log("Hand speed " + HandItem.BaseSpeed);
             animationController.SetHandSpeed(HandItem.BaseSpeed);
         }
-        // attackTimer -= Time.deltaTime;
-        // if (attackTimer <= 0)
-        // {
-        //     animationController.Attack();
-        //     attackTimer = InitialAttackTimer;
-        //     // Shuriken = Instantiate(Shuriken, transform.position, Quaternion.identity, transform.parent);
-
-        //     // Destroy(Shuriken.gameObject, 5);
-        // }
     }
 
     private void OnGameOver(object sender, EventArgs e)
