@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95c0284e4e62aff42afaaec225317cb1, type: 3}
-  m_Name: FireShur
+  m_Name: ShurSeeker
   m_EditorClassIdentifier: 
-  itemName: FireShur
-  Icon: {fileID: 21300000, guid: 70c93a813ebc5f747b6054afcc43820b, type: 3}
+  itemName: Seeker
+  Icon: {fileID: -8878088185706026076, guid: 62ab4930e895b9340bd15f7acf9b970b, type: 3}
   BaseDamage: 5
   BaseSpeed: 1
-  BaseRange: 1.5
+  BaseRange: 3
   AddDamage: 020000000400000006000000080000000a000000
   AddSpeed: 
-  pf: {fileID: 7901734791091592274, guid: 69b12077b2d8f0648866e2715b38ebba, type: 3}
+  pf: {fileID: 7901734791091592274, guid: e9b481dc4e3925342a41ab0bedbf2e43, type: 3}
   Where: 1
   damageData:
     damage: 5
-    Type: 1
+    Type: 0

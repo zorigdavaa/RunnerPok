@@ -19,7 +19,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
     [SerializeField] protected ItemData data;
     protected int level = 1;
     // int Damage = 5;
-    protected DamageData damageData;
+    // protected DamageData damageData;
     protected Transform Graphics;
 
     internal void GetFrompool()
@@ -29,7 +29,7 @@ public class Shuriken : MonoBehaviour, ISaveAble
         AutoGotoPoolCor = StartCoroutine(LocalCoroutine());
         IEnumerator LocalCoroutine()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(data.BaseRange);
             Pool.Release(this);
             AutoGotoPoolCor = null;
 
@@ -123,7 +123,9 @@ public class Shuriken : MonoBehaviour, ISaveAble
     public void RetrieveData()
     {
         level = PlayerPrefs.GetInt(data.name, level);
-        damageData.damage = data.BaseDamage + data.AddDamage[level];
-        damageData.Type = data.damageData.Type;
+        //To do
+        
+        // damageData.damage = data.BaseDamage + data.AddDamage[level];
+        // damageData.Type = data.damageData.Type;
     }
 }
