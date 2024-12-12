@@ -146,7 +146,16 @@ public class PlayerBuffItems : MonoBehaviour
                     insObj.data = data;
                     insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
-                    equipSlots[i].AddItem(insObj);
+                    // equipSlots[i].AddItem(insObj);
+                    UISlot sameTypeSlot = equipSlots.Where(x => x.Where == insObj.data.Where && x.Item == null).FirstOrDefault();
+                    if (sameTypeSlot)
+                    {
+                        sameTypeSlot.AddItem(insObj);
+                    }
+                    else
+                    {
+                        Debug.Log("Already Worn That kind of Item");
+                    }
                 }
 
             }

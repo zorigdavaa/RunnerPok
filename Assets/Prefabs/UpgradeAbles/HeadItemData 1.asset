@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3660b0f6e10c947968e2426573d2e213, type: 3}
+  m_Name: HeadItemData 1
+  m_EditorClassIdentifier: 
+  pf: {fileID: 4856505954130395814, guid: 198c3531717f64952bfe4669a7ad21bc, type: 3}
+  itemName: HeadArmor
+  Icon: {fileID: -7458266063204016139, guid: 859204fc96ddd774b9bc0d9d5c2b70f8, type: 3}
+  Where: 2
+  wearPos: {x: 0, y: 3, z: 0}

@@ -36,7 +36,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
                 Z.Player.FootItem = (FootItemdata)data;
                 break;
             case WhereSlot.Head:
-                Z.Player.HeadItem = (ItemData)data;
+                Z.Player.HeadItem = (HeadItemData)data;
                 break;
             default: break;
         }

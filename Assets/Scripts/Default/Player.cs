@@ -42,8 +42,9 @@ public class Player : Character
         get { return _offHandItem; }
         set { _offHandItem = value; }
     }
-    private ItemData _headItem;
-    public ItemData HeadItem
+    public GameObject HeadObj;
+    private HeadItemData _headItem;
+    public HeadItemData HeadItem
     {
         get { return _headItem; }
         set
