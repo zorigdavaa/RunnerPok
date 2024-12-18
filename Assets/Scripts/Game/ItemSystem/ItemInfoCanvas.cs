@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using ZPackage;
 
 public class ItemInfoCanvas : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class ItemInfoCanvas : MonoBehaviour
     {
         if (!itemUI.currentSlot.WearSlot)
         {
-            var freeSlot = PlayerBuffItems.Instance.GetByTypeFromEquiped(itemUI.data.Where);
+            var freeSlot = PlayerBuffItems.Instance.GetByTypeFromEquipedFree(itemUI.data.Where);
             if (freeSlot)
             {
                 freeSlot.AddItem(itemUI);
@@ -55,6 +56,8 @@ public class ItemInfoCanvas : MonoBehaviour
             else
             {
                 Debug.Log("Already Worm This " + itemUI.data.Where);
+                var UsedSlot = PlayerBuffItems.Instance.GetByTypeFromEquiped(itemUI.data.Where);
+                Z.CanM.ShowPlusOne(UsedSlot.transform.position, "Already Worn", Color.red);
             }
         }
         else

@@ -9,6 +9,7 @@ public class CanvasManager : GenericSingleton<CanvasManager>
 {
     public GameObject beforeStartMenu, afterLostMenu, afterWinMenu, Coin, Level, Hud, BoardMenu;
     [SerializeField] TMP_Text CoinText, ScoreText, ScoreMultipText, LevelText, ThrowCount;
+    public GameObject plusOnePF;
     private void OnEnable()
     {
         CoinText = Coin.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -78,6 +79,18 @@ public class CanvasManager : GenericSingleton<CanvasManager>
     {
         Hud.SetActive(false);
         ShowWinMenu(e);
+    }
+    public void ShowPlusOne(Vector3 worldPosition, string text, Color color)
+    {
+        GameObject obj = Instantiate(plusOnePF, Vector3.zero, Quaternion.identity, transform);
+        Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPosition);
+
+        // Set the screen position as the anchored position of the RectTransform
+        RectTransform objRect = obj.GetComponent<RectTransform>();
+        objRect.position = screenPosition;
+        Debug.Log(worldPosition);
+        obj.GetComponent<PlusOne>().Set(text, color);
+        Destroy(obj, 2);
     }
 
     private void ShowWinMenu(LevelCompletedEventArgs e)

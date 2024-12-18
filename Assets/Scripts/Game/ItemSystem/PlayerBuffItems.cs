@@ -166,7 +166,7 @@ public class PlayerBuffItems : MonoBehaviour
 
     }
 
-    internal UISlot GetByTypeFromEquiped(WhereSlot where)
+    internal UISlot GetByTypeFromEquipedFree(WhereSlot where)
     {
         foreach (var slot in equipSlots)
         {
@@ -183,6 +183,18 @@ public class PlayerBuffItems : MonoBehaviour
         foreach (var slot in unEquipslots)
         {
             if (slot.Item == null)
+            {
+                return slot;
+            }
+        }
+        return null;
+    }
+
+    internal UISlot GetByTypeFromEquiped(WhereSlot where)
+    {
+        foreach (var slot in equipSlots)
+        {
+            if (slot.Where == where)
             {
                 return slot;
             }
