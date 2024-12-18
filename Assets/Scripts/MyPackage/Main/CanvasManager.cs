@@ -83,11 +83,11 @@ public class CanvasManager : GenericSingleton<CanvasManager>
     public void ShowPlusOne(Vector3 worldPosition, string text, Color color)
     {
         GameObject obj = Instantiate(plusOnePF, Vector3.zero, Quaternion.identity, transform);
-        Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPosition);
+        // Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, worldPosition);
 
         // Set the screen position as the anchored position of the RectTransform
-        RectTransform objRect = obj.GetComponent<RectTransform>();
-        objRect.position = screenPosition;
+        // RectTransform objRect = obj.GetComponent<RectTransform>();
+        obj.transform.position = worldPosition;
         Debug.Log(worldPosition);
         obj.GetComponent<PlusOne>().Set(text, color);
         Destroy(obj, 2);
