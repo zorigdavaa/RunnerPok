@@ -9,6 +9,9 @@ public class BaseItemData : ScriptableObject
     public string itemName;
     public Sprite Icon;
     public WhereSlot Where;
+    public float AddArmor;
+    public float AddHealth;
+    public float AddDamage;
     public virtual void Wear(Player player)
     {
         throw new NotImplementedException();

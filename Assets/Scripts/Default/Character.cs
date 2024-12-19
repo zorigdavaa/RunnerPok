@@ -29,7 +29,12 @@ public abstract class Character : Mb, IHealth
         get { return maxHealth; }
         set { maxHealth = value; }
     }
-
+    [SerializeField] float armor;
+    public float Armor
+    {
+        get { return armor; }
+        set { armor = value; }
+    }
 
     public bool IsAlive => Health > 0;
 
@@ -37,7 +42,6 @@ public abstract class Character : Mb, IHealth
 
     public virtual void TakeDamage(float amount)
     {
-
         Health += (int)amount;
         if (Health <= 0)
         {
@@ -48,6 +52,8 @@ public abstract class Character : Mb, IHealth
     {
         float multiploer = data.Type.GetEffectiveMultiplier(_Element);
         float finalDamage = data.damage * multiploer;
+        float armorReduction = Armor / (Armor + 20);
+        finalDamage = finalDamage * (1 - armorReduction);
         Health -= (int)finalDamage;
         if (Health <= 0)
         {
