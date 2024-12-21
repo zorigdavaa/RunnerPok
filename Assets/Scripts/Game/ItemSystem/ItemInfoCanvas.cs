@@ -23,6 +23,7 @@ public class ItemInfoCanvas : MonoBehaviour
     }
 
     public TextMeshProUGUI txtName;
+    public TextMeshProUGUI txtDescription;
     BaseItemUI itemUI;
     [SerializeField] Button btnWear;
     [SerializeField] Button btnUpgrade;
@@ -77,6 +78,7 @@ public class ItemInfoCanvas : MonoBehaviour
         itemUI = _ItemUI;
         txtName.text = _ItemUI.data.name;
         Icon.sprite = _ItemUI.data.Icon;
+        txtDescription.text = itemUI.data.GetDescription();
         if (_ItemUI.currentSlot.WearSlot)
         {
             btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Remove";
