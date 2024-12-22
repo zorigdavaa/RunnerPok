@@ -16,4 +16,8 @@ MonoBehaviour:
   itemName: HeadArmor
   Icon: {fileID: -7458266063204016139, guid: 859204fc96ddd774b9bc0d9d5c2b70f8, type: 3}
   Where: 2
+  AddArmor: 0
+  AddHealth: 0
+  Desc: head item protect you
+  Info: 
   wearPos: {x: 0, y: 3, z: 0}

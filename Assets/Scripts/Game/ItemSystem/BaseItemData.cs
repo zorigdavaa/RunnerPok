@@ -12,8 +12,8 @@ public class BaseItemData : ScriptableObject
     public WhereSlot Where;
     public float AddArmor;
     public float AddHealth;
-    [TextArea]
-    public string Desc;
+    [TextArea] public string Desc;
+    [TextArea] public string Info;
     public virtual void Wear(Player player)
     {
         throw new NotImplementedException();
@@ -27,11 +27,27 @@ public class BaseItemData : ScriptableObject
     {
         throw new NotImplementedException();
     }
-    public virtual string GetDescription()
+    public string GetDescription()
     {
         string description = Desc;
 
         // Replace placeholders dynamically
+        description = Convert(description);
+
+        return description;
+    }
+    public string GetInfo()
+    {
+        string info = Info;
+
+        // Replace placeholders dynamically
+        info = Convert(info);
+
+        return info;
+    }
+
+    public virtual string Convert(string description)
+    {
         description = Regex.Replace(description, @"{(\w+)}", match =>
         {
             string key = match.Groups[1].Value;
@@ -43,7 +59,6 @@ public class BaseItemData : ScriptableObject
                 _ => match.Value // Return original placeholder if no match
             };
         });
-
         return description;
     }
 }
