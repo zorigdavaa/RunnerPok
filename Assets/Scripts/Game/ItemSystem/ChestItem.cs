@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ChestItem : MonoBehaviour, ISaveAble
+public class ChestItem : MonoBehaviour
 {
 
     protected ObjectPool<ChestItem> Pool;

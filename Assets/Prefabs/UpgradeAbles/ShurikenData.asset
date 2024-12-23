@@ -19,7 +19,11 @@ MonoBehaviour:
   AddArmor: 0
   AddHealth: 0
   Desc: basic shuriken
-  Info: damdage - {danage}, speed {speed}
+  Info: 'damage={damage}
+
+    speed={speed}
+
+'
   BaseDamage: 5
   BaseSpeed: 1
   BaseRange: 3

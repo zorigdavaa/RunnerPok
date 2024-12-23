@@ -19,7 +19,11 @@ MonoBehaviour:
   AddArmor: 0
   AddHealth: 0
   Desc: Fire shuriken is same as shuriken but additional damage
-  Info: damage {damage}, speed {speed}, range {range}
+  Info: 'damage={damage}
+
+    speed={speed}
+
+    range={range}'
   BaseDamage: 5
   BaseSpeed: 1
   BaseRange: 1.5

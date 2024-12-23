@@ -19,12 +19,16 @@ MonoBehaviour:
   AddArmor: 0
   AddHealth: 0
   Desc: this item Bounces up to 5 times Near Enemies
-  Info: damage {damage}, speed {speed}
+  Info: 'damage={damage}
+
+    speed={speed}
+
+'
   BaseDamage: 5
   BaseSpeed: 1
   BaseRange: 2
   AddDamage: 020000000400000006000000080000000a000000
-  AddSpeed: 
+  AddSpeed: 0000000000000000000000000000000000000000
   damageData:
     damage: 5
     Type: 0

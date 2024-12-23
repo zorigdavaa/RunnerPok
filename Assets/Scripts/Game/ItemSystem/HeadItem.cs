@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class HeadItem : MonoBehaviour, ISaveAble
+public class HeadItem : MonoBehaviour
 {
     protected ObjectPool<ChestItem> Pool;
     protected Coroutine AutoGotoPoolCor;

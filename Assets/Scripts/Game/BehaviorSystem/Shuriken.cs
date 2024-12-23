@@ -12,7 +12,7 @@ using ZPackage;
 //BombShuriken
 //LightningShuriken
 //SeekingShuriken
-public class Shuriken : MonoBehaviour, ISaveAble, IPoolItem<Shuriken>
+public class Shuriken : MonoBehaviour, IPoolItem<Shuriken>
 {
     public ObjectPool<Shuriken> Pool { get; set; }
 

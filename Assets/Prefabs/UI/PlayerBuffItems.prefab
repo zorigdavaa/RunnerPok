@@ -602,6 +602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemInfoCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 9208511073463932686, guid: 04991ae59a8014a4598f3d2368a23059, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

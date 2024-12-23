@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,14 +22,16 @@ public class ItemInfoCanvas : MonoBehaviour
         }
         set { _instance = value; }
     }
-
+    public List<GameObject> Infos;
     public TextMeshProUGUI txtName;
+    public TextMeshProUGUI txtLVL;
     public TextMeshProUGUI txtDescription;
     public TextMeshProUGUI Info;
     BaseItemUI itemUI;
     [SerializeField] Button btnWear;
     [SerializeField] Button btnUpgrade;
     [SerializeField] Image Icon;
+    public List<StringSpritePair> IconPair;
     public void Awake()
     {
         Instance = this;
@@ -39,6 +42,16 @@ public class ItemInfoCanvas : MonoBehaviour
     {
         btnWear.onClick.AddListener(WearorRemove);
         btnUpgrade.onClick.AddListener(Upgrade);
+    }
+    /// <summary>
+    /// This function is called when the behaviour becomes disabled or inactive.
+    /// </summary>
+    private void OnDisable()
+    {
+        foreach (var item in Infos)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
     private void Upgrade()
@@ -78,9 +91,19 @@ public class ItemInfoCanvas : MonoBehaviour
         gameObject.SetActive(true);
         itemUI = _ItemUI;
         txtName.text = _ItemUI.data.name;
+        txtLVL.text = _ItemUI.data.GetLevel();
         Icon.sprite = _ItemUI.data.Icon;
         txtDescription.text = itemUI.data.GetDescription();
-        Info.text = itemUI.data.GetInfo();
+        var dic = itemUI.data.GetInfo();
+        // Info.text = itemUI.data.GetInfo();
+        for (int i = 0; i < dic.Count; i++)
+        {
+            Debug.Log("Key is " + dic[i].Key + " value is " + dic[i].Value);
+            Infos[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dic[i].Value;
+            Sprite sprite = GetSprite(dic[i].Key);
+            Infos[i].transform.GetChild(1).GetComponent<Image>().sprite = sprite;
+            Infos[i].gameObject.SetActive(true);
+        }
         if (_ItemUI.currentSlot.WearSlot)
         {
             btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Remove";
@@ -89,5 +112,16 @@ public class ItemInfoCanvas : MonoBehaviour
         {
             btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Wear";
         }
+    }
+
+    private Sprite GetSprite(string key)
+    {
+        // Debug.Log("key is " + key);
+        Sprite restult = IconPair.Where(x => x.key == key).First().value;
+        if (restult == null)
+        {
+            Debug.LogError("Not Found");
+        }
+        return restult;
     }
 }
