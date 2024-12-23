@@ -25,7 +25,7 @@ public class PlayerBuffItems : MonoBehaviour
     [SerializeField] List<UISlot> unEquipslots;
     [SerializeField] List<BaseItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
-    public ShurikenUI UIPF;
+    public ItemInstance UIPF;
     void Awake()
     {
         itemInfoCanvas.Awake();
@@ -55,72 +55,63 @@ public class PlayerBuffItems : MonoBehaviour
     }
     public void SaveData()
     {
-        // PlayerPrefZ.SetData("buffData", equipSlots);
         SlotSave SavingData = new SlotSave();
         for (int i = 0; i < equipSlots.Count; i++)
         {
             if (equipSlots[i].Item != null)
             {
-                SavingData.EquipedNames.Add(equipSlots[i].Item.data.itemName);
+                SavingData.EquipDataNew.Add(new ItemSaveData(equipSlots[i].Item.ID, equipSlots[i].Item.data.itemName));
             }
             else
             {
-                SavingData.EquipedNames.Add(String.Empty);
+                SavingData.EquipDataNew.Add(new ItemSaveData());
             }
         }
         for (int i = 0; i < unEquipslots.Count; i++)
         {
             if (unEquipslots[i].Item != null)
             {
-                SavingData.UnEquipedNames.Add(unEquipslots[i].Item.data.itemName);
+                SavingData.UneqiupDataNew.Add(new ItemSaveData(unEquipslots[i].Item.ID, unEquipslots[i].Item.data.itemName));
             }
             else
             {
-                SavingData.UnEquipedNames.Add(String.Empty);
+                SavingData.UneqiupDataNew.Add(new ItemSaveData());
             }
         }
-        foreach (var item in SavingData.EquipedNames)
-        {
-            Debug.Log("Save " + item);
-        }
         PlayerPrefZ.SetData("equipedData", SavingData);
-        Debug.Log(SavingData.EquipedNames.Count);
     }
     public void RetrieveData()
     {
         SlotSave defaultOne = new SlotSave();
-        defaultOne.EquipedNames.Add(buffItemDatas[0].itemName);
-        defaultOne.EquipedNames.Add(String.Empty);
-        defaultOne.EquipedNames.Add(String.Empty);
-        defaultOne.EquipedNames.Add(String.Empty);
-        defaultOne.EquipedNames.Add(String.Empty);
 
-        // defaultOne.UnEquipedNames.Add(buffItemDatas[0].itemName);
-        defaultOne.UnEquipedNames.Add(buffItemDatas[1].itemName);
-        defaultOne.UnEquipedNames.Add(buffItemDatas[2].itemName);
-        defaultOne.UnEquipedNames.Add(buffItemDatas[3].itemName);
-        defaultOne.UnEquipedNames.Add(buffItemDatas[4].itemName);
-        defaultOne.UnEquipedNames.Add(buffItemDatas[5].itemName);
-        defaultOne.UnEquipedNames.Add(buffItemDatas[6].itemName);
+        defaultOne.EquipDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[1].itemName));
+        defaultOne.EquipDataNew.Add(new ItemSaveData());
+        defaultOne.EquipDataNew.Add(new ItemSaveData());
+        defaultOne.EquipDataNew.Add(new ItemSaveData());
+        defaultOne.EquipDataNew.Add(new ItemSaveData());
+
+        defaultOne.UneqiupDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[2].itemName));
+        defaultOne.UneqiupDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[3].itemName));
+        defaultOne.UneqiupDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[4].itemName));
+        defaultOne.UneqiupDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[5].itemName));
+        defaultOne.UneqiupDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[6].itemName));
+        defaultOne.UneqiupDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[7].itemName));
 
         var saved = PlayerPrefZ.GetData("equipedData", defaultOne);
 
-        // Debug.Log(saved.EquipedNames.Count);
-        if (saved.UnEquipedNames.Count > 0)
+        if (saved.UneqiupDataNew.Count > 0)
         {
-            for (int i = 0; i < saved.UnEquipedNames.Count; i++)
+            for (int i = 0; i < saved.UneqiupDataNew.Count; i++)
             {
-                if (saved.UnEquipedNames[i] == String.Empty)
+                if (saved.UneqiupDataNew[i].ID == String.Empty)
                 {
-                    // Debug.Log("Contunued uneqiop");
                     continue;
                 }
-                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.UnEquipedNames[i]).FirstOrDefault();
+                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.UneqiupDataNew[i].dataName).FirstOrDefault();
                 if (data)
                 {
-                    // Debug.Log("Insed " + data.name);
-                    // BaseItemUI insObj = Instantiate(data.pfUI, transform.position, Quaternion.identity, transform);
-                    ShurikenUI insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    insObj.ID = saved.UneqiupDataNew[i].ID;
                     insObj.data = data;
                     insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
@@ -128,28 +119,23 @@ public class PlayerBuffItems : MonoBehaviour
                 }
             }
         }
-        // foreach (var item in saved.EquipedNames)
-        // {
-        //     Debug.Log("Retrieve " + item);
-        // }
-        if (saved.EquipedNames.Count > 0)
+        if (saved.EquipDataNew.Count > 0)
         {
-            for (int i = 0; i < saved.EquipedNames.Count; i++)
+            for (int i = 0; i < saved.EquipDataNew.Count; i++)
             {
-                if (saved.EquipedNames[i] == String.Empty)
+                if (saved.EquipDataNew[i].ID == String.Empty)
                 {
-                    // Debug.Log("Contunued equip");
                     continue;
                 }
-                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipedNames[i]).FirstOrDefault();
+                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipDataNew[i].dataName).FirstOrDefault();
                 if (data)
                 {
                     // Debug.Log("Insed equip " + data.name);
-                    ShurikenUI insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    insObj.ID = saved.EquipDataNew[i].ID;
                     insObj.data = data;
                     insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
-                    // equipSlots[i].AddItem(insObj);
                     UISlot sameTypeSlot = equipSlots.Where(x => x.Where == insObj.data.Where && x.Item == null).FirstOrDefault();
                     if (sameTypeSlot)
                     {

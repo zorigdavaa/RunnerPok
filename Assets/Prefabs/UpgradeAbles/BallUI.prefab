@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 546467359611290277}
   - component: {fileID: 9207990338023957342}
   - component: {fileID: 366361091648280149}
-  - component: {fileID: 8257181611891360946}
+  - component: {fileID: 1775996360843404844}
   m_Layer: 5
   m_Name: BallUI
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8257181611891360946
+--- !u!114 &1775996360843404844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,8 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2107152543675739158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620a1ddb7a2d36b488a565914eb7920c, type: 3}
+  m_Script: {fileID: 11500000, guid: a98a9d8e97345664d981d1ea0c7ad2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: cf431123145469a49926cb2857b28c8f, type: 2}
+  ID: 
+  level: 1
   currentSlot: {fileID: 0}

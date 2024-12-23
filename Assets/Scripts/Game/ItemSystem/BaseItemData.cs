@@ -25,7 +25,7 @@ public class BaseItemData : ScriptableObject
 
     public virtual bool IsUpgradeAble(int level)
     {
-        throw new NotImplementedException();
+        return level < 10;
     }
     public string GetDescription()
     {
@@ -79,10 +79,5 @@ public class BaseItemData : ScriptableObject
         //     };
         // });
         // return description;
-    }
-
-    internal string GetLevel()
-    {
-        throw new NotImplementedException();
     }
 }

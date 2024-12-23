@@ -91,7 +91,7 @@ public class ItemInfoCanvas : MonoBehaviour
         gameObject.SetActive(true);
         itemUI = _ItemUI;
         txtName.text = _ItemUI.data.name;
-        txtLVL.text = _ItemUI.data.GetLevel();
+        txtLVL.text = _ItemUI.GetLevel();
         Icon.sprite = _ItemUI.data.Icon;
         txtDescription.text = itemUI.data.GetDescription();
         var dic = itemUI.data.GetInfo();

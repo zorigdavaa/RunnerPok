@@ -7,10 +7,12 @@ using ZPackage;
 public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
 {
     public BaseItemData data;
+    public string ID;
+    public int level = 1;
     public UISlot currentSlot;
     public virtual void Upgrade()
     {
-
+        Debug.Log("Base Upgrade");
     }
     public virtual void ShowInfo()
     {
@@ -64,5 +66,10 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
                 break;
             default: break;
         }
+    }
+
+    internal string GetLevel()
+    {
+        return level + "/" + data.AddArmor;
     }
 }

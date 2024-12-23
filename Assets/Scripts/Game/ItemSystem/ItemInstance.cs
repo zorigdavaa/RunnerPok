@@ -1,17 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShurikenUI : BaseItemUI
+public class ItemInstance : BaseItemUI
 {
-
-    int level = 1;
     // Start is called before the first frame update
     void Start()
     {
-        // level = 
+        level = PlayerPrefs.GetInt(ID, 1);
     }
 
 
@@ -27,11 +24,12 @@ public class ShurikenUI : BaseItemUI
         {
             level++;
             SaveData();
+            Debug.Log("Upgraded " + level);
         }
     }
     public void SaveData()
     {
-        PlayerPrefs.SetInt(data.name, level);
+        PlayerPrefs.SetInt(ID, level);
     }
     public void Equip()
     {
