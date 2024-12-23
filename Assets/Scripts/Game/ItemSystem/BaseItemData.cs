@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class BaseItemData : ScriptableObject, ISaveAble
+public class BaseItemData : ScriptableObject
 {
     public GameObject pf;
     public string itemName;
@@ -14,7 +14,6 @@ public class BaseItemData : ScriptableObject, ISaveAble
     public float AddHealth;
     [TextArea] public string Desc;
     [TextArea] public string Info;
-    public int Level;
     public virtual void Wear(Player player)
     {
         throw new NotImplementedException();
@@ -85,15 +84,5 @@ public class BaseItemData : ScriptableObject, ISaveAble
     internal string GetLevel()
     {
         throw new NotImplementedException();
-    }
-
-    public void SaveData()
-    {
-        PlayerPrefs.SetInt(itemName, Level);
-    }
-
-    public void RetrieveData()
-    {
-        Level = PlayerPrefs.GetInt(itemName, 0);
     }
 }
