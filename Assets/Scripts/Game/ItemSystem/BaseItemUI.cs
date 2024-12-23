@@ -1,22 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
+using UnityEngine.UI;
 using ZPackage;
 
-public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
+public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
 {
     public BaseItemData data;
     public string ID;
     public int level = 1;
     public UISlot currentSlot;
+    public void Start()
+    {
+        SetIcon(data.Icon);
+    }
     public virtual void Upgrade()
     {
-        Debug.Log("Base Upgrade");
-    }
-    public virtual void ShowInfo()
-    {
-
+        // if (level < data.AddDamage.Count)
+        if (data.IsUpgradeAble(level))
+        {
+            level++;
+            SaveData();
+            Debug.Log("Upgraded " + level);
+        }
     }
 
     public virtual void EquipItem()
@@ -71,5 +79,19 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble
     internal string GetLevel()
     {
         return level + "/" + data.AddArmor;
+    }
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetInt(ID, level);
+    }
+
+    public void RetrieveData()
+    {
+        level = PlayerPrefs.GetInt(ID, 1);
+    }
+    public void SetIcon(Sprite icon)
+    {
+        GetComponent<Image>().sprite = icon;
     }
 }

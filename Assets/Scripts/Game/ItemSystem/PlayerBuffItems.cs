@@ -113,7 +113,7 @@ public class PlayerBuffItems : MonoBehaviour
                     ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
                     insObj.ID = saved.UneqiupDataNew[i].ID;
                     insObj.data = data;
-                    insObj.SetIcon(data.Icon);
+                    // insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
                     unEquipslots[i].AddItem(insObj);
                 }
@@ -134,7 +134,7 @@ public class PlayerBuffItems : MonoBehaviour
                     ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
                     insObj.ID = saved.EquipDataNew[i].ID;
                     insObj.data = data;
-                    insObj.SetIcon(data.Icon);
+                    // insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
                     UISlot sameTypeSlot = equipSlots.Where(x => x.Where == insObj.data.Where && x.Item == null).FirstOrDefault();
                     if (sameTypeSlot)
