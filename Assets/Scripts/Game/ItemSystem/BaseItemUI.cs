@@ -32,21 +32,21 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         // Debug.Log("Eqiopped " + data.name);
         switch (data.Where)
         {
-            case WhereSlot.Hand: Z.Player.HandItem = (ItemData)data; break;
+            case WhereSlot.Hand: Z.Player.HandItem = (ItemInstance)this; break;
             case WhereSlot.OtherHand:
-                if (data is OffHandItem castData)
+                if (this is OffHandItemInstance castData)
                 {
                     Z.Player.OffHandItem = castData;
                 }
                 break;
             case WhereSlot.Chest:
-                Z.Player.ChestItem = (ChestItemData)data;
+                Z.Player.ChestItem = (ChestItemInstance)this;
                 break;
             case WhereSlot.Foot:
-                Z.Player.FootItem = (FootItemdata)data;
+                Z.Player.FootItem = (FootItemInstance)this;
                 break;
             case WhereSlot.Head:
-                Z.Player.HeadItem = (HeadItemData)data;
+                Z.Player.HeadItem = (HeadItemInstance)this;
                 break;
             default: break;
         }

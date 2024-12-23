@@ -10,6 +10,6 @@ public class ChestItemInstance : ItemInstance
     {
         GameObject insOBj = Instantiate(data.pf, Vector3.zero, Quaternion.identity, Z.Player.chest);
         insOBj.transform.localPosition = wearPos;
-
+        base.EquipItem();
     }
 }

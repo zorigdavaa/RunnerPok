@@ -17,7 +17,7 @@ public class FootItemInstance : ItemInstance
         GameObject Left = Instantiate(data.pf, Vector3.zero, Quaternion.Euler(RotLeft), Z.Player.leftFoot);
         Left.transform.localPosition = LeftFootPos;
         Z.Player.LeftFootObj = Left;
-
+        base.EquipItem();
     }
     public override void UnEquipItem()
     {
@@ -26,5 +26,6 @@ public class FootItemInstance : ItemInstance
             Destroy(Z.Player.RightFootObj);
             Destroy(Z.Player.LeftFootObj);
         }
+        base.UnEquipItem();
     }
 }

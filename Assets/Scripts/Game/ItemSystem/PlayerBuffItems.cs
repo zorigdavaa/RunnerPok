@@ -25,7 +25,7 @@ public class PlayerBuffItems : MonoBehaviour
     [SerializeField] List<UISlot> unEquipslots;
     [SerializeField] List<BaseItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
-    public ItemInstance UIPF;
+    public GameObject UIPF;
     void Awake()
     {
         itemInfoCanvas.Awake();
@@ -110,12 +110,15 @@ public class PlayerBuffItems : MonoBehaviour
                 BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.UneqiupDataNew[i].dataName).FirstOrDefault();
                 if (data)
                 {
-                    ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
-                    insObj.ID = saved.UneqiupDataNew[i].ID;
-                    insObj.data = data;
+                    // ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    GameObject insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    Type var = GetComponentType(data.Where);
+                    ItemInstance addedComponent = (ItemInstance)insObj.AddComponent(var);
+                    addedComponent.ID = saved.UneqiupDataNew[i].ID;
+                    addedComponent.data = data;
                     // insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
-                    unEquipslots[i].AddItem(insObj);
+                    unEquipslots[i].AddItem(addedComponent);
                 }
             }
         }
@@ -131,15 +134,18 @@ public class PlayerBuffItems : MonoBehaviour
                 if (data)
                 {
                     // Debug.Log("Insed equip " + data.name);
-                    ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
-                    insObj.ID = saved.EquipDataNew[i].ID;
-                    insObj.data = data;
+                    // ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    GameObject insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
+                    Type var = GetComponentType(data.Where);
+                    ItemInstance addedComponent = (ItemInstance)insObj.AddComponent(var);
+                    addedComponent.ID = saved.EquipDataNew[i].ID;
+                    addedComponent.data = data;
                     // insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
-                    UISlot sameTypeSlot = equipSlots.Where(x => x.Where == insObj.data.Where && x.Item == null).FirstOrDefault();
+                    UISlot sameTypeSlot = equipSlots.Where(x => x.Where == addedComponent.data.Where && x.Item == null).FirstOrDefault();
                     if (sameTypeSlot)
                     {
-                        sameTypeSlot.AddItem(insObj);
+                        sameTypeSlot.AddItem(addedComponent);
                     }
                     else
                     {
@@ -150,6 +156,19 @@ public class PlayerBuffItems : MonoBehaviour
             }
         }
 
+    }
+
+    private Type GetComponentType(WhereSlot where)
+    {
+        switch (where)
+        {
+            case WhereSlot.Hand: return typeof(ItemInstance);
+            case WhereSlot.OtherHand: return typeof(OffHandItemInstance);
+            case WhereSlot.Foot: return typeof(FootItemInstance);
+            case WhereSlot.Head: return typeof(HeadItemInstance);
+            case WhereSlot.Chest: return typeof(ChestItemInstance);
+            default: return typeof(ItemInstance);
+        }
     }
 
     internal UISlot GetByTypeFromEquipedFree(WhereSlot where)

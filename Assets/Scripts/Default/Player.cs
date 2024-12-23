@@ -30,68 +30,68 @@ public class Player : Character
     PlayerState State = PlayerState.None;
 
     #region BearintItems
-    private ItemData _handItem;
-    public ItemData HandItem
+    private ItemInstance _handItem;
+    public ItemInstance HandItem
     {
         get { return _handItem; }
         set { _handItem = value; }
     }
-    private OffHandItem _offHandItem;
-    public OffHandItem OffHandItem
+    private OffHandItemInstance _offHandItem;
+    public OffHandItemInstance OffHandItem
     {
         get { return _offHandItem; }
         set { _offHandItem = value; }
     }
     public GameObject HeadObj;
-    private HeadItemData _headItem;
-    public HeadItemData HeadItem
+    private HeadItemInstance _headItem;
+    public HeadItemInstance HeadItem
     {
         get { return _headItem; }
         set
         {
             _headItem = value;
-            if (_headItem != null)
-            {
-                _headItem.Wear(this);
-            }
+            // if (_headItem != null)
+            // {
+            //     _headItem.Wear(this);
+            // }
         }
     }
     public GameObject RightFootObj;
     public GameObject LeftFootObj;
-    private FootItemdata _FootItem;
-    public FootItemdata FootItem
+    private FootItemInstance _FootItem;
+    public FootItemInstance FootItem
     {
         get { return _FootItem; }
         set
         {
-            if (_FootItem != value)
-            {
-                if (value != null)
-                {
-                    value.Wear(this);
-                }
-                else
-                {
-                    if (_FootItem)
-                    {
-                        _FootItem.Unwear(this);
-                    }
-                }
-            }
+            // if (_FootItem != value)
+            // {
+            //     if (value != null)
+            //     {
+            //         value.Wear(this);
+            //     }
+            //     else
+            //     {
+            //         if (_FootItem)
+            //         {
+            //             _FootItem.Unwear(this);
+            //         }
+            //     }
+            // }
             _FootItem = value;
         }
     }
-    private ChestItemData _chestItem;
-    public ChestItemData ChestItem
+    private ChestItemInstance _chestItem;
+    public ChestItemInstance ChestItem
     {
         get { return _chestItem; }
         set
         {
             _chestItem = value;
-            if (_chestItem != null)
-            {
-                _chestItem.Wear(this);
-            }
+            // if (_chestItem != null)
+            // {
+            //     _chestItem.Wear(this);
+            // }
         }
     }
     #endregion
@@ -218,7 +218,7 @@ public class Player : Character
     {
         Pool = new ObjectPool<Shuriken>(() =>
         {
-            Shuriken spear = Instantiate(HandItem.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+            Shuriken spear = Instantiate(HandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.Pool = Pool;
             return spear;
             // return new GameObject();
@@ -237,7 +237,7 @@ public class Player : Character
     {
         OffHandPool = new ObjectPool<Shuriken>(() =>
         {
-            Shuriken spear = Instantiate(OffHandItem.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+            Shuriken spear = Instantiate(OffHandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.Pool = OffHandPool;
             return spear;
             // return new GameObject();
@@ -366,15 +366,16 @@ public class Player : Character
     }
     public void FightUpdate()
     {
-        OffHandItem?.Update();
+        OffHandItem?.Tick();
     }
     public void StartThrow(bool val = true)
     {
         if (HandItem)
         {
             animationController.RightHandAttack(val);
-            Debug.Log("Hand speed " + HandItem.BaseSpeed);
-            animationController.SetHandSpeed(HandItem.BaseSpeed);
+            // Debug.Log("Hand speed " + HandItem.data.BaseSpeed);
+            ItemData casted = (ItemData)HandItem.data;
+            animationController.SetHandSpeed(casted.BaseSpeed);
         }
     }
 

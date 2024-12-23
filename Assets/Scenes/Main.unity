@@ -3990,7 +3990,7 @@ PrefabInstance:
     - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: UIPF
       value: 
-      objectReference: {fileID: 1775996360843404844, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
+      objectReference: {fileID: 2107152543675739158, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
     - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: buffItemDatas.Array.size
       value: 8
