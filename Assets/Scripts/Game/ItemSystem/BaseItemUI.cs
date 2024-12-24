@@ -58,7 +58,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         {
             case WhereSlot.Hand: Z.Player.HandItem = null; break;
             case WhereSlot.OtherHand:
-                if (data is OffHandItem castData)
+                if (this is OffHandItemInstance castData)
                 {
                     Z.Player.OffHandItem = null;
                 }
@@ -93,5 +93,53 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     public void SetIcon(Sprite icon)
     {
         GetComponent<Image>().sprite = icon;
+    }
+    public List<KeyValuePair<string, string>> GetInfo()
+    {
+        string info = data.Info;
+
+        // Replace placeholders dynamically
+        info = Convert(info);
+        List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
+        foreach (var line in info.Split('\n'))
+        {
+            if (string.IsNullOrWhiteSpace(line)) continue;
+
+            var parts = line.Split('=');
+            if (parts.Length == 2)
+            {
+                string key = parts[0].Trim();
+                string value = parts[1].Trim();
+                // result[key] = value;
+                result.Add(new KeyValuePair<string, string>(key, value));
+            }
+        }
+        return result;
+    }
+    public string Convert(string description)
+    {
+
+        description = description.Replace("{armor}", data.AddArmor.ToString())
+                    .Replace("{health}", data.AddHealth.ToString())
+                    .Replace("{damage}", data.BaseDamage.ToString())
+                    .Replace("{speed}", data.BaseSpeed.ToString())
+                    .Replace("{range}", data.BaseRange.ToString())
+;
+        return description;
+        // description = Regex.Replace(description, @"{(\w+)}", match =>
+        // {
+        //     string key = match.Groups[1].Value;
+
+        //     return key switch
+        //     {
+        //         "Armor" => AddArmor.ToString(),
+        //         "Health" => AddHealth.ToString(), // Add more cases as needed
+        //         "damage" => BaseDamage.ToString(), // Add more cases as needed
+        //         "speed" => BaseSpeed.ToString(), // Add more cases as needed
+        //         "range" => BaseRange.ToString(), // Add more cases as needed
+        //         _ => match.Value // Return original placeholder if no match
+        //     };
+        // });
+        // return description;
     }
 }

@@ -305,10 +305,14 @@ MonoBehaviour:
   buffItemDatas:
   - {fileID: 11400000, guid: 860ce0b918cc0453b882cc4f386e16b2, type: 2}
   - {fileID: 11400000, guid: c86178781af2c4243b3dd1e3179912c0, type: 2}
-  - {fileID: 11400000, guid: cf431123145469a49926cb2857b28c8f, type: 2}
+  - {fileID: 11400000, guid: 0a8fb6641aec2e349b8d90a13720b8b0, type: 2}
   - {fileID: 11400000, guid: 16ac036759fdca64b8e733e5e95de45b, type: 2}
+  - {fileID: 11400000, guid: 8a3e85d0ae5909945beb3723e0228b28, type: 2}
+  - {fileID: 11400000, guid: 51df88c9a81b18541a231732a1ed5e1d, type: 2}
+  - {fileID: 11400000, guid: 994df5af4d04b9045b8028d4bb1cd4e7, type: 2}
+  - {fileID: 11400000, guid: 7954fe66d6f88ca41b5ce35baa687134, type: 2}
   itemInfoCanvas: {fileID: 2265352457835810741}
-  UIPF: {fileID: 0}
+  UIPF: {fileID: 2107152543675739158, guid: 7196a84fc1563ba4a960ce98aa9abd6a, type: 3}
 --- !u!1 &6834995466155315746
 GameObject:
   m_ObjectHideFlags: 0

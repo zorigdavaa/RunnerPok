@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c0284e4e62aff42afaaec225317cb1, type: 3}
+  m_Name: FootItem
+  m_EditorClassIdentifier: 
+  pf: {fileID: 4856505954130395814, guid: 7a7132819672d4664a30b106343ffe16, type: 3}
+  itemName: FootItem
+  Icon: {fileID: -8878088185706026076, guid: 62ab4930e895b9340bd15f7acf9b970b, type: 3}
+  Where: 5
+  AddArmor: 0
+  AddHealth: 0
+  Desc: Foot Item
+  Info: 'damage={damage}
+
+    speed={speed}
+
+'
+  BaseDamage: 5
+  BaseSpeed: 1
+  BaseRange: 2
+  AddDamage: 020000000400000006000000080000000a000000
+  AddSpeed: 0000000000000000000000000000000000000000
+  damageData:
+    damage: 5
+    Type: 0

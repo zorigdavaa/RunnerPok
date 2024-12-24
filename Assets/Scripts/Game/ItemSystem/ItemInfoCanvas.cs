@@ -94,7 +94,7 @@ public class ItemInfoCanvas : MonoBehaviour
         txtLVL.text = _ItemUI.GetLevel();
         Icon.sprite = _ItemUI.data.Icon;
         txtDescription.text = itemUI.data.GetDescription();
-        var dic = itemUI.data.GetInfo();
+        var dic = itemUI.GetInfo();
         // Info.text = itemUI.data.GetInfo();
         for (int i = 0; i < dic.Count; i++)
         {

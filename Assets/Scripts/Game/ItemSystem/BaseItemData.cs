@@ -10,10 +10,15 @@ public class BaseItemData : ScriptableObject
     public string itemName;
     public Sprite Icon;
     public WhereSlot Where;
-    public float AddArmor;
-    public float AddHealth;
     [TextArea] public string Desc;
     [TextArea] public string Info;
+    public int BaseDamage;
+    public float BaseSpeed = 1;
+    public float BaseRange = 1;//calculated in second
+    public List<int> AddDamage;
+    public List<int> AddSpeed;
+    public List<float> AddArmor;
+    public List<float> AddHealth;
     public virtual void Wear(Player player)
     {
         throw new NotImplementedException();
@@ -32,52 +37,31 @@ public class BaseItemData : ScriptableObject
         string description = Desc;
 
         // Replace placeholders dynamically
-        description = Convert(description);
+        // description = Convert(description);
 
 
         return description;
     }
-    public List<KeyValuePair<string, string>> GetInfo()
-    {
-        string info = Info;
 
-        // Replace placeholders dynamically
-        info = Convert(info);
-        List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
-        foreach (var line in info.Split('\n'))
-        {
-            if (string.IsNullOrWhiteSpace(line)) continue;
 
-            var parts = line.Split('=');
-            if (parts.Length == 2)
-            {
-                string key = parts[0].Trim();
-                string value = parts[1].Trim();
-                // result[key] = value;
-                result.Add(new KeyValuePair<string, string>(key, value));
-            }
-        }
-        return result;
-    }
+    // public virtual string Convert(string description)
+    // {
+    //     description = description.Replace("{armor}", AddArmor.ToString())
+    //         .Replace("{health}", AddHealth.ToString())
+    //     ;
+    //     return description;
 
-    public virtual string Convert(string description)
-    {
-        description = description.Replace("{armor}", AddArmor.ToString())
-            .Replace("{health}", AddHealth.ToString())
-        ;
-        return description;
+    //     // description = Regex.Replace(description, @"{(\w+)}", match =>
+    //     // {
+    //     //     string key = match.Groups[1].Value;
 
-        // description = Regex.Replace(description, @"{(\w+)}", match =>
-        // {
-        //     string key = match.Groups[1].Value;
-
-        //     return key switch
-        //     {
-        //         "Armor" => AddArmor.ToString(),
-        //         "Health" => AddHealth.ToString(), // Add more cases as needed
-        //         _ => match.Value // Return original placeholder if no match
-        //     };
-        // });
-        // return description;
-    }
+    //     //     return key switch
+    //     //     {
+    //     //         "Armor" => AddArmor.ToString(),
+    //     //         "Health" => AddHealth.ToString(), // Add more cases as needed
+    //     //         _ => match.Value // Return original placeholder if no match
+    //     //     };
+    //     // });
+    //     // return description;
+    // }
 }
