@@ -120,8 +120,8 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     }
     public virtual string Convert(string description)
     {
-        int additionalDamage = level > 1 ? data.AddDamage[level - 2] : 0;
-        int additionalSpeed = level > 1 ? data.AddSpeed[level - 2] : 0;
+        int additionalDamage = data.AddDamage[level - 1];
+        int additionalSpeed = data.AddSpeed[level - 1];
 
         description = description.Replace("{armor}", data.AddArmor[level - 1].ToString())
                     .Replace("{health}", data.AddHealth[level - 1].ToString())
