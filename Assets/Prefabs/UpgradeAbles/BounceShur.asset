@@ -16,8 +16,6 @@ MonoBehaviour:
   itemName: BounceShur
   Icon: {fileID: 4227053565995980960, guid: 7261f09847d319b479a032a61f199148, type: 3}
   Where: 1
-  AddArmor: 0
-  AddHealth: 0
   Desc: this item Bounces up to 5 times Near Enemies
   Info: 'damage={damage}
 
@@ -29,6 +27,18 @@ MonoBehaviour:
   BaseRange: 2
   AddDamage: 020000000400000006000000080000000a000000
   AddSpeed: 0000000000000000000000000000000000000000
+  AddArmor:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  AddHealth:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   damageData:
     damage: 5
     Type: 0

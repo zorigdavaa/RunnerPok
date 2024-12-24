@@ -16,8 +16,6 @@ MonoBehaviour:
   itemName: FootItem
   Icon: {fileID: -8878088185706026076, guid: 62ab4930e895b9340bd15f7acf9b970b, type: 3}
   Where: 5
-  AddArmor: 0
-  AddHealth: 0
   Desc: Foot Item
   Info: 'damage={damage}
 
@@ -29,6 +27,18 @@ MonoBehaviour:
   BaseRange: 2
   AddDamage: 020000000400000006000000080000000a000000
   AddSpeed: 0000000000000000000000000000000000000000
+  AddArmor:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  AddHealth:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   damageData:
     damage: 5
     Type: 0

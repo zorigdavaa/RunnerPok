@@ -19,6 +19,8 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     public virtual void Upgrade()
     {
         // if (level < data.AddDamage.Count)
+        Debug.Log("upgradeable is " + data.IsUpgradeAble(level));
+        Debug.Log("lvl is " + level);
         if (data.IsUpgradeAble(level))
         {
             level++;
@@ -78,7 +80,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
 
     internal string GetLevel()
     {
-        return level + "/" + data.AddArmor;
+        return level + "/" + data.AddDamage.Count;
     }
 
     public void SaveData()
@@ -116,15 +118,15 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         }
         return result;
     }
-    public string Convert(string description)
+    public virtual string Convert(string description)
     {
 
-        description = description.Replace("{armor}", data.AddArmor.ToString())
-                    .Replace("{health}", data.AddHealth.ToString())
-                    .Replace("{damage}", data.BaseDamage.ToString())
-                    .Replace("{speed}", data.BaseSpeed.ToString())
+        description = description.Replace("{armor}", data.AddArmor[level].ToString())
+                    .Replace("{health}", data.AddHealth[level].ToString())
+                    .Replace("{damage}", (data.BaseDamage + data.AddDamage[level]).ToString())
+                    .Replace("{speed}", (data.BaseSpeed + data.AddSpeed[level]).ToString())
                     .Replace("{range}", data.BaseRange.ToString())
-;
+                    ;
         return description;
         // description = Regex.Replace(description, @"{(\w+)}", match =>
         // {

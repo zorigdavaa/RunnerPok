@@ -19,14 +19,6 @@ public class BaseItemData : ScriptableObject
     public List<int> AddSpeed;
     public List<float> AddArmor;
     public List<float> AddHealth;
-    public virtual void Wear(Player player)
-    {
-        throw new NotImplementedException();
-    }
-    public virtual void Unwear(Player player)
-    {
-        throw new NotImplementedException();
-    }
 
     public virtual bool IsUpgradeAble(int level)
     {
@@ -42,26 +34,4 @@ public class BaseItemData : ScriptableObject
 
         return description;
     }
-
-
-    // public virtual string Convert(string description)
-    // {
-    //     description = description.Replace("{armor}", AddArmor.ToString())
-    //         .Replace("{health}", AddHealth.ToString())
-    //     ;
-    //     return description;
-
-    //     // description = Regex.Replace(description, @"{(\w+)}", match =>
-    //     // {
-    //     //     string key = match.Groups[1].Value;
-
-    //     //     return key switch
-    //     //     {
-    //     //         "Armor" => AddArmor.ToString(),
-    //     //         "Health" => AddHealth.ToString(), // Add more cases as needed
-    //     //         _ => match.Value // Return original placeholder if no match
-    //     //     };
-    //     // });
-    //     // return description;
-    // }
 }

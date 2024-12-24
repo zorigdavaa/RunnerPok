@@ -16,8 +16,6 @@ MonoBehaviour:
   itemName: FireShur
   Icon: {fileID: 21300000, guid: 70c93a813ebc5f747b6054afcc43820b, type: 3}
   Where: 1
-  AddArmor: 0
-  AddHealth: 0
   Desc: Fire shuriken is same as shuriken but additional damage
   Info: 'damage={damage}
 
@@ -28,7 +26,19 @@ MonoBehaviour:
   BaseSpeed: 1
   BaseRange: 1.5
   AddDamage: 020000000400000006000000080000000a000000
-  AddSpeed: 
+  AddSpeed: 0000000000000000000000000000000000000000
+  AddArmor:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  AddHealth:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   damageData:
     damage: 5
     Type: 1

@@ -56,7 +56,9 @@ public class ItemInfoCanvas : MonoBehaviour
 
     private void Upgrade()
     {
+        Debug.Log("upgrade");
         itemUI.Upgrade();
+        RefreshData(itemUI);
     }
 
     private void WearorRemove()
@@ -90,10 +92,23 @@ public class ItemInfoCanvas : MonoBehaviour
     {
         gameObject.SetActive(true);
         itemUI = _ItemUI;
+        RefreshData(_ItemUI);
+        if (_ItemUI.currentSlot.WearSlot)
+        {
+            btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Remove";
+        }
+        else
+        {
+            btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Wear";
+        }
+    }
+
+    private void RefreshData(BaseItemUI _ItemUI)
+    {
         txtName.text = _ItemUI.data.name;
-        txtLVL.text = _ItemUI.GetLevel();
         Icon.sprite = _ItemUI.data.Icon;
         txtDescription.text = itemUI.data.GetDescription();
+        txtLVL.text = _ItemUI.GetLevel();
         var dic = itemUI.GetInfo();
         // Info.text = itemUI.data.GetInfo();
         for (int i = 0; i < dic.Count; i++)
@@ -103,14 +118,6 @@ public class ItemInfoCanvas : MonoBehaviour
             Sprite sprite = GetSprite(dic[i].Key);
             Infos[i].transform.GetChild(1).GetComponent<Image>().sprite = sprite;
             Infos[i].gameObject.SetActive(true);
-        }
-        if (_ItemUI.currentSlot.WearSlot)
-        {
-            btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Remove";
-        }
-        else
-        {
-            btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Wear";
         }
     }
 
