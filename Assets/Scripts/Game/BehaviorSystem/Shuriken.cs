@@ -18,10 +18,11 @@ public class Shuriken : MonoBehaviour, IPoolItem<Shuriken>
 
     protected Coroutine AutoGotoPoolCor;
     [SerializeField] protected ItemData data;
-    protected int level = 1;
     // int Damage = 5;
     // protected DamageData damageData;
     protected Transform Graphics;
+    public ItemInstance ItemInstance;
+    public DamageData DamageData;
 
     public void GetFrompool()
     {
@@ -54,7 +55,6 @@ public class Shuriken : MonoBehaviour, IPoolItem<Shuriken>
     // Start is called before the first frame update
     protected void Start()
     {
-        RetrieveData();
         Graphics = transform.GetChild(0);
         // Z.Player.OnStateChanged += OnPlayerStateChange;
     }
@@ -100,7 +100,8 @@ public class Shuriken : MonoBehaviour, IPoolItem<Shuriken>
     {
         if (enemy && enemy.IsAlive)
         {
-            enemy.TakeDamage(data.damageData);
+            // enemy.TakeDamage(data.damageData);
+            enemy.TakeDamage(DamageData);
 
             Pool.Release(this);
             if (AutoGotoPoolCor != null)
@@ -111,17 +112,9 @@ public class Shuriken : MonoBehaviour, IPoolItem<Shuriken>
         }
     }
 
-    public void SaveData()
+    internal void SetInstance(ItemInstance handItem)
     {
-        // PlayerPrefs.SetInt(data.name, level);
-    }
-
-    public void RetrieveData()
-    {
-        level = PlayerPrefs.GetInt(data.name, level);
-        //To do
-
-        // damageData.damage = data.BaseDamage + data.AddDamage[level];
-        // damageData.Type = data.damageData.Type;
+        ItemInstance = handItem;
+        DamageData = new DamageData(data.Element, handItem.GetDamdage());
     }
 }

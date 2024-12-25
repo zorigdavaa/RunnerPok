@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,5 +6,8 @@ using UnityEngine.UI;
 
 public class ItemInstance : BaseItemUI
 {
-
+    internal DamageData GetDamage()
+    {
+        throw new NotImplementedException();
+    }
 }

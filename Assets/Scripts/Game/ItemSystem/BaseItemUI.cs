@@ -82,12 +82,15 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     {
         return level + "/" + data.AddDamage.Count;
     }
+    public float GetDamdage()
+    {
+        return data.BaseDamage + data.AddDamage[level - 1];
+    }
 
     public void SaveData()
     {
         PlayerPrefs.SetInt(ID, level);
     }
-
     public void RetrieveData()
     {
         level = PlayerPrefs.GetInt(ID, 1);
@@ -121,6 +124,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     public virtual string Convert(string description)
     {
         int additionalDamage = data.AddDamage[level - 1];
+        Debug.Log("lvl " + (level - 1) + " " + data.AddDamage.Count);
         int additionalSpeed = data.AddSpeed[level - 1];
 
         description = description.Replace("{armor}", data.AddArmor[level - 1].ToString())

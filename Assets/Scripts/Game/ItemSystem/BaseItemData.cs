@@ -12,6 +12,7 @@ public class BaseItemData : ScriptableObject
     public WhereSlot Where;
     [TextArea] public string Desc;
     [TextArea] public string Info;
+    public ElementType Element = ElementType.Normal;
     public int BaseDamage;
     public float BaseSpeed = 1;
     public float BaseRange = 1;//calculated in second

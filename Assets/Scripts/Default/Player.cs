@@ -220,6 +220,7 @@ public class Player : Character
         {
             Shuriken spear = Instantiate(HandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.Pool = Pool;
+            spear.SetInstance(HandItem);
             return spear;
             // return new GameObject();
         }, (s) =>
@@ -239,6 +240,7 @@ public class Player : Character
         {
             Shuriken spear = Instantiate(OffHandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.Pool = OffHandPool;
+            spear.SetInstance(OffHandItem);
             return spear;
             // return new GameObject();
         }, (s) =>
