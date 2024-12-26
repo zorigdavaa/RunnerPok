@@ -12,17 +12,16 @@ using ZPackage;
 //BombShuriken
 //LightningShuriken
 //SeekingShuriken
-public class Shuriken : MonoBehaviour, IPoolItem<Shuriken>
+public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
 {
     public ObjectPool<Shuriken> Pool { get; set; }
-
     protected Coroutine AutoGotoPoolCor;
-    [SerializeField] protected ItemData data;
+
     // int Damage = 5;
     // protected DamageData damageData;
     protected Transform Graphics;
-    public ItemInstance ItemInstance;
-    public DamageData DamageData;
+
+
 
     public void GetFrompool()
     {
@@ -110,11 +109,5 @@ public class Shuriken : MonoBehaviour, IPoolItem<Shuriken>
                 AutoGotoPoolCor = null;
             }
         }
-    }
-
-    internal void SetInstance(ItemInstance handItem)
-    {
-        ItemInstance = handItem;
-        DamageData = new DamageData(data.Element, handItem.GetDamdage());
     }
 }

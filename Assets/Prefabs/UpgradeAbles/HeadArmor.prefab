@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7886372557594375400}
-  - component: {fileID: 2060730815212544264}
+  - component: {fileID: 578965049043849349}
   m_Layer: 0
   m_Name: HeadArmor
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   - {fileID: 1185111749043179593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2060730815212544264
+--- !u!114 &578965049043849349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,10 +74,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4856505954130395814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 472a6747b270045fdad81fc28ff23272, type: 3}
+  m_Script: {fileID: 11500000, guid: db71aa9c01e35594fb82cf191077da29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 5fadabe62162d4e27b5727353f97b21c, type: 2}
+  ItemInstance: {fileID: 0}
+  DamageData:
+    damage: 0
+    Type: 0
+  data: {fileID: 0}
+  ShurikenPf: {fileID: 1761719148874366022, guid: 7bc3afa02f2a7634ea8c60885473c13e, type: 3}
 --- !u!1 &7415103487785275575
 GameObject:
   m_ObjectHideFlags: 0

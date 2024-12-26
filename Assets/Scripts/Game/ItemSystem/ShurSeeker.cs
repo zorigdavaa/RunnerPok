@@ -23,7 +23,7 @@ public class ShurSeeker : Shuriken
                 Enemy enemyScript = Target.GetComponent<Enemy>();
                 if (enemyScript)
                 {
-                    enemyScript.TakeDamage(data.damageData);
+                    enemyScript.TakeDamage(DamageData);
                 }
             }
         }

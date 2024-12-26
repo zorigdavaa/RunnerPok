@@ -11,6 +11,7 @@ public class HeadItemInstance : ItemInstance
         GameObject insOBj = Instantiate(data.pf, Vector3.zero, Quaternion.identity, Z.Player.head);
         insOBj.transform.localPosition = wearPos;
         Z.Player.HeadObj = insOBj;
+        insOBj.GetComponent<BaseEquipedItem>().ItemInstance = this;
         base.EquipItem();
     }
     public override void UnEquipItem()
