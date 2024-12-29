@@ -10,7 +10,7 @@ public class ItemData : BaseItemData
 {
     // public BaseItemUI pfUI;
 
-    public DamageData damageData;
+
 
     public override bool IsUpgradeAble(int level)
     {

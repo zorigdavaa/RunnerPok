@@ -46,10 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SecIDX: 0
   SectionDatas:
-  - {fileID: 11400000, guid: 25c710fa0245b1249b01fd62affb8976, type: 2}
-  - {fileID: 11400000, guid: 933786c3ec8b1ff4daee8bfe0d9e74d5, type: 2}
-  - {fileID: 11400000, guid: fb6b54ea32230184994dff6bd3b94467, type: 2}
   - {fileID: 11400000, guid: d6b69437acb6f414297ac25b9dcace4c, type: 2}
+  - {fileID: 11400000, guid: 933786c3ec8b1ff4daee8bfe0d9e74d5, type: 2}
+  - {fileID: 11400000, guid: 25c710fa0245b1249b01fd62affb8976, type: 2}
+  - {fileID: 11400000, guid: fb6b54ea32230184994dff6bd3b94467, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}

@@ -48,11 +48,11 @@ public class HeadGun : BaseEquipedItem
                 if (Target != null)
                 {
                     Shuriken shur = Pool.Get();
-                    Vector3 goPos = Target.transform.position + Vector3.up * 1.5f;
-                    Vector3 sameYPsos = shur.transform.position;
-                    sameYPsos.y = goPos.y;
-                    shur.transform.position = sameYPsos;
-                    shur.transform.LookAt(Target);
+                    // Vector3 goPos = Target.transform.position + Vector3.up * 1.5f;
+                    // Vector3 sameYPsos = shur.transform.position;
+                    // sameYPsos.y = goPos.y;
+                    // shur.transform.position = transform.position;
+                    shur.transform.LookAt(Target.position + Vector3.up * 1);
                 }
             }
         }
@@ -60,6 +60,7 @@ public class HeadGun : BaseEquipedItem
     float FindDistance = 10;
     public void FindTarget()
     {
+        Target = null;
         Collider[] AroundObs = Physics.OverlapSphere(transform.position, FindDistance, LayerMask.GetMask("Bot"));
         if (AroundObs.Length > 0)
         {

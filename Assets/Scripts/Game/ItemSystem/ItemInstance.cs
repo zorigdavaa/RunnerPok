@@ -6,8 +6,5 @@ using UnityEngine.UI;
 
 public class ItemInstance : BaseItemUI
 {
-    internal DamageData GetDamage()
-    {
-        throw new NotImplementedException();
-    }
+
 }

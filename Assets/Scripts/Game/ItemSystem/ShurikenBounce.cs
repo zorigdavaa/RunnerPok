@@ -17,7 +17,7 @@ public class ShurikenBounce : Shuriken
     void Start()
     {
         // firstImpacted = false;
-        damageDataCopy = data.damageData;
+        damageDataCopy = DamageData;
         base.Start();
     }
 
@@ -94,7 +94,8 @@ public class ShurikenBounce : Shuriken
     {
         base.GotoPool();
         BounceAmount = 3;
-        damageDataCopy = data.damageData;
+        // damageDataCopy = data.damageData;
+        damageDataCopy = DamageData;
         GetComponent<Collider>().enabled = true;
         impactedEnemy.Clear();
         Target = null;
@@ -118,7 +119,8 @@ public class ShurikenBounce : Shuriken
         {
             BounceAmount--;
             impactedEnemy.Add(enemy);
-            enemy.TakeDamage(data.damageData);
+            // enemy.TakeDamage(data.damageData);
+            enemy.TakeDamage(damageDataCopy);
             // RightAcc = 0;
             if (BounceAmount < 1)
             {

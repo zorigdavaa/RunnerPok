@@ -74,7 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: maxHealth
-      value: 300
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Patterns.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: attackCoolDownRange.x
@@ -88,6 +92,14 @@ PrefabInstance:
       propertyPath: Patterns.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 88636fa068c8ae14194a25e9e0955279, type: 2}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Patterns.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6cd49c5004cf44b4cb94fc8bdde0d87b, type: 2}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Patterns.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 33730d035e8a6fa4e855b04e46c497fc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

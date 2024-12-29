@@ -25,7 +25,10 @@ public class Projectile : MonoBehaviour
 
     public virtual void ProjMove()
     {
-        transform.localPosition += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * speed * Time.deltaTime;
+        Debug.DrawLine(transform.position, transform.position + transform.forward, Color.blue, 1);
+        // Debug.DrawLine(transform.position, transform.localPosition + transform.forward, Color.black, 1);
+        // transform.localPosition -= transform.forward * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -16,7 +16,7 @@ public class FrontPlayerAttack : BaseAttackPattern
     {
         Projectile pf = ProjectilePfs[Random.Range(0, ProjectilePfs.Count)];
         Projectile inSob = Instantiate(pf, animal.transform.position + Vector3.up, animal.transform.rotation, animal.transform.parent);
-        Destroy(inSob, 10);
+        Destroy(inSob, 5);
     }
 
     public override float GetCoolDown()

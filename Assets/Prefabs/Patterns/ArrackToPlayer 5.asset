@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd329c0b4123a2c41b0ca9c53ce3f6ef, type: 3}
-  m_Name: lvl1 Boss
+  m_Name: ArrackToPlayer 5
   m_EditorClassIdentifier: 
   ProjectilePfs:
-  - {fileID: 3520682674040017975, guid: ad23fa84c2282864eb8471068520f1b5, type: 3}
-  - {fileID: 6178946917542551604, guid: d05b4e9f173e0634ba4b1a34816bc020, type: 3}
+  - {fileID: 3500501074311751367, guid: 7f5fb110155870d4f85f39ee8c68f043, type: 3}
   AttackCount: 6
   animationWaitTimer: 0.2
   WaitTimer: 0.2
-  Cooldown: 0.2
+  Cooldown: 1
