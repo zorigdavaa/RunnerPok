@@ -184,7 +184,7 @@ public class Animal : Enemy
         movement?.Cancel();
         if (Rewards)
         {
-            GameObject InsReward = Instantiate(Rewards, transform.position, Quaternion.identity, Z.Player.transform);
+            GameObject InsReward = Instantiate(Rewards, transform.position, Quaternion.identity, Z.Player.ForwardTransForm);
             BaseCollectAble[] CollectAbles = InsReward.GetComponentsInChildren<BaseCollectAble>();
             WaitAndCall(2, () =>
             {

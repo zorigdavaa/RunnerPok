@@ -98,6 +98,7 @@ public class Player : Character
 
     public EventHandler<PlayerState> OnStateChanged;
     public Coin CoinPF;
+    public Transform ForwardTransForm;
 
 
     // Start is called before the first frame update
@@ -121,6 +122,8 @@ public class Player : Character
     Action UpdateAction = null;
     private void Update()
     {
+        ForwardTransForm.position = new Vector3(0, 0, transform.position.z);
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             StartThrow(true);
