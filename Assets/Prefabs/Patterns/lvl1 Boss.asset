@@ -15,7 +15,7 @@ MonoBehaviour:
   ProjectilePfs:
   - {fileID: 3520682674040017975, guid: ad23fa84c2282864eb8471068520f1b5, type: 3}
   - {fileID: 6178946917542551604, guid: d05b4e9f173e0634ba4b1a34816bc020, type: 3}
-  - {fileID: 6178946917542551604, guid: d05b4e9f173e0634ba4b1a34816bc020, type: 3}
+  - {fileID: 3520682674040017975, guid: 2e6856430fc9c4228a214aefe1e3f272, type: 3}
   AttackCount: 6
   animationWaitTimer: 0.2
   WaitTimer: 0.2
