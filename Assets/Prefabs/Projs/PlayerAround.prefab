@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4236691580238404409, guid: 76e8d1620367e3d479b31f2b1b00d28d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f496fc85760644f498f0931ac034ec3, type: 2}
     - target: {fileID: 5423161756400209041, guid: 76e8d1620367e3d479b31f2b1b00d28d, type: 3}
       propertyPath: TrailModule.mode
       value: 0
