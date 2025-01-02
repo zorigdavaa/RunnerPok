@@ -13,6 +13,7 @@ public class Animal : Enemy
     public List<BaseAttackPattern> Patterns;
     float playerDistanceToStartMove = 30;
     Coroutine ActionCoroutine = null;
+    public GameObject Rewards;
     private void Start()
     {
         MaxHealth *= Z.LS.LastInstLvl.HealthMultiplier;
@@ -181,7 +182,22 @@ public class Animal : Enemy
         transform.SetParent(null);
         animationController.Die();
         movement?.Cancel();
-        Z.Player.TakeCoin(transform);
+        if (Rewards)
+        {
+            GameObject InsReward = Instantiate(Rewards, transform.position, Quaternion.identity, Z.Player.transform);
+            BaseCollectAble[] CollectAbles = InsReward.GetComponentsInChildren<BaseCollectAble>();
+            WaitAndCall(2, () =>
+            {
+                foreach (var item in CollectAbles)
+                {
+                    item.GotoPosAndAdd();
+                }
+            });
+        }
+        else
+        {
+            Z.Player.TakeCoin(transform);
+        }
         // rb.isKinematic = true;
     }
     public override void AttackProjectile()

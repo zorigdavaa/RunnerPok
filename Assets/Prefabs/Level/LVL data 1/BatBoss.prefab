@@ -73,6 +73,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Rewards
+      value: 
+      objectReference: {fileID: 3389684709335494055, guid: 0897214032947164e9e77145d08ad76f, type: 3}
+    - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: maxHealth
       value: 150
       objectReference: {fileID: 0}

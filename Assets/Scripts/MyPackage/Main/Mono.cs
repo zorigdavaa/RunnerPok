@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace ZPackage
 {
-    public class Mb: MonoBehaviour
+    public class Mb : MonoBehaviour
     {
         ///<summary>Эхлэж байгааг шалгана</summary>
         public static bool IsStarting => GameManager.Instance.State == GameState.Starting;
@@ -62,5 +63,14 @@ namespace ZPackage
             }
         }
         Rigidbody _rb;
+        public void WaitAndCall(float waitTime, Action call)
+        {
+            StartCoroutine(LocalCoroutine());
+            IEnumerator LocalCoroutine()
+            {
+                yield return new WaitForSeconds(waitTime);
+                call();
+            }
+        }
     }
 }
