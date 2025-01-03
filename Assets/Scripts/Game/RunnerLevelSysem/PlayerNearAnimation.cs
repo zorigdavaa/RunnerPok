@@ -11,6 +11,8 @@ public class PlayerNearAnimation : MonoBehaviour
     public Vector3 TargerPos;
     public Transform MoveObj;
     public bool UseLocalPos = false;
+    public float PlayerNearDistance = 20;
+    public float Duration = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class PlayerNearAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > transform.position.z - 20 && !Animated)
+        if (player.transform.position.z > transform.position.z - PlayerNearDistance && !Animated)
         {
             Animated = true;
             DOAnimation();
@@ -47,7 +49,6 @@ public class PlayerNearAnimation : MonoBehaviour
         {
             float t = 0;
             float time = 0;
-            float duration = 0.5f;
             Vector3 initialPosition;
             if (UseLocalPos)
             {
@@ -58,10 +59,10 @@ public class PlayerNearAnimation : MonoBehaviour
                 initialPosition = MoveObj.position;
             }
 
-            while (time < duration)
+            while (time < Duration)
             {
                 time += Time.deltaTime;
-                t = time / duration;
+                t = time / Duration;
                 if (UseLocalPos)
                 {
                     MoveObj.localPosition = Vector3.Lerp(initialPosition, TargerPos, t);

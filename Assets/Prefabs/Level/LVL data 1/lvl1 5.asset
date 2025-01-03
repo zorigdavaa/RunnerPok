@@ -15,5 +15,6 @@ MonoBehaviour:
   Type: 1
   levelTiles:
   - {fileID: 6317272806129293980, guid: 09e339f85c2994e4fbcdc9739afd3d8d, type: 3}
+  - {fileID: 1152342366785983181, guid: b54dc4c13475c424985ca5271bd15951, type: 3}
   SectionEnd: {fileID: 1152342366785983181, guid: 7dceca1d5acb74646b675093aec19448, type: 3}
   SectionStart: {fileID: 0}

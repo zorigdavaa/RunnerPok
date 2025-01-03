@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 namespace ZPackage.Helper
 {
     public static class PhysicsHelper
     {
+        //Baga zereg aldaatai yum bna CalcBallisticVelocityVectorNew gej zassan
         ///<Summary> targetluu shideh velocity <Summary/>
         public static Vector3 CalcBallisticVelocityVector(Vector3 source, Vector3 target, float angle)
         {
@@ -20,6 +22,35 @@ namespace ZPackage.Helper
             return velocity * directionNorm;
             // return velocity * direction.normalized;
         }
+
+        //Doorhi codiig dahin chatGPT bichuulew
+        public static Vector3 CalcBallisticVelocityVectorNew(Vector3 source, Vector3 target, float angle)
+        {
+            // Calculate the direction vector
+            Vector3 direction = target - source;
+            float heightDifference = direction.y;
+            direction.y = 0; // Flatten the direction to horizontal
+            float horizontalDistance = direction.magnitude;
+            float radianAngle = angle * Mathf.Deg2Rad;
+
+            // Adjust for ballistic arc
+            float velocitySquared = (Physics.gravity.magnitude * horizontalDistance * horizontalDistance) /
+                                    (2 * (horizontalDistance * Mathf.Tan(radianAngle) - heightDifference) * Mathf.Cos(radianAngle) * Mathf.Cos(radianAngle));
+
+            if (velocitySquared < 0)
+            {
+                throw new ArgumentException("No valid solution for the given angle and target.");
+            }
+
+            float velocity = Mathf.Sqrt(velocitySquared);
+
+            // Final velocity vector
+            Vector3 velocityVector = direction.normalized * velocity * Mathf.Cos(radianAngle);
+            velocityVector.y = velocity * Mathf.Sin(radianAngle);
+
+            return velocityVector;
+        }
+
         ///<Summary> targetluu shidehed hureh velocity gehdee targetluu bish uragshaa shidne <Summary/>
         public static Vector3 CalcBallisticVelocityVector(Vector3 source, Vector3 target, float angle, Vector3 forward)
         {

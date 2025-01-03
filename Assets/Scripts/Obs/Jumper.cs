@@ -14,6 +14,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
     [SerializeField] Animation anim;
     public Transform pointer;
     public bool Test;
+    [SerializeField] float jumpAng;
     public void Start()
     {
         if (NextJumper)
@@ -89,7 +90,9 @@ public class Jumper : MonoBehaviour, ICollisionAction
         //     NextJumpTarget += Vector3.forward * 2;
         // }
         NextJumpTarget.x = transform.position.x;
-        JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 30f);
+        float ydiff = NextJumper.position.y - transform.position.y;
+        jumpAng = Mathf.Lerp(40, 70, Mathf.InverseLerp(0, 20, ydiff));
+        JumperForce = PhysicsHelper.CalcBallisticVelocityVectorNew(From, NextJumpTarget, jumpAng);
         // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 70f);
     }
 }
