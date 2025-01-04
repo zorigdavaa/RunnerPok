@@ -1397,6 +1397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileObs 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1765375381020493247, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
