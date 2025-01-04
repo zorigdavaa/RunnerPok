@@ -94,7 +94,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         // jumpAng = Mathf.Lerp(40, 60, Mathf.InverseLerp(0, 20, ydiff));
         jumpAng = PhysicsHelper.CalculateLaunchAngle(From, NextJumpTarget);
         jumpAng = Mathf.Clamp(jumpAng, 30, 75);
-        if (jumpAng > 20)
+        if (jumpAng > 31)
         {
             jumpAng += 10;
         }

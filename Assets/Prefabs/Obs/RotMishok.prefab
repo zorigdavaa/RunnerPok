@@ -121,6 +121,7 @@ MonoBehaviour:
   RotationAngle: {x: 0, y: 1, z: 0}
   LocalRotation: {x: 0, y: 2, z: 0}
   speed: 5
+  CircleMaterial: {fileID: 2100000, guid: 9e2306ce482ea1142aa9db8f38e0e046, type: 2}
   radius: 1
   segments: 30
   width: 0.1

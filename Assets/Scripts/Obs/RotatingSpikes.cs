@@ -10,6 +10,7 @@ public class RotatingSpikes : MonoBehaviour
     [SerializeField] Vector3 RotationAngle;
     [SerializeField] Vector3 LocalRotation;
     [SerializeField] float speed = 5;
+    [SerializeField] Material CircleMaterial;
 
     public float radius = 1f;
     public int segments = 30;
@@ -60,6 +61,7 @@ public class RotatingSpikes : MonoBehaviour
 
         mesh.vertices = vertices;
         mesh.triangles = triangles;
+        GetComponent<MeshRenderer>().material = CircleMaterial;
         mesh.RecalculateNormals();
     }
 }
