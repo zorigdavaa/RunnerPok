@@ -1668,6 +1668,10 @@ PrefabInstance:
       propertyPath: PlayerForwardTransForm
       value: 
       objectReference: {fileID: 1978379639}
+    - target: {fileID: 1796597889781480810, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2420573646999065348, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3126,7 +3130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
   Levels:
-  - {fileID: 7278324688581108722, guid: e47b20adbaa8242e783c7088b5b89a45, type: 3}
+  - {fileID: 7278324688581108722, guid: 6fd974ac1df82564aba0dab4a6f7a42a, type: 3}
   LastInstLvl: {fileID: 0}
   AllTiles:
   - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
@@ -3894,6 +3898,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3180138100669138103, guid: 60c923b8842fa424ba6f6841dd2fb033, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180138100677161649, guid: 60c923b8842fa424ba6f6841dd2fb033, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

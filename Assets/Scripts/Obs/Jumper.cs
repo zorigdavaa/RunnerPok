@@ -90,8 +90,14 @@ public class Jumper : MonoBehaviour, ICollisionAction
         //     NextJumpTarget += Vector3.forward * 2;
         // }
         NextJumpTarget.x = transform.position.x;
-        float ydiff = NextJumper.position.y - transform.position.y;
-        jumpAng = Mathf.Lerp(40, 70, Mathf.InverseLerp(0, 20, ydiff));
+        // float ydiff = NextJumper.position.y - transform.position.y;
+        // jumpAng = Mathf.Lerp(40, 60, Mathf.InverseLerp(0, 20, ydiff));
+        jumpAng = PhysicsHelper.CalculateLaunchAngle(From, NextJumpTarget);
+        jumpAng = Mathf.Clamp(jumpAng, 30, 75);
+        if (jumpAng > 20)
+        {
+            jumpAng += 10;
+        }
         JumperForce = PhysicsHelper.CalcBallisticVelocityVectorNew(From, NextJumpTarget, jumpAng);
         // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 70f);
     }

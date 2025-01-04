@@ -50,6 +50,25 @@ namespace ZPackage.Helper
 
             return velocityVector;
         }
+        public static float CalculateLaunchAngle(Vector3 source, Vector3 target)
+        {
+            // Calculate direction vector
+            Vector3 direction = target - source;
+
+            // Calculate horizontal distance (XZ plane)
+            float horizontalDistance = new Vector3(direction.x, 0, direction.z).magnitude;
+
+            // Calculate vertical difference (Y axis)
+            float heightDifference = direction.y;
+
+            // Calculate the angle in radians
+            float angleInRadians = Mathf.Atan2(heightDifference, horizontalDistance);
+
+            // Convert radians to degrees
+            float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
+
+            return angleInDegrees;
+        }
 
         ///<Summary> targetluu shidehed hureh velocity gehdee targetluu bish uragshaa shidne <Summary/>
         public static Vector3 CalcBallisticVelocityVector(Vector3 source, Vector3 target, float angle, Vector3 forward)

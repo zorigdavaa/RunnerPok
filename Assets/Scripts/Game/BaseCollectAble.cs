@@ -10,6 +10,7 @@ public abstract class BaseCollectAble : MonoBehaviour
     public Transform rotChild;
     public Camera cam;
     public bool shouldRot = true;
+    
     private void Start()
     {
         cam = Camera.main;
