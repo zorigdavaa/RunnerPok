@@ -164,8 +164,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3362261294800038520, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6771484526820985818}
   m_SourcePrefab: {fileID: 100100000, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+--- !u!1 &3388156712568335957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3362261294800038520, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+  m_PrefabInstance: {fileID: 120471570436342829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6771484526820985818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388156712568335957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d497cbb8fbaa94f99ccb6707b2d2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  speed: 1
+  Oppozit: 0
+  startOffset: 0
+  MovementType: 0
+  min: {x: -7, y: 0, z: 0}
+  max: {x: 7, y: 0, z: 0}
 --- !u!4 &3723246295180588299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3605026524838981926, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
@@ -221,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477584444987647026, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Name
-      value: JumpTile 1
+      value: JumpTile 2
       objectReference: {fileID: 0}
     - target: {fileID: 1765375381020493247, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_LocalPosition.z
@@ -297,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3605026524838981926, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: -4.25
       objectReference: {fileID: 0}
     - target: {fileID: 3605026524838981926, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
       propertyPath: m_LocalPosition.y
@@ -346,8 +373,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3362261294800038520, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5360897338530524960}
   m_SourcePrefab: {fileID: 100100000, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+--- !u!1 &187700581264196683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3362261294800038520, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+  m_PrefabInstance: {fileID: 3185169162510724659}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5360897338530524960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187700581264196683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8d497cbb8fbaa94f99ccb6707b2d2bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  speed: 1
+  Oppozit: 0
+  startOffset: 0
+  MovementType: 0
+  min: {x: -7, y: 0, z: 0}
+  max: {x: 7, y: 0, z: 0}
 --- !u!4 &2176468958131625749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3605026524838981926, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}

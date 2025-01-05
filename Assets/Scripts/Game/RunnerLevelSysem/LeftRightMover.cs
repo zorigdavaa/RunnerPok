@@ -11,6 +11,9 @@ public class LeftRightMover : MonoBehaviour
     [Range(0, Mathf.PI / 2)]
     public float startOffset = 0;
     public MovementType MovementType;
+    public bool IsMoving = true;
+    public bool ShoulDRot = false;
+    public Vector3 RotSpeed;
     void Start()
     {
         if (!Model)
@@ -22,22 +25,33 @@ public class LeftRightMover : MonoBehaviour
             ownTime = Mathf.PI / 2;
         }
         ownTime += startOffset;
+        minWorld = transform.position + min;
+        maxWorld = transform.position + max;
     }
     public Vector3 min = new Vector3(0, 0, 0);
     public Vector3 max = new Vector3(7, 0, 0);
+    private Vector3 minWorld;
+    private Vector3 maxWorld;
     void Update()
     {
-        ownTime += Time.deltaTime;
-        float t;
-        if (MovementType == MovementType.SinusWave)
+        if (IsMoving)
         {
-            t = Mathf.InverseLerp(-1, 1, Mathf.Sin(ownTime * speed));
+            ownTime += Time.deltaTime;
+            float t;
+            if (MovementType == MovementType.SinusWave)
+            {
+                t = Mathf.InverseLerp(-1, 1, Mathf.Sin(ownTime * speed));
+            }
+            else
+            {
+                t = Mathf.PingPong(ownTime * speed, 1f); // Creates a linear oscillation between 0 and 1
+            }
+            Model.position = Vector3.Lerp(minWorld, maxWorld, t);
+            if (ShoulDRot)
+            {
+                Model.Rotate(RotSpeed);
+            }
         }
-        else
-        {
-            t = Mathf.PingPong(ownTime * speed, 1f); // Creates a linear oscillation between 0 and 1
-        }
-        Model.localPosition = Vector3.Lerp(min, max, t);
     }
 }
 public enum MovementType
