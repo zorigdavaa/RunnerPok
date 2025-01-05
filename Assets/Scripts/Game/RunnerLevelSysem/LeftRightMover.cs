@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SideKicker : MonoBehaviour
+public class LeftRightMover : MonoBehaviour
 {
-    [SerializeField] Transform Kicker;
+    [SerializeField] Transform Model;
     float ownTime;
     public float speed = 5;
     public bool Oppozit;
@@ -12,6 +12,10 @@ public class SideKicker : MonoBehaviour
     public float startOffset = 0;
     void Start()
     {
+        if (!Model)
+        {
+            Model = transform;
+        }
         if (Oppozit)
         {
             ownTime = Mathf.PI / 2;
@@ -24,6 +28,6 @@ public class SideKicker : MonoBehaviour
     {
         ownTime += Time.deltaTime;
         float t = Mathf.InverseLerp(-1, 1, Mathf.Sin(ownTime * speed));
-        Kicker.localPosition = Vector3.Lerp(min, max, t);
+        Model.localPosition = Vector3.Lerp(min, max, t);
     }
 }
