@@ -10,6 +10,7 @@ public class LeftRightMover : MonoBehaviour
     public bool Oppozit;
     [Range(0, Mathf.PI / 2)]
     public float startOffset = 0;
+    public MovementType MovementType;
     void Start()
     {
         if (!Model)
@@ -27,7 +28,20 @@ public class LeftRightMover : MonoBehaviour
     void Update()
     {
         ownTime += Time.deltaTime;
-        float t = Mathf.InverseLerp(-1, 1, Mathf.Sin(ownTime * speed));
+        float t;
+        if (MovementType == MovementType.SinusWave)
+        {
+            t = Mathf.InverseLerp(-1, 1, Mathf.Sin(ownTime * speed));
+        }
+        else
+        {
+            t = Mathf.PingPong(ownTime * speed, 1f); // Creates a linear oscillation between 0 and 1
+        }
         Model.localPosition = Vector3.Lerp(min, max, t);
     }
+}
+public enum MovementType
+{
+    SinusWave,
+    Linear
 }

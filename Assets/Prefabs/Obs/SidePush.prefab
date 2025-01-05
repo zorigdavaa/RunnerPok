@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5933255608941066401}
-  - component: {fileID: 5518840275030461073}
+  - component: {fileID: 8745408481906387197}
   m_Layer: 0
   m_Name: SidePush
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3861463085869065174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5518840275030461073
+--- !u!114 &8745408481906387197
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,13 +42,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 883989323217913990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f1b71e86190da42acf19c114f7c773, type: 3}
+  m_Script: {fileID: 11500000, guid: c8d497cbb8fbaa94f99ccb6707b2d2bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Kicker: {fileID: 3861463085869065174}
+  Model: {fileID: 3861463085869065174}
   speed: 2
   Oppozit: 0
   startOffset: 0
+  MovementType: 0
   min: {x: 0, y: 0, z: 0}
   max: {x: 7, y: 0, z: 0}
 --- !u!1 &2177261490814705437

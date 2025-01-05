@@ -17,8 +17,8 @@ public class RPushers : MonoBehaviour
             pos += Vector3.forward * 7;
             GameObject right = Instantiate(RightPf, pos, RightPf.transform.rotation, transform);
             GameObject left = Instantiate(LeftPf, pos, LeftPf.transform.rotation, transform);
-            right.GetComponent<SideKicker>().startOffset += step * (i + 1);
-            left.GetComponent<SideKicker>().startOffset += step * (i + 1);
+            right.GetComponent<LeftRightMover>().startOffset += step * (i + 1);
+            left.GetComponent<LeftRightMover>().startOffset += step * (i + 1);
 
         }
     }
