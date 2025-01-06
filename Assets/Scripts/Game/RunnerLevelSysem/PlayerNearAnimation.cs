@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Events;
 using UnityEngine;
 using UnityEngine.Events;
 using ZPackage;
-
+#if UNITY_EDITOR
+using UnityEditor.Events;
+#endif
 public class PlayerNearAnimation : MonoBehaviour
 {
     Player player;
@@ -32,6 +33,7 @@ public class PlayerNearAnimation : MonoBehaviour
             }
         }
     }
+#if UNITY_EDITOR
     [ContextMenu("GetTransformAnimation")]
     public void GetTransformAnimation()
     {
@@ -49,4 +51,5 @@ public class PlayerNearAnimation : MonoBehaviour
         UnityEventTools.AddVoidPersistentListener(WhenNear, transformAnimation.Animate);
         // WhenNear.AddListener(newAction);
     }
+#endif
 }
