@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
@@ -1654,7 +1654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 15
+  PlayerNearDistance: 20
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:
