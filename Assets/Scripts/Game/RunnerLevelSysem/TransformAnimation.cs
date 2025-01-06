@@ -28,7 +28,7 @@ public class TransformAnimation : MonoBehaviour
         TargetPos = Model.position + Pos;
     }
 
-    public Vector3 Pos = new Vector3(7, 0, 0);
+    public Vector3 Pos = new Vector3(0, 0, 0);
     public Vector3 TargetRot = Vector3.zero;
     public Vector3 TargetScale = Vector3.one;
     private Vector3 TargetPos;

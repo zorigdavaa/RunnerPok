@@ -155,9 +155,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &1075089612717723668
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,9 +313,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &1625707883568510240
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,9 +471,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &3107944784475135890
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,9 +629,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &3301706664448649080
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,9 +787,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &3492048783338025090
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,9 +945,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &4641842037589067739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,9 +1103,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &4672388450319444439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,9 +1261,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1 &4789098487277505671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,9 +1419,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!1001 &6862512844609108348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1581,9 +1581,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
-  Pos: {x: 7, y: 0, z: 0}
+  Pos: {x: 0, y: 6, z: 0}
   TargetRot: {x: 0, y: 0, z: 0}
-  TargetScale: {x: 1, y: 1, z: 1}
+  TargetScale: {x: 20, y: 4, z: 10}
 --- !u!4 &6656022182729995909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 243893644774797305, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}

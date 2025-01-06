@@ -25,9 +25,9 @@ public class LeftRightMover : MonoBehaviour
             ownTime = Mathf.PI / 2;
         }
         ownTime += startOffset;
-
-        LocalMin = transform.InverseTransformPoint(Model.position + min);
-        LocalMax = transform.InverseTransformPoint(Model.position + max);
+        Transform referenceTransform = Model.parent != null ? Model.parent : Model;
+        LocalMin = referenceTransform.InverseTransformPoint(Model.position + min);
+        LocalMax = referenceTransform.InverseTransformPoint(Model.position + max);
     }
     public Vector3 min = new Vector3(0, 0, 0);
     public Vector3 max = new Vector3(7, 0, 0);

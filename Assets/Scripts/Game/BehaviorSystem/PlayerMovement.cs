@@ -271,7 +271,6 @@ public class PlayerMovement : MovementForgeRun
                 Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
                 targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
             }
-
         }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
