@@ -1,78 +1,52 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Events;
 using UnityEngine;
+using UnityEngine.Events;
 using ZPackage;
 
 public class PlayerNearAnimation : MonoBehaviour
 {
     Player player;
-    public bool Animated = false;
-    public Vector3 TargerPos;
-    public Transform MoveObj;
-    public bool UseLocalPos = false;
     public float PlayerNearDistance = 20;
-    public float Duration = 0.5f;
+    public bool DestroySelf = true;
+    public UnityEvent WhenNear;
+    bool Detected = false;
     // Start is called before the first frame update
     void Start()
     {
         player = Z.Player;
-        if (MoveObj == null)
-        {
-            MoveObj = transform;
-            // TargerPos += transform.position;
-        }
-        if (UseLocalPos)
-        {
-            TargerPos += transform.localPosition;
-        }
-        else
-        {
-            TargerPos += transform.position;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > transform.position.z - PlayerNearDistance && !Animated)
+        if (player.transform.position.z > transform.position.z - PlayerNearDistance && !Detected)
         {
-            Animated = true;
-            DOAnimation();
+            Detected = true;
+            WhenNear?.Invoke();
+            if (DestroySelf)
+            {
+                Destroy(this);
+            }
         }
     }
-
-    private void DOAnimation()
+    [ContextMenu("GetTransformAnimation")]
+    public void GetTransformAnimation()
     {
-        StartCoroutine(LocalCoroutine());
-        IEnumerator LocalCoroutine()
+        // Remove all existing persistent listeners
+        for (int i = WhenNear.GetPersistentEventCount() - 1; i >= 0; i--)
         {
-            float t = 0;
-            float time = 0;
-            Vector3 initialPosition;
-            if (UseLocalPos)
-            {
-                initialPosition = MoveObj.localPosition;
-            }
-            else
-            {
-                initialPosition = MoveObj.position;
-            }
-
-            while (time < Duration)
-            {
-                time += Time.deltaTime;
-                t = time / Duration;
-                if (UseLocalPos)
-                {
-                    MoveObj.localPosition = Vector3.Lerp(initialPosition, TargerPos, t);
-                }
-                else
-                {
-                    MoveObj.position = Vector3.Lerp(initialPosition, TargerPos, t);
-                }
-                yield return null;
-            }
+            UnityEventTools.RemovePersistentListener(WhenNear, i);
         }
+
+        TransformAnimation transformAnimation = GetComponent<TransformAnimation>();
+        // UnityAction newAction = () =>
+        // {
+        //     transformAnimation.Animate();
+        // };
+        UnityEventTools.AddVoidPersistentListener(WhenNear, transformAnimation.Animate);
+        // WhenNear.AddListener(newAction);
     }
 }

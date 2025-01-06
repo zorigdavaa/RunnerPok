@@ -6,36 +6,19 @@ using ZPackage;
 public class RollObs : MonoBehaviour, ICollisionAction
 {
     [SerializeField] Rigidbody Roller;
-    bool isRolling = false;
-    float selfTime;
-    float speed = 10;
     public void CollisionAction(Character character)
     {
         if (character is Player player)
         {
-            Roller.isKinematic = false;
-            Roller.velocity = Vector3.back * 30;
-            Roller.angularVelocity = new Vector3(10, 0, 0);
-            isRolling = true;
+            // ReleaseObj();
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void ReleaseObj()
     {
-        // Roller.transform.position += Vector3.right * Random.Range(-4, 4);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (!isRolling)
-        {
-            selfTime += Time.deltaTime * speed;
-            Vector3 pos = Roller.transform.position;
-            pos.x = Mathf.PingPong(selfTime, 8) - 4f;
-            Roller.transform.position = pos;
-        }
+        Roller.isKinematic = false;
+        Roller.velocity = Vector3.back * 30;
+        Roller.angularVelocity = new Vector3(10, 0, 0);
+        GetComponent<LeftRightMover>().IsMoving = false;
     }
 }

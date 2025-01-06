@@ -55,13 +55,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7471740536598919523}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 781266613038191770}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
 --- !u!4 &1921580849380810374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   m_PrefabInstance: {fileID: 385037203798465213}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3179744981964237477 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 385037203798465213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7471740536598919523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179744981964237477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 781266613038191770}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &781266613038191770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179744981964237477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &531352051078179939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,13 +179,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4895941532354694518}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4546739176322840006}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
 --- !u!4 &1775125454111271000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   m_PrefabInstance: {fileID: 531352051078179939}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3326165186351996027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 531352051078179939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4895941532354694518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326165186351996027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4546739176322840006}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4546739176322840006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326165186351996027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &575766232689831806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,13 +303,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7872104786594316093}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5486876833079080754}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
 --- !u!4 &1729582937346321221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   m_PrefabInstance: {fileID: 575766232689831806}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3353734952974606182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 575766232689831806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7872104786594316093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353734952974606182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5486876833079080754}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5486876833079080754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353734952974606182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &1954413170347926280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,13 +427,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3189272653769938071}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1072553704583184630}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
 --- !u!4 &351921504521299763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   m_PrefabInstance: {fileID: 1954413170347926280}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3632201552495006480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 1954413170347926280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3189272653769938071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632201552495006480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1072553704583184630}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1072553704583184630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632201552495006480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &2000220437734356787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,13 +551,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1188415078056907739}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2962599534383474360}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
 --- !u!4 &305975608869860104 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   m_PrefabInstance: {fileID: 2000220437734356787}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3653934007207937835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 2000220437734356787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1188415078056907739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3653934007207937835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2962599534383474360}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2962599534383474360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3653934007207937835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &2134058051409774110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -365,13 +675,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4819257796335195924}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6125927542004704140}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
 --- !u!4 &171291472164373029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   m_PrefabInstance: {fileID: 2134058051409774110}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3813112924473341446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 2134058051409774110}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4819257796335195924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813112924473341446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6125927542004704140}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6125927542004704140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813112924473341446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &2149459063231331066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,13 +799,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1951740266003601561}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3074930834908099944}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
 --- !u!4 &155751814360956609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   m_PrefabInstance: {fileID: 2149459063231331066}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3792943326292675298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 2149459063231331066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1951740266003601561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3792943326292675298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3074930834908099944}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3074930834908099944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3792943326292675298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &4009318729757286431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,8 +923,70 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4561058287536438369}
+    - targetCorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8216109973024869219}
   m_SourcePrefab: {fileID: 100100000, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+--- !u!1 &2221579020501798919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
+  m_PrefabInstance: {fileID: 4009318729757286431}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4561058287536438369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221579020501798919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8216109973024869219}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8216109973024869219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221579020501798919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 2, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &2908983370190824484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2305067656002061371, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7374359935025978400}
   - component: {fileID: 4833161514414595233}
   - component: {fileID: 1848802819308532439}
+  - component: {fileID: 1447536424451581173}
   m_Layer: 3
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -118,12 +119,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1447536424451581173}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1447536424451581173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892038191265692594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1075089612717723668
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +171,7 @@ GameObject:
   - component: {fileID: 8293238109509521428}
   - component: {fileID: 5088061090922469626}
   - component: {fileID: 8085052459314893506}
+  - component: {fileID: 1452924987404290671}
   m_Layer: 3
   m_Name: Cube (9)
   m_TagString: Untagged
@@ -242,12 +277,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1452924987404290671}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1452924987404290671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075089612717723668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1625707883568510240
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +329,7 @@ GameObject:
   - component: {fileID: 6409941981142495879}
   - component: {fileID: 4351815866673277900}
   - component: {fileID: 3599445439941576893}
+  - component: {fileID: 4242835548645597325}
   m_Layer: 3
   m_Name: Cube (8)
   m_TagString: Untagged
@@ -366,12 +435,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4242835548645597325}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4242835548645597325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625707883568510240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &3107944784475135890
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +487,7 @@ GameObject:
   - component: {fileID: 8710402951490887008}
   - component: {fileID: 3927940414488185350}
   - component: {fileID: 317299699097026644}
+  - component: {fileID: 5958363694071125652}
   m_Layer: 3
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -490,12 +593,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5958363694071125652}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5958363694071125652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3107944784475135890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &3301706664448649080
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +645,7 @@ GameObject:
   - component: {fileID: 8326730923705107889}
   - component: {fileID: 2073889588855440434}
   - component: {fileID: 6304828664281910935}
+  - component: {fileID: 50366839586947154}
   m_Layer: 3
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -614,12 +751,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 50366839586947154}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &50366839586947154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3301706664448649080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &3492048783338025090
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +803,7 @@ GameObject:
   - component: {fileID: 4793288150691936413}
   - component: {fileID: 689784886454600313}
   - component: {fileID: 3173606999618546515}
+  - component: {fileID: 8349035995800958722}
   m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -738,12 +909,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8349035995800958722}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8349035995800958722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3492048783338025090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &4641842037589067739
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +961,7 @@ GameObject:
   - component: {fileID: 3914968512037091690}
   - component: {fileID: 1323284667448238744}
   - component: {fileID: 5450840758377542397}
+  - component: {fileID: 1767556908195637744}
   m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -862,12 +1067,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1767556908195637744}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1767556908195637744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4641842037589067739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &4672388450319444439
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,6 +1119,7 @@ GameObject:
   - component: {fileID: 677062171501890904}
   - component: {fileID: 543728137441744443}
   - component: {fileID: 1485473598053116635}
+  - component: {fileID: 162093484916318452}
   m_Layer: 3
   m_Name: Cube (4)
   m_TagString: Untagged
@@ -986,12 +1225,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 162093484916318452}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &162093484916318452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672388450319444439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1 &4789098487277505671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,6 +1277,7 @@ GameObject:
   - component: {fileID: 947894569201456568}
   - component: {fileID: 2456982440470696573}
   - component: {fileID: 4539089346486008900}
+  - component: {fileID: 4605630344964673277}
   m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -1110,12 +1383,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4605630344964673277}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4605630344964673277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789098487277505671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &6862512844609108348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1218,6 +1524,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6062330117157128093, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8560022410541270796}
+    - targetCorrespondingSourceObject: {fileID: 6062330117157128093, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1569758446870671942}
   m_SourcePrefab: {fileID: 100100000, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
 --- !u!1 &800851342459846369 stripped
 GameObject:
@@ -1236,12 +1545,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 6, z: 0}
-  MoveObj: {fileID: 0}
-  UseLocalPos: 0
   PlayerNearDistance: 20
-  Duration: 0.5
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1569758446870671942}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1569758446870671942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800851342459846369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 1
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 7, y: 0, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &6656022182729995909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 243893644774797305, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}

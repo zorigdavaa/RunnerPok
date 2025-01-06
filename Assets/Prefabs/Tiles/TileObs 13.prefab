@@ -164,6 +164,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7250828228022697381}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2770327521889529996}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!4 &3586039473876238693 stripped
 Transform:
@@ -187,12 +190,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 3586039473876238693}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2770327521889529996}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2770327521889529996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976262595836562501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &1803665093503109165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +288,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8847139639847887809}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6454923124680676506}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!4 &4511662408011593405 stripped
 Transform:
@@ -275,12 +314,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 4511662408011593405}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6454923124680676506}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6454923124680676506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8343650230072867741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &2511227494397503448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,6 +412,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1572337480371834961}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4070837691849404419}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!4 &379127892044683592 stripped
 Transform:
@@ -363,12 +438,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 379127892044683592}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4070837691849404419}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4070837691849404419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5194007632441955432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &2713974078004191995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -428,6 +536,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1479276565662336590}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6696357535332908875}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!4 &158395497743850603 stripped
 Transform:
@@ -451,12 +562,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 158395497743850603}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6696357535332908875}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6696357535332908875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720846404664021323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &3147995144722441344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -516,6 +660,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8500266535767973297}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6932489286715976130}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!4 &879519352784689680 stripped
 Transform:
@@ -539,12 +686,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 879519352784689680}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6932489286715976130}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6932489286715976130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711489316319844144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &4288859891662618481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -604,6 +784,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3315171477267092536}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1322879441121137231}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!4 &2026150958756364769 stripped
 Transform:
@@ -627,12 +810,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 2026150958756364769}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1322879441121137231}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1322879441121137231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857046956457020609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!1001 &6265672202430651060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -692,6 +908,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 168553531496082135}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8944824069048505851}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!1 &4339602924103805188 stripped
 GameObject:
@@ -710,12 +929,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 8173859038483637284}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8944824069048505851}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8944824069048505851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339602924103805188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &8173859038483637284 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2853948278981394064, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
@@ -885,6 +1137,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7178580770887622427}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3816364506276632548}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!1 &643858793924445998 stripped
 GameObject:
@@ -903,12 +1158,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 5024133216017713678}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3816364506276632548}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3816364506276632548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643858793924445998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &5024133216017713678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2853948278981394064, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
@@ -973,6 +1261,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2947213323995697937}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1196281514811241022}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!1 &2013776575684789309 stripped
 GameObject:
@@ -991,12 +1282,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 6243224399330871581}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1196281514811241022}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1196281514811241022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013776575684789309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &6243224399330871581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2853948278981394064, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
@@ -1061,6 +1385,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8984289268703778978}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 15233154059562243}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!1 &1772278347847268329 stripped
 GameObject:
@@ -1079,12 +1406,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 6182977639005272777}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 15233154059562243}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &15233154059562243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772278347847268329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &6182977639005272777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2853948278981394064, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
@@ -1149,6 +1509,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8472117662379972010}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2348652683684612371}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!1 &1609825121769912409 stripped
 GameObject:
@@ -1167,12 +1530,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 6557526691298850169}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2348652683684612371}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2348652683684612371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609825121769912409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &6557526691298850169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2853948278981394064, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
@@ -1237,6 +1633,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8033412814027960450}
+    - targetCorrespondingSourceObject: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8236727104956142709}
   m_SourcePrefab: {fileID: 100100000, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
 --- !u!1 &1695000924323944217 stripped
 GameObject:
@@ -1255,12 +1654,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ed0f13d85aff4a95ef57ab39b983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animated: 0
-  TargerPos: {x: 0, y: 4, z: 0}
-  MoveObj: {fileID: 6544828666958010937}
-  UseLocalPos: 0
-  PlayerNearDistance: 20
-  Duration: 0.5
+  PlayerNearDistance: 15
+  DestroySelf: 1
+  WhenNear:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8236727104956142709}
+        m_TargetAssemblyTypeName: TransformAnimation, Assembly-CSharp
+        m_MethodName: Animate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8236727104956142709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695000924323944217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 0}
+  duration: 0.5
+  AnimateAtStart: 0
+  Delay: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  Pos: {x: 0, y: 4.25, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
+  TargetScale: {x: 1, y: 1, z: 1}
 --- !u!4 &6544828666958010937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2853948278981394064, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
