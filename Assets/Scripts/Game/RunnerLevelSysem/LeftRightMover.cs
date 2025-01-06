@@ -25,13 +25,14 @@ public class LeftRightMover : MonoBehaviour
             ownTime = Mathf.PI / 2;
         }
         ownTime += startOffset;
-        minWorld = transform.position + min;
-        maxWorld = transform.position + max;
+
+        LocalMin = transform.InverseTransformPoint(transform.position + min);
+        LocalMax = transform.InverseTransformPoint(transform.position + max);
     }
     public Vector3 min = new Vector3(0, 0, 0);
     public Vector3 max = new Vector3(7, 0, 0);
-    private Vector3 minWorld;
-    private Vector3 maxWorld;
+    private Vector3 LocalMin;
+    private Vector3 LocalMax;
     void Update()
     {
         if (IsMoving)
@@ -46,7 +47,7 @@ public class LeftRightMover : MonoBehaviour
             {
                 t = Mathf.PingPong(ownTime * speed, 1f); // Creates a linear oscillation between 0 and 1
             }
-            Model.position = Vector3.Lerp(minWorld, maxWorld, t);
+            Model.localPosition = Vector3.Lerp(LocalMin, LocalMax, t);
             if (ShoulDRot)
             {
                 Model.Rotate(RotSpeed);

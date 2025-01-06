@@ -19,6 +19,8 @@ namespace ZPackage
         public List<Tile> AllTiles;
         private async Task Start()
         {
+            Destroy(transform.GetChild(0).gameObject, 10);
+
             // for (int i = 0; i < 5; i++)
             // {
             //     SpawnTile(0);
