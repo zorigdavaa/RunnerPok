@@ -39,6 +39,10 @@ public class PlayerMovement : MovementForgeRun
     public void SetControlType(ZControlType value)
     {
         ControlType = value;
+        if (value == ZControlType.TwoSide)
+        {
+            ResetTargetX();
+        }
     }
     // private void Update()
     // {
@@ -249,7 +253,7 @@ public class PlayerMovement : MovementForgeRun
         if (IsDown)
         {
             befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
-            targetX = transform.localPosition.x;
+            ResetTargetX();
         }
         if (IsClick)
         {
@@ -258,7 +262,7 @@ public class PlayerMovement : MovementForgeRun
             rb.velocity = vel;
             // Convert mouse position to viewport position
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
-            float xDif = (viewPortPos.x - befFrameMous.x) * 20;
+            float xDif = (viewPortPos.x - befFrameMous.x) * 40;
             Vector3 targetPos = new Vector3(targetX += xDif, transform.localPosition.y, transform.localPosition.z);
             targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
             befFrameMous = viewPortPos;
@@ -276,7 +280,10 @@ public class PlayerMovement : MovementForgeRun
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
     }
 
-
+    public void ResetTargetX()
+    {
+        targetX = transform.localPosition.x;
+    }
 
     public override void UseParentedMovement(bool val)
     {
