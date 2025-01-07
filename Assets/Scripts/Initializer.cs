@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CandyKitSDK;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,11 +27,17 @@ public class Initializer : MonoBehaviour
         SupersonicWisdom.Api.AddOnReadyListener(OnSupersonicWisdomReady);
         // Then initialize
         SupersonicWisdom.Api.Initialize();
+
     }
 #endif
+    private void Start()
+    {
+        CandyKit.Initialize(LoadMainScene);
+    }
 
     void OnSupersonicWisdomReady()
     {
+
         print("-------------- Wisdom ready. --------------");
         LoadMainScene();
 
@@ -40,7 +47,7 @@ public class Initializer : MonoBehaviour
     {
         if (mainSceneLoaded) return;
 
-        ABTestManager.Instance.Init();
+        // ABTestManager.Instance.Init();
         SceneManager.LoadScene("Main");
         mainSceneLoaded = true;
         enabled = false;
