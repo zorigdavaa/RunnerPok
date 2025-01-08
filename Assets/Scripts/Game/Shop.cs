@@ -14,6 +14,26 @@ public class Shop : MonoBehaviour
     }
     public void AddCoin()
     {
-        Z.GM.Coin++;
+        Z.GM.Coin += 100;
+    }
+    public void AddCoin1000()
+    {
+        Z.GM.Coin += 1000;
+    }
+    public void AddCoin5000()
+    {
+        Z.GM.Coin += 5000;
+    }
+    public void BuyBounceShuriken()
+    {
+        Z.GM.Coin += 5000;
+    }
+    public void BuyNoAds()
+    {
+        Debug.Log("Noads bought");
+    }
+    public void BuyBundle()
+    {
+        Debug.Log("Bunde1 bought");
     }
 }
