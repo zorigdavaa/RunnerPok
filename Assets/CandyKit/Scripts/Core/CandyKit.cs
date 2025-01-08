@@ -78,14 +78,14 @@ namespace CandyKitSDK
             }
 
 
-// #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
-//             if (PlayerPrefs.GetInt("LevelZero", 0) == 0)
-//             {
-//                 PlayerPrefs.SetInt("LevelZero", 1);
-//                 GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_000");
-//                 GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level_000");
-//             }
-// #endif
+            // #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
+            //             if (PlayerPrefs.GetInt("LevelZero", 0) == 0)
+            //             {
+            //                 PlayerPrefs.SetInt("LevelZero", 1);
+            //                 GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_000");
+            //                 GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level_000");
+            //             }
+            // #endif
         }
 
         public static void NotifyLevelStarted(int level)
@@ -102,9 +102,9 @@ namespace CandyKitSDK
 
             NotifyLevelZero();
 
-// #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
-//             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_" + level.ToString("000"));
-// #endif
+            // #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
+            //             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_" + level.ToString("000"));
+            // #endif
         }
 
         public static void NotifyLevelCompleted(int level)
@@ -119,9 +119,9 @@ namespace CandyKitSDK
                 return;
             }
 
-// #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
-//             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level_" + level.ToString("000"));
-// #endif
+            // #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
+            //             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "level_" + level.ToString("000"));
+            // #endif
         }
 
         public static void NotifyLevelFailed(int level)
@@ -136,9 +136,9 @@ namespace CandyKitSDK
                 return;
             }
 
-// #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
-//             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "level_" + level.ToString("000"));
-// #endif
+            // #if CANDYKIT || UNITY_IOS || UNITY_ANDROID
+            //             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "level_" + level.ToString("000"));
+            // #endif
         }
 
         public static void BuyNoAds(CkIAPManager.OnPurchaseCompleted onPurchaseCompleted)
@@ -170,18 +170,13 @@ namespace CandyKitSDK
             {
                 Debug.Log("CK--> Buy Product: " + productId);
             }
-#if UNITY_EDITOR
-            onPurchaseCompleted(true);
-#else
 
             if (!m_IAPManager.isIAPInitialized)
             {
                 onPurchaseCompleted(false);
                 return;
             }
-            // m_Instance.ckIAPManager.OnPurchaseClicked(productId, onPurchaseCompleted);
             m_IAPManager.OnPurchaseClicked(productId, onPurchaseCompleted);
-#endif
         }
 
         public static void RestorePurchase(CkIAPManager.OnPurchaseCompleted onPurchaseCompleted)
