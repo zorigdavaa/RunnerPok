@@ -131,7 +131,7 @@ public class PlayerMovement : MovementForgeRun
                     Vector3 hitPoint = ray.GetPoint(enter);
 
                     //Move your cube GameObject to the point where you clicked
-                    TargetLocalPos = transform.parent.InverseTransformPoint(hitPoint);
+                    TargetLocalPos = transform.parent.InverseTransformPoint(hitPoint + Vector3.forward * 2);
                     TargetLocalPos.x = Mathf.Clamp(TargetLocalPos.x, minXLimit, maxXLimit);
                     TargetLocalPos.z = Mathf.Clamp(TargetLocalPos.z, -1, 8);
                 }

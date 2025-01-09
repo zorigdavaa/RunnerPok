@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Services.Core;
 
-#if !UNITY_EDITOR
-using GameAnalyticsSDK;
-#endif
+// #if !UNITY_EDITOR
+// using GameAnalyticsSDK;
+// #endif
 
 namespace CandyKitSDK
 {
@@ -66,12 +66,12 @@ namespace CandyKitSDK
 
             print("UGS Initialized");
 
-#if !UNITY_EDITOR
-            while (!GameAnalytics.IsRemoteConfigsReady())
-            {
-                yield return null;
-            }
-#endif
+// #if !UNITY_EDITOR
+//             while (!GameAnalytics.IsRemoteConfigsReady())
+//             {
+//                 yield return null;
+//             }
+// #endif
 
             ABTestManager.Instance.Init();
 

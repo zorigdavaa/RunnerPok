@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466b65b62f043ce43a58bf3741875d60, type: 3}
   m_Name: IAP - 4
   m_EditorClassIdentifier: 
-  id: runnerpok.coin100
+  id: runnerpok.bounceshiruken
   productType: 0
   Logic:
     m_PersistentCalls:
