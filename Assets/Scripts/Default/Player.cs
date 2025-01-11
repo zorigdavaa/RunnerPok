@@ -99,7 +99,8 @@ public class Player : Character
     public EventHandler<PlayerState> OnStateChanged;
     public Coin CoinPF;
     public Transform ForwardTransForm;
-
+    [SerializeField] List<Skill> skills;
+    public EventHandler<Shuriken> OnShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -307,7 +308,7 @@ public class Player : Character
                 shuriken.SideMovement = half;
             }
         }
-
+        OnShoot?.Invoke(Pool, shuriken);
     }
     public void ChangeState(PlayerState _state)
     {
@@ -414,6 +415,16 @@ public class Player : Character
     {
         Coin coin = Instantiate(CoinPF, posTransform.position + Vector3.up, Quaternion.identity);
         coin.GotoPosAndAdd();
+    }
+
+    internal void AddToSkill(Skill skill)
+    {
+        if (skills.Contains(skill))
+        {
+            return;
+        }
+        skills.Add(skill);
+        skill.Equip();
     }
 }
 

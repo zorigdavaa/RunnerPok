@@ -12,7 +12,7 @@ namespace ZPackage
             {
                 if (instance == null)
                 {
-                    instance = FindObjectOfType<T>();
+                    instance = FindObjectOfType<T>(true);
                     if (instance == null)
                     {
                         GameObject obj = new GameObject();
