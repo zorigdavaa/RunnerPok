@@ -4721,7 +4721,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
   AllSkills:
+  - {fileID: 11400000, guid: 69ed5d6e8c005bf4880ff756bff1adab, type: 2}
   - {fileID: 11400000, guid: 4f0ed98a1ac074f468aad6db991abd4b, type: 2}
+  - {fileID: 11400000, guid: efa3a71cc1ad1e84781081cc0d957dba, type: 2}
+  - {fileID: 11400000, guid: 1137856261a734b458b6d92fd07b9366, type: 2}
   ChooseSkills:
   - {fileID: 104102517}
   - {fileID: 1342705760}

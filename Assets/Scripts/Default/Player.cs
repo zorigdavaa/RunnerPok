@@ -99,7 +99,7 @@ public class Player : Character
     public EventHandler<PlayerState> OnStateChanged;
     public Coin CoinPF;
     public Transform ForwardTransForm;
-    [SerializeField] List<Skill> skills;
+    [SerializeField] List<BaseSkill> skills;
     public EventHandler<Shuriken> OnShoot;
 
     // Start is called before the first frame update
@@ -417,7 +417,7 @@ public class Player : Character
         coin.GotoPosAndAdd();
     }
 
-    internal void AddToSkill(Skill skill)
+    internal void AddToSkill(BaseSkill skill)
     {
         if (skills.Contains(skill))
         {

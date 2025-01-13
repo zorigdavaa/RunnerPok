@@ -5,14 +5,11 @@ using UnityEngine;
 using UnityEngine.Pool;
 using ZPackage;
 
-[CreateAssetMenu(fileName = "Skill", menuName = "Skill/Skill1")]
-public class Skill : ScriptableObject
+[CreateAssetMenu(fileName = "DoubleShot", menuName = "Skill/DoubleShot")]
+public class DoubleShot : BaseSkill
 {
-    public Sprite Sprite;
-    [TextArea] public String Text;
-    public Skill nextLevel;
 
-    public void Equip()
+    public override void Equip()
     {
         Z.Player.OnShoot += OnPlayerShoot;
     }
@@ -22,18 +19,14 @@ public class Skill : ScriptableObject
         Logic(sender, e);
     }
 
-    public virtual void Logic(object sender, object e)
+    public override void Logic(object sender, object e)
     {
         Shuriken first = (Shuriken)e;
         var pool = (ObjectPool<Shuriken>)sender;
         first.transform.position += Vector3.right * 0.5f;
         Shuriken second = pool.Get();
+        first.SideMovement = 0.2f;
         second.SideMovement = -first.SideMovement;
         second.transform.position -= Vector3.right * 0.5f;
-    }
-
-    public void UnEquip()
-    {
-        throw new NotImplementedException();
     }
 }

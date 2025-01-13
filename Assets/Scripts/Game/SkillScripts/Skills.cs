@@ -6,7 +6,7 @@ using ZPackage;
 
 public class Skills : GenericSingleton<Skills>
 {
-    public List<Skill> AllSkills;
+    public List<BaseSkill> AllSkills;
     public List<ChooseSkill> ChooseSkills;
     // Start is called before the first frame update
     void Start()

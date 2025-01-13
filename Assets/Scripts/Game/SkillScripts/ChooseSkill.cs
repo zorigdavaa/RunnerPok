@@ -9,7 +9,7 @@ public class ChooseSkill : MonoBehaviour
 {
     public Image SkillImage;
     public TextMeshProUGUI TextDescription;
-    public Skill skill;
+    public BaseSkill skill;
     Button Button;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class ChooseSkill : MonoBehaviour
         Button.onClick.AddListener(Choose);
     }
 
-    public void SetSkill(Skill skillComing)
+    public void SetSkill(BaseSkill skillComing)
     {
         skill = skillComing;
         SkillImage.sprite = skill.Sprite;
