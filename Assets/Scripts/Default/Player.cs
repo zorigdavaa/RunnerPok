@@ -426,6 +426,15 @@ public class Player : Character
         skills.Add(skill);
         skill.Equip();
     }
+
+    internal void RemoveSkill(Shield skill)
+    {
+        if (skills.Contains(skill))
+        {
+            skills.Remove(skill);
+            skill.UnEquip();
+        }
+    }
 }
 
 public enum PlayerState

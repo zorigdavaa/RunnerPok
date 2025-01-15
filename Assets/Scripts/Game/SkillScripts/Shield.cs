@@ -9,10 +9,19 @@ public class Shield : BaseSkill
     [SerializeField] ShieldObject ShieldObj;
     public override void Equip()
     {
-        Instantiate(ShieldObj, Z.Player.transform.position, Quaternion.identity, Z.Player.transform);
+        Z.Player.AddToSkill(this);
+        var Shied = Instantiate(ShieldObj, Z.Player.transform.position, Quaternion.identity, Z.Player.transform);
+        Shied.OnDestroyEvent += Logic;
+
+        // Physics.IgnoreCollision(Shied.GetComponent<Collider>())
     }
     public override void Logic(object sender, object e)
     {
-
+        UnEquip();
+        Destroy((GameObject)sender);
+    }
+    public override void UnEquip()
+    {
+        Z.Player.RemoveSkill(this);
     }
 }
