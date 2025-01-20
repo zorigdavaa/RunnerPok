@@ -190,7 +190,11 @@ public class Animal : Enemy
             {
                 foreach (var item in CollectAbles)
                 {
-                    item.GotoPosAndAdd();
+                    if (item)
+                    {
+
+                        item.GotoPosAndAdd();
+                    }
                 }
             });
         }

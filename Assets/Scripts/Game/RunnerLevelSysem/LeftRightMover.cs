@@ -10,6 +10,7 @@ public class LeftRightMover : MonoBehaviour
     public bool Oppozit;
     [Range(0, Mathf.PI / 2)]
     public float startOffset = 0;
+    [SerializeField] bool UseRandomOffset = false;
     public MovementType MovementType;
     public bool IsMoving = true;
     public bool ShoulDRot = false;
@@ -24,7 +25,14 @@ public class LeftRightMover : MonoBehaviour
         {
             ownTime = Mathf.PI / 2;
         }
-        ownTime += startOffset;
+        if (UseRandomOffset)
+        {
+            ownTime += Random.Range(-3.14f, 3.14f);
+        }
+        else
+        {
+            ownTime += startOffset;
+        }
         Transform referenceTransform = Model.parent != null ? Model.parent : Model;
         LocalMin = referenceTransform.InverseTransformPoint(Model.position + min);
         LocalMax = referenceTransform.InverseTransformPoint(Model.position + max);
