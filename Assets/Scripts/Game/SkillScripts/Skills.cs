@@ -26,10 +26,12 @@ public class Skills : GenericSingleton<Skills>
             choose.SetSkill(AllSkills[Random.Range(0, AllSkills.Count)]);
         }
         gameObject.SetActive(true);
+        Time.timeScale = 0;
     }
 
     internal void PlayerChosen(ChooseSkill chooseSkill)
     {
         gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }
