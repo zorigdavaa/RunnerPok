@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45351718f66e6947902c584e7518d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 0
+  Amount: 50
   rotChild: {fileID: 0}
   cam: {fileID: 0}
   shouldRot: 1

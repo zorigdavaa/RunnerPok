@@ -26,7 +26,7 @@ public class Health : BaseCollectAble
                 yield return null;
             }
             Z.Player.Health += Amount;
-
+            // Debug.Log("Healed");
             Destroy(gameObject);
         }
     }
