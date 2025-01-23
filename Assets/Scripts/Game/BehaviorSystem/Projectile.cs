@@ -33,12 +33,12 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody.GetComponent<ShieldObject>())
-        {
-            other.attachedRigidbody.GetComponent<ShieldObject>().DecreaseCount();
-            Destroy(gameObject);
-        }
-        else
+        // if (other.attachedRigidbody.GetComponent<ShieldObject>())
+        // {
+        //     other.attachedRigidbody.GetComponent<ShieldObject>().DecreaseCount();
+        //     Destroy(gameObject);
+        // }
+        // else
         if (other.GetComponent<Player>())
         {
             // other.GetComponent<Player>().TakeDamage(-Damage);

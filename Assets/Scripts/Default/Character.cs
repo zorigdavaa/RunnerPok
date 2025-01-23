@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using ZPackage;
 
@@ -21,6 +22,8 @@ public abstract class Character : Mb, IHealth
             healthBar.FillHealthBar(Health / MaxHealth);
         }
     }
+    public delegate void OnBeforeTakeDamageHandler(ref float damage);
+    public OnBeforeTakeDamageHandler OnBeforeDamdageTaken;
     public Inventory inventory;
 
     [SerializeField] float maxHealth;
@@ -42,6 +45,7 @@ public abstract class Character : Mb, IHealth
 
     public virtual void TakeDamage(float amount)
     {
+        OnBeforeDamdageTaken?.Invoke(ref amount);
         Health += (int)amount;
         if (Health <= 0)
         {
@@ -54,6 +58,7 @@ public abstract class Character : Mb, IHealth
         float finalDamage = data.damage * multiploer;
         float armorReduction = Armor / (Armor + 20);
         finalDamage = finalDamage * (1 - armorReduction);
+        OnBeforeDamdageTaken?.Invoke(ref finalDamage);
         Health -= (int)finalDamage;
         if (Health <= 0)
         {

@@ -33,14 +33,14 @@ Material:
     - _BUILTIN_QueueOffset: 0
     - _FreshnelPower: 1
     - _Speed: 0.5
-    - _addAlpha: 0.34
+    - _addAlpha: 0.4
     m_Colors:
     - _BackColor: {r: 0.0417212, g: 0, b: 0, a: 1}
     - _Color: {r: 0.0829793, g: 1.0967838, b: 1.1320753, a: 1}
     - _FrehnelColor: {r: 1.4980392, g: 0, b: 0.04355571, a: 0}
     - _NormalAdd: {r: -0.5, g: 0.5, b: 0, a: 0}
-    - _NormalAddMax: {r: -0.5, g: 0.5, b: 0, a: 0}
-    - _NormalAddMin: {r: -0.3, g: 0.5, b: 0, a: 0}
+    - _NormalAddMax: {r: 0.1, g: 0.5, b: 0, a: 0}
+    - _NormalAddMin: {r: -0.1, g: 0.3, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4301826015778470825
 MonoBehaviour:

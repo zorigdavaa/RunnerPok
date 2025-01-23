@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 public class ShieldObject : MonoBehaviour
 {
@@ -12,14 +13,15 @@ public class ShieldObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Z.Player.OnBeforeDamdageTaken += OnBeforeDamdageTaken;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnBeforeDamdageTaken(ref float damage)
     {
-
+        damage = 0;
+        DecreaseCount();
     }
+
     // private void OnTriggerEnter(Collider other)
     // {
 
@@ -34,8 +36,10 @@ public class ShieldObject : MonoBehaviour
     public void DecreaseCount()
     {
         Count--;
+        Debug.Log("Decreased");
         if (Count < 0)
         {
+            Z.Player.OnBeforeDamdageTaken -= OnBeforeDamdageTaken;
             OnDestroyEvent?.Invoke(gameObject, null);
         }
     }
