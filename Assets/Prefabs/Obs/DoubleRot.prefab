@@ -81,6 +81,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4700084777298208535, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       propertyPath: m_Name
       value: RotMishok (1)
@@ -150,6 +154,10 @@ PrefabInstance:
     - target: {fileID: 2853948278981394064, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700084777298208535, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
+      propertyPath: speed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7695946382806299568, guid: 3821c71094deee641b07c11ac9d0d500, type: 3}
       propertyPath: m_Name
