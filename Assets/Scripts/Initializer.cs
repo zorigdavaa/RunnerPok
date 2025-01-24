@@ -62,4 +62,3 @@ public class Initializer : MonoBehaviour
 
 }
 //3 Level oroh
-//Shieldiig goe hiih
