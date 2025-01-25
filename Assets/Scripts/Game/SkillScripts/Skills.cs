@@ -8,6 +8,7 @@ public class Skills : GenericSingleton<Skills>
 {
     public List<BaseSkill> AllSkills;
     public List<ChooseSkill> ChooseSkills;
+    public List<BaseSkill> ShowingSkills;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,14 @@ public class Skills : GenericSingleton<Skills>
     }
     public void Show3Skills()
     {
+        List<BaseSkill> copyAllSkill = new List<BaseSkill>(AllSkills);
+        ShowingSkills = new List<BaseSkill>();
         foreach (var choose in ChooseSkills)
         {
-            choose.SetSkill(AllSkills[Random.Range(0, AllSkills.Count)]);
+            BaseSkill tobeShown = copyAllSkill[Random.Range(0, copyAllSkill.Count)];
+            copyAllSkill.Remove(tobeShown);
+            ShowingSkills.Add(tobeShown);
+            choose.SetSkill(tobeShown);
         }
         gameObject.SetActive(true);
         Time.timeScale = 0;

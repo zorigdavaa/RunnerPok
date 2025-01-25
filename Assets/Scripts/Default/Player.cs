@@ -427,7 +427,7 @@ public class Player : Character
         skill.Equip();
     }
 
-    internal void RemoveSkill(Shield skill)
+    internal void RemoveSkill(BaseSkill skill)
     {
         if (skills.Contains(skill))
         {

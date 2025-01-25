@@ -59,7 +59,7 @@ namespace ZPackage
             activeTimers.Remove(timer);
         }
 
-        private class MonobehaviourHook : MonoBehaviour
+        public class MonobehaviourHook : MonoBehaviour
         {
             public Action onUpdate;
             private void Update()
