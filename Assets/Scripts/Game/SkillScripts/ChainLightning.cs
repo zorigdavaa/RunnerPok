@@ -12,7 +12,7 @@ public class ChainLightning : BaseSkill
     {
         Z.Player.AddToSkill(this);
         ChainLightObject insOjb = Instantiate(Pf, Z.Player.transform.position, Quaternion.identity, Z.Player.transform);
-        updater = FunctionUpdater.Create(() => { Logic(this, null); insOjb.Cast(); }, 1, name);
+        updater = FunctionUpdater.Create(() => { Logic(this, null); insOjb.Cast(); }, 3, name);
         // insOjb
     }
 

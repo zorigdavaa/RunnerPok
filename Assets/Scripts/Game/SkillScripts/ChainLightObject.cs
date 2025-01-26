@@ -16,8 +16,12 @@ public class ChainLightObject : MonoBehaviour
     {
         for (int i = Lightnings.Count - 1; i >= 0; i--)
         {
-            Lightnings[i].LineRender.SetPosition(0, Lightnings[i].Start.position + Vector3.one);
-            Lightnings[i].LineRender.SetPosition(1, Lightnings[i].End.position + Vector3.one);
+            Lightnings[i].LineRender.SetPosition(0, Lightnings[i].Start.position + Vector3.up);
+            Lightnings[i].LineRender.SetPosition(1, Lightnings[i].End.position + Vector3.up);
+            float Distance = Vector3.Distance(Lightnings[i].Start.position, Lightnings[i].End.position);
+            float xScale = Mathf.Clamp(Distance * 0.1f, 0.01f, 1);
+            Lightnings[i].LineRender.textureScale = new Vector2(xScale, 1);
+            // Lightnings[i].LineRender.textureScale = new Vector2(1, 1);
             if (Lightnings[i].Tick())
             {
                 LightningPositionTrackData done = Lightnings[i];
@@ -120,7 +124,7 @@ public class LightningPositionTrackData : UnityEngine.Object
     public LineRenderer LineRender;
     public Transform Start;
     public Transform End;
-    public float Timer = 1f;
+    public float Timer = 0.1f;
     public EventHandler OnTimerZero;
     public LightningPositionTrackData(LineRenderer line, Transform _start, Transform _end, float timer = 1)
     {
