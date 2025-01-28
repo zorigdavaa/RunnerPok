@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ChainLightObject : MonoBehaviour
+public class ChainLightObject : MonoBehaviour, ICastAble
 {
+    public bool Casting { get; set; }
     public List<LightningPositionTrackData> Lightnings;
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class ChainLightObject : MonoBehaviour
 
     public void Cast()
     {
+        Casting = true;
         StartCoroutine(TriggerChainLightning(transform));
     }
     public GameObject lightningPrefab;  // Prefab with LineRenderer or VFX for lightning
@@ -83,6 +85,7 @@ public class ChainLightObject : MonoBehaviour
             // Wait before the next chain
             yield return new WaitForSeconds(chainDelay);
         }
+        Casting = false;
     }
     void CreateLightningEffect(Transform start, Transform end)
     {

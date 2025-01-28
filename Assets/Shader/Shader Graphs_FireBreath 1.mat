@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_FireBreath
+  m_Name: Shader Graphs_FireBreath 1
   m_Shader: {fileID: -6465566751694194690, guid: 31ce6afb303657b4191f69b2a0c9e8a1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -95,15 +95,15 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _VorDensity: 50
+    - _VorDensity: 40
     - _VoronoiSpeed: 20
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.6702814, g: 1, b: 0, a: 0}
-    - _Color2: {r: 1, g: 0.009896565, b: 0, a: 0}
+    - _Color1: {r: 0, g: 1, b: 0.32439756, a: 0}
+    - _Color2: {r: 1, g: 0.30890414, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Noisespeed: {r: 0, g: 0.6, b: 0, a: 0}
-    - _TilingSpeed: {r: 1, g: 0, b: 0, a: 0}
+    - _Noisespeed: {r: 0, g: 0.4, b: 0, a: 0}
+    - _TilingSpeed: {r: 0, g: 1, b: 0, a: 0}
     - _VoronoiSpeed: {r: 0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

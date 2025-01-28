@@ -6,12 +6,12 @@ using ZPackage;
 [CreateAssetMenu(fileName = "ChainLightning", menuName = "Skill/ChainLightning")]
 public class ChainLightning : BaseSkill
 {
-    public ChainLightObject Pf;
+    public GameObject Pf;
     FunctionUpdater updater;
     public override void Equip()
     {
         Z.Player.AddToSkill(this);
-        ChainLightObject insOjb = Instantiate(Pf, Z.Player.transform.position, Quaternion.identity, Z.Player.transform);
+        ICastAble insOjb = Instantiate(Pf.gameObject, Z.Player.transform.position, Quaternion.identity, Z.Player.transform).GetComponent<ICastAble>();
         updater = FunctionUpdater.Create(() => { Logic(this, null); insOjb.Cast(); }, 3, name);
         // insOjb
     }
