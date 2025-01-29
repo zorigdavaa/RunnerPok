@@ -11,7 +11,7 @@ public abstract class Enemy : Character
         float finalDamage = data.damage * multiploer;
         Health -= (int)finalDamage;
         healthBar.OnTop();
-        if (Health <= 0)
+        if (Health.GetValue() <= 0)
         {
             Die();
         }

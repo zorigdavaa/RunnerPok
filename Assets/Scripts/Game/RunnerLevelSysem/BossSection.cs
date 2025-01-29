@@ -122,8 +122,8 @@ public class BossSection : FightSection
     {
         foreach (var item in InsEnemies)
         {
-            item.Health = 1;
-            item.TakeDamage(-1);
+            float needDamdage = item.Health.GetValue();
+            item.TakeDamage(-needDamdage);
         }
         EndSection();
     }

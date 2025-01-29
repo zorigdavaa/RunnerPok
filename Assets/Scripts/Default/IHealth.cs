@@ -6,8 +6,8 @@ public interface IHealth
 {
     public Transform transform { get; }
     public GameObject gameObject { get; }
-    public float MaxHealth { get; set; }
-    public float Health { get; set; }
+    public Stat MaxHealth { get; set; }
+    public Stat Health { get; set; }
     public bool IsAlive { get; }
     // public void TakeDamage(DamageData amount);
     public void TakeDamage(float amount);

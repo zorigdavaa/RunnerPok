@@ -12,42 +12,54 @@ public abstract class Character : Mb, IHealth
 {
     public ElementType _Element;
     // public LeaderBoardData data;
-    private float health;
-    public float Health
+    // private float health;
+    // public float Health
+    // {
+    //     get { return health; }
+    //     set
+    //     {
+    //         health = value;
+    //         healthBar.FillHealthBar(Health / MaxHealth);
+    //     }
+    // }
+    private Stat health;
+    public Stat Health
     {
         get { return health; }
         set
         {
             health = value;
-            healthBar.FillHealthBar(Health / MaxHealth);
+            healthBar.FillHealthBar(Health.GetValue() / MaxHealth.GetValue());
         }
     }
     public delegate void OnBeforeTakeDamageHandler(ref float damage);
     public OnBeforeTakeDamageHandler OnBeforeDamdageTaken;
     public Inventory inventory;
 
-    [SerializeField] float maxHealth;
-    public float MaxHealth
+    [SerializeField] Stat maxHealth;
+    public Stat MaxHealth
     {
         get { return maxHealth; }
         set { maxHealth = value; }
     }
-    [SerializeField] float armor;
-    public float Armor
+    [SerializeField] Stat armor;
+    public Stat Armor
     {
         get { return armor; }
         set { armor = value; }
     }
 
-    public bool IsAlive => Health > 0;
+    public bool IsAlive => Health.GetValue() > 0;
 
     public UIBar healthBar;
 
     public virtual void TakeDamage(float amount)
     {
         OnBeforeDamdageTaken?.Invoke(ref amount);
-        Health += (int)amount;
-        if (Health <= 0)
+        Health += amount;
+        // float addedAmount = Health.GetValue() + amount;
+        // Health.SetValue(addedAmount);
+        if (Health.GetValue() <= 0)
         {
             Die();
         }
@@ -56,11 +68,11 @@ public abstract class Character : Mb, IHealth
     {
         float multiploer = data.Type.GetEffectiveMultiplier(_Element);
         float finalDamage = data.damage * multiploer;
-        float armorReduction = Armor / (Armor + 20);
+        float armorReduction = Armor.GetValue() / (Armor.GetValue() + 20);
         finalDamage = finalDamage * (1 - armorReduction);
         OnBeforeDamdageTaken?.Invoke(ref finalDamage);
         Health -= (int)finalDamage;
-        if (Health <= 0)
+        if (Health.GetValue() <= 0)
         {
             Die();
         }
