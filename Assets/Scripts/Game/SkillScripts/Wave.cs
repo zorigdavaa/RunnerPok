@@ -10,6 +10,9 @@ public class Wave : MonoBehaviour, ICastAble
     [SerializeField] AnimationCurve scaleAnimation;
     [SerializeField] AnimationCurve moveAnimation;
     public bool Casting { get; set; }
+    Vector3 TargetPos;
+    Vector3 InitPos;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +25,17 @@ public class Wave : MonoBehaviour, ICastAble
     {
         if (Casting)
         {
-            ownTime += Time.deltaTime;
             float t = ownTime / duration;
+            ownTime += Time.deltaTime;
             Model.localScale = Vector3.Lerp(Vector3.one * 0.1f, Vector3.one, scaleAnimation.Evaluate(t));
-            Model.localPosition = Vector3.Lerp(Vector3.zero, Vector3.forward * 6, moveAnimation.Evaluate(t));
+            Model.position = Vector3.Lerp(InitPos, TargetPos, moveAnimation.Evaluate(t));
             if (t > 1)
             {
                 ownTime = 0;
                 Casting = false;
+                gameObject.SetActive(false);
+                Model.position = transform.position;
+                Model.localScale = Vector3.zero;
                 // Destroy(gameObject);
             }
         }
@@ -52,5 +58,8 @@ public class Wave : MonoBehaviour, ICastAble
     public void Cast()
     {
         Casting = true;
+        gameObject.SetActive(true);
+        InitPos = transform.position + Vector3.up;
+        TargetPos = transform.position + Vector3.forward * 45 + Vector3.up;
     }
 }
