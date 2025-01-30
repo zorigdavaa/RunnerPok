@@ -6,6 +6,8 @@ public class CharacterStats : MonoBehaviour
 {
     public StatMax Health;
     public Stat Armor;
+    public Stat AttackSpeed;
+    public Stat BaseDamage;
     // Start is called before the first frame update
     void Start()
     {
