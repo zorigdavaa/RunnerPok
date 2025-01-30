@@ -20,7 +20,7 @@ public class Animal : Enemy
         {
             Stats = GetComponent<CharacterStats>();
         }
-        float additionalHealth = Stats.Health.GetMax() * Z.LS.LastInstLvl.HealthMultiplier;
+        float additionalHealth = Stats.Health.GetMax() * Z.LS.LastInstLvl.HealthMultiplier * 0.1f;
         Stats.Health.AddToMax(additionalHealth);
         // MaxHealth *= Z.LS.LastInstLvl.HealthMultiplier;
         // Stats.Health = Stats.MaxHealth;

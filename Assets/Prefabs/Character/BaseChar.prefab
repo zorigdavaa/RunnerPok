@@ -235,19 +235,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d680fee2c41ef4dbbaab92ceb0180bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefMaxHealth: 100
   Health:
-    BaseValue: 100
-    FinalValue: 0
-    MaxValue: 100
-    Modifiers: []
-    isDirty: 0
+    BaseValue: 20
+    MaxValue: 20
   Armor:
     BaseValue: 0
-    FinalValue: 0
-    MaxValue: 0
+    AdditionalValue: 0
     Modifiers: []
-    isDirty: 0
 --- !u!1 &8871509487369339862
 GameObject:
   m_ObjectHideFlags: 0

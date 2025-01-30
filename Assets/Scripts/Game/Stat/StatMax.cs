@@ -20,7 +20,14 @@ public class StatMax : BaseStat
     public void AddToMax(float value)
     {
         MaxValue += value;
-        SetValue(BaseValue + value);
+        if (value > 0)
+        {
+            SetValue(BaseValue + value);
+        }
+        else
+        {
+            SetValue(BaseValue);
+        }
     }
     public override void AddValue(float amount)
     {
