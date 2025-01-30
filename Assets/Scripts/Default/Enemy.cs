@@ -9,11 +9,13 @@ public abstract class Enemy : Character
     {
         float multiploer = data.Type.GetEffectiveMultiplier(_Element);
         float finalDamage = data.damage * multiploer;
-        Stats.Health -= (int)finalDamage;
+        // Stats.Health -= (int)finalDamage;
+        Stats.Health.AddValue(finalDamage);
         healthBar.OnTop();
         if (Stats.Health.GetValue() <= 0)
         {
             Die();
         }
+        healthBar.FillHealthBar(Stats.Health.GetPercent());
     }
 }

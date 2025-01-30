@@ -58,7 +58,8 @@ public abstract class Character : Mb, IHealth
     public virtual void TakeDamage(float amount)
     {
         OnBeforeDamdageTaken?.Invoke(ref amount);
-        Stats.Health += amount;
+        // Stats.Health += amount;
+        Stats.Health.AddValue(amount);
         // float addedAmount = Health.GetValue() + amount;
         // Health.SetValue(addedAmount);
         if (Stats.Health.GetValue() <= 0)
@@ -74,7 +75,8 @@ public abstract class Character : Mb, IHealth
         float armorReduction = Stats.Armor.GetValue() / (Stats.Armor.GetValue() + 20);
         finalDamage = finalDamage * (1 - armorReduction);
         OnBeforeDamdageTaken?.Invoke(ref finalDamage);
-        Stats.Health -= (int)finalDamage;
+        // Stats.Health -= (int)finalDamage;
+        Stats.Health.AddValue(-finalDamage);
         if (Stats.Health.GetValue() <= 0)
         {
             Die();

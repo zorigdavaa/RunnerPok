@@ -25,13 +25,15 @@ public class Health : BaseCollectAble
                 transform.position = Vector3.Lerp(initpos, Z.Player.transform.position, t);
                 yield return null;
             }
-            Z.Player.Stats.Health += Amount;
+            // Z.Player.Stats.Health += Amount;
+            Z.Player.Stats.Health.AddValue(Amount);
             // Debug.Log("Healed");
             Destroy(gameObject);
         }
     }
     public override void BenefitPLayer()
     {
-        Z.Player.Stats.Health += Amount;
+        // Z.Player.Stats.Health += Amount;
+        Z.Player.Stats.Health.AddValue(Amount);
     }
 }
