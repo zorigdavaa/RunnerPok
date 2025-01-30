@@ -20,8 +20,8 @@ public class Animal : Enemy
         {
             Stats = GetComponent<CharacterStats>();
         }
-        float additionalHealth = Stats.MaxHealth.GetValue() * Z.LS.LastInstLvl.HealthMultiplier;
-        Stats.MaxHealth.AddModifier(additionalHealth);
+        float additionalHealth = Stats.Health.GetMax() * Z.LS.LastInstLvl.HealthMultiplier;
+        Stats.Health.AddModifier(additionalHealth);
         // MaxHealth *= Z.LS.LastInstLvl.HealthMultiplier;
         // Stats.Health = Stats.MaxHealth;
         if (Vector3.Distance(Z.Player.transform.position, transform.position) < playerDistanceToStartMove)

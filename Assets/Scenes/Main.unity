@@ -1591,11 +1591,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &682389192 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2420573646999065349, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-  m_PrefabInstance: {fileID: 777851598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2100,7 @@ PrefabInstance:
     - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: Stats
       value: 
-      objectReference: {fileID: 777851604}
+      objectReference: {fileID: 777851605}
     - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: chest
       value: 
@@ -2206,6 +2201,18 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5693683130625880137, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: Health.MaxValue
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693683130625880137, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: Health.BaseValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693683130625880137, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: MaxHealth.BaseValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6477016897789823786, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: maxXLimit
       value: 8
@@ -2221,10 +2228,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2420573646999065349, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 777851604}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
 --- !u!4 &777851599 stripped
 Transform:
@@ -2236,25 +2240,23 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6477016897789823786, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
   m_PrefabInstance: {fileID: 777851598}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682389192}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64357212b192907459f738cf7abebbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &777851604
+--- !u!114 &777851605 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5693683130625880137, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+  m_PrefabInstance: {fileID: 777851598}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682389192}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d680fee2c41ef4dbbaab92ceb0180bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefMaxHealth: 100
 --- !u!1001 &783312951
 PrefabInstance:
   m_ObjectHideFlags: 0

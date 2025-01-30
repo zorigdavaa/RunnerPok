@@ -1,18 +1,22 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Stat 
+public class Stat
 {
     [SerializeField]
     private float BaseValue;
+    [SerializeField]
     private float FinalValue;
-    private List<float> Modifiers = new List<float>();
-    private bool isDirty = true; // Flag to track if recalculation is needed
+    [SerializeField] float MaxValue = 100;
+    [SerializeField] private List<float> Modifiers = new List<float>();
+    [SerializeField] private bool isDirty = true; // Flag to track if recalculation is needed
 
     public Stat(float baseValue)
     {
         BaseValue = baseValue;
+        MaxValue = baseValue;
         RecalculateFinalValue(); // Initialize FinalValue properly
     }
 
@@ -29,7 +33,7 @@ public class Stat
     // Updates BaseValue and marks value as needing recalculation
     public void SetBaseValue(float value)
     {
-        BaseValue = value;
+        BaseValue = Mathf.Clamp(value, 0, MaxValue);
         isDirty = true; // Mark dirty
     }
 
@@ -55,7 +59,7 @@ public class Stat
     private void RecalculateFinalValue()
     {
         FinalValue = BaseValue;
-        Modifiers.ForEach(m => FinalValue += m);
+        Modifiers.ForEach(m => { FinalValue += m; MaxValue += m; });
         isDirty = false; // Reset dirty flag after updating
     }
 
@@ -71,9 +75,24 @@ public class Stat
         stat.SetBaseValue(stat.BaseValue + amount);
         return stat;
     }
+    public void AddToMax(float value)
+    {
+        MaxValue += value;
+        SetBaseValue(BaseValue + value);
+    }
 
     public override string ToString()
     {
         return GetValue().ToString();
+    }
+
+    internal float GetMax()
+    {
+        return MaxValue;
+    }
+
+    internal float GetPercent()
+    {
+        return BaseValue / MaxValue;
     }
 }

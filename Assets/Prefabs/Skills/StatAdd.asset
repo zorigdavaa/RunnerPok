@@ -18,4 +18,4 @@ MonoBehaviour:
   AddDamage: 0
   AddSpeed: 0
   AddRange: 0
-  AddHealth: 100
+  AddHealth: 20

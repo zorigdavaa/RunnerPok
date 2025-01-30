@@ -65,7 +65,7 @@ public abstract class Character : Mb, IHealth
         {
             Die();
         }
-        healthBar.FillHealthBar(Stats.Health.GetValue() / Stats.MaxHealth.GetValue());
+        healthBar.FillHealthBar(Stats.Health.GetValue() / Stats.Health.GetMax());
     }
     public virtual void TakeDamage(DamageData data)
     {
@@ -79,7 +79,7 @@ public abstract class Character : Mb, IHealth
         {
             Die();
         }
-        healthBar.FillHealthBar(Stats.Health.GetValue() / Stats.MaxHealth.GetValue());
+        healthBar.FillHealthBar(Stats.Health.GetValue() / Stats.Health.GetMax());
     }
     public EventHandler Ondeath;
 

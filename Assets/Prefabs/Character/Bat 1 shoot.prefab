@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 313721155970851996, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_Name
-      value: Bat Variant
+      value: Bat 1 shoot
       objectReference: {fileID: 0}
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +51,14 @@ PrefabInstance:
     - target: {fileID: 313721155970851997, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694703387814725584, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Health.MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694703387814725584, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Health.BaseValue
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: maxHealth

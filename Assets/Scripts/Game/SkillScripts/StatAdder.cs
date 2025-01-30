@@ -15,7 +15,7 @@ public class StatAdder : BaseSkill
         Z.Player.AddToSkill(this);
         if (AddHealth != 0)
         {
-            Z.Player.Stats.Health.AddModifier(AddHealth);
+            Z.Player.Stats.Health.AddToMax(AddHealth);
         }
     }
 
@@ -26,7 +26,7 @@ public class StatAdder : BaseSkill
 
     public override void UnEquip()
     {
-        Z.Player.Stats.Health.RemoveModifier(AddHealth);
+        Z.Player.Stats.Health.AddToMax(-AddHealth);
         if (AddHealth != 0)
             Z.Player.RemoveSkill(this);
     }

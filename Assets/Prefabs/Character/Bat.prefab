@@ -101,6 +101,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4085528633957685224, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: Health.MaxValue
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085528633957685224, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
+      propertyPath: Health.BaseValue
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 6206288944597300385, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
       propertyPath: m_Height
       value: 2
@@ -187,15 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
-  data:
-    name: 
-    score: 0
-    score2: 0
-    isPlayer: 0
-    isLive: 0
-    col: {r: 0, g: 0, b: 0, a: 0}
+  _Element: 0
+  Stats: {fileID: 0}
   inventory: {fileID: 0}
-  maxHealth: 30
   healthBar: {fileID: 4405603529719168246}
   ProjectilePfs:
   - {fileID: 3500501074311751367, guid: 37d07a798a6d7c24c9f5ef301af9ac85, type: 3}
@@ -205,6 +207,8 @@ MonoBehaviour:
   idleSpeed: 0
   Patterns:
   - {fileID: 11400000, guid: 8162f63e9da596349b67ee7df0a5d9a5, type: 2}
+  Rewards: {fileID: 0}
+  attackCoolDownRange: {x: 3, y: 5}
 --- !u!4 &313721155970851997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6206288944597300389, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
