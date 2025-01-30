@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[SerializeField]
-public class Stat
+[System.Serializable]
+public class Stat 
 {
+    [SerializeField]
     private float BaseValue;
     private float FinalValue;
     private List<float> Modifiers = new List<float>();

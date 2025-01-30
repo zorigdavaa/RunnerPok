@@ -106,7 +106,6 @@ public class Player : Character
     void Start()
     {
         currentCamera = cameras[currentCameraIndex];
-        Health = MaxHealth;
         Movement = GetComponent<PlayerMovement>();
         Movement.SetSpeed(1);
         // animationController.OnSpearShoot += SpearShoot;

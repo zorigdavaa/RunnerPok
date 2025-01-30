@@ -22,60 +22,64 @@ public abstract class Character : Mb, IHealth
     //         healthBar.FillHealthBar(Health / MaxHealth);
     //     }
     // }
-    private Stat health;
-    public Stat Health
-    {
-        get { return health; }
-        set
-        {
-            health = value;
-            healthBar.FillHealthBar(Health.GetValue() / MaxHealth.GetValue());
-        }
-    }
+    public CharacterStats Stats;
+    // [SerializeField]
+    // private Stat health;
+    // public Stat Health
+    // {
+    //     get { return health; }
+    //     set
+    //     {
+    //         health = value;
+    //         healthBar.FillHealthBar(Health.GetValue() / MaxHealth.GetValue());
+    //     }
+    // }
     public delegate void OnBeforeTakeDamageHandler(ref float damage);
     public OnBeforeTakeDamageHandler OnBeforeDamdageTaken;
     public Inventory inventory;
 
-    [SerializeField] Stat maxHealth;
-    public Stat MaxHealth
-    {
-        get { return maxHealth; }
-        set { maxHealth = value; }
-    }
-    [SerializeField] Stat armor;
-    public Stat Armor
-    {
-        get { return armor; }
-        set { armor = value; }
-    }
+    // [SerializeField] Stat maxHealth;
+    // public Stat MaxHealth
+    // {
+    //     get { return maxHealth; }
+    //     set { maxHealth = value; }
+    // }
+    // [SerializeField] Stat armor;
+    // public Stat Armor
+    // {
+    //     get { return armor; }
+    //     set { armor = value; }
+    // }
 
-    public bool IsAlive => Health.GetValue() > 0;
+    public bool IsAlive => Stats.Health.GetValue() > 0;
 
     public UIBar healthBar;
 
     public virtual void TakeDamage(float amount)
     {
         OnBeforeDamdageTaken?.Invoke(ref amount);
-        Health += amount;
+        Stats.Health += amount;
         // float addedAmount = Health.GetValue() + amount;
         // Health.SetValue(addedAmount);
-        if (Health.GetValue() <= 0)
+        if (Stats.Health.GetValue() <= 0)
         {
             Die();
         }
+        healthBar.FillHealthBar(Stats.Health.GetValue() / Stats.MaxHealth.GetValue());
     }
     public virtual void TakeDamage(DamageData data)
     {
         float multiploer = data.Type.GetEffectiveMultiplier(_Element);
         float finalDamage = data.damage * multiploer;
-        float armorReduction = Armor.GetValue() / (Armor.GetValue() + 20);
+        float armorReduction = Stats.Armor.GetValue() / (Stats.Armor.GetValue() + 20);
         finalDamage = finalDamage * (1 - armorReduction);
         OnBeforeDamdageTaken?.Invoke(ref finalDamage);
-        Health -= (int)finalDamage;
-        if (Health.GetValue() <= 0)
+        Stats.Health -= (int)finalDamage;
+        if (Stats.Health.GetValue() <= 0)
         {
             Die();
         }
+        healthBar.FillHealthBar(Stats.Health.GetValue() / Stats.MaxHealth.GetValue());
     }
     public EventHandler Ondeath;
 

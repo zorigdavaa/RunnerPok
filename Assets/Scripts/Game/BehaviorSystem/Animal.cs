@@ -16,11 +16,14 @@ public class Animal : Enemy
     public GameObject Rewards;
     private void Start()
     {
-
-        float additionalHealth = MaxHealth.GetValue() * Z.LS.LastInstLvl.HealthMultiplier;
-        MaxHealth.AddModifier(additionalHealth);
+        if (Stats == null)
+        {
+            Stats = GetComponent<CharacterStats>();
+        }
+        float additionalHealth = Stats.MaxHealth.GetValue() * Z.LS.LastInstLvl.HealthMultiplier;
+        Stats.MaxHealth.AddModifier(additionalHealth);
         // MaxHealth *= Z.LS.LastInstLvl.HealthMultiplier;
-        Health = MaxHealth;
+        // Stats.Health = Stats.MaxHealth;
         if (Vector3.Distance(Z.Player.transform.position, transform.position) < playerDistanceToStartMove)
         {
             StartMove = true;

@@ -9,9 +9,9 @@ public abstract class Enemy : Character
     {
         float multiploer = data.Type.GetEffectiveMultiplier(_Element);
         float finalDamage = data.damage * multiploer;
-        Health -= (int)finalDamage;
+        Stats.Health -= (int)finalDamage;
         healthBar.OnTop();
-        if (Health.GetValue() <= 0)
+        if (Stats.Health.GetValue() <= 0)
         {
             Die();
         }

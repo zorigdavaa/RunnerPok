@@ -12,7 +12,7 @@ public class Bot : Enemy
     public Projectile ProjectilePf;
     private void Start()
     {
-        Health = MaxHealth;
+        // Stats.Health = MaxHealth;
         // Target = FindObjectOfType<Player>().transform;
         // movement.GoToPosition(Target);
         // animationController.Set8WayLayerWeight(false);
