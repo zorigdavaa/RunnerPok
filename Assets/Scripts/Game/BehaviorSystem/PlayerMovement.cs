@@ -136,6 +136,7 @@ public class PlayerMovement : MovementForgeRun
                     TargetLocalPos.z = Mathf.Clamp(TargetLocalPos.z, -1, 8);
                 }
                 transform.localPosition = Vector3.Lerp(transform.localPosition, TargetLocalPos, 5 * Time.fixedDeltaTime);
+                befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
             }
         }
     }

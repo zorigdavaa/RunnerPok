@@ -95,6 +95,17 @@ public class ChainLightObject : MonoBehaviour, ICastAble
         if (lineRenderer != null)
         {
             Lightnings.Add(new LightningPositionTrackData(lineRenderer, start, end));
+            IHealth StartHealth = start.GetComponent<IHealth>();
+            IHealth enHealth = end.GetComponent<IHealth>();
+            if (StartHealth != null)
+            {
+                StartHealth.TakeDamage(-5);
+            }
+            if (enHealth != null)
+            {
+                enHealth.TakeDamage(-5);
+            }
+
         }
     }
 

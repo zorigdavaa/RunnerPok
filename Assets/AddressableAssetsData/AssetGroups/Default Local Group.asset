@@ -294,6 +294,66 @@ MonoBehaviour:
     - Coin
     - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 09e339f85c2994e4fbcdc9739afd3d8d
+    m_Address: Assets/Prefabs/Tiles/JumpTile 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1813dc177fa01e84d8e9ea07d923a1ba
+    m_Address: Assets/Prefabs/Tiles/JumpTile 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b54dc4c13475c424985ca5271bd15951
+    m_Address: Assets/Prefabs/Tiles/TileObs 11.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a503784a857bda4da3470d9e6b750d0
+    m_Address: Assets/Prefabs/Tiles/TileObs 12.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7f160efbb58d3ae4abefd6640c7a76a2
+    m_Address: Assets/Prefabs/Tiles/TileObs 13.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 02e9fc8f75bf3164caf1e65e56cbd675
+    m_Address: Assets/Prefabs/Tiles/TileObs 14.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45b7b2ae0bfc4614db45dfd58e37ab65
+    m_Address: Assets/Prefabs/Tiles/TileObs 15.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9afba61048174747bdebd74329f507a
+    m_Address: Assets/Prefabs/Tiles/TileObs 16.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ea402bcf7bc8aa46a8bf0f9864c9522
+    m_Address: Assets/Prefabs/Tiles/TileObs 17.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 610d897388a2ddd4aa0143c06d9d986b
+    m_Address: Assets/Prefabs/Tiles/TileObs 18.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
   m_SchemaSet:

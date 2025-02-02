@@ -62,3 +62,5 @@ public class Initializer : MonoBehaviour
 
 }
 //3 Level oroh
+//Item speed iig zowhon moveSpeed bolgoh
+// Attack Speediig Item Speedeer solih
