@@ -21,7 +21,7 @@ public class SectionDataFight : SectionData
     }
     public int EnemyWave = 1;
     public int EnemyCount = 5;
-    public async override Task FillYourSelf()
+    public override void FillYourSelf()
     {
         levelTiles.Clear();
         LevelEnemies.Clear();
@@ -32,9 +32,9 @@ public class SectionDataFight : SectionData
         {
             AllEnemies.Add(obj.GetComponent<Animal>());
         });
-        await loading.Task;
+        loading.WaitForCompletion();
         levelTiles.Add(loading.Result.GetComponent<Tile>());
-        await loadAnimals.Task;
+        loadAnimals.WaitForCompletion();
         // levelTiles
         // loading.WaitForCompletion();
         for (int i = 0; i < EnemyWave; i++)

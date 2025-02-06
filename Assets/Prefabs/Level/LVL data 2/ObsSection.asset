@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da41493e131d44924896af6c2d9fc2e5, type: 3}
+  m_Name: ObsSection
+  m_EditorClassIdentifier: 
+  Type: 0
+  levelTiles:
+  - {fileID: 1152342366785983181, guid: 02e9fc8f75bf3164caf1e65e56cbd675, type: 3}
+  - {fileID: 1152342366785983181, guid: 7a503784a857bda4da3470d9e6b750d0, type: 3}
+  - {fileID: 1152342366785983181, guid: 7a503784a857bda4da3470d9e6b750d0, type: 3}
+  - {fileID: 1152342366785983181, guid: 3245dd3cd9aa07646922280df34aaff3, type: 3}
+  - {fileID: 1152342366785983181, guid: 722e594e48b78cd4ba131b981da948e0, type: 3}
+  SectionEnd: {fileID: 0}
+  SectionStart: {fileID: 0}
+  SelfGenCount: 5
+  Obstacles: []

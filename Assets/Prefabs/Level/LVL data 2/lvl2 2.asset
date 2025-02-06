@@ -14,14 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   levelTiles:
-  - {fileID: 1152342366785983181, guid: 309075768fce842bbbde18d398789008, type: 3}
-  - {fileID: 1152342366785983181, guid: 3245dd3cd9aa07646922280df34aaff3, type: 3}
-  - {fileID: 1152342366785983181, guid: 309075768fce842bbbde18d398789008, type: 3}
-  - {fileID: 6317272806129293980, guid: 1813dc177fa01e84d8e9ea07d923a1ba, type: 3}
-  - {fileID: 1152342366785983181, guid: 3245dd3cd9aa07646922280df34aaff3, type: 3}
+  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   SectionEnd: {fileID: 0}
   SectionStart: {fileID: 0}
   SelfGenCount: 5
-  LevelEnemies: []
+  LevelEnemies:
+  - Wait: 0
+    AfterDelay: 0
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: 8161862714446864042, guid: b38fad85ffd557348b0e35ef28d7aa91, type: 3}
+    - {fileID: 8161862714446864042, guid: b38fad85ffd557348b0e35ef28d7aa91, type: 3}
+    - {fileID: 8161862714446864042, guid: 887bc7c9ee65fa94da252c556948be6a, type: 3}
+    - {fileID: 8161862714446864042, guid: b38fad85ffd557348b0e35ef28d7aa91, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
   EnemyWave: 1
   EnemyCount: 5

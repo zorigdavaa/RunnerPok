@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "SectionData", menuName = "ScriptableObjects/SectionData")]
@@ -42,18 +43,31 @@ public class SectionData : ScriptableObject
     }
     public int SelfGenCount = 5;
 
-    public async virtual Task FillYourSelf()
+    public virtual void FillYourSelf()
     {
         levelTiles.Clear();
         List<Tile> AllTiles = new List<Tile>();
         Debug.Log("base Section");
-        var loading = Addressables.LoadAssetsAsync<GameObject>("ObsTile", (obj) =>
+        AsyncOperationHandle loading;
+        if (Type == SectionType.Collect)
         {
-            AllTiles.Add(obj.GetComponent<Tile>());
-            // Debug.Log(obj.name);
-        });
-        // await loading.WaitForCompletion();
-        await loading.Task;
+            loading = Addressables.LoadAssetsAsync<GameObject>("CollectTile", (obj) =>
+            {
+                AllTiles.Add(obj.GetComponent<Tile>());
+                // Debug.Log(obj.name);
+            });
+        }
+        else
+        {
+            loading = Addressables.LoadAssetsAsync<GameObject>("ObsTile", (obj) =>
+            {
+                AllTiles.Add(obj.GetComponent<Tile>());
+                // Debug.Log(obj.name);
+            });
+        }
+
+        loading.WaitForCompletion();
+        // await loading.Task;
         for (int i = 0; i < SelfGenCount; i++)
         {
             levelTiles.Add(AllTiles[Random.Range(0, AllTiles.Count)]);
