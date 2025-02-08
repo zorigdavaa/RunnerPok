@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da41493e131d44924896af6c2d9fc2e5, type: 3}
   m_Name: ObsSection
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 1
   levelTiles:
-  - {fileID: 1152342366785983181, guid: 02e9fc8f75bf3164caf1e65e56cbd675, type: 3}
-  - {fileID: 1152342366785983181, guid: 7a503784a857bda4da3470d9e6b750d0, type: 3}
-  - {fileID: 1152342366785983181, guid: 7a503784a857bda4da3470d9e6b750d0, type: 3}
-  - {fileID: 1152342366785983181, guid: 3245dd3cd9aa07646922280df34aaff3, type: 3}
-  - {fileID: 1152342366785983181, guid: 722e594e48b78cd4ba131b981da948e0, type: 3}
+  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   SectionEnd: {fileID: 0}
   SectionStart: {fileID: 0}
   SelfGenCount: 5
-  Obstacles: []
+  Obstacles:
+  - {fileID: 8698364353175973552, guid: 79f4d2da32efb4641a51df85c9c5be07, type: 3}
+  - {fileID: 7344499060778775290, guid: 1b9fa7f38fff1024aa238f7098a030a6, type: 3}
+  - {fileID: 2016878444161645317, guid: d728a2e47832eb64da738a1278aac7e2, type: 3}
+  - {fileID: 1280466160451572706, guid: b67534568e7f2cd43bc5a07395ea8745, type: 3}
+  - {fileID: 8910741647142185109, guid: fd775694cd60a344a83064b831071a77, type: 3}
