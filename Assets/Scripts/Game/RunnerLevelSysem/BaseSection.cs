@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public abstract class BaseSection
+public class BaseSection : MonoBehaviour
 {
 
     public virtual SectionType SectionType { get => SectionType.Obstacle; }
@@ -86,6 +87,7 @@ public abstract class BaseSection
     public virtual void Reset()
     {
         curLevel = null;
+        Destroy(gameObject);
     }
 
     public List<Tile> AllTiles;

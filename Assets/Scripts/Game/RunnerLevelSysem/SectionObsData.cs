@@ -10,7 +10,9 @@ public class SectionObsData : SectionData
     public List<GameObject> Obstacles;
     internal override BaseSection CreateMono()
     {
-        ObsSection section = new ObsSection();
+        GameObject newOBj = new GameObject();
+        // ObsSection section = new ObsSection();
+        ObsSection section = newOBj.AddComponent<ObsSection>();
 
         // Common properties assigned after switch
         section.levelTiles = levelTiles;

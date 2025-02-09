@@ -18,14 +18,16 @@ public class SectionData : ScriptableObject
     internal virtual BaseSection CreateMono()
     {
         LevelSection section;
-
+        GameObject newSection = new GameObject();
         switch (Type)
         {
             case SectionType.Collect:
-                section = new CollectSection();
+                section = newSection.AddComponent<CollectSection>();
+                // section = new CollectSection();
                 break;
             default:
-                section = new LevelSection();
+                section = newSection.AddComponent<LevelSection>();
+                // section = new LevelSection();
                 break;
         }
 

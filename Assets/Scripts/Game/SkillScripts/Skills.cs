@@ -12,7 +12,7 @@ public class Skills : GenericSingleton<Skills>
     // Start is called before the first frame update
     void Start()
     {
-        // Show3Skills();
+        Show3Skills();
     }
 
     // Update is called once per frame

@@ -10,8 +10,9 @@ public class SectionDataFight : SectionData
     public List<EnemyWave> LevelEnemies;
     internal override BaseSection CreateMono()
     {
-        FightSection section = new FightSection();
-
+        // FightSection section = new FightSection();
+        GameObject newOBj = new GameObject();
+        FightSection section = newOBj.AddComponent<FightSection>();
         // Common properties assigned after switch
         section.levelTiles = levelTiles;
         section.SectionEnd = SectionEnd;

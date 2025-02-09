@@ -35,6 +35,7 @@ public class Level : MonoBehaviour
         foreach (var item in SectionDatas)
         {
             BaseSection section = item.CreateMono();
+            section.transform.SetParent(transform);
             Sections.Add(section);
             // LevelObjects.Add(new LevelSection());
         }

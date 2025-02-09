@@ -8,7 +8,9 @@ public class SectionDataBoss : SectionDataFight
     public EnemyWave Boss;
     internal override BaseSection CreateMono()
     {
-        BossSection section = new BossSection();
+        // BossSection section = new BossSection();
+        GameObject BossSection = new GameObject();
+        BossSection section = BossSection.AddComponent<BossSection>();
 
         // Common properties assigned after switch
         section.levelTiles = levelTiles;
