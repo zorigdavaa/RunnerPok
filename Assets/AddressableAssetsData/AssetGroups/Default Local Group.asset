@@ -354,6 +354,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ObsTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f34c9e4187be37498ad707d94f9f45c
+    m_Address: Assets/Prefabs/Tiles/TileObs Skill.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillChose
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
   m_SchemaSet:

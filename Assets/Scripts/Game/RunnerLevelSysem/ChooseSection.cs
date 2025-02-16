@@ -9,9 +9,10 @@ public class ChooseSection : BaseSection
     public override void StartSection(Level level)
     {
         base.StartSection(level);
+        ChooseTriggerGO = level.lastSpawnedTile.transform.Find("Chose").gameObject;
         // float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         float ztoTest = ChooseTriggerGO.transform.position.z;
-        FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { Skills.Instance.Show3Skills(); });
+        FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > ztoTest, () => { Skills.Instance.Show3Skills(); EndSection(); });
     }
     public override void UpdateSection()
     {

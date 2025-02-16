@@ -6,7 +6,7 @@ using UnityEngine;
 public class SectionDataBoss : SectionDataFight
 {
     public EnemyWave Boss;
-    internal override BaseSection CreateMono()
+    public override BaseSection CreateMono()
     {
         // BossSection section = new BossSection();
         GameObject BossSection = new GameObject();

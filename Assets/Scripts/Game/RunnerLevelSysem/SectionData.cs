@@ -15,7 +15,7 @@ public class SectionData : ScriptableObject
     public Tile SectionEnd;
     public Tile SectionStart;
 
-    internal virtual BaseSection CreateMono()
+    public virtual BaseSection CreateMono()
     {
         LevelSection section;
         GameObject newSection = new GameObject();

@@ -96,6 +96,7 @@ public class PlayerMovement : MovementForgeRun
             if (isGrounded && rb.velocity.y < 1)
             {
                 Vector3 vel = rb.velocity;
+                
                 if (vel.z < Speed)
                 {
                     // vel.z = Speed;

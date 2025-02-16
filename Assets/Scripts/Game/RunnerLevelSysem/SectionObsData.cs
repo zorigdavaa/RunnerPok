@@ -8,7 +8,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class SectionObsData : SectionData
 {
     public List<GameObject> Obstacles;
-    internal override BaseSection CreateMono()
+    public override BaseSection CreateMono()
     {
         GameObject newOBj = new GameObject();
         // ObsSection section = new ObsSection();

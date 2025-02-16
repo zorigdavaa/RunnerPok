@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 public class SectionDataFight : SectionData
 {
     public List<EnemyWave> LevelEnemies;
-    internal override BaseSection CreateMono()
+    public override BaseSection CreateMono()
     {
         // FightSection section = new FightSection();
         GameObject newOBj = new GameObject();
