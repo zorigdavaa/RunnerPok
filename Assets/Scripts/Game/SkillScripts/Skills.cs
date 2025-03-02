@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using ZPackage;
+using System;
+using Random = UnityEngine.Random;
 
 public class Skills : GenericSingleton<Skills>
 {
     public List<BaseSkill> AllSkills;
     public List<ChooseSkill> ChooseSkills;
     public List<BaseSkill> ShowingSkills;
+    public EventHandler OnChoose;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +35,13 @@ public class Skills : GenericSingleton<Skills>
             choose.SetSkill(tobeShown);
         }
         gameObject.SetActive(true);
-        Time.timeScale = 0;
+        // Time.timeScale = 0;
     }
 
     internal void PlayerChosen(ChooseSkill chooseSkill)
     {
+        OnChoose?.Invoke(chooseSkill, EventArgs.Empty);
         gameObject.SetActive(false);
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,17 @@ public class ChooseSection : BaseSection
         ChooseTriggerGO = level.lastSpawnedTile.transform.Find("Chose").gameObject;
         // float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         float ztoTest = ChooseTriggerGO.transform.position.z;
-        FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > ztoTest, () => { Skills.Instance.Show3Skills(); EndSection(); });
+        FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > ztoTest, () => { Skills.Instance.Show3Skills(); Skills.Instance.OnChoose += OnChooseSkill; });
+
     }
+
+    private void OnChooseSkill(object sender, EventArgs e)
+    {
+        Skills.Instance.OnChoose -= OnChooseSkill;
+        curLevel.NextNearPlayer();
+        EndSection();
+    }
+
     public override void UpdateSection()
     {
         bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 50;

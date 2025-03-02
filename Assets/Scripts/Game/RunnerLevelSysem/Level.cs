@@ -243,6 +243,25 @@ public class Level : MonoBehaviour
             return new LevelSection();
         }
     }
+
+    internal void NextNearPlayer()
+    {
+        nextSpawnPosition = PlayerBeingTile.end.position;
+        List<Tile> removeTiles = new List<Tile>();
+        foreach (var item in SpawnedTiles)
+        {
+            if (item != PlayerBeingTile)
+            {
+                removeTiles.Add(item);
+            }
+        }
+        foreach (var item in removeTiles)
+        {
+            SpawnedTiles.Remove(item);
+            Destroy(item.gameObject);
+        }
+    }
+
     // List<Type> AvailAbleSection = new List<Type>()
     //         {
     //             typeof(FightSection)
