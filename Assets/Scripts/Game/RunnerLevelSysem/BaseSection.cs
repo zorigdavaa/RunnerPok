@@ -87,7 +87,7 @@ public class BaseSection : MonoBehaviour
     public virtual void Reset()
     {
         curLevel = null;
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 
     public List<Tile> AllTiles;

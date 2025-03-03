@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 public class Tile : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class Tile : MonoBehaviour
         {
             // print(true);
             OnTileEnter?.Invoke(this, EventArgs.Empty);
-            transform.parent.GetComponent<Level>().PlayerBeingTile = this;
+            // transform.parent.GetComponent<Level>().PlayerBeingTile = this;
+            Z.LS.LastInstLvl.PlayerBeingTile = this;
         }
     }
 }

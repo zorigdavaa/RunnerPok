@@ -47,7 +47,7 @@ public class ObsSection : BaseSection
 
     private void EnterThisSection()
     {
-        Debug.Log("eNTER FIREsECTION");
+        Debug.Log("eNTER ObsSection");
         float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnObsSectionEnter(this, EventArgs.Empty); });
     }

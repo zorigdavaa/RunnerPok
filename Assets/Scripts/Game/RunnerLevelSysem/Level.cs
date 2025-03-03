@@ -32,10 +32,12 @@ public class Level : MonoBehaviour
         SpawnedTiles = new List<Tile>();
         player = Z.Player;
         // StartNewSection();
+        GameObject SectionsParent = new GameObject("Sections");
+        SectionsParent.transform.parent = transform;
         foreach (var item in SectionDatas)
         {
             BaseSection section = item.CreateMono();
-            section.transform.SetParent(transform);
+            section.transform.SetParent(SectionsParent.transform);
             Sections.Add(section);
             // LevelObjects.Add(new LevelSection());
         }
@@ -145,7 +147,8 @@ public class Level : MonoBehaviour
     public Tile SpawnTile(Tile tilePrefab)
     {
         // Debug.Log("Insing " + tilePrefab.name);
-        Tile tile = Instantiate(tilePrefab, nextSpawnPosition, Quaternion.identity, transform);
+        Transform parent = CurSection ? CurSection.transform : transform;
+        Tile tile = Instantiate(tilePrefab, nextSpawnPosition, Quaternion.identity, parent);
         if (SpawnedTiles.Count > 0)
         {
             lastSpawnedTile.SetNextTile(tile);
