@@ -216,6 +216,7 @@ public class Level : MonoBehaviour
 
     public BaseSection GetRandomSectionInstance(BaseSection before)
     {
+        GameObject Section = new GameObject("RandomLvl");
         float value = Random.value;
         if (value < 0.2f)
         {
@@ -224,26 +225,32 @@ public class Level : MonoBehaviour
                 value = Random.value;
                 if (value < 0.5f)
                 {
-                    return new CollectSection();
+                    return Section.AddComponent<CollectSection>();
+                    // return new CollectSection();
                 }
                 else
                 {
-                    return new LevelSection();
+                    return Section.AddComponent<LevelSection>();
+                    // return new LevelSection();
                 }
             }
-            return new FightSection();
+            return Section.AddComponent<FightSection>();
+            // return new FightSection();
         }
         else if (value < 0.5f)
         {
-            return new CollectSection();
+            return Section.AddComponent<CollectSection>();
+            // return new CollectSection();
         }
         else if (value < 0.8f)
         {
-            return new ObsSection();
+            return Section.AddComponent<ObsSection>();
+            // return new ObsSection();
         }
         else
         {
-            return new LevelSection();
+            return Section.AddComponent<LevelSection>();
+            // return new LevelSection();
         }
     }
 
