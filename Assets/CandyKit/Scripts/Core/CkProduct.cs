@@ -9,7 +9,7 @@ public class CkProduct : ScriptableObject
 {
     [SerializeField] string id;
     [SerializeField] ProductType productType;
-
+    public bool IsIAP;
     public string ID => id;
     public ProductType ProductType => productType;
     public UnityEvent Logic;
