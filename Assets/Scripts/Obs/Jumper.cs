@@ -8,7 +8,7 @@ using ZPackage.Helper;
 public class Jumper : MonoBehaviour, ICollisionAction
 {
     [SerializeField] Vector3 JumperForce;
-    public Tile CurrentTile;
+    // public Tile CurrentTile;
     public Transform NextJumper;
     public Vector3 NextJumpTarget;
     [SerializeField] Animation anim;

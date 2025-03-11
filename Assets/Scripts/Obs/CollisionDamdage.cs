@@ -15,8 +15,9 @@ public class CollisionDamdage : MonoBehaviour, ICollisionAction
     }
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
         Damage *= Z.LS.LastInstLvl.DamageMultiplier;
     }
 

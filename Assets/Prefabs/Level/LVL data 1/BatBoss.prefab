@@ -72,6 +72,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7694703387814725584, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Health.MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694703387814725584, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+      propertyPath: Health.BaseValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
       propertyPath: Rewards
       value: 
