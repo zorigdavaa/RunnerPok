@@ -80,7 +80,7 @@ namespace ZPackage
             {
                 sectionTypes = new List<SectionType>()
                 {
-                     SectionType.Choose,SectionType.Obstacle,SectionType.Fight, SectionType.Choose,SectionType.Obstacle,SectionType.Fight
+                     SectionType.Choose,SectionType.Normal,SectionType.Fight, SectionType.Choose,SectionType.Normal,SectionType.Fight
                 },
 
             },

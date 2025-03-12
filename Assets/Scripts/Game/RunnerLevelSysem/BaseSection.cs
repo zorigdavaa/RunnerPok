@@ -110,7 +110,7 @@ public abstract class BaseSection : MonoBehaviour
              AllTiles.Add(tile.GetComponent<Tile>());
          });
         await operation.Task;
-        int SectionTileCount = 3;
+        int SectionTileCount = 5;
         for (int i = 0; i < SectionTileCount; i++)
         {
             Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
