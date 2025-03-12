@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 [CreateAssetMenu(fileName = "SkillChooseSec", menuName = "ScriptableObjects/Skillsec")]
 public class SecDataChoose : SectionData
 {
-    public override BaseSection CreateMono()
+    public override LevelSection CreateMono()
     {
         ChooseSection section;
         GameObject newSection = new GameObject();

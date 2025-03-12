@@ -61,6 +61,11 @@ public class Initializer : MonoBehaviour
 #endif
 
 }
+//Section one
+//choose Obs Collect Fight choose obs fight 
+
+//Section two
+//choose collect fight choose fight
 //3 Level oroh
 //Item speed iig zowhon moveSpeed bolgoh
 // Attack Speediig Item Speedeer solih

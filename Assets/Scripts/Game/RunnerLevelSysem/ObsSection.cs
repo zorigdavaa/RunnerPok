@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using ZPackage;
 using Random = UnityEngine.Random;
 
-public class ObsSection : BaseSection
+public class ObsSection : LevelSection
 {
     public List<GameObject> Obstacles;
     public bool HasNextObs => Obstacles.Count > index;

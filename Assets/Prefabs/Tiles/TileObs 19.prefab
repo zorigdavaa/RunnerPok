@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: TargetRot.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: PlayerNearDistance
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -86,6 +90,10 @@ PrefabInstance:
       propertyPath: Pos.x
       value: -7
       objectReference: {fileID: 0}
+    - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: PlayerNearDistance
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
@@ -151,6 +159,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: PlayerNearDistance
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalPosition.x
@@ -220,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 243893644774797305, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 54.4
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 243893644774797305, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_LocalRotation.w
@@ -256,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1765375381020493247, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 70
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2945519930564742407, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_LocalScale.z
@@ -311,6 +323,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: TargetRot.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: PlayerNearDistance
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalPosition.x

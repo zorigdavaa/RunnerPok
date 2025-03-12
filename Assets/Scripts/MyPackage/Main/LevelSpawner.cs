@@ -67,12 +67,24 @@ namespace ZPackage
             LevelGo.name = GameManager.Instance.Level + " Level";
             Level lvl = LevelGo.AddComponent<Level>();
             await lvl.LoadAssets();
-            int SectionCount = 4;
+            int SectionCount = 10;
             await lvl.GenerateSections(SectionCount);
             lvl.transform.SetParent(transform);
             Debug.Log("Done Level generate");
             return lvl;
         }
+
+        public List<SecPattern> SectionsPatternData = new List<SecPattern>()
+        {
+            new SecPattern()
+            {
+                sectionTypes = new List<SectionType>()
+                {
+                     SectionType.Choose,SectionType.Obstacle,SectionType.Fight, SectionType.Choose,SectionType.Obstacle,SectionType.Fight
+                },
+
+            },
+        };
 
     }
 }

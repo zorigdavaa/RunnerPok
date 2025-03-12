@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: max.x
       value: -7
       objectReference: {fileID: 0}
+    - target: {fileID: 8745408481906387197, guid: 35ec4ad103d76224584f2aca32cb5f55, type: 3}
+      propertyPath: Oppozit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

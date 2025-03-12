@@ -13,10 +13,15 @@ using System.Threading.Tasks;
 [Serializable]
 public class LevelSection : BaseSection
 {
-
+    public void InitializefromData(SectionData data)
+    {
+        levelTiles = data.levelTiles;
+        SectionEnd = data.SectionEnd;
+        SectionStart = data.SectionStart;
+    }
 }
 public enum SectionType
 {
-    None, Obstacle, Fight, Collect
+    None, Obstacle, Fight, Collect, Choose, BossFight
 }
 

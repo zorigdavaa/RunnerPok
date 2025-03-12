@@ -12,7 +12,7 @@ public class Level : MonoBehaviour
 {
     public int SecIDX = 0;
     // public int SecTileIDx = 0;
-    public List<BaseSection> Sections = new List<BaseSection>();
+    public List<LevelSection> Sections = new List<LevelSection>();
     public List<SectionData> SectionDatas = new List<SectionData>();
     public Player player; // Reference to the player's transform
     public Vector3 nextSpawnPosition; // Position to spawn the next tile
@@ -26,22 +26,32 @@ public class Level : MonoBehaviour
     BaseSection CurSection = null;
     public float HealthMultiplier = 1;
     public float DamageMultiplier = 1;
+    public GameObject SectionsParent;
     public void Start()
     {
         nextSpawnPosition = transform.position;
         SpawnedTiles = new List<Tile>();
         player = Z.Player;
         // StartNewSection();
-        GameObject SectionsParent = new GameObject("Sections");
-        SectionsParent.transform.parent = transform;
+        CreateSectionParent();
+
         foreach (var item in SectionDatas)
         {
-            BaseSection section = item.CreateMono();
+            LevelSection section = item.CreateMono();
             section.transform.SetParent(SectionsParent.transform);
             Sections.Add(section);
             // LevelObjects.Add(new LevelSection());
         }
 
+    }
+
+    private void CreateSectionParent()
+    {
+        if (SectionsParent == null)
+        {
+            SectionsParent = new GameObject("Sections");
+            SectionsParent.transform.parent = transform;
+        }
     }
 
     // private LevelSection CreateAndGetSection(SectionData item)
@@ -194,24 +204,57 @@ public class Level : MonoBehaviour
     internal async Task GenerateSections(int sectionCount)
     {
         Sections.Clear();
-        BaseSection beforeSectoin = null;
-        for (int i = 0; i < sectionCount; i++)
+
+        Sections = GetRandomSectionInstances();
+        foreach (var item in Sections)
         {
-            BaseSection section = GetRandomSectionInstance(beforeSectoin);
-            beforeSectoin = section;
-            // BaseSection section = GetRandomSectionInstance();
-            Debug.Log(i + " wait " + section);
-            await section.LoadNGenerateSelf();
-            // int SectionTileCount = 5;
-            // for (int j = 0; j < SectionTileCount; j++)
-            // {
-            //     Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
-            //     section.levelTiles.Add(Tile);
-            // }
-            Sections.Add(section);
-            // lvl.Sections.Add(section);
+            await item.LoadNGenerateSelf();
+
         }
-        Debug.Log("Finish");
+        // BaseSection beforeSectoin = null;
+        // for (int i = 0; i < sectionCount; i++)
+        // {
+        //     BaseSection section = GetRandomSectionInstance(beforeSectoin);
+        //     beforeSectoin = section;
+        //     // BaseSection section = GetRandomSectionInstance();
+        //     Debug.Log(i + " wait " + section);
+        //     await section.LoadNGenerateSelf();
+        //     // int SectionTileCount = 5;
+        //     // for (int j = 0; j < SectionTileCount; j++)
+        //     // {
+        //     //     Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
+        //     //     section.levelTiles.Add(Tile);
+        //     // }
+        //     Sections.Add(section);
+        //     // lvl.Sections.Add(section);
+        // }
+        // Debug.Log("Finish");
+    }
+    public List<LevelSection> GetRandomSectionInstances()
+    {
+        List<SectionType> WholeSectionType = Z.LS.SectionsPatternData[Random.Range(0, Z.LS.SectionsPatternData.Count)].sectionTypes;
+        List<LevelSection> Sections = new List<LevelSection>();
+        CreateSectionParent();
+        for (int i = 0; i < WholeSectionType.Count; i++)
+        {
+            LevelSection section = GetNewSectionFromType(WholeSectionType[i]);
+            Sections.Add(section);
+            section.transform.SetParent(SectionsParent.transform);
+        }
+        return Sections;
+    }
+
+    private LevelSection GetNewSectionFromType(SectionType sectionType)
+    {
+        GameObject Section = new GameObject("Section");
+        switch (sectionType)
+        {
+            case SectionType.Fight: return Section.AddComponent<FightSection>();
+            case SectionType.Collect: return Section.AddComponent<CollectSection>();
+            case SectionType.Obstacle: return Section.AddComponent<ObsSection>();
+            case SectionType.Choose: return Section.AddComponent<ChooseSection>();
+            default: return Section.AddComponent<LevelSection>();
+        }
     }
 
     public BaseSection GetRandomSectionInstance(BaseSection before)
@@ -253,6 +296,7 @@ public class Level : MonoBehaviour
             // return new LevelSection();
         }
     }
+
 
     internal void NextNearPlayer()
     {

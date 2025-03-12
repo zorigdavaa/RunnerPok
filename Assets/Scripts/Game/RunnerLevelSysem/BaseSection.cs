@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 [Serializable]
-public class BaseSection : MonoBehaviour
+public abstract class BaseSection : MonoBehaviour
 {
 
     public virtual SectionType SectionType { get => SectionType.Obstacle; }

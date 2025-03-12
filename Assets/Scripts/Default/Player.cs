@@ -329,7 +329,7 @@ public class Player : Character
                 Movement.UseParentedMovement(false);
                 // Movement.SetControlAble(true);
                 Movement.SetControlType(ZControlType.TwoSide);
-                UpdateAction = null;
+                UpdateAction = CollectUpdate;
             }
             else if (_state == PlayerState.Fight)
             {
@@ -360,7 +360,7 @@ public class Player : Character
     }
     public void CollectUpdate()
     {
-        if (Physics.SphereCast(transform.position + Vector3.up, 3, Vector3.forward, out RaycastHit hit, 50f, 1 << 6))
+        if (Physics.SphereCast(transform.position + Vector3.up, 3, Vector3.forward, out RaycastHit hit, 100f, 1 << 6))
         {
             StartThrow(true);
         }

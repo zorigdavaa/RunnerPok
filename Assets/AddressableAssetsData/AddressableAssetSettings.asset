@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 9747879cd8db346efb76b20975da8729
   m_currentHash:
     serializedVersion: 2
-    Hash: 958fdf5a9f278efa3dc2c77f77463bd1
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
   - {fileID: 11400000, guid: beb0e66ce814940fc91d6d2d9e07b70f, type: 2}
-  - {fileID: 11400000, guid: bdd65d728fd3645c0995ee27f2bf3624, type: 2}
   - {fileID: 11400000, guid: 24f8743a32c41cc409cd997a287f4f66, type: 2}
+  - {fileID: 11400000, guid: bdd65d728fd3645c0995ee27f2bf3624, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -58,28 +58,28 @@ MonoBehaviour:
       m_Id: 0a6e87f4cd0c14783ab82d0caf85ab0f
       m_ProfileName: Default
       m_Values:
-      - m_Id: 78f146423db9a420f93cf320cd0c026b
-        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 1e8056842bde246a7ac144ac01d1c95e
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
-      - m_Id: 48a5d5d91ad5a48848a8919bb62c498c
-        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 22ce91ad2deae40ed896b5932f6a1908
         m_Value: ServerData/[BuildTarget]
+      - m_Id: 48a5d5d91ad5a48848a8919bb62c498c
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: 78f146423db9a420f93cf320cd0c026b
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: a378041f1e8f54afd975d8656639d0a0
         m_Value: http://[PrivateIpAddress]:[HostingServicePort]
     m_ProfileEntryNames:
-    - m_Id: 78f146423db9a420f93cf320cd0c026b
-      m_Name: BuildTarget
-      m_InlineUsage: 0
     - m_Id: 1e8056842bde246a7ac144ac01d1c95e
       m_Name: Local.BuildPath
+      m_InlineUsage: 0
+    - m_Id: 22ce91ad2deae40ed896b5932f6a1908
+      m_Name: Remote.BuildPath
       m_InlineUsage: 0
     - m_Id: 48a5d5d91ad5a48848a8919bb62c498c
       m_Name: Local.LoadPath
       m_InlineUsage: 0
-    - m_Id: 22ce91ad2deae40ed896b5932f6a1908
-      m_Name: Remote.BuildPath
+    - m_Id: 78f146423db9a420f93cf320cd0c026b
+      m_Name: BuildTarget
       m_InlineUsage: 0
     - m_Id: a378041f1e8f54afd975d8656639d0a0
       m_Name: Remote.LoadPath
@@ -99,6 +99,7 @@ MonoBehaviour:
     - Coin
     - Jumper
     - SkillChose
+    - SkillChooseSecDefault
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0cef7a3f7dac1457f9075aad07333120, type: 2}

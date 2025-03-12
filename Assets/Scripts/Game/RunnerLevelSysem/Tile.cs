@@ -25,7 +25,10 @@ public class Tile : MonoBehaviour
             // print(true);
             OnTileEnter?.Invoke(this, EventArgs.Empty);
             // transform.parent.GetComponent<Level>().PlayerBeingTile = this;
-            Z.LS.LastInstLvl.PlayerBeingTile = this;
+            if (Z.LS.LastInstLvl != null)
+            {
+                Z.LS.LastInstLvl.PlayerBeingTile = this;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 // [CreateAssetMenu(fileName = "FightSection", menuName = "ScriptableObjects/FightSection")]
 [Serializable]
-public class FightSection : BaseSection
+public class FightSection : LevelSection
 {
     public override SectionType SectionType => SectionType.Fight;
 

@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using ZPackage;
 
-public class ChooseSection : BaseSection
+public class ChooseSection : LevelSection
 {
     public GameObject ChooseTriggerGO;
     public override void StartSection(Level level)
@@ -14,7 +16,12 @@ public class ChooseSection : BaseSection
         // float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         float ztoTest = ChooseTriggerGO.transform.position.z;
         FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > ztoTest, () => { Skills.Instance.Show3Skills(); Skills.Instance.OnChoose += OnChooseSkill; });
-
+    }
+    public override async Task LoadNGenerateSelf()
+    {
+        var asyncOperation = Addressables.LoadAssetAsync<SecDataChoose>("SkillChooseSecDefault");
+        await asyncOperation.Task;
+        InitializefromData(asyncOperation.Result);
     }
 
     private void OnChooseSkill(object sender, EventArgs e)
