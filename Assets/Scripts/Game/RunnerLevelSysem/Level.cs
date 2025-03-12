@@ -253,6 +253,7 @@ public class Level : MonoBehaviour
             case SectionType.Collect: return Section.AddComponent<CollectSection>();
             case SectionType.Obstacle: return Section.AddComponent<ObsSection>();
             case SectionType.Choose: return Section.AddComponent<ChooseSection>();
+            case SectionType.BossFight: return Section.AddComponent<BossSection>();
             default: return Section.AddComponent<LevelSection>();
         }
     }
