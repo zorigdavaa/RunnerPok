@@ -72,10 +72,38 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7694703387814725584, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+      propertyPath: Health.MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694703387814725584, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+      propertyPath: Health.BaseValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
       propertyPath: maxHealth
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+      propertyPath: Patterns.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+      propertyPath: Patterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6cd49c5004cf44b4cb94fc8bdde0d87b, type: 2}
+    - target: {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+      propertyPath: Patterns.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 55cbfec70e8dd441f88c3de73a4ab2ef, type: 2}
+    - target: {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+      propertyPath: Patterns.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: f948a22a8db6bc64fbf80d7574bd773c, type: 2}
+    - target: {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+      propertyPath: Patterns.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 33730d035e8a6fa4e855b04e46c497fc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

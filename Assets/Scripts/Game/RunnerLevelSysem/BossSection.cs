@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
@@ -77,6 +78,19 @@ public class BossSection : FightSection
             }
             yield return null;
         }
+    }
+    public override async Task LoadNGenerateSelf()
+    {
+        Boss = new EnemyWave();
+        List<GameObject> AllBoss = new List<GameObject>();
+        var asyncOperation = Addressables.LoadAssetsAsync<GameObject>("Boss", (boss) =>
+        {
+            AllBoss.Add(boss);
+        });
+        await asyncOperation.Task;
+        GameObject chosenBoss = AllBoss[Random.Range(0, AllBoss.Count)];
+        Boss.EnemyPF.Add(chosenBoss.GetComponent<Animal>());
+        await base.LoadNGenerateSelf();
     }
     public void InsBoss()
     {

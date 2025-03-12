@@ -120,6 +120,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - StartTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44e9cb29f77ef4a6e8ea0f822b62bc85
+    m_Address: Assets/Prefabs/Character/Bosses/Boss.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Boss
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 45b7b2ae0bfc4614db45dfd58e37ab65
     m_Address: Assets/Prefabs/Tiles/TileObs 15.prefab
     m_ReadOnly: 0
@@ -131,6 +137,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Animal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49187c0339a09d74e9538a3c12315ce8
+    m_Address: Assets/Prefabs/Character/Bosses/Boss Plant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Boss
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4a1b22dc702dc2c4a9a9de1d2ee5406e
     m_Address: Assets/Prefabs/Tiles/CoinTile 1.prefab
@@ -164,6 +176,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ObsTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e9340d5a9219cc49a195c082255ed74
+    m_Address: Assets/Prefabs/Character/Bosses/Boss Mage.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Boss
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6ea402bcf7bc8aa46a8bf0f9864c9522
     m_Address: Assets/Prefabs/Tiles/TileObs 17.prefab
     m_ReadOnly: 0
@@ -175,6 +193,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillChose
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71e10463ef913674cbcc3c061954e3d5
+    m_Address: Assets/Prefabs/Character/Bosses/BossSpider.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Boss
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 722e594e48b78cd4ba131b981da948e0
     m_Address: Assets/Prefabs/Tiles/TileObs.prefab
@@ -212,6 +236,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7cf5d2a0021a04acb8bd19524f110584
+    m_Address: Assets/Prefabs/Character/Bosses/BatBoss.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Boss
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7dceca1d5acb74646b675093aec19448
     m_Address: Assets/Prefabs/Tiles/End 1.prefab

@@ -194,12 +194,13 @@ MonoBehaviour:
   speed: 1
   Oppozit: 0
   startOffset: 0
+  UseRandomOffset: 0
   MovementType: 0
   IsMoving: 1
   ShoulDRot: 0
   RotSpeed: {x: 0, y: 0, z: 0}
-  min: {x: -7, y: 0, z: 0}
-  max: {x: 7, y: 0, z: 0}
+  min: {x: -5, y: 0, z: 0}
+  max: {x: 5, y: 0, z: 0}
 --- !u!4 &3723246295180588299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3605026524838981926, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
@@ -406,12 +407,13 @@ MonoBehaviour:
   speed: 1
   Oppozit: 0
   startOffset: 0
+  UseRandomOffset: 0
   MovementType: 0
   IsMoving: 1
   ShoulDRot: 0
   RotSpeed: {x: 0, y: 0, z: 0}
-  min: {x: -7, y: 0, z: 0}
-  max: {x: 7, y: 0, z: 0}
+  min: {x: -5, y: 0, z: 0}
+  max: {x: 5, y: 0, z: 0}
 --- !u!4 &2176468958131625749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3605026524838981926, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
