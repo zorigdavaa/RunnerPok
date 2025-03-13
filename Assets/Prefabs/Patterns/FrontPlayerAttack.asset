@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FrontPlayerAttack
   m_EditorClassIdentifier: 
   ProjectilePfs:
-  - {fileID: 3520682674040017975, guid: ad23fa84c2282864eb8471068520f1b5, type: 3}
+  - {fileID: 4163451653906148852, guid: 76e8d1620367e3d479b31f2b1b00d28d, type: 3}
   AttackCount: 6
   animationWaitTimer: 0.2
   WaitTimer: 0.2

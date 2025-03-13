@@ -140,6 +140,7 @@ public class Level : MonoBehaviour
         }
         CurSection.StartSection(this);
         CurSection.Oncomplete += NextSection;
+        Debug.Log("Start Section " + CurSection.SectionType + " " + CurSection.name);
         // print("Start Of From Level " + CurSection.SectionType + " " + CurSection.name);
     }
 

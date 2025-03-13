@@ -92,6 +92,7 @@ public abstract class BaseSection : MonoBehaviour
 
     public List<Tile> AllTiles;
     public string key;
+    public int GenerateTileCount = 5;
     public virtual async Task LoadNGenerateSelf()
     {
         // Initialize();
@@ -110,8 +111,7 @@ public abstract class BaseSection : MonoBehaviour
              AllTiles.Add(tile.GetComponent<Tile>());
          });
         await operation.Task;
-        int SectionTileCount = 5;
-        for (int i = 0; i < SectionTileCount; i++)
+        for (int i = 0; i < GenerateTileCount; i++)
         {
             Tile Tile = AllTiles[Random.Range(0, AllTiles.Count)];
             levelTiles.Add(Tile);

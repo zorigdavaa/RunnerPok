@@ -16,12 +16,14 @@ public class ChooseSection : LevelSection
         // float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         float ztoTest = ChooseTriggerGO.transform.position.z;
         FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > ztoTest, () => { Skills.Instance.Show3Skills(); Skills.Instance.OnChoose += OnChooseSkill; });
+        // Debug.Log("Start Choose Section");
     }
     public override async Task LoadNGenerateSelf()
     {
         var asyncOperation = Addressables.LoadAssetAsync<SecDataChoose>("SkillChooseSecDefault");
         await asyncOperation.Task;
         InitializefromData(asyncOperation.Result);
+        // Debug.Log("Choose Section Self Loaded");
     }
 
     private void OnChooseSkill(object sender, EventArgs e)
@@ -39,6 +41,7 @@ public class ChooseSection : LevelSection
             // Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
             Tile tileToIns = curLevel.BaseTilePf;
             curLevel.SpawnTile(tileToIns);
+            // Debug.Log("Updating from Choose");
         }
     }
 }

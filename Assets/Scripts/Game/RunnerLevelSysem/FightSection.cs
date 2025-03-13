@@ -200,10 +200,10 @@ public class FightSection : LevelSection
             }
 
             LevelEnemies.Add(newWave);
-            Debug.Log("Wave " + (i + 1) + " created.");
+            // Debug.Log("Wave " + (i + 1) + " created.");
         }
 
-        Debug.Log("Finished creating all waves.");
+        // Debug.Log("Finished creating all waves.");
     }
 
 }

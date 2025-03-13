@@ -17,10 +17,16 @@ namespace ZPackage
         public Level LastInstLvl;
         Vector3 pos = Vector3.zero;
         public List<Tile> AllTiles;
-        private async Task Start()
+        public bool IsLevelReady = false;
+        async Task Start()
         {
+            GameManager.Instance.OnGamePlay += OnGamePlay;
             Destroy(transform.GetChild(0).gameObject, 10);
-
+            // if (LastInstLvl)
+            // {
+            //     pos = LastInstLvl.nextSpawnPosition;
+            //     LastInstLvl.DestSelf();
+            // }
             // for (int i = 0; i < 5; i++)
             // {
             //     SpawnTile(0);
@@ -29,36 +35,39 @@ namespace ZPackage
             // SpawnLevel(Levels[0]);
             if (lvlIndex < Levels.Count)
             {
-                SpawnLevel(Levels[lvlIndex]);
+                LastInstLvl = SpawnLevel(Levels[lvlIndex]);
             }
             else
             {
                 // Level level = GenerateLevel();
                 Task<Level> task = GenerateLevel();
-                if (LastInstLvl)
-                {
-                    pos = LastInstLvl.nextSpawnPosition;
-                    LastInstLvl.DestSelf();
-                }
+
                 await task;
                 LastInstLvl = task.Result;
             }
-            GameManager.Instance.OnGamePlay += OnGamePlay;
+            IsLevelReady = true;
         }
 
         private void OnGamePlay(object sender, EventArgs e)
         {
-            LastInstLvl.StartNewSection();
+
+            StartCoroutine(WaitAndStartCor());
+            IEnumerator WaitAndStartCor()
+            {
+                // Debug.Log("WaitAndStartCor");
+                yield return new WaitUntil(() => IsLevelReady == true);
+                LastInstLvl.StartNewSection();
+            }
         }
 
-        private void SpawnLevel(Level level)
+        private Level SpawnLevel(Level level)
         {
-            if (LastInstLvl)
-            {
-                pos = LastInstLvl.nextSpawnPosition;
-                LastInstLvl.DestSelf();
-            }
-            LastInstLvl = Instantiate(level, pos, Quaternion.identity, transform);
+            // if (LastInstLvl)
+            // {
+            //     pos = LastInstLvl.nextSpawnPosition;
+            //     LastInstLvl.DestSelf();
+            // }
+            return Instantiate(level, pos, Quaternion.identity, transform);
         }
         public async Task<Level> GenerateLevel()
         {

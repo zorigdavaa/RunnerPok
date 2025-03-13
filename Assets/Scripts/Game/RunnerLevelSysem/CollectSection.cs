@@ -34,6 +34,11 @@ public class CollectSection : LevelSection
         base.EndSection();
         // Debug.Log("End of Collect " + name);
     }
+    public override Task LoadNGenerateSelf()
+    {
+        GenerateTileCount = 1;
+        return base.LoadNGenerateSelf();
+    }
     private void OnCollectSectionEnter(object sender, EventArgs e)
     {
         // Tile casted = (Tile)sender;
