@@ -7,10 +7,9 @@ using ZPackage;
 
 public class NonIAPButtonZ : MonoBehaviour
 {
-    public CkProduct product;
+    // public CkProduct product;
     public Button Button;
-    public int Price;
-    public string Name;
+    public InGameProduct Product;
     public CurrencyType currencyType;
     public TextMeshProUGUI priceText, NameText;
     // Start is called before the first frame update
@@ -21,8 +20,8 @@ public class NonIAPButtonZ : MonoBehaviour
             Button = GetComponent<Button>();
         }
         Button.onClick.AddListener(BuyProduct);
-        priceText.text = Price.ToString();
-        NameText.text = Name.ToString();
+        priceText.text = Product.Price.ToString();
+        NameText.text = Product.Amount.ToString();
     }
 
     // Update is called once per frame
@@ -30,10 +29,10 @@ public class NonIAPButtonZ : MonoBehaviour
     {
         if (currencyType == CurrencyType.Coin)
         {
-            if (GameManager.Instance.Coin > Price)
+            if (GameManager.Instance.Coin > Product.Price)
             {
-                product.Logic?.Invoke();
-                GameManager.Instance.Coin -= Price;
+                Product.Logic?.Invoke();
+                GameManager.Instance.Coin -= Product.Price;
             }
         }
         else if (currencyType == CurrencyType.Gem)

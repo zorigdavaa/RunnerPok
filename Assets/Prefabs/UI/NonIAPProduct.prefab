@@ -109,6 +109,10 @@ MonoBehaviour:
   product: {fileID: 11400000, guid: f8d4eb6621f047f4b8eeb0f0de318f72, type: 2}
   Button: {fileID: 3117837536703818222}
   Price: 10
+  Name: 
+  currencyType: 0
+  priceText: {fileID: 1555236102307170317}
+  NameText: {fileID: 6327691197501807656}
 --- !u!1 &3658782222025103690
 GameObject:
   m_ObjectHideFlags: 0
