@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ChainLightObject : MonoBehaviour, ICastAble
+public class ChainLightObject : SkillAbstract, ICastAble
 {
     public bool Casting { get; set; }
     public List<LightningPositionTrackData> Lightnings;

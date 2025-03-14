@@ -10,7 +10,7 @@ public class BaseSkill : ScriptableObject
     public Sprite Sprite;
     [TextArea] public string Text;
     public BaseSkill nextLevel;
-
+    public KeyValuePair<Character, SkillAbstract> Weilders;
     public virtual void Equip()
     {
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,12 +21,6 @@ public class ChainLightning : BaseSkill
     {
         // Cast()
         Debug.Log("Lightning");
-        // Shuriken first = (Shuriken)e;
-        // var pool = (ObjectPool<Shuriken>)sender;
-        // first.transform.position += Vector3.right * 0.5f;
-        // Shuriken second = pool.Get();
-        // second.SideMovement = -first.SideMovement;
-        // second.transform.position -= Vector3.right * 0.5f;
     }
 
     public override void UnEquip()
