@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 using ZPackage;
 
-[CreateAssetMenu(fileName = "DoubleShot", menuName = "Skill/DoubleShot")]
+// [CreateAssetMenu(fileName = "DoubleShot", menuName = "Skill/DoubleShot")]
 public class DoubleShot : BaseSkill
 {
 
@@ -16,10 +16,10 @@ public class DoubleShot : BaseSkill
 
     private void OnPlayerShoot(object sender, Shuriken e)
     {
-        Logic(sender, e);
+        Use(sender, e);
     }
 
-    public override void Logic(object sender, object e)
+    public override void Use(object sender, object e)
     {
         Shuriken first = (Shuriken)e;
         var pool = (ObjectPool<Shuriken>)sender;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZPackage;
 
-[CreateAssetMenu(fileName = "StatAdd", menuName = "Skill/StatAdd")]
+// [CreateAssetMenu(fileName = "StatAdd", menuName = "Skill/StatAdd")]
 public class StatAdder : BaseSkill
 {
     public int AddDamage = 1;
@@ -12,14 +12,15 @@ public class StatAdder : BaseSkill
     public float AddHealth = 1;
     public override void Equip()
     {
-        Z.Player.AddToSkill(this);
+        base.Equip();
+        // Z.Player.AddToSkill(this);
         if (AddHealth != 0)
         {
             Z.Player.Stats.Health.AddToMax(AddHealth);
         }
     }
 
-    public override void Logic(object sender, object e)
+    public override void Use(object sender, object e)
     {
 
     }

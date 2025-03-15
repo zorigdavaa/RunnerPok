@@ -1,20 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityUtilities;
 using Random = UnityEngine.Random;
 
-public class ChainLightObject : SkillAbstract, ICastAble
+public class ChainLightObject : BaseSkill
 {
     public bool Casting { get; set; }
     public List<LightningPositionTrackData> Lightnings;
-    // Start is called before the first frame update
-    void Start()
+    // FunctionUpdater updater;
+    public override void Equip()
     {
+        CoolDown = new Countdown(true, 3);
+        base.Equip();
         Lightnings = new List<LightningPositionTrackData>();
+        // updater = FunctionUpdater.Create(() => { Use(this, null); }, 3, name);
     }
+    public override void UnEquip()
+    {
+        base.UnEquip();
+        FunctionUpdater.StopTimer(name);
+    }
+
     private void Update()
     {
+        if (CoolDown.Progress())
+        {
+            Use(this, 0);
+        }
         for (int i = Lightnings.Count - 1; i >= 0; i--)
         {
             Lightnings[i].LineRender.SetPosition(0, Lightnings[i].Start.position + Vector3.up);
@@ -33,7 +48,7 @@ public class ChainLightObject : SkillAbstract, ICastAble
         }
     }
 
-    public void Cast()
+    public override void Use(object sender, object e)
     {
         Casting = true;
         StartCoroutine(TriggerChainLightning(transform));

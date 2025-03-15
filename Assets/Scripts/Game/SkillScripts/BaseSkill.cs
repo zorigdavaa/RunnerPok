@@ -1,33 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
+using UnityUtilities;
 using ZPackage;
 
-public class BaseSkill : ScriptableObject
+public class BaseSkill : MonoBehaviour
 {
-    public Sprite Sprite;
-    [TextArea] public string Text;
-    public BaseSkill nextLevel;
-    public KeyValuePair<Character, SkillAbstract> Weilders;
+    public Countdown CoolDown;
+    public SkillSO SO;
     public virtual void Equip()
     {
-
+        Z.Player.AddToSkill(this);
     }
-
-    public virtual void Logic(object sender, object e)
-    {
-        // Shuriken first = (Shuriken)e;
-        // var pool = (ObjectPool<Shuriken>)sender;
-        // first.transform.position += Vector3.right * 0.5f;
-        // Shuriken second = pool.Get();
-        // second.SideMovement = -first.SideMovement;
-        // second.transform.position -= Vector3.right * 0.5f;
-    }
-
     public virtual void UnEquip()
     {
-        throw new NotImplementedException();
+        Z.Player.RemoveSkill(this);
+    }
+
+    public void SetSO(SkillSO SO)
+    {
+        this.SO = SO;
+    }
+
+    public virtual void Use(object sender, object e)
+    {
+        Debug.LogError("BaseSkill Not Implemented");
     }
 }

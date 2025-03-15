@@ -5233,9 +5233,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
   AllSkills:
-  - {fileID: 11400000, guid: 485f07e1e64bcf74f8bfc7ebf8018f71, type: 2}
-  - {fileID: 11400000, guid: dca5fd2a583c2804ead00af172cb08cb, type: 2}
-  - {fileID: 11400000, guid: 38e7dc89f1e084888b06e6663bff3ca2, type: 2}
+  - {fileID: 11400000, guid: e20af5bbd40af8e48ad301e0c341ecb6, type: 2}
+  - {fileID: 11400000, guid: 6dd3060932ab4f34791beedecc236fa1, type: 2}
+  - {fileID: 11400000, guid: b72345af1aef2024498e83287d1b4e4a, type: 2}
+  - {fileID: 11400000, guid: cc1003ae49bfa224b90bee70e70427cc, type: 2}
+  - {fileID: 11400000, guid: 26c60fee1b732634aac07592fbbc58a5, type: 2}
+  - {fileID: 11400000, guid: a8ddc47602cb7c241b7e0349cc68bf34, type: 2}
+  - {fileID: 11400000, guid: b5ebf915a017cb4429e48a658e280a44, type: 2}
   ChooseSkills:
   - {fileID: 104102517}
   - {fileID: 1342705760}

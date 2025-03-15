@@ -1,27 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZPackage;
 
-[CreateAssetMenu(fileName = "Shield", menuName = "Skill/Shield")]
 public class Shield : BaseSkill
 {
-    [SerializeField] ShieldObject ShieldObj;
+    public int Count = 5;
+
+    public Action<object, object> OnDestroyEvent { get; internal set; }
+
+    // Start is called before the first frame update
     public override void Equip()
     {
-        Z.Player.AddToSkill(this);
-        var Shied = Instantiate(ShieldObj, Z.Player.transform.position, Quaternion.identity, Z.Player.transform);
-        Shied.OnDestroyEvent += Logic;
+        Z.Player.OnBeforeDamdageTaken += OnBeforeDamdageTaken;
+        OnDestroyEvent += Use;
+    }
 
-        // Physics.IgnoreCollision(Shied.GetComponent<Collider>())
-    }
-    public override void Logic(object sender, object e)
+    private void OnBeforeDamdageTaken(ref float damage)
     {
-        UnEquip();
-        Destroy((GameObject)sender);
+        damage = 0;
+        DecreaseCount();
     }
+
+    public void DecreaseCount()
+    {
+        Count--;
+        Debug.Log("Decreased");
+        if (Count < 0)
+        {
+            Z.Player.OnBeforeDamdageTaken -= OnBeforeDamdageTaken;
+            OnDestroyEvent?.Invoke(gameObject, null);
+        }
+    }
+
     public override void UnEquip()
     {
         Z.Player.RemoveSkill(this);
+        Destroy(gameObject);
     }
 }

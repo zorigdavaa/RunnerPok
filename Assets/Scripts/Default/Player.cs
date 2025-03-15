@@ -423,7 +423,7 @@ public class Player : Character
             return;
         }
         skills.Add(skill);
-        skill.Equip();
+        // skill.Equip();
     }
 
     internal void RemoveSkill(BaseSkill skill)
@@ -431,7 +431,7 @@ public class Player : Character
         if (skills.Contains(skill))
         {
             skills.Remove(skill);
-            skill.UnEquip();
+            // skill.UnEquip();
         }
     }
 }

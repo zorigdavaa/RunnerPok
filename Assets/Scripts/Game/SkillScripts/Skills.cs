@@ -8,9 +8,9 @@ using Random = UnityEngine.Random;
 
 public class Skills : GenericSingleton<Skills>
 {
-    public List<BaseSkill> AllSkills;
+    public List<SkillSO> AllSkills;
     public List<ChooseSkill> ChooseSkills;
-    public List<BaseSkill> ShowingSkills;
+    public List<SkillSO> ShowingSkills;
     public EventHandler OnChoose;
     // Start is called before the first frame update
     void Start()
@@ -25,11 +25,11 @@ public class Skills : GenericSingleton<Skills>
     }
     public void Show3Skills()
     {
-        List<BaseSkill> copyAllSkill = new List<BaseSkill>(AllSkills);
-        ShowingSkills = new List<BaseSkill>();
+        List<SkillSO> copyAllSkill = new List<SkillSO>(AllSkills);
+        ShowingSkills = new List<SkillSO>();
         foreach (var choose in ChooseSkills)
         {
-            BaseSkill tobeShown = copyAllSkill[Random.Range(0, copyAllSkill.Count)];
+            SkillSO tobeShown = copyAllSkill[Random.Range(0, copyAllSkill.Count)];
             copyAllSkill.Remove(tobeShown);
             ShowingSkills.Add(tobeShown);
             choose.SetSkill(tobeShown);

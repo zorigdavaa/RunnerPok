@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391068f0a6e5e2c4fbe78fb4a3c30aa3, type: 3}
-  m_Name: ChainLightning
+  m_Script: {fileID: 11500000, guid: 0b9f43a660b616446bef2fb0d01bb00e, type: 3}
+  m_Name: SOShield
   m_EditorClassIdentifier: 
-  Sprite: {fileID: -15111462, guid: 2a6f69495beb92d46af9b50f778370f6, type: 3}
-  Text: Chian
+  Sprite: {fileID: -7384178948593364983, guid: e13606b278f58fa40b76cf41d7414e22, type: 3}
+  Text: Shiled
   nextLevel: {fileID: 0}
-  Pf: {fileID: 8348038283976771536, guid: d767aa7b7a64b44489e80b51bd170e8b, type: 3}
+  Prefab: {fileID: -5580270173858171776, guid: 921da22700c16dd4b92a501ee9850d5a, type: 3}

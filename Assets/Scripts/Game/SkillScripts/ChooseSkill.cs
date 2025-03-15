@@ -9,7 +9,7 @@ public class ChooseSkill : MonoBehaviour
 {
     public Image SkillImage;
     public TextMeshProUGUI TextDescription;
-    public BaseSkill skill;
+    public SkillSO skill;
     Button Button;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class ChooseSkill : MonoBehaviour
         Button.onClick.AddListener(Choose);
     }
 
-    public void SetSkill(BaseSkill skillComing)
+    public void SetSkill(SkillSO skillComing)
     {
         skill = skillComing;
         SkillImage.sprite = skill.Sprite;
@@ -27,7 +27,8 @@ public class ChooseSkill : MonoBehaviour
     }
     public void Choose()
     {
-        Z.Player.AddToSkill(skill);
+        // Z.Player.AddToSkill(skill);
+        skill.Equip();
         Skills.Instance.PlayerChosen(this);
     }
 }

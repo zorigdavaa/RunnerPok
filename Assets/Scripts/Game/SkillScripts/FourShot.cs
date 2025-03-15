@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-[CreateAssetMenu(fileName = "FourShot", menuName = "Skill/FourShot")]
+// [CreateAssetMenu(fileName = "FourShot", menuName = "Skill/FourShot")]
 public class FourShot : TripleShot
 {
-    public override void Logic(object sender, object e)
+    public override void Use(object sender, object e)
     {
         Shuriken first = (Shuriken)e;
         var pool = (ObjectPool<Shuriken>)sender;

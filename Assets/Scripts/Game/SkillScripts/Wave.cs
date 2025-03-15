@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityUtilities;
 
-public class Wave : MonoBehaviour, ICastAble
+public class Wave : BaseSkill
 {
     public Transform Model;
     public float duration = 4;
@@ -17,12 +18,18 @@ public class Wave : MonoBehaviour, ICastAble
     // Start is called before the first frame update
     void Start()
     {
+        CoolDown = new Countdown(true, 3f);
         Model.localScale = Vector3.one * 0.2f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (CoolDown.Progress())
+        {
+            Use(this, null);
+            // CoolDown.Reset();
+        }
         if (Casting)
         {
             float t = ownTime / duration;
@@ -33,7 +40,7 @@ public class Wave : MonoBehaviour, ICastAble
             {
                 ownTime = 0;
                 Casting = false;
-                gameObject.SetActive(false);
+                Model.gameObject.SetActive(false);
                 Model.position = transform.position;
                 Model.localScale = Vector3.zero;
                 // Destroy(gameObject);
@@ -55,10 +62,10 @@ public class Wave : MonoBehaviour, ICastAble
         }
     }
 
-    public void Cast()
+    public override void Use(object sender, object e)
     {
         Casting = true;
-        gameObject.SetActive(true);
+        Model.gameObject.SetActive(true);
         InitPos = transform.position + Vector3.up;
         TargetPos = transform.position + Vector3.forward * 45 + Vector3.up;
     }
