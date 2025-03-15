@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9f43a660b616446bef2fb0d01bb00e, type: 3}
   m_Name: SO4Shot
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 7489492214562462845, guid: d29dd934ac1abd445a77a069a1b1e4f4, type: 3}
+  Sprite: {fileID: 1586200920, guid: 212b235ccbac3b74593bab40d5de0f5c, type: 3}
   Text: Quad Shot
   nextLevel: {fileID: 0}
   Prefab: {fileID: 7542703453145920415, guid: 1c3281d029f47ea40bfca4171039cf2b, type: 3}

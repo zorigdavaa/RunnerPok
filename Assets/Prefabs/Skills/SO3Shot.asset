@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9f43a660b616446bef2fb0d01bb00e, type: 3}
   m_Name: SO3Shot
   m_EditorClassIdentifier: 
-  Sprite: {fileID: -3023343810777510517, guid: d29dd934ac1abd445a77a069a1b1e4f4, type: 3}
+  Sprite: {fileID: 21300000, guid: 4dc02c3224203014ba06983f0f8a3fe3, type: 3}
   Text: Triple Shot
-  nextLevel: {fileID: 0}
+  nextLevel: {fileID: 11400000, guid: b72345af1aef2024498e83287d1b4e4a, type: 2}
   Prefab: {fileID: -4375654652272649243, guid: a38dbce7e9c4aac4889587b0ad40bce0, type: 3}

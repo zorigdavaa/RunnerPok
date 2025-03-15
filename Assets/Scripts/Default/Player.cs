@@ -380,7 +380,7 @@ public class Player : Character
             animationController.RightHandAttack(val);
             // Debug.Log("Hand speed " + HandItem.data.BaseSpeed);
             ItemData casted = (ItemData)HandItem.data;
-            animationController.SetHandSpeed(casted.BaseSpeed);
+            animationController.SetHandSpeed(casted.BaseSpeed + Stats.AttackSpeed.GetValue());
         }
     }
 

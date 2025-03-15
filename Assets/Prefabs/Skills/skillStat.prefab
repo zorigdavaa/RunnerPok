@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO: {fileID: 0}
-  AddDamage: 1
+  AddDamage: 0
   AddSpeed: 1
-  AddRange: 1
-  AddHealth: 1
+  AddHealth: 0
+  Armor: 1
