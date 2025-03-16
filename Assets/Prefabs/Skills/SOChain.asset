@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9f43a660b616446bef2fb0d01bb00e, type: 3}
   m_Name: SOChain
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 1241ed7c5f2a56a48a33c2ebb5a49bd0, type: 3}
+  Sprite: {fileID: 21300000, guid: b714a7159eb6b8f4b95a0e2e504a8dab, type: 3}
   Text: Chain Lightning
   nextLevel: {fileID: 0}
   Prefab: {fileID: 7066978447359213623, guid: d767aa7b7a64b44489e80b51bd170e8b, type: 3}

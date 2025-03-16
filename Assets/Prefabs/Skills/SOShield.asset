@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9f43a660b616446bef2fb0d01bb00e, type: 3}
   m_Name: SOShield
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 2097664946, guid: 212b235ccbac3b74593bab40d5de0f5c, type: 3}
+  Sprite: {fileID: 21300000, guid: 58211194b4be2024881a91b8e72fb634, type: 3}
   Text: Shiled
   nextLevel: {fileID: 0}
   Prefab: {fileID: -5580270173858171776, guid: 921da22700c16dd4b92a501ee9850d5a, type: 3}

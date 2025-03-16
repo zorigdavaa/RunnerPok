@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9f43a660b616446bef2fb0d01bb00e, type: 3}
   m_Name: SOStat
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 761664708, guid: 212b235ccbac3b74593bab40d5de0f5c, type: 3}
+  Sprite: {fileID: 21300000, guid: e033cc3bd1fd60440a69b1781e95e902, type: 3}
   Text: Add Speed
   nextLevel: {fileID: 0}
   Prefab: {fileID: 1125413224699669934, guid: d6a2f17d40b29ad4fb57555a5f1a324f, type: 3}
