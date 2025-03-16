@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b9f43a660b616446bef2fb0d01bb00e, type: 3}
   m_Name: SO2Shot
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: aba90834a175c4d3cbfc6abe68362f6d, type: 3}
+  Sprite: {fileID: 21300000, guid: c00674a42d278a04aae035dec695edfc, type: 3}
   Text: 'Double SHot
 
 '
