@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDownHandler
 {
     public BaseItemUI Item;
     public WhereSlot Where;
     public bool WearSlot = false;
+    public Image WearSlotImage;
+    public Sprite[] SlotSprites;
     // Start is called before the first frame update
     void Start()
     {
-
+        SetImageUsingSlot();
     }
 
     // Update is called once per frame
@@ -58,6 +61,11 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
     internal void RemoveItem()
     {
         Item = null;
+    }
+    [ContextMenu("Set Icon")]
+    public void SetImageUsingSlot()
+    {
+        WearSlotImage.sprite = SlotSprites[(int)Where];
     }
 
     public void OnPointerDown(PointerEventData eventData)

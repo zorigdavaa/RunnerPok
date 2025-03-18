@@ -209,5 +209,5 @@ public class PlayerBuffItems : MonoBehaviour
 }
 public enum WhereSlot
 {
-    Any, Hand, Head, OtherHand, Chest, Foot
+    None, Hand, Head, OtherHand, Chest, Foot, Necklace
 }

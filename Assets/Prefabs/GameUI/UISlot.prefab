@@ -33,7 +33,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2814804771351280464}
-  - {fileID: 4576498975396004542}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -94,6 +93,15 @@ MonoBehaviour:
   Item: {fileID: 0}
   Where: 0
   WearSlot: 0
+  WearSlotImage: {fileID: 3012717151081913148}
+  SlotSprites:
+  - {fileID: 21300000, guid: afee5d425d7c0894d8d6c2c48421e83a, type: 3}
+  - {fileID: 21300000, guid: 3c7a8d388423eed4eb3be7b80906bb79, type: 3}
+  - {fileID: 21300000, guid: 64cbcc56e823a4043b0f07d4cc1ca40a, type: 3}
+  - {fileID: 21300000, guid: 3db12708f950c49028687b07c0978263, type: 3}
+  - {fileID: 21300000, guid: 3f2aa445c7b6f4033a997ce36cd2d676, type: 3}
+  - {fileID: 21300000, guid: a1bea909b0d28460aaa9071a80549e8f, type: 3}
+  - {fileID: 21300000, guid: a9122ec8455d34521944b7fbdf835ffe, type: 3}
 --- !u!114 &6263615008106286993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +128,6 @@ GameObject:
   - component: {fileID: 2814804771351280464}
   - component: {fileID: 408617552088266991}
   - component: {fileID: 1122363661058304084}
-  - component: {fileID: 5100186550255483410}
   - component: {fileID: 1567735083758535980}
   m_Layer: 5
   m_Name: bairlal
@@ -140,13 +147,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4576498975396004542}
   m_Father: {fileID: 8895942977742322623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10.349998, y: 0.75}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &408617552088266991
 CanvasRenderer:
@@ -186,21 +194,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
---- !u!114 &5100186550255483410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510852438771141068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76f2cbcf868d4df68af36700bd3b1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  Where: 0
-  WearSlot: 0
 --- !u!114 &1567735083758535980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +220,6 @@ GameObject:
   - component: {fileID: 4576498975396004542}
   - component: {fileID: 8373150960327410071}
   - component: {fileID: 3012717151081913148}
-  - component: {fileID: 101813253271149278}
   - component: {fileID: 1849032047496922091}
   m_Layer: 5
   m_Name: bairlal (1)
@@ -248,12 +240,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8895942977742322623}
+  m_Father: {fileID: 2814804771351280464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10.349998, y: 0.75}
-  m_SizeDelta: {x: 90, y: 90}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
+  m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8373150960327410071
 CanvasRenderer:
@@ -283,7 +275,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5e83d1229111e1943b3de9608968fffc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afee5d425d7c0894d8d6c2c48421e83a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -293,21 +285,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
---- !u!114 &101813253271149278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7521128366964693142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76f2cbcf868d4df68af36700bd3b1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Item: {fileID: 0}
-  Where: 0
-  WearSlot: 0
 --- !u!114 &1849032047496922091
 MonoBehaviour:
   m_ObjectHideFlags: 0
