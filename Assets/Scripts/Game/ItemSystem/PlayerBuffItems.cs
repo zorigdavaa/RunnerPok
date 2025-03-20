@@ -39,6 +39,17 @@ public class PlayerBuffItems : MonoBehaviour
         //     BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity);
         //     unEquipslots[i].AddItem(insObj);
         // }
+        foreach (var item in unEquipslots)
+        {
+            item.OnItemRemoved += ItemRemoved;
+            item.isUnequipSlot = true;
+        }
+    }
+
+    private void ItemRemoved(object sender, BaseItemUI e)
+    {
+        var casted = (UISlot)sender;
+        casted.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -152,7 +163,6 @@ public class PlayerBuffItems : MonoBehaviour
                         Debug.Log("Already Worn That kind of Item");
                     }
                 }
-
             }
         }
 

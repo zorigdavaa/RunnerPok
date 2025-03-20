@@ -12,6 +12,8 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
     public bool WearSlot = false;
     public Image WearSlotImage;
     public Sprite[] SlotSprites;
+    public EventHandler<BaseItemUI> OnItemRemoved;
+    public bool isUnequipSlot = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,7 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
 
     internal void AddItem(BaseItemUI baseItemUI)
     {
+        gameObject.SetActive(true);
         if (baseItemUI.currentSlot != null)
         {
             baseItemUI.currentSlot.RemoveItem();
@@ -56,11 +59,18 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
         {
             Item.UnEquipItem();
         }
-
+        if (isUnequipSlot)
+        {
+            Where = Item.data.Where;
+            SetImageUsingSlot();
+        }
     }
     internal void RemoveItem()
     {
+        OnItemRemoved?.Invoke(this, Item);
         Item = null;
+        // transform.SetSiblingIndex(transform.parent.childCount - 1);
+        // gameObject.SetActive(false);
     }
     [ContextMenu("Set Icon")]
     public void SetImageUsingSlot()
