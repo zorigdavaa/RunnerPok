@@ -95,11 +95,11 @@ public class ItemInfoCanvas : MonoBehaviour
         RefreshData(_ItemUI);
         if (_ItemUI.currentSlot.WearSlot)
         {
-            btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Remove";
+            btnWear.transform.GetComponentInChildren<TextMeshProUGUI>().text = "Remove";
         }
         else
         {
-            btnWear.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Wear";
+            btnWear.transform.GetComponentInChildren<TextMeshProUGUI>().text = "Wear";
         }
     }
 
