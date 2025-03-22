@@ -114,9 +114,9 @@ public class ItemInfoCanvas : MonoBehaviour
         for (int i = 0; i < dic.Count; i++)
         {
             Debug.Log("Key is " + dic[i].Key + " value is " + dic[i].Value);
-            Infos[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = dic[i].Value;
+            Infos[i].transform.GetComponentInChildren<TextMeshProUGUI>().text = dic[i].Value;
             Sprite sprite = GetSprite(dic[i].Key);
-            Infos[i].transform.GetChild(1).GetComponent<Image>().sprite = sprite;
+            Infos[i].transform.GetComponentInChildren<Image>().sprite = sprite;
             Infos[i].gameObject.SetActive(true);
         }
     }
