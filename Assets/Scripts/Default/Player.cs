@@ -232,6 +232,7 @@ public class Player : Character
             else
             {
                 shuriken = Instantiate(DefaultShuriken.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+                shuriken.SetDamage();
             }
             shuriken.Pool = Pool;
             return shuriken;

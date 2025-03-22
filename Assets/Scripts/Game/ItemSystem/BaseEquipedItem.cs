@@ -23,4 +23,9 @@ public class BaseEquipedItem : MonoBehaviour
         ItemInstance = handItem;
         DamageData = new DamageData(data.Element, handItem.GetDamdage());
     }
+    //Use it when there is no itemInstance this will use only baseDamage not lvl upgrade
+    internal void SetDamage()
+    {
+        DamageData = new DamageData(data.Element, data.BaseDamage);
+    }
 }
