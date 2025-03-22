@@ -42,7 +42,7 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
     }
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         Graphics = transform.GetChild(0);
         // Z.Player.OnStateChanged += OnPlayerStateChange;

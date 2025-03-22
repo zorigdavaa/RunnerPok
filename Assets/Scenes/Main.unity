@@ -4506,6 +4506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1402730820}
+  - component: {fileID: 1402730821}
   m_Layer: 0
   m_Name: Characters
   m_TagString: Untagged
@@ -4530,6 +4531,20 @@ Transform:
   - {fileID: 140703917}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402730821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402730819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9914ca60d3ec1e744b89e207d810f33a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CamPlayers:
+  - {fileID: 1454958103}
 --- !u!1 &1409673772 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2670322050184894090, guid: 5c7b55f261faf0d4d913816a31ec5e52, type: 3}
@@ -4702,6 +4717,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1454958103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 871253861119898957, guid: 704e6d07e3f8eed46bd58acae85203d7, type: 3}
+  m_PrefabInstance: {fileID: 1285078405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2cdb9f67247cc44b90e262bcca6812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1456237095
 GameObject:
   m_ObjectHideFlags: 0

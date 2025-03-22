@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireShuriken : Shuriken
+public class CamCharactersManager : MonoBehaviour
 {
+    public List<CamPlayer> CamPlayers;
     // Start is called before the first frame update
-    protected override void Start()
+    void Start()
     {
         
     }
@@ -13,6 +14,6 @@ public class FireShuriken : Shuriken
     // Update is called once per frame
     void Update()
     {
-        // base.Update();
+
     }
 }

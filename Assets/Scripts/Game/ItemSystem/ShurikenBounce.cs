@@ -14,7 +14,7 @@ public class ShurikenBounce : Shuriken
     List<Enemy> impactedEnemy = new List<Enemy>();
     public float FindDistance = 5;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         // firstImpacted = false;
         damageDataCopy = DamageData;
