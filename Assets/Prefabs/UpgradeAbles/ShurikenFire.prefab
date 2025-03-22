@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 6503654501801992267}
   - component: {fileID: -3457897165213599108}
   m_Layer: 0
-  m_Name: FireShuriken
+  m_Name: ShurikenFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

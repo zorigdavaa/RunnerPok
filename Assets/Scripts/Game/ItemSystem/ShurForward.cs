@@ -19,11 +19,11 @@ public class ShurForward : Shuriken
             transform.localPosition += transform.forward * speed * 3 * Time.deltaTime;
             // Pool.Release(this);
         }
-        // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
-        if (RightAcc < Mathf.Abs(SideMovement * 2))
-        {
-            RightAcc += Time.deltaTime;
-        }
-        transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
+        // // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
+        // if (RightAcc < Mathf.Abs(SideMovement * 2))
+        // {
+        //     RightAcc += Time.deltaTime;
+        // }
+        // transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
     }
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95c0284e4e62aff42afaaec225317cb1, type: 3}
-  m_Name: ShurikenData
+  m_Name: ShurBounce
   m_EditorClassIdentifier: 
-  pf: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
-  itemName: shuriken
-  Icon: {fileID: -3358933203163112000, guid: b05ec452725e99f439d95604debfed6a, type: 3}
+  pf: {fileID: 3727168934407258221, guid: 4cf787b8cc797f8429f5ada25d2a4631, type: 3}
+  itemName: BounceShur
+  Icon: {fileID: 4227053565995980960, guid: 7261f09847d319b479a032a61f199148, type: 3}
   Where: 1
-  Desc: basic shuriken
+  Desc: this item Bounces up to 5 times Near Enemies
   Info: 'damage={damage}
 
     speed={speed}
@@ -24,7 +24,7 @@ MonoBehaviour:
 '
   BaseDamage: 5
   BaseSpeed: 1
-  BaseRange: 3
+  BaseRange: 2
   AddDamage: 020000000400000006000000080000000a000000
   AddSpeed: 0000000000000000000000000000000000000000
   AddArmor:

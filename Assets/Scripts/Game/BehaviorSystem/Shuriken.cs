@@ -16,9 +16,6 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
 {
     public ObjectPool<Shuriken> Pool { get; set; }
     protected Coroutine AutoGotoPoolCor;
-
-    // int Damage = 5;
-    // protected DamageData damageData;
     protected Transform Graphics;
 
 
@@ -26,6 +23,7 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
     public void GetFrompool()
     {
         gameObject.SetActive(true);
+        transform.rotation = Quaternion.identity;
         // transform.position = Vector3.zero;
         AutoGotoPoolCor = StartCoroutine(LocalCoroutine());
         IEnumerator LocalCoroutine()
@@ -41,14 +39,6 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
     {
         gameObject.SetActive(false);
         transform.position = Vector3.zero;
-        SideMovement = 0;
-        RightAcc = 0;
-        // StartCoroutine(LocalCoroutine());
-        // IEnumerator LocalCoroutine()
-        // {
-        //     yield return new WaitForSeconds(wait);
-
-        // }
     }
 
     // Start is called before the first frame update
@@ -58,9 +48,6 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
         // Z.Player.OnStateChanged += OnPlayerStateChange;
     }
 
-
-    public float SideMovement;
-    protected float RightAcc = 0;
     protected float speed = 15;
     // Update is called once per frame
     void Update()
@@ -74,19 +61,12 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
         if (Z.Player.GetState() == PlayerState.Fight)
         {
 
-            transform.localPosition += Vector3.forward * speed * Time.deltaTime;
+            transform.localPosition += transform.forward * speed * Time.deltaTime;
         }
         else
         {
-            transform.localPosition += Vector3.forward * speed * 3 * Time.deltaTime;
-            // Pool.Release(this);
+            transform.localPosition += transform.forward * speed * 3 * Time.deltaTime;
         }
-        // transform.localPosition += Vector3.right * SideMovement * Time.deltaTime;
-        if (RightAcc < Mathf.Abs(SideMovement * 2))
-        {
-            RightAcc += Time.deltaTime;
-        }
-        transform.localPosition += Vector3.right * SideMovement * RightAcc * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,5 +89,10 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
                 AutoGotoPoolCor = null;
             }
         }
+    }
+
+    public virtual void OnShoot(Player player)
+    {
+
     }
 }

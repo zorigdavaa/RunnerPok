@@ -28,6 +28,7 @@ public class Player : Character
     int OldCameraIndex = -1;
     CinemachineVirtualCamera currentCamera;
     PlayerState State = PlayerState.None;
+    public ItemData DefaultShuriken;
 
     #region BearintItems
     private ItemInstance _handItem;
@@ -221,10 +222,19 @@ public class Player : Character
     {
         Pool = new ObjectPool<Shuriken>(() =>
         {
-            Shuriken spear = Instantiate(HandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
-            spear.Pool = Pool;
-            spear.SetInstance(HandItem);
-            return spear;
+            Shuriken shuriken;
+            if (HandItem != null)
+            {
+
+                shuriken = Instantiate(HandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+                shuriken.SetInstance(HandItem);
+            }
+            else
+            {
+                shuriken = Instantiate(DefaultShuriken.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+            }
+            shuriken.Pool = Pool;
+            return shuriken;
             // return new GameObject();
         }, (s) =>
         {
@@ -290,23 +300,8 @@ public class Player : Character
     private void AttackProjectile(object sender, EventArgs e)
     {
         Shuriken shuriken = Pool.Get();
-        if (Physics.SphereCast(transform.position + Vector3.up, 2f, transform.forward, out RaycastHit hit, 20, 1 << 6))
-        {
-            Vector3 point = new Vector3(transform.position.x, hit.transform.position.y, hit.transform.position.z);
-            float distance = Vector3.Distance(point, hit.transform.position);
+        shuriken.OnShoot(this);
 
-            Vector3 dirToNearest = transform.position - hit.transform.position;
-            float half = distance * 0.7f;
-            if (Vector3.Dot(dirToNearest, transform.right) > 0) // right
-
-            {
-                shuriken.SideMovement = -half;
-            }
-            else
-            {
-                shuriken.SideMovement = half;
-            }
-        }
         OnShoot?.Invoke(Pool, shuriken);
     }
     public void ChangeState(PlayerState _state)
@@ -375,13 +370,22 @@ public class Player : Character
     }
     public void StartThrow(bool val = true)
     {
+        // if (HandItem == null)
+        // {
+        //     return;
+        // }
+        animationController.RightHandAttack(val);
+        // Debug.Log("Hand speed " + HandItem.data.BaseSpeed);
+        ItemData data;
         if (HandItem)
         {
-            animationController.RightHandAttack(val);
-            // Debug.Log("Hand speed " + HandItem.data.BaseSpeed);
-            ItemData casted = (ItemData)HandItem.data;
-            animationController.SetHandSpeed(casted.BaseSpeed + Stats.AttackSpeed.GetValue());
+            data = (ItemData)HandItem.data;
         }
+        else
+        {
+            data = DefaultShuriken;
+        }
+        animationController.SetHandSpeed(data.BaseSpeed + Stats.AttackSpeed.GetValue());
     }
 
     private void OnGameOver(object sender, EventArgs e)

@@ -95,7 +95,8 @@ public class PlayerBuffItems : MonoBehaviour
     {
         SlotSave defaultOne = new SlotSave();
 
-        defaultOne.EquipDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[1].itemName));
+        // defaultOne.EquipDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[1].itemName));
+        defaultOne.EquipDataNew.Add(new ItemSaveData());
         defaultOne.EquipDataNew.Add(new ItemSaveData());
         defaultOne.EquipDataNew.Add(new ItemSaveData());
         defaultOne.EquipDataNew.Add(new ItemSaveData());

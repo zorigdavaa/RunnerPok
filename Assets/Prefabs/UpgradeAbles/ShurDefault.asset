@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c0284e4e62aff42afaaec225317cb1, type: 3}
+  m_Name: ShurDefault
+  m_EditorClassIdentifier: 
+  pf: {fileID: 7901734791091592274, guid: 17064762389015a44b6fef87e074c9af, type: 3}
+  itemName: shuriken
+  Icon: {fileID: -3358933203163112000, guid: b05ec452725e99f439d95604debfed6a, type: 3}
+  Where: 1
+  Desc: basic shuriken
+  Info: 'damage={damage}
+
+    speed={speed}
+
+'
+  BaseDamage: 5
+  BaseSpeed: 1
+  BaseRange: 3
+  AddDamage: 020000000400000006000000080000000a000000
+  AddSpeed: 0000000000000000000000000000000000000000
+  AddArmor:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  AddHealth:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  damageData:
+    damage: 5
+    Type: 0

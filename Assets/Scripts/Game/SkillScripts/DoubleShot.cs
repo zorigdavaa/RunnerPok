@@ -24,9 +24,11 @@ public class DoubleShot : BaseSkill
         Shuriken first = (Shuriken)e;
         var pool = (ObjectPool<Shuriken>)sender;
         first.transform.position += Vector3.right * 0.5f;
+        first.transform.rotation = Quaternion.LookRotation(Z.Player.transform.forward + Vector3.right * 0.1f);
         Shuriken second = pool.Get();
-        first.SideMovement = 0.2f;
-        second.SideMovement = -first.SideMovement;
+        second.transform.rotation = Quaternion.LookRotation(Z.Player.transform.forward + Vector3.left * 0.1f);
+        // first.SideMovement = 0.2f;
+        // second.SideMovement = -first.SideMovement;
         second.transform.position -= Vector3.right * 0.5f;
     }
 }

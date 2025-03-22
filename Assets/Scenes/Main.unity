@@ -2413,6 +2413,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 129918962}
     - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: DefaultShuriken
+      value: 
+      objectReference: {fileID: 11400000, guid: 860ce0b918cc0453b882cc4f386e16b2, type: 2}
+    - target: {fileID: 408932022187032878, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: ForwardTransForm
       value: 
       objectReference: {fileID: 1978379639}
