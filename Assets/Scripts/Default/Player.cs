@@ -10,7 +10,7 @@ using ZPackage.Utility;
 using System.Linq;
 using Cinemachine;
 
-public class Player : Character
+public class Player : Character, IItemEquipper
 {
     public PlayerMovement Movement;
     [SerializeField] AnimationController animationController;
@@ -89,6 +89,19 @@ public class Player : Character
         set
         {
             _chestItem = value;
+            // if (_chestItem != null)
+            // {
+            //     _chestItem.Wear(this);
+            // }
+        }
+    }
+    private ItemInstance _neckLace;
+    public ItemInstance Necklace
+    {
+        get { return _neckLace; }
+        set
+        {
+            _neckLace = value;
             // if (_chestItem != null)
             // {
             //     _chestItem.Wear(this);

@@ -6,7 +6,7 @@ using ZPackage;
 public class HeadItemInstance : ItemInstance
 {
     public Vector3 wearPos = Vector3.up * 2;
-    public override void EquipItem()
+    public override void EquipItem(IItemEquipper itemEquipper = null)
     {
         GameObject insOBj = Instantiate(data.pf, Vector3.zero, Quaternion.identity, Z.Player.head);
         insOBj.transform.localPosition = wearPos;
@@ -14,7 +14,7 @@ public class HeadItemInstance : ItemInstance
         insOBj.GetComponent<BaseEquipedItem>().ItemInstance = this;
         base.EquipItem();
     }
-    public override void UnEquipItem()
+    public override void UnEquipItem(IItemEquipper itemEquipper = null)
     {
         if (Z.Player.HeadObj)
         {

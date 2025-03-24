@@ -6,7 +6,7 @@ using ZPackage;
 public class ChestItemInstance : ItemInstance
 {
     public Vector3 wearPos = Vector3.up * 2;
-    public override void EquipItem()
+    public override void EquipItem(IItemEquipper itemEquipper)
     {
         GameObject insOBj = Instantiate(data.pf, Vector3.zero, Quaternion.identity, Z.Player.chest);
         insOBj.transform.localPosition = wearPos;

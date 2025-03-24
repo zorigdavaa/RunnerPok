@@ -29,50 +29,58 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         }
     }
 
-    public virtual void EquipItem()
+    public virtual void EquipItem(IItemEquipper character = null)
     {
+        if (character == null)
+        {
+            character = Z.Player;
+        }
         // Debug.Log("Eqiopped " + data.name);
         switch (data.Where)
         {
-            case WhereSlot.Hand: Z.Player.HandItem = (ItemInstance)this; break;
+            case WhereSlot.Hand: character.HandItem = (ItemInstance)this; break;
             case WhereSlot.OtherHand:
                 if (this is OffHandItemInstance castData)
                 {
-                    Z.Player.OffHandItem = castData;
+                    character.OffHandItem = castData;
                 }
                 break;
             case WhereSlot.Chest:
-                Z.Player.ChestItem = (ChestItemInstance)this;
+                character.ChestItem = (ChestItemInstance)this;
                 break;
             case WhereSlot.Foot:
-                Z.Player.FootItem = (FootItemInstance)this;
+                character.FootItem = (FootItemInstance)this;
                 break;
             case WhereSlot.Head:
-                Z.Player.HeadItem = (HeadItemInstance)this;
+                character.HeadItem = (HeadItemInstance)this;
                 break;
             default: break;
         }
     }
-    public virtual void UnEquipItem()
+    public virtual void UnEquipItem(IItemEquipper Character = null)
     {
+        if (Character == null)
+        {
+            Character = Z.Player;
+        }
         // Debug.Log("Unequiped " + data.name);
         switch (data.Where)
         {
-            case WhereSlot.Hand: Z.Player.HandItem = null; break;
+            case WhereSlot.Hand: Character.HandItem = null; break;
             case WhereSlot.OtherHand:
                 if (this is OffHandItemInstance castData)
                 {
-                    Z.Player.OffHandItem = null;
+                    Character.OffHandItem = null;
                 }
                 break;
             case WhereSlot.Chest:
-                Z.Player.ChestItem = null;
+                Character.ChestItem = null;
                 break;
             case WhereSlot.Foot:
-                Z.Player.FootItem = null;
+                Character.FootItem = null;
                 break;
             case WhereSlot.Head:
-                Z.Player.HeadItem = null;
+                Character.HeadItem = null;
                 break;
             default: break;
         }

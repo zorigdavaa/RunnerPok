@@ -21,6 +21,8 @@ public class PlayerBuffItems : MonoBehaviour
         }
     }
 
+    public static Action<ItemInstance> OnPlayerEquipItem { get; internal set; }
+
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
     [SerializeField] List<BaseItemData> buffItemDatas;
