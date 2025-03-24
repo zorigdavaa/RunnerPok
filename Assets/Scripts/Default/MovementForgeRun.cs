@@ -11,12 +11,12 @@ public class MovementForgeRun : Mb
     [SerializeField] float MaxSpeed = 10;
     [SerializeField] Transform targetPos;
     [SerializeField] Vector3? NoLookTaget;
-    private Rigidbody rb;
+    // private Rigidbody rb;
     public bool isGrounded;
     public Transform playerParent;
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        // rb = GetComponent<Rigidbody>();
     }
 
     // void FixedUpdate()
