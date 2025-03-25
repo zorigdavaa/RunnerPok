@@ -11,7 +11,6 @@ public class FootItemInstance : ItemInstance
     public Vector3 RotLeft = Vector3.up * 0.1f;
     public override void EquipItem(IItemEquipper itemEquipper)
     {
-
         GameObject insOBj = Instantiate(data.pf, Vector3.zero, Quaternion.Euler(Rot), Z.Player.rightFoot);
         insOBj.transform.localPosition = RightFootPos;
         Z.Player.RightFootObj = insOBj;

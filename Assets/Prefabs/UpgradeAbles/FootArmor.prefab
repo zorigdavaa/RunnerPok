@@ -124,7 +124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7886372557594375400}
-  - component: {fileID: 4022441081142037880}
   m_Layer: 0
   m_Name: FootArmor
   m_TagString: Untagged
@@ -148,16 +147,3 @@ Transform:
   - {fileID: 1185111749043179593}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4022441081142037880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4856505954130395814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4578427bd49dd44c299bbda0c704b0dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 342f24713639d3a4da6bfa8292835b27, type: 2}

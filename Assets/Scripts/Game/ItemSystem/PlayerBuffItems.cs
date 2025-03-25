@@ -21,7 +21,7 @@ public class PlayerBuffItems : MonoBehaviour
         }
     }
 
-    public static Action<ItemInstance> OnPlayerEquipItem { get; internal set; }
+    public static Action<BaseItemUI> OnPlayerEquipItem;
 
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
@@ -41,17 +41,29 @@ public class PlayerBuffItems : MonoBehaviour
         //     BaseItemUI insObj = Instantiate(buffItemDatas[i].pfUI, transform.position, Quaternion.identity);
         //     unEquipslots[i].AddItem(insObj);
         // }
+        foreach (var item in equipSlots)
+        {
+            item.OnItemChanged += OnSlotObjChanged;
+            item.isUnequipSlot = false;
+        }
         foreach (var item in unEquipslots)
         {
-            item.OnItemRemoved += ItemRemoved;
+            item.OnItemChanged += OnSlotObjChanged;
             item.isUnequipSlot = true;
         }
     }
 
-    private void ItemRemoved(object sender, BaseItemUI e)
+    private void OnSlotObjChanged(object sender, BaseItemUI e)
     {
         var casted = (UISlot)sender;
-        casted.gameObject.SetActive(false);
+        if (casted.isUnequipSlot && e == null)
+        {
+            casted.gameObject.SetActive(false);
+        }
+        else if (!casted.isUnequipSlot && e)
+        {
+            OnPlayerEquipItem?.Invoke(e);
+        }
     }
 
     // Update is called once per frame

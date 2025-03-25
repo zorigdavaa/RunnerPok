@@ -21,8 +21,8 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
 
     }
 
-    public void WearAndShowItem(ItemInstance item)
+    public void WearAndShowItem(BaseItemUI item)
     {
-        // item.EquipItem(this);
+        item.EquipItem(this);
     }
 }
