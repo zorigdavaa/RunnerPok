@@ -21,7 +21,7 @@ public class PlayerBuffItems : MonoBehaviour
         }
     }
 
-    public static Action<BaseItemUI> OnPlayerEquipItem;
+    public static Action<UISlot, BaseItemUI> OnSlotChanged;
 
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
@@ -60,10 +60,10 @@ public class PlayerBuffItems : MonoBehaviour
         {
             casted.gameObject.SetActive(false);
         }
-        else if (!casted.isUnequipSlot && e)
-        {
-            OnPlayerEquipItem?.Invoke(e);
-        }
+        // else if (!casted.isUnequipSlot && e)
+        // {
+        // }
+        OnSlotChanged?.Invoke(casted, e);
     }
 
     // Update is called once per frame

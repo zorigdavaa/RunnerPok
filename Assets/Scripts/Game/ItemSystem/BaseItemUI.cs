@@ -45,7 +45,8 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     }
     public virtual List<GameObject> InstantiateNeededItem(IItemEquipper itemEquipper = null)
     {
-        return null;
+        Debug.Log("Base Instantiate Called Doing Nothing");
+        return new List<GameObject>();
     }
 
     internal string GetLevel()

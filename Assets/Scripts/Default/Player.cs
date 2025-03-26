@@ -51,7 +51,7 @@ public class Player : Character, IItemEquipper
         data.InstantiatedObjects = item.InstantiateNeededItem(this);
         equippedItems[slot] = data;
 
-        Debug.Log($"Equipped {item.data.name} in {slot}");
+        // Debug.Log($"Equipped {item.data.name} in {slot}");
     }
 
     public void UnequipItem(BaseItemUI item)
@@ -72,7 +72,7 @@ public class Player : Character, IItemEquipper
             Destroy(entry);
 
 
-            Debug.Log($"Unequipped {item.data.name} from {slot}");
+            // Debug.Log($"Unequipped {item.data.name} from {slot}");
         }
     }
 

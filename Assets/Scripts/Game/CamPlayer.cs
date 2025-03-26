@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZPackage;
 
 public class CamPlayer : MonoBehaviour, IItemEquipper
 {
@@ -16,13 +17,23 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
     void Start()
     {
         animationController.SetSpeed(1);
-        PlayerBuffItems.OnPlayerEquipItem += WearAndShowItem;
+        PlayerBuffItems.OnSlotChanged += WearAndShowItem;
 
     }
 
-    public void WearAndShowItem(BaseItemUI item)
+    public void WearAndShowItem(UISlot uISlot, BaseItemUI item)
     {
-        item.EquipItem(this);
+        Debug.Log("Wear and Show Called");
+        if (uISlot.isUnequipSlot && item)
+        {
+            // item.UnEquipItem(this);
+            UnequipItem(item);
+        }
+        else if (!uISlot.isUnequipSlot && item)
+        {
+            // item.EquipItem(this);
+            EquipItem(item);
+        }
     }
 
     public Transform GetRightFoot()
@@ -63,6 +74,10 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
         data.item = item;
         data.InstantiatedObjects = item.InstantiateNeededItem(this);
         equippedItems[slot] = data;
+        foreach (var insObj in data.InstantiatedObjects)
+        {
+            Z.SetLayerRecursively(insObj, gameObject.layer);
+        }
 
         Debug.Log($"Equipped {item.data.name} in {slot}");
     }
