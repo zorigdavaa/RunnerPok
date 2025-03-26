@@ -31,89 +31,52 @@ public class Player : Character, IItemEquipper
     public ItemData DefaultShuriken;
 
     #region BearintItems
-    Dictionary<BaseItemUI, EquipData> EquippedItems = new Dictionary<BaseItemUI, EquipData>();
-    private ItemInstance _handItem;
-    public ItemInstance HandItem
+    private Dictionary<WhereSlot, (BaseItemUI item, EquipData equipData)> equippedItems = new Dictionary<WhereSlot, (BaseItemUI, EquipData)>();
+
+    public void EquipItem(BaseItemUI item)
     {
-        get { return _handItem; }
-        set
+        if (item == null) return;
+
+        WhereSlot slot = item.data.Where;
+
+        // Unequip the existing item if there's one
+        if (equippedItems.TryGetValue(slot, out var oldEntry))
         {
-            RefreshDic(value, _handItem);
-            _handItem = value;
+            UnequipItem(oldEntry.item);
         }
-    }
-    private OffHandItemInstance _offHandItem;
-    public OffHandItemInstance OffHandItem
-    {
-        get { return _offHandItem; }
-        set
-        {
-            RefreshDic(value, _offHandItem);
-            _offHandItem = value;
-        }
-    }
-    private HeadItemInstance _headItem;
-    public HeadItemInstance HeadItem
-    {
-        get { return _headItem; }
-        set
-        {
-            RefreshDic(value, _headItem);
-            _headItem = value;
-        }
+
+        // Instantiate and equip the new item
+        EquipData data = item.InstantiateNeededItem(this);
+        equippedItems[slot] = (item, data);
+
+        Debug.Log($"Equipped {item.data.name} in {slot}");
     }
 
-    private FootItemInstance _FootItem;
-    public FootItemInstance FootItem
+    public void UnequipItem(BaseItemUI item)
     {
-        get { return _FootItem; }
-        set
-        {
-            RefreshDic(value, _FootItem);
-            _FootItem = value;
-        }
-    }
-    private ChestItemInstance _chestItem;
-    public ChestItemInstance ChestItem
-    {
-        get { return _chestItem; }
-        set
-        {
-            RefreshDic(value, _chestItem);
-            _chestItem = value;
-        }
-    }
-    private ItemInstance _neckLace;
-    public ItemInstance Necklace
-    {
-        get { return _neckLace; }
-        set
-        {
-            RefreshDic(value, _neckLace);
-            _neckLace = value;
-        }
-    }
-    private void RefreshDic(BaseItemUI newItem, BaseItemUI oldItem)
-    {
-        if (oldItem != null && EquippedItems.ContainsKey(oldItem))
-        {
-            EquipData data = EquippedItems[oldItem];
-            EquippedItems.Remove(oldItem);
+        if (item == null) return;
 
-            if (data != null)
+        WhereSlot slot = item.data.Where;
+        if (equippedItems.TryGetValue(slot, out var entry))
+        {
+            equippedItems.Remove(slot);
+
+            // Destroy instantiated objects
+            if (entry.equipData != null)
             {
-                foreach (var item in data.InstantiatedObjects)
+                foreach (var obj in entry.equipData.InstantiatedObjects)
                 {
-                    Destroy(item);
+                    Destroy(obj);
                 }
             }
-        }
 
-        if (newItem != null)
-        {
-            EquipData data = newItem.InstantiateNeededItem(this);
-            EquippedItems[newItem] = data;
+            Debug.Log($"Unequipped {item.data.name} from {slot}");
         }
+    }
+
+    public BaseItemUI GetEquippedItem(WhereSlot slot)
+    {
+        return equippedItems.TryGetValue(slot, out var entry) ? entry.item : null;
     }
     #endregion
 
@@ -243,11 +206,12 @@ public class Player : Character, IItemEquipper
         Pool = new ObjectPool<Shuriken>(() =>
         {
             Shuriken shuriken;
-            if (HandItem != null)
+
+            if (GetEquippedItem(WhereSlot.Hand))
             {
 
-                shuriken = Instantiate(HandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
-                shuriken.SetInstance(HandItem);
+                shuriken = Instantiate(GetEquippedItem(WhereSlot.Hand).data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+                shuriken.SetInstance(GetEquippedItem(WhereSlot.Hand));
             }
             else
             {
@@ -272,9 +236,9 @@ public class Player : Character, IItemEquipper
     {
         OffHandPool = new ObjectPool<Shuriken>(() =>
         {
-            Shuriken spear = Instantiate(OffHandItem.data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+            Shuriken spear = Instantiate(GetEquippedItem(WhereSlot.OtherHand).data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.Pool = OffHandPool;
-            spear.SetInstance(OffHandItem);
+            spear.SetInstance(GetEquippedItem(WhereSlot.OtherHand));
             return spear;
             // return new GameObject();
         }, (s) =>
@@ -306,9 +270,10 @@ public class Player : Character, IItemEquipper
 
     private void SubscribeWeaponEvents()
     {
-        if (OffHandItem)
+        if (GetEquippedItem(WhereSlot.OtherHand))
         {
-            OffHandItem.OnOffHandItem += OnOffhandItemInvoke;
+            OffHandItemInstance offHandItemInstance = (OffHandItemInstance)GetEquippedItem(WhereSlot.OtherHand);
+            offHandItemInstance.OnOffHandItem += OnOffhandItemInvoke;
         }
     }
 
@@ -356,6 +321,7 @@ public class Player : Character, IItemEquipper
                 Movement.SetControlType(ZControlType.FourSide);
                 Movement.ChildModelRotZero();
                 UpdateAction = FightUpdate;
+                OffHandItem = (OffHandItemInstance)GetEquippedItem(WhereSlot.OtherHand);
             }
             else if (_state == PlayerState.Collect)
             {
@@ -385,6 +351,8 @@ public class Player : Character, IItemEquipper
             StartThrow(false);
         }
     }
+    OffHandItemInstance OffHandItem;
+
     public void FightUpdate()
     {
         OffHandItem?.Tick();
@@ -398,9 +366,9 @@ public class Player : Character, IItemEquipper
         animationController.RightHandAttack(val);
         // Debug.Log("Hand speed " + HandItem.data.BaseSpeed);
         ItemData data;
-        if (HandItem)
+        if (GetEquippedItem(WhereSlot.Hand))
         {
-            data = (ItemData)HandItem.data;
+            data = (ItemData)GetEquippedItem(WhereSlot.Hand).data;
         }
         else
         {

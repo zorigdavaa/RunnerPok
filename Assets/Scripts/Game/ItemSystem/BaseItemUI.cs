@@ -31,31 +31,9 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
 
     public virtual void EquipItem(IItemEquipper character = null)
     {
-        if (character == null)
-        {
-            character = Z.Player;
-        }
-        // Debug.Log("Eqiopped " + data.name);
-        switch (data.Where)
-        {
-            case WhereSlot.Hand: character.HandItem = (ItemInstance)this; break;
-            case WhereSlot.OtherHand:
-                if (this is OffHandItemInstance castData)
-                {
-                    character.OffHandItem = castData;
-                }
-                break;
-            case WhereSlot.Chest:
-                character.ChestItem = (ChestItemInstance)this;
-                break;
-            case WhereSlot.Foot:
-                character.FootItem = (FootItemInstance)this;
-                break;
-            case WhereSlot.Head:
-                character.HeadItem = (HeadItemInstance)this;
-                break;
-            default: break;
-        }
+        if (character == null) character = Z.Player;
+
+        character.EquipItem(this);
     }
     public virtual void UnEquipItem(IItemEquipper Character = null)
     {
@@ -63,27 +41,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         {
             Character = Z.Player;
         }
-        // Debug.Log("Unequiped " + data.name);
-        switch (data.Where)
-        {
-            case WhereSlot.Hand: Character.HandItem = null; break;
-            case WhereSlot.OtherHand:
-                if (this is OffHandItemInstance castData)
-                {
-                    Character.OffHandItem = null;
-                }
-                break;
-            case WhereSlot.Chest:
-                Character.ChestItem = null;
-                break;
-            case WhereSlot.Foot:
-                Character.FootItem = null;
-                break;
-            case WhereSlot.Head:
-                Character.HeadItem = null;
-                break;
-            default: break;
-        }
+        Character.UnequipItem(this);
     }
     public virtual EquipData InstantiateNeededItem(IItemEquipper itemEquipper = null)
     {
