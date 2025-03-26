@@ -10,4 +10,9 @@ public interface IItemEquipper
     public FootItemInstance FootItem { get; set; }
     public ChestItemInstance ChestItem { get; set; }
     public ItemInstance Necklace { get; set; }
+    public Transform GetRightFoot();
+    public Transform GetLeftFoot();
+    public Transform GetHeadTransform();
+    public Transform GetChest();
+
 }

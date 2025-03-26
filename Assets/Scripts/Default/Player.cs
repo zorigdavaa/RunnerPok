@@ -18,10 +18,10 @@ public class Player : Character, IItemEquipper
     CameraController cameraController;
     SoundManager soundManager;
     UIBar bar;
-    public Transform rightFoot;
-    public Transform leftFoot;
-    public Transform head;
-    public Transform chest;
+    [SerializeField] Transform rightFoot;
+    [SerializeField] Transform leftFoot;
+    [SerializeField] Transform head;
+    [SerializeField] Transform chest;
     // public Shuriken Shuriken;
     public List<CinemachineVirtualCamera> cameras;
     int currentCameraIndex = 0;
@@ -451,6 +451,26 @@ public class Player : Character, IItemEquipper
             skills.Remove(skill);
             // skill.UnEquip();
         }
+    }
+
+    public Transform GetRightFoot()
+    {
+        return rightFoot;
+    }
+
+    public Transform GetLeftFoot()
+    {
+        return leftFoot;
+    }
+
+    public Transform GetHeadTransform()
+    {
+        return head;
+    }
+
+    public Transform GetChest()
+    {
+        return chest;
     }
 }
 

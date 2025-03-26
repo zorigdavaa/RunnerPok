@@ -13,6 +13,11 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
     public ChestItemInstance ChestItem { get; set; }
     public ItemInstance Necklace { get; set; }
 
+    [SerializeField] Transform rightFoot;
+    [SerializeField] Transform leftFoot;
+    [SerializeField] Transform head;
+    [SerializeField] Transform chest;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +29,25 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
     public void WearAndShowItem(BaseItemUI item)
     {
         item.EquipItem(this);
+    }
+
+    public Transform GetRightFoot()
+    {
+        return rightFoot;
+    }
+
+    public Transform GetLeftFoot()
+    {
+        return leftFoot;
+    }
+
+    public Transform GetHeadTransform()
+    {
+        return head;
+    }
+
+    public Transform GetChest()
+    {
+        return chest;
     }
 }

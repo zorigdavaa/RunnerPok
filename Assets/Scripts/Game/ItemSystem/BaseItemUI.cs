@@ -29,7 +29,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         }
     }
 
-    public virtual void EquipItem(IItemEquipper character = null)
+    public virtual EquipData EquipItem(IItemEquipper character = null)
     {
         if (character == null)
         {
@@ -56,6 +56,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
                 break;
             default: break;
         }
+        return null;
     }
     public virtual void UnEquipItem(IItemEquipper Character = null)
     {
