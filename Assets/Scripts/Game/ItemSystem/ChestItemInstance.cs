@@ -6,7 +6,7 @@ using ZPackage;
 public class ChestItemInstance : ItemInstance
 {
     public Vector3 wearPos = Vector3.up * 2;
-    public override EquipData InstantiateNeededItem(IItemEquipper itemEquipper = null)
+    public override List<GameObject> InstantiateNeededItem(IItemEquipper itemEquipper = null)
     {
         if (itemEquipper == null)
         {
@@ -14,8 +14,8 @@ public class ChestItemInstance : ItemInstance
         }
         GameObject insOBj = Instantiate(data.pf, Vector3.zero, Quaternion.identity, itemEquipper.GetChest());
         insOBj.transform.localPosition = wearPos;
-        EquipData equipData = new EquipData();
-        equipData.InstantiatedObjects.Add(insOBj);
-        return equipData;
+        List<GameObject> InsObjects = new List<GameObject>();
+        InsObjects.Add(insOBj);
+        return InsObjects;
     }
 }

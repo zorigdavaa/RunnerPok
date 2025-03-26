@@ -44,7 +44,7 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
     {
         return chest;
     }
-    private Dictionary<WhereSlot, (BaseItemUI item, EquipData equipData)> equippedItems = new Dictionary<WhereSlot, (BaseItemUI, EquipData)>();
+    private Dictionary<WhereSlot, EquipData> equippedItems = new Dictionary<WhereSlot, EquipData>();
 
     public void EquipItem(BaseItemUI item)
     {
@@ -59,8 +59,10 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
         }
 
         // Instantiate and equip the new item
-        EquipData data = item.InstantiateNeededItem(this);
-        equippedItems[slot] = (item, data);
+        EquipData data = new EquipData();
+        data.item = item;
+        data.InstantiatedObjects = item.InstantiateNeededItem(this);
+        equippedItems[slot] = data;
 
         Debug.Log($"Equipped {item.data.name} in {slot}");
     }
@@ -75,13 +77,12 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
             equippedItems.Remove(slot);
 
             // Destroy instantiated objects
-            if (entry.equipData != null)
+
+            foreach (var obj in entry.InstantiatedObjects)
             {
-                foreach (var obj in entry.equipData.InstantiatedObjects)
-                {
-                    Destroy(obj);
-                }
+                Destroy(obj);
             }
+
 
             Debug.Log($"Unequipped {item.data.name} from {slot}");
         }

@@ -43,7 +43,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         }
         Character.UnequipItem(this);
     }
-    public virtual EquipData InstantiateNeededItem(IItemEquipper itemEquipper = null)
+    public virtual List<GameObject> InstantiateNeededItem(IItemEquipper itemEquipper = null)
     {
         return null;
     }
