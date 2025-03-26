@@ -29,7 +29,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         }
     }
 
-    public virtual EquipData EquipItem(IItemEquipper character = null)
+    public virtual void EquipItem(IItemEquipper character = null)
     {
         if (character == null)
         {
@@ -56,7 +56,6 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
                 break;
             default: break;
         }
-        return null;
     }
     public virtual void UnEquipItem(IItemEquipper Character = null)
     {
@@ -85,6 +84,10 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
                 break;
             default: break;
         }
+    }
+    public virtual EquipData InstantiateNeededItem(IItemEquipper itemEquipper = null)
+    {
+        return null;
     }
 
     internal string GetLevel()
@@ -158,5 +161,10 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         //     };
         // });
         // return description;
+    }
+
+    public EquipData InstantiateImtems(IItemEquipper player)
+    {
+        throw new NotImplementedException();
     }
 }

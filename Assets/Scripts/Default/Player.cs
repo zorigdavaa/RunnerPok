@@ -31,54 +31,45 @@ public class Player : Character, IItemEquipper
     public ItemData DefaultShuriken;
 
     #region BearintItems
+    Dictionary<BaseItemUI, EquipData> EquippedItems = new Dictionary<BaseItemUI, EquipData>();
     private ItemInstance _handItem;
     public ItemInstance HandItem
     {
         get { return _handItem; }
-        set { _handItem = value; }
+        set
+        {
+            RefreshDic(value, _handItem);
+            _handItem = value;
+        }
     }
     private OffHandItemInstance _offHandItem;
     public OffHandItemInstance OffHandItem
     {
         get { return _offHandItem; }
-        set { _offHandItem = value; }
+        set
+        {
+            RefreshDic(value, _offHandItem);
+            _offHandItem = value;
+        }
     }
-    public GameObject HeadObj;
     private HeadItemInstance _headItem;
     public HeadItemInstance HeadItem
     {
         get { return _headItem; }
         set
         {
+            RefreshDic(value, _headItem);
             _headItem = value;
-            // if (_headItem != null)
-            // {
-            //     _headItem.Wear(this);
-            // }
         }
     }
-    public GameObject RightFootObj;
-    public GameObject LeftFootObj;
+
     private FootItemInstance _FootItem;
     public FootItemInstance FootItem
     {
         get { return _FootItem; }
         set
         {
-            // if (_FootItem != value)
-            // {
-            //     if (value != null)
-            //     {
-            //         value.Wear(this);
-            //     }
-            //     else
-            //     {
-            //         if (_FootItem)
-            //         {
-            //             _FootItem.Unwear(this);
-            //         }
-            //     }
-            // }
+            RefreshDic(value, _FootItem);
             _FootItem = value;
         }
     }
@@ -88,11 +79,8 @@ public class Player : Character, IItemEquipper
         get { return _chestItem; }
         set
         {
+            RefreshDic(value, _chestItem);
             _chestItem = value;
-            // if (_chestItem != null)
-            // {
-            //     _chestItem.Wear(this);
-            // }
         }
     }
     private ItemInstance _neckLace;
@@ -101,11 +89,30 @@ public class Player : Character, IItemEquipper
         get { return _neckLace; }
         set
         {
+            RefreshDic(value, _neckLace);
             _neckLace = value;
-            // if (_chestItem != null)
-            // {
-            //     _chestItem.Wear(this);
-            // }
+        }
+    }
+    private void RefreshDic(BaseItemUI newItem, BaseItemUI oldItem)
+    {
+        if (oldItem != null && EquippedItems.ContainsKey(oldItem))
+        {
+            EquipData data = EquippedItems[oldItem];
+            EquippedItems.Remove(oldItem);
+
+            if (data != null)
+            {
+                foreach (var item in data.InstantiatedObjects)
+                {
+                    Destroy(item);
+                }
+            }
+        }
+
+        if (newItem != null)
+        {
+            EquipData data = newItem.InstantiateNeededItem(this);
+            EquippedItems[newItem] = data;
         }
     }
     #endregion
@@ -472,6 +479,7 @@ public class Player : Character, IItemEquipper
     {
         return chest;
     }
+
 }
 
 public enum PlayerState

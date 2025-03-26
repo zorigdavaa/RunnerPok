@@ -63,7 +63,7 @@ public class ItemInfoCanvas : MonoBehaviour
 
     private void WearorRemove()
     {
-        if (!itemUI.currentSlot.WearSlot)
+        if (itemUI.currentSlot.isUnequipSlot)
         {
             var freeSlot = PlayerBuffItems.Instance.GetByTypeFromEquipedFree(itemUI.data.Where);
             if (freeSlot)
@@ -93,13 +93,13 @@ public class ItemInfoCanvas : MonoBehaviour
         gameObject.SetActive(true);
         itemUI = _ItemUI;
         RefreshData(_ItemUI);
-        if (_ItemUI.currentSlot.WearSlot)
+        if (_ItemUI.currentSlot.isUnequipSlot)
         {
-            btnWear.transform.GetComponentInChildren<TextMeshProUGUI>().text = "Remove";
+            btnWear.transform.GetComponentInChildren<TextMeshProUGUI>().text = "Wear";
         }
         else
         {
-            btnWear.transform.GetComponentInChildren<TextMeshProUGUI>().text = "Wear";
+            btnWear.transform.GetComponentInChildren<TextMeshProUGUI>().text = "Remove";
         }
     }
 

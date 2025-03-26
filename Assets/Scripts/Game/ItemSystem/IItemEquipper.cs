@@ -14,5 +14,8 @@ public interface IItemEquipper
     public Transform GetLeftFoot();
     public Transform GetHeadTransform();
     public Transform GetChest();
-
+    public void NewMethod(BaseItemUI value)
+    {
+        Debug.Log("Test");
+    }
 }

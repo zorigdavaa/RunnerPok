@@ -9,7 +9,7 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
 {
     public BaseItemUI Item;
     public WhereSlot Where;
-    public bool WearSlot = false;
+    // public bool WearSlot = false;
     public Image WearSlotImage;
     public Sprite[] SlotSprites;
     public EventHandler<BaseItemUI> OnItemChanged;
@@ -51,18 +51,21 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
         Item.transform.position = transform.position;
         Item.transform.SetParent(transform);
         Item.currentSlot = this;
-        if (WearSlot)
+        // if (WearSlot)
+        // {
+        // }
+        // else
+        // {
+        // }
+        if (isUnequipSlot)
         {
-            Item.EquipItem();
+            Item.UnEquipItem();
+            Where = Item.data.Where;
+            SetImageUsingSlot();
         }
         else
         {
-            Item.UnEquipItem();
-        }
-        if (isUnequipSlot)
-        {
-            Where = Item.data.Where;
-            SetImageUsingSlot();
+            Item.EquipItem();
         }
         OnItemChanged?.Invoke(this, Item);
     }
