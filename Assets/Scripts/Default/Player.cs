@@ -69,6 +69,7 @@ public class Player : Character, IItemEquipper
             {
                 Destroy(obj);
             }
+            Destroy(entry);
 
 
             Debug.Log($"Unequipped {item.data.name} from {slot}");

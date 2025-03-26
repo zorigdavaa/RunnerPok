@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EquipData
+public class EquipData : Object
 {
     public BaseItemUI item;
     public List<GameObject> InstantiatedObjects = new List<GameObject>();
