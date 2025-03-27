@@ -33,7 +33,7 @@ public class Player : Character, IItemEquipper
     #region BearintItems
     private Dictionary<WhereSlot, EquipData> equippedItems = new Dictionary<WhereSlot, EquipData>();
 
-    public void EquipItem(BaseItemUI item)
+    public void EquipItem(ItemInstanceUI item)
     {
         if (item == null) return;
 
@@ -54,7 +54,7 @@ public class Player : Character, IItemEquipper
         // Debug.Log($"Equipped {item.data.name} in {slot}");
     }
 
-    public void UnequipItem(BaseItemUI item)
+    public void UnequipItem(ItemInstanceUI item)
     {
         if (item == null) return;
 
@@ -76,7 +76,7 @@ public class Player : Character, IItemEquipper
         }
     }
 
-    public BaseItemUI GetEquippedItem(WhereSlot slot)
+    public ItemInstanceUI GetEquippedItem(WhereSlot slot)
     {
         return equippedItems.TryGetValue(slot, out var entry) ? entry.item : null;
     }
@@ -274,7 +274,7 @@ public class Player : Character, IItemEquipper
     {
         if (GetEquippedItem(WhereSlot.OtherHand))
         {
-            OffHandItemInstance offHandItemInstance = (OffHandItemInstance)GetEquippedItem(WhereSlot.OtherHand);
+            OffHandItemUI offHandItemInstance = (OffHandItemUI)GetEquippedItem(WhereSlot.OtherHand);
             offHandItemInstance.OnOffHandItem += OnOffhandItemInvoke;
         }
     }
@@ -323,7 +323,7 @@ public class Player : Character, IItemEquipper
                 Movement.SetControlType(ZControlType.FourSide);
                 Movement.ChildModelRotZero();
                 UpdateAction = FightUpdate;
-                OffHandItem = (OffHandItemInstance)GetEquippedItem(WhereSlot.OtherHand);
+                OffHandItem = (OffHandItemUI)GetEquippedItem(WhereSlot.OtherHand);
             }
             else if (_state == PlayerState.Collect)
             {
@@ -353,7 +353,7 @@ public class Player : Character, IItemEquipper
             StartThrow(false);
         }
     }
-    OffHandItemInstance OffHandItem;
+    OffHandItemUI OffHandItem;
 
     public void FightUpdate()
     {
@@ -449,7 +449,6 @@ public class Player : Character, IItemEquipper
     {
         return chest;
     }
-
 }
 
 public enum PlayerState

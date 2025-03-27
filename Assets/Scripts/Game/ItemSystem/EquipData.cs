@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class EquipData : Object
 {
-    public BaseItemUI item;
+    public ItemInstanceUI item;
     public List<GameObject> InstantiatedObjects = new List<GameObject>();
 }

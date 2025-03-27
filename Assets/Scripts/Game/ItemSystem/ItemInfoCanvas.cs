@@ -27,7 +27,7 @@ public class ItemInfoCanvas : MonoBehaviour
     public TextMeshProUGUI txtLVL;
     public TextMeshProUGUI txtDescription;
     public TextMeshProUGUI Info;
-    BaseItemUI itemUI;
+    ItemInstanceUI itemUI;
     [SerializeField] Button btnWear;
     [SerializeField] Button btnUpgrade;
     [SerializeField] Image Icon;
@@ -88,7 +88,7 @@ public class ItemInfoCanvas : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ShowInfoOf(BaseItemUI _ItemUI)
+    public void ShowInfoOf(ItemInstanceUI _ItemUI)
     {
         gameObject.SetActive(true);
         itemUI = _ItemUI;
@@ -103,7 +103,7 @@ public class ItemInfoCanvas : MonoBehaviour
         }
     }
 
-    private void RefreshData(BaseItemUI _ItemUI)
+    private void RefreshData(ItemInstanceUI _ItemUI)
     {
         txtName.text = _ItemUI.data.name;
         Icon.sprite = _ItemUI.data.Icon;

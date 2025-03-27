@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OffHandItemInstance : ItemInstance
+public class OffHandItemUI : ItemInstanceUI
 {
     public const float Delay = 3;
     public float Timer = Delay;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZPackage;
 
-public class FootItemInstance : ItemInstance
+public class FootItemUI : ItemInstanceUI
 {
     public Vector3 RightFootPos = Vector3.up * 0.1f;
     public Vector3 LeftFootPos = Vector3.up * 0.1f;

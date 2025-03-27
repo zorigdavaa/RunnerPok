@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseEquipedItem : MonoBehaviour
 {
-    public BaseItemUI ItemInstance;
+    public ItemInstanceUI ItemInstance;
     public DamageData DamageData;
     [SerializeField] protected ItemData data;
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class BaseEquipedItem : MonoBehaviour
     {
 
     }
-    internal void SetInstance(BaseItemUI handItem)
+    internal void SetInstance(ItemInstanceUI handItem)
     {
         ItemInstance = handItem;
         DamageData = new DamageData(data.Element, handItem.GetDamdage());

@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDownHandler
 {
-    public BaseItemUI Item;
+    public ItemInstanceUI Item;
     public WhereSlot Where;
     // public bool WearSlot = false;
     public Image WearSlotImage;
     public Sprite[] SlotSprites;
-    public EventHandler<BaseItemUI> OnItemChanged;
+    public EventHandler<ItemInstanceUI> OnItemChanged;
     public bool isUnequipSlot = false;
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
         // throw new System.NotImplementedException();
     }
 
-    internal void AddItem(BaseItemUI baseItemUI)
+    internal void AddItem(ItemInstanceUI baseItemUI)
     {
         gameObject.SetActive(true);
         if (baseItemUI.currentSlot != null)

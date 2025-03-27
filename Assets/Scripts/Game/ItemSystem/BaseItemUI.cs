@@ -29,20 +29,7 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
         }
     }
 
-    public virtual void EquipItem(IItemEquipper character = null)
-    {
-        if (character == null) character = Z.Player;
 
-        character.EquipItem(this);
-    }
-    public virtual void UnEquipItem(IItemEquipper Character = null)
-    {
-        if (Character == null)
-        {
-            Character = Z.Player;
-        }
-        Character.UnequipItem(this);
-    }
     public virtual List<GameObject> InstantiateNeededItem(IItemEquipper itemEquipper = null)
     {
         Debug.Log("Base Instantiate Called Doing Nothing");

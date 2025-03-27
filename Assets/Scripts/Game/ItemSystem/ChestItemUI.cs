@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZPackage;
 
-public class ChestItemInstance : ItemInstance
+public class ChestItemUI : ItemInstanceUI
 {
     public Vector3 wearPos = Vector3.up * 2;
     public override List<GameObject> InstantiateNeededItem(IItemEquipper itemEquipper = null)

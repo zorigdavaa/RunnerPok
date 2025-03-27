@@ -21,7 +21,7 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
 
     }
 
-    public void WearAndShowItem(UISlot uISlot, BaseItemUI item)
+    public void WearAndShowItem(UISlot uISlot, ItemInstanceUI item)
     {
         Debug.Log("Wear and Show Called");
         if (uISlot.isUnequipSlot && item)
@@ -57,7 +57,7 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
     }
     private Dictionary<WhereSlot, EquipData> equippedItems = new Dictionary<WhereSlot, EquipData>();
 
-    public void EquipItem(BaseItemUI item)
+    public void EquipItem(ItemInstanceUI item)
     {
         if (item == null) return;
 
@@ -82,7 +82,7 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
         Debug.Log($"Equipped {item.data.name} in {slot}");
     }
 
-    public void UnequipItem(BaseItemUI item)
+    public void UnequipItem(ItemInstanceUI item)
     {
         if (item == null) return;
 
@@ -103,7 +103,7 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
         }
     }
 
-    public BaseItemUI GetEquippedItem(WhereSlot slot)
+    public ItemInstanceUI GetEquippedItem(WhereSlot slot)
     {
         return equippedItems.TryGetValue(slot, out var entry) ? entry.item : null;
     }

@@ -21,7 +21,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
         }
     }
 
-    public static Action<UISlot, BaseItemUI> OnSlotChanged;
+    public static Action<UISlot, ItemInstanceUI> OnSlotChanged;
 
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
@@ -54,7 +54,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
         }
     }
 
-    private void OnSlotObjChanged(object sender, BaseItemUI e)
+    private void OnSlotObjChanged(object sender, ItemInstanceUI e)
     {
         var casted = (UISlot)sender;
         if (casted.isUnequipSlot && e == null)
@@ -144,7 +144,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
                     // ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
                     GameObject insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
                     Type var = GetComponentType(data.Where);
-                    ItemInstance addedComponent = (ItemInstance)insObj.AddComponent(var);
+                    ItemInstanceUI addedComponent = (ItemInstanceUI)insObj.AddComponent(var);
                     addedComponent.ID = saved.UneqiupDataNew[i].ID;
                     addedComponent.data = data;
                     // insObj.SetIcon(data.Icon);
@@ -168,7 +168,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
                     // ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
                     GameObject insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
                     Type var = GetComponentType(data.Where);
-                    ItemInstance addedComponent = (ItemInstance)insObj.AddComponent(var);
+                    ItemInstanceUI addedComponent = (ItemInstanceUI)insObj.AddComponent(var);
                     addedComponent.ID = saved.EquipDataNew[i].ID;
                     addedComponent.data = data;
                     // insObj.SetIcon(data.Icon);
@@ -192,12 +192,12 @@ public class PlayerBuffItems : MonoBehaviour, ISave
     {
         switch (where)
         {
-            case WhereSlot.Hand: return typeof(ItemInstance);
-            case WhereSlot.OtherHand: return typeof(OffHandItemInstance);
-            case WhereSlot.Foot: return typeof(FootItemInstance);
-            case WhereSlot.Head: return typeof(HeadItemInstance);
-            case WhereSlot.Chest: return typeof(ChestItemInstance);
-            default: return typeof(ItemInstance);
+            case WhereSlot.Hand: return typeof(ItemInstanceUI);
+            case WhereSlot.OtherHand: return typeof(OffHandItemUI);
+            case WhereSlot.Foot: return typeof(FootItemUI);
+            case WhereSlot.Head: return typeof(HeadItemUI);
+            case WhereSlot.Chest: return typeof(ChestItemUI);
+            default: return typeof(ItemInstanceUI);
         }
     }
 
