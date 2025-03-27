@@ -83,6 +83,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
     }
     public void Save()
     {
+        Debug.Log("Saving");
         SlotSave SavingData = new SlotSave();
         for (int i = 0; i < equipSlots.Count; i++)
         {
@@ -110,6 +111,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
     }
     public void Load()
     {
+        // Debug.Log("Loading from PlayerBuffItems");
         SlotSave defaultOne = new SlotSave();
 
         // defaultOne.EquipDataNew.Add(new ItemSaveData(Guid.NewGuid().ToString(), buffItemDatas[1].itemName));

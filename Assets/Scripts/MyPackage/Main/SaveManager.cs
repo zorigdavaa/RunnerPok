@@ -16,7 +16,8 @@ public class SaveManager : MonoBehaviour
         else
         {
             Instance = this;
-            Saves = FindObjectsOfType<MonoBehaviour>().OfType<ISave>().ToList();
+            Saves = FindObjectsOfType<MonoBehaviour>(true).OfType<ISave>().ToList();
+            Debug.Log("Saves.Count: " + Saves.Count);
         }
     }
 
@@ -29,6 +30,7 @@ public class SaveManager : MonoBehaviour
     }
     public static void Load()
     {
+        // Debug.Log("Load from SaveManager " + Instance.Saves.Count);
         foreach (var save in Instance.Saves)
         {
             save.Load();
