@@ -6,7 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerBuffItems : MonoBehaviour
+public class PlayerBuffItems : MonoBehaviour, ISave
 {
     private static PlayerBuffItems _instacne;
     public static PlayerBuffItems Instance
@@ -32,6 +32,7 @@ public class PlayerBuffItems : MonoBehaviour
     {
         itemInfoCanvas.Awake();
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,14 +72,16 @@ public class PlayerBuffItems : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            SaveData();
+            // Save();
+            SaveManager.Save();
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            RetrieveData();
+            // Load();
+            SaveManager.Load();
         }
     }
-    public void SaveData()
+    public void Save()
     {
         SlotSave SavingData = new SlotSave();
         for (int i = 0; i < equipSlots.Count; i++)
@@ -105,7 +108,7 @@ public class PlayerBuffItems : MonoBehaviour
         }
         PlayerPrefZ.SetData("equipedData", SavingData);
     }
-    public void RetrieveData()
+    public void Load()
     {
         SlotSave defaultOne = new SlotSave();
 

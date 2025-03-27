@@ -13,7 +13,7 @@ using GameAnalyticsSDK;
 namespace ZPackage
 {
     public enum GameState { Starting, Playing, Pause, LevelCompleted, GameOver, Settings, Flying }
-    public class GameManager : GenericSingleton<GameManager>
+    public class GameManager : GenericSingleton<GameManager>, ISave
     {
         // [SerializeField] GroundSpawner groundSpawner;
         // [SerializeField] ProgressBar progressBar;
@@ -72,7 +72,7 @@ namespace ZPackage
             set
             {
                 level = value;
-                PlayerPrefs.SetInt("level", value);
+                // PlayerPrefs.SetInt("level", value);
                 Z.CanM.HudLevel(value.ToString());
                 // if (progressBar)
                 // {
@@ -88,7 +88,7 @@ namespace ZPackage
             {
 
                 coin = value;
-                PlayerPrefs.SetInt("coin", value);
+                // PlayerPrefs.SetInt("coin", value);
                 Z.CanM.HudCoin(value.ToString());
             }
         }
@@ -141,13 +141,20 @@ namespace ZPackage
 
         private void Start()
         {
-            PopulatePlayerPrefs();
             StartGame();
             QualitySettings.vSyncCount = 0;  // VSync must be disabled
             Application.targetFrameRate = 60;
             CreateGitIgnore();
         }
-        void PopulatePlayerPrefs()
+        public void Save()
+        {
+            PlayerPrefs.SetInt("coin", Coin);
+            PlayerPrefs.SetInt("level", Level);
+            PlayerPrefs.GetInt("nextLevelScore", NextLvlScore);
+            // Score = PlayerPrefs.GetInt("score",0);
+        }
+
+        public void Load()
         {
             Coin = PlayerPrefs.GetInt("coin", 0);
             Level = PlayerPrefs.GetInt("level", 1);
@@ -180,10 +187,10 @@ namespace ZPackage
         }
         private void StartGame()
         {
+            SaveManager.Load();
             GAStartEvent();
             State = GameState.Starting;
             OnGameStart?.Invoke(this, EventArgs.Empty);
-            PlayerBuffItems.Instance.RetrieveData();
         }
         public void Fly()
         {
@@ -234,18 +241,6 @@ namespace ZPackage
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void ReloadGround()
-        {
-            Floor[] tiles = FindObjectsOfType<Floor>();
-            foreach (var tile in tiles)
-            {
-                Destroy(tile.gameObject);
-            }
-            //event subscribe hiij bolno
-            // groundSpawner.setNextSpawnPoint(Vector3.zero);
-            // groundSpawner.SpawnTiles();
-            StartGame();
-        }
         void GAStartEvent()
         {
 #if ANALYTICS_SDKS
