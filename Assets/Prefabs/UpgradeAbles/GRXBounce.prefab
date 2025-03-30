@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 6453939818062947017}
   - component: {fileID: 6503654501801992267}
   m_Layer: 0
-  m_Name: ShurGrx
+  m_Name: GRXBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
