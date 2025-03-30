@@ -376,10 +376,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6453939818062947017}
-  - component: {fileID: 6389107011502510898}
   - component: {fileID: 6503654501801992267}
   m_Layer: 0
-  m_Name: Shuriken
+  m_Name: ShurGrx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,23 +400,6 @@ Transform:
   - {fileID: 1088872442012839844}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6389107011502510898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7901734791091592274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d24f6f1dce11b324cb1dca585279486a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemInstance: {fileID: 0}
-  DamageData:
-    damage: 0
-    Type: 0
-  data: {fileID: 11400000, guid: 860ce0b918cc0453b882cc4f386e16b2, type: 2}
 --- !u!135 &6503654501801992267
 SphereCollider:
   m_ObjectHideFlags: 0

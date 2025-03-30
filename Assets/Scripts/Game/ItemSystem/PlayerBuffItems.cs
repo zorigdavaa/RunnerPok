@@ -25,7 +25,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
 
     [SerializeField] List<UISlot> equipSlots;
     [SerializeField] List<UISlot> unEquipslots;
-    [SerializeField] List<BaseItemData> buffItemDatas;
+    [SerializeField] List<ItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
     public GameObject UIPF;
     void Awake()
@@ -138,7 +138,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
                 {
                     continue;
                 }
-                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.UneqiupDataNew[i].dataName).FirstOrDefault();
+                ItemData data = buffItemDatas.Where(x => x.itemName == saved.UneqiupDataNew[i].dataName).FirstOrDefault();
                 if (data)
                 {
                     // ItemInstance insObj = Instantiate(UIPF, transform.position, Quaternion.identity, transform);
@@ -161,7 +161,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
                 {
                     continue;
                 }
-                BaseItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipDataNew[i].dataName).FirstOrDefault();
+                ItemData data = buffItemDatas.Where(x => x.itemName == saved.EquipDataNew[i].dataName).FirstOrDefault();
                 if (data)
                 {
                     // Debug.Log("Insed equip " + data.name);
@@ -239,5 +239,5 @@ public class PlayerBuffItems : MonoBehaviour, ISave
 }
 public enum WhereSlot
 {
-    None, Hand, Head, OtherHand, Chest, Foot, Necklace
+    None, Hand, Head, OtherHand, Chest, Foot, Necklace, LeftFoot
 }

@@ -22,6 +22,7 @@ public class Player : Character, IItemEquipper
     [SerializeField] Transform leftFoot;
     [SerializeField] Transform head;
     [SerializeField] Transform chest;
+    [SerializeField] Transform hand;
     // public Shuriken Shuriken;
     public List<CinemachineVirtualCamera> cameras;
     int currentCameraIndex = 0;
@@ -355,6 +356,7 @@ public class Player : Character, IItemEquipper
     }
     OffHandItemUI OffHandItem;
 
+
     public void FightUpdate()
     {
         OffHandItem?.Tick();
@@ -430,24 +432,37 @@ public class Player : Character, IItemEquipper
         }
     }
 
-    public Transform GetRightFoot()
-    {
-        return rightFoot;
-    }
+    // public Transform GetRightFoot()
+    // {
+    //     return rightFoot;
+    // }
 
-    public Transform GetLeftFoot()
-    {
-        return leftFoot;
-    }
+    // public Transform GetLeftFoot()
+    // {
+    //     return leftFoot;
+    // }
 
-    public Transform GetHeadTransform()
-    {
-        return head;
-    }
+    // public Transform GetHeadTransform()
+    // {
+    //     return head;
+    // }
 
-    public Transform GetChest()
+    // public Transform GetChest()
+    // {
+    //     return chest;
+    // }
+
+    public Transform GetNeededTransform(WhereSlot where)
     {
-        return chest;
+        switch (where)
+        {
+            case WhereSlot.Foot: return rightFoot;
+            case WhereSlot.LeftFoot: return leftFoot;
+            case WhereSlot.Chest: return chest;
+            case WhereSlot.Head: return head;
+            case WhereSlot.Hand: return hand;
+            default: return transform;
+        }
     }
 }
 

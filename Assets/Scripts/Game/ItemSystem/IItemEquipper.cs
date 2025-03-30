@@ -8,12 +8,9 @@ public interface IItemEquipper
     public void UnequipItem(ItemInstanceUI item);
 
     public ItemInstanceUI GetEquippedItem(WhereSlot slot);
-    public Transform GetRightFoot();
-    public Transform GetLeftFoot();
-    public Transform GetHeadTransform();
-    public Transform GetChest();
-    public void NewMethod(ItemInstanceUI value)
-    {
-        Debug.Log("Test");
-    }
+    // public Transform GetRightFoot();
+    // public Transform GetLeftFoot();
+    // public Transform GetHeadTransform();
+    // public Transform GetChest();
+    public Transform GetNeededTransform(WhereSlot where);
 }

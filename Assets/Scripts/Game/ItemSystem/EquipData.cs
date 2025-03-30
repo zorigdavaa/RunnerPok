@@ -7,4 +7,5 @@ public class EquipData : Object
 {
     public ItemInstanceUI item;
     public List<GameObject> InstantiatedObjects = new List<GameObject>();
+    // public WearPosData wearPosData;
 }

@@ -9,9 +9,7 @@ using UnityEngine;
 public class ItemData : BaseItemData
 {
     // public BaseItemUI pfUI;
-
-
-
+    public List<WearData> WearDatas;
     public override bool IsUpgradeAble(int level)
     {
         return level < AddDamage.Count;

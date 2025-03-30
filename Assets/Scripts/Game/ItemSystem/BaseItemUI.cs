@@ -8,7 +8,7 @@ using ZPackage;
 
 public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
 {
-    public BaseItemData data;
+    public ItemData data;
     public string ID;
     public int level = 1;
     public UISlot currentSlot;
@@ -32,8 +32,30 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
 
     public virtual List<GameObject> InstantiateNeededItem(IItemEquipper itemEquipper = null)
     {
-        Debug.Log("Base Instantiate Called Doing Nothing");
-        return new List<GameObject>();
+        if (itemEquipper == null)
+        {
+            itemEquipper = Z.Player;
+        }
+
+        // GameObject insOBj = Instantiate(data.pf, Vector3.zero, Quaternion.Euler(Rot), itemEquipper.GetRightFoot());
+        // insOBj.transform.localPosition = RightFootPos;
+        // // Z.Player.RightFootObj = insOBj;
+        // GameObject Left = Instantiate(data.pf, Vector3.zero, Quaternion.Euler(RotLeft), itemEquipper.GetLeftFoot());
+        // Left.transform.localPosition = LeftFootPos;
+        List<GameObject> equipData = new List<GameObject>();
+        if (data.WearDatas.Count > 0)
+        {
+            foreach (var item in data.WearDatas)
+            {
+                GameObject Item = Instantiate(item.PF, Vector3.zero, Quaternion.identity, itemEquipper.GetNeededTransform(data.Where));
+                Item.transform.localPosition = item.Position;
+                Item.transform.localRotation = item.GetRotation;
+                equipData.Add(Item);
+            }
+        }
+
+        return equipData;
+
     }
 
     internal string GetLevel()

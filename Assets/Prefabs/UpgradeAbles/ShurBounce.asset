@@ -22,6 +22,7 @@ MonoBehaviour:
     speed={speed}
 
 '
+  Element: 0
   BaseDamage: 5
   BaseSpeed: 1
   BaseRange: 2
@@ -39,6 +40,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  damageData:
-    damage: 5
-    Type: 0
+  WearDatas:
+  - Position: {x: 0.065, y: 0.169, z: -0.039}
+    Rotation: {x: 100, y: 110, z: 0}
+    PF: {fileID: 7901734791091592274, guid: 9ce65c76d35c861419181b355138be83, type: 3}

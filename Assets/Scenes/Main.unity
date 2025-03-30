@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
+  m_IndirectSpecularColor: {r: 0.44657642, g: 0.49641156, b: 0.5748181, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &2229375 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 867718717070525540, guid: 704e6d07e3f8eed46bd58acae85203d7, type: 3}
+  m_PrefabInstance: {fileID: 1285078405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &37136951
 GameObject:
   m_ObjectHideFlags: 0
@@ -3937,6 +3943,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1402730820}
     m_Modifications:
+    - target: {fileID: 871253861119898957, guid: 704e6d07e3f8eed46bd58acae85203d7, type: 3}
+      propertyPath: hand
+      value: 
+      objectReference: {fileID: 2229375}
     - target: {fileID: 871253861119898957, guid: 704e6d07e3f8eed46bd58acae85203d7, type: 3}
       propertyPath: head
       value: 

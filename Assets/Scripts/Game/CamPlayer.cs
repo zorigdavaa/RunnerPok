@@ -12,6 +12,7 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
     [SerializeField] Transform leftFoot;
     [SerializeField] Transform head;
     [SerializeField] Transform chest;
+    [SerializeField] Transform hand;
 
     // Start is called before the first frame update
     void Start()
@@ -36,26 +37,27 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
         }
     }
 
-    public Transform GetRightFoot()
-    {
-        return rightFoot;
-    }
+    // public Transform GetRightFoot()
+    // {
+    //     return rightFoot;
+    // }
 
-    public Transform GetLeftFoot()
-    {
-        return leftFoot;
-    }
+    // public Transform GetLeftFoot()
+    // {
+    //     return leftFoot;
+    // }
 
-    public Transform GetHeadTransform()
-    {
-        return head;
-    }
+    // public Transform GetHeadTransform()
+    // {
+    //     return head;
+    // }
 
-    public Transform GetChest()
-    {
-        return chest;
-    }
+    // public Transform GetChest()
+    // {
+    //     return chest;
+    // }
     private Dictionary<WhereSlot, EquipData> equippedItems = new Dictionary<WhereSlot, EquipData>();
+
 
     public void EquipItem(ItemInstanceUI item)
     {
@@ -106,5 +108,18 @@ public class CamPlayer : MonoBehaviour, IItemEquipper
     public ItemInstanceUI GetEquippedItem(WhereSlot slot)
     {
         return equippedItems.TryGetValue(slot, out var entry) ? entry.item : null;
+    }
+
+    public Transform GetNeededTransform(WhereSlot where)
+    {
+        switch (where)
+        {
+            case WhereSlot.Foot: return rightFoot;
+            case WhereSlot.LeftFoot: return leftFoot;
+            case WhereSlot.Chest: return chest;
+            case WhereSlot.Head: return head;
+            case WhereSlot.Hand: return hand;
+            default: return transform;
+        }
     }
 }

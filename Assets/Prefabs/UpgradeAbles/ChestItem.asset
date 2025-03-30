@@ -42,6 +42,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  damageData:
-    damage: 5
-    Type: 0
+  WearDatas:
+  - Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    where: 0
+    PF: {fileID: 0}
