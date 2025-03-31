@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657642, g: 0.49641156, b: 0.5748181, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2449,6 +2448,10 @@ PrefabInstance:
       propertyPath: cameras.Array.data[2]
       value: 
       objectReference: {fileID: 1298464372}
+    - target: {fileID: 2011468619949767631, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df2a7e97dff53449fa6bd9d9dfa411ff, type: 2}
     - target: {fileID: 2420573646999065348, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4007,6 +4010,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player for Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7316170864511735801, guid: 704e6d07e3f8eed46bd58acae85203d7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df2a7e97dff53449fa6bd9d9dfa411ff, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
