@@ -16,6 +16,10 @@ public class Shield : BaseSkill
         Z.Player.OnBeforeDamdageTaken += OnBeforeDamdageTaken;
         OnDestroyEvent += Use;
     }
+    public override void Use(object sender, object e)
+    {
+        UnEquip();
+    }
 
     private void OnBeforeDamdageTaken(ref float damage)
     {
