@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pf: {fileID: 1930629176086842921, guid: 08aef0aeff5157f459f9fe3d3515b169, type: 3}
   itemName: shuriken
-  Icon: {fileID: -3358933203163112000, guid: b05ec452725e99f439d95604debfed6a, type: 3}
+  Icon: {fileID: 21300000, guid: f9af96104f4af44488871323974c6ade, type: 3}
   Where: 1
   Desc: basic shuriken
   Info: 'damage={damage}
