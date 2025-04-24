@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SecIDX: 0
+  Sections: []
   SectionDatas:
   - {fileID: 11400000, guid: 4d728f0826ffc5549bb0243595d24ebb, type: 2}
   - {fileID: 11400000, guid: 742cb8d8caf5b3e4a94ba83d4b7de726, type: 2}
@@ -55,8 +56,9 @@ MonoBehaviour:
   PlayerBeingTile: {fileID: 0}
   speedUpPF: {fileID: 1846571084168223024, guid: 0736c67bd4164044fbe8f25c7711ef16, type: 3}
   BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
-  HealthMultiplier: 1
+  HealthMultiplier: 1.2
   DamageMultiplier: 1
+  SectionsParent: {fileID: 0}
   lastSpawnedTile: {fileID: 0}
   SpawnedTiles: []
   BeforSectionTiles: []

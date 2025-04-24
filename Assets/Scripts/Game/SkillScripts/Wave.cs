@@ -20,6 +20,7 @@ public class Wave : BaseSkill
     {
         CoolDown = new Countdown(true, 3f);
         Model.localScale = Vector3.one * 0.2f;
+                        Model.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
