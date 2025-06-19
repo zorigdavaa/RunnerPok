@@ -170,6 +170,11 @@ namespace CandyKitSDK
             {
                 Debug.Log("CK--> Buy Product: " + productId);
             }
+            if (!m_IsInitialized)
+            {
+                Debug.Log("CK--> CandyKit not initialized, cannot buy product: " + productId);
+                return;
+            }
 
             if (!m_IAPManager.isIAPInitialized)
             {

@@ -96,7 +96,7 @@ public class PlayerMovement : MovementForgeRun
             if (isGrounded && rb.linearVelocity.y < 1)
             {
                 Vector3 vel = rb.linearVelocity;
-                
+
                 if (vel.z < Speed)
                 {
                     // vel.z = Speed;
@@ -254,7 +254,7 @@ public class PlayerMovement : MovementForgeRun
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
         if (IsDown)
         {
-            befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
+
             ResetTargetX();
         }
         if (IsClick)
@@ -266,7 +266,7 @@ public class PlayerMovement : MovementForgeRun
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
             float xDif = (viewPortPos.x - befFrameMous.x) * 40;
             Vector3 targetPos = new Vector3(targetX += xDif, transform.localPosition.y, transform.localPosition.z);
-            targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
+            // targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
             befFrameMous = viewPortPos;
             // Smoothly move the player to the target position
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
@@ -284,6 +284,7 @@ public class PlayerMovement : MovementForgeRun
 
     public void ResetTargetX()
     {
+        befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
         targetX = transform.localPosition.x;
     }
 

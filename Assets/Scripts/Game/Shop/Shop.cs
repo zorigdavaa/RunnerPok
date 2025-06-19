@@ -26,14 +26,14 @@ public class Shop : MonoBehaviour
     }
     public void BuyBounceShuriken()
     {
-        Z.GM.Coin += 5000;
+        Debug.Log("Bounce Shuriken bought");
     }
     public void BuyNoAds()
     {
-        Debug.Log("Noads bought");
+        Debug.Log("No Ads bought");
     }
     public void BuyBundle()
     {
-        Debug.Log("Bunde1 bought");
+        Debug.Log("Bundle bought");
     }
 }

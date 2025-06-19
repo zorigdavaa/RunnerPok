@@ -28,6 +28,11 @@ MonoBehaviour:
     NoAdsProductID: 
     ckProducts:
     - {fileID: 11400000, guid: f8d4eb6621f047f4b8eeb0f0de318f72, type: 2}
+    - {fileID: 11400000, guid: 37a527503aeef6441854fb4940cc1870, type: 2}
+    - {fileID: 11400000, guid: 30f5a0e2159839343aa16014304b1eb7, type: 2}
+    - {fileID: 11400000, guid: b96bf6e1ac7eaa04cb10abff2a6990a6, type: 2}
+    - {fileID: 11400000, guid: eb36fd05f6b237a4ba8ed4397d882073, type: 2}
+    - {fileID: 11400000, guid: bfd59abc65d146a4eb0516b29b8933b7, type: 2}
   iOS:
     GameAnalyticsGameKey: 
     GameAnalyticsGameSecret: 
@@ -38,3 +43,8 @@ MonoBehaviour:
     NoAdsProductID: 
     ckProducts:
     - {fileID: 11400000, guid: f8d4eb6621f047f4b8eeb0f0de318f72, type: 2}
+    - {fileID: 11400000, guid: 37a527503aeef6441854fb4940cc1870, type: 2}
+    - {fileID: 11400000, guid: 30f5a0e2159839343aa16014304b1eb7, type: 2}
+    - {fileID: 11400000, guid: b96bf6e1ac7eaa04cb10abff2a6990a6, type: 2}
+    - {fileID: 11400000, guid: eb36fd05f6b237a4ba8ed4397d882073, type: 2}
+    - {fileID: 11400000, guid: bfd59abc65d146a4eb0516b29b8933b7, type: 2}
