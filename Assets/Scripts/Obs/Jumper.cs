@@ -77,7 +77,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         anim.Play();
         CalcForce(character.transform.position);
 
-        character.GetComponent<Rigidbody>().velocity = JumperForce;
+        character.GetComponent<Rigidbody>().linearVelocity = JumperForce;
         // print(character.GetComponent<Rigidbody>().velocity);
         // Debug.Break();
         // character.GetComponent<Rigidbody>().AddForce(Vector3.up * 400);
