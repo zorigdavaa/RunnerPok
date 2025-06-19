@@ -13,7 +13,7 @@ public class SpeedUp : MonoBehaviour, ICollisionAction
         if (character is Player player)
         {
             // player.rb.AddForce(Vector3.forward * 1000);
-            player.rb.velocity = Vector3.forward * 50;
+            player.rb.linearVelocity = Vector3.forward * 50;
         }
     }
 

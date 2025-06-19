@@ -74,7 +74,7 @@ public class PlayerMovement : MovementForgeRun
         else
         {
             animController.Jump(true);
-            animController.VelY(rb.velocity.y);
+            animController.VelY(rb.linearVelocity.y);
             // if (rb.velocity.y < 0f)
             // {
             //     rb.velocity += Vector3.down * 0.8f;
@@ -87,15 +87,15 @@ public class PlayerMovement : MovementForgeRun
         if (ParentedMove)
         {
             playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
-            Vector3 vel = rb.velocity;
+            Vector3 vel = rb.linearVelocity;
             vel.z = 0;
-            rb.velocity = vel;
+            rb.linearVelocity = vel;
         }
         else
         {
-            if (isGrounded && rb.velocity.y < 1)
+            if (isGrounded && rb.linearVelocity.y < 1)
             {
-                Vector3 vel = rb.velocity;
+                Vector3 vel = rb.linearVelocity;
                 
                 if (vel.z < Speed)
                 {
@@ -106,7 +106,7 @@ public class PlayerMovement : MovementForgeRun
                 {
                     vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
                 }
-                rb.velocity = vel;
+                rb.linearVelocity = vel;
             }
 
         }
@@ -259,9 +259,9 @@ public class PlayerMovement : MovementForgeRun
         }
         if (IsClick)
         {
-            Vector3 vel = rb.velocity;
+            Vector3 vel = rb.linearVelocity;
             vel.x = 0;
-            rb.velocity = vel;
+            rb.linearVelocity = vel;
             // Convert mouse position to viewport position
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
             float xDif = (viewPortPos.x - befFrameMous.x) * 40;
@@ -318,7 +318,7 @@ public class PlayerMovement : MovementForgeRun
     {
         if (Player.GetState() == PlayerState.Obs && IsGrounded())
         {
-            rb.velocity += Vector3.up * 10;
+            rb.linearVelocity += Vector3.up * 10;
         }
     }
 

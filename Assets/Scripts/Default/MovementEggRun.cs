@@ -234,7 +234,7 @@ public class MovementEggRun : Mb
         }
         if (IsUp)
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
             animationController.SetSpeed(0);
         }
     }

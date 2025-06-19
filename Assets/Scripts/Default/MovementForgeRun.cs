@@ -44,7 +44,7 @@ public class MovementForgeRun : Mb
     // }
     private void Jump()
     {
-        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
     }
 
     public void SetSpeed(float percent)
