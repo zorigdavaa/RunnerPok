@@ -123,11 +123,11 @@ public class Player : Character, IItemEquipper
         //     }
         // }
         UpdateAction?.Invoke();
-        Movement.PlayerControl();
     }
 
     private void FixedUpdate()
     {
+        Movement.PlayerControl();
     }
     private void OnTriggerEnter(Collider other)
     {

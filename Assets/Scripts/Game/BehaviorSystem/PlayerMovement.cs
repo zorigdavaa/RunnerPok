@@ -264,8 +264,9 @@ public class PlayerMovement : MovementForgeRun
             rb.linearVelocity = vel;
             // Convert mouse position to viewport position
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
-            float xDif = (viewPortPos.x - befFrameMous.x) * 40;
-            Vector3 targetPos = new Vector3(targetX += xDif, transform.localPosition.y, transform.localPosition.z);
+            float xDif = (viewPortPos.x - befFrameMous.x) * 40 ;
+            targetX += xDif;
+            Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
             // targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
             befFrameMous = viewPortPos;
             // Smoothly move the player to the target position
