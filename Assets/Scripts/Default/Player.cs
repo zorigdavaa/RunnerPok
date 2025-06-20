@@ -17,7 +17,6 @@ public class Player : Character, IItemEquipper
     ObjectPool<Shuriken> Pool;
     CameraController cameraController;
     SoundManager soundManager;
-    UIBar bar;
     [SerializeField] Transform rightFoot;
     [SerializeField] Transform leftFoot;
     [SerializeField] Transform head;
@@ -305,6 +304,7 @@ public class Player : Character, IItemEquipper
                 // Movement.SetControlAble(false);
                 Movement.SetControlType(ZControlType.None);
                 UpdateAction = null;
+                healthBar.gameObject.SetActive(false);
             }
             else if (_state == PlayerState.Obs)
             {
@@ -314,6 +314,7 @@ public class Player : Character, IItemEquipper
                 // Movement.SetControlAble(true);
                 Movement.SetControlType(ZControlType.TwoSide);
                 UpdateAction = CollectUpdate;
+                healthBar.gameObject.SetActive(true);
             }
             else if (_state == PlayerState.Fight)
             {
@@ -325,6 +326,7 @@ public class Player : Character, IItemEquipper
                 Movement.ChildModelRotZero();
                 UpdateAction = FightUpdate;
                 OffHandItem = (OffHandItemUI)GetEquippedItem(WhereSlot.OtherHand);
+                healthBar.gameObject.SetActive(true);
             }
             else if (_state == PlayerState.Collect)
             {

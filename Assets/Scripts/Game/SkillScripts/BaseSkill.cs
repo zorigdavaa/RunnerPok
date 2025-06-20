@@ -6,6 +6,7 @@ using ZPackage;
 
 public class BaseSkill : MonoBehaviour
 {
+    public bool UseAble = false;
     public Countdown CoolDown;
     public SkillSO SO;
     public virtual void Equip()

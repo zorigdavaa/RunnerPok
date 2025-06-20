@@ -39,6 +39,7 @@ public class PlayerMovement : MovementForgeRun
     public void SetControlType(ZControlType value)
     {
         ControlType = value;
+        ChildModelRotZero();
         if (value == ZControlType.TwoSide)
         {
             ResetTargetX();
@@ -137,134 +138,141 @@ public class PlayerMovement : MovementForgeRun
                     TargetLocalPos.z = Mathf.Clamp(TargetLocalPos.z, -1, 8);
                 }
                 transform.localPosition = Vector3.Lerp(transform.localPosition, TargetLocalPos, 5 * Time.fixedDeltaTime);
-                befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
+                // befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
             }
         }
     }
-    float beforeFrameX;
-    private void RaycastControl()
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
-        if (IsDown)
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    // float beforeFrameX;
+    // private void RaycastControl()
+    // {
+    //     Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
+    //     if (IsDown)
+    //     {
+    //         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-            if (ControlRaycastPlane.Raycast(ray, out float enter))
-            {
-                //Get the point that is clicked
-                beforeFrameX = ray.GetPoint(enter).x;
+    //         if (ControlRaycastPlane.Raycast(ray, out float enter))
+    //         {
+    //             //Get the point that is clicked
+    //             beforeFrameX = ray.GetPoint(enter).x;
 
-            }
-        }
+    //         }
+    //     }
 
-        if (IsClick)
-        {
-            Vector3 TargetPos = Vector3.zero;
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+    //     if (IsClick)
+    //     {
+    //         Vector3 TargetPos = Vector3.zero;
+    //         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-            if (ControlRaycastPlane.Raycast(ray, out float enter))
-            {
-                //Get the point that is clicked
-                Vector3 hitPoint = ray.GetPoint(enter);
-                // Vector3 LocalConvert  = transform.InverseTransformPoint(hitPoint);
-                float xDif = hitPoint.x - beforeFrameX;
+    //         if (ControlRaycastPlane.Raycast(ray, out float enter))
+    //         {
+    //             //Get the point that is clicked
+    //             Vector3 hitPoint = ray.GetPoint(enter);
+    //             // Vector3 LocalConvert  = transform.InverseTransformPoint(hitPoint);
+    //             float xDif = hitPoint.x - beforeFrameX;
 
-                //Move your cube GameObject to the point where you clicked
-                TargetPos = new Vector3(transform.localPosition.x + xDif, transform.localPosition.y, transform.localPosition.z); ;
-                TargetPos.x = Mathf.Clamp(TargetPos.x, -5, 5);
-                beforeFrameX = hitPoint.x;
-            }
-            // transform.localPosition = Vector3.Lerp(transform.localPosition, TargetPos, 5 * Time.fixedDeltaTime);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, TargetPos, 0.5f);
-            // transform.localPosition = TargetPos;
+    //             //Move your cube GameObject to the point where you clicked
+    //             TargetPos = new Vector3(transform.localPosition.x + xDif, transform.localPosition.y, transform.localPosition.z); ;
+    //             TargetPos.x = Mathf.Clamp(TargetPos.x, -5, 5);
+    //             beforeFrameX = hitPoint.x;
+    //         }
+    //         // transform.localPosition = Vector3.Lerp(transform.localPosition, TargetPos, 5 * Time.fixedDeltaTime);
+    //         transform.localPosition = Vector3.Lerp(transform.localPosition, TargetPos, 0.5f);
+    //         // transform.localPosition = TargetPos;
 
-            // Check for significant movement to determine the rotation
-            if (Mathf.Abs(transform.localPosition.x - TargetPos.x) > 0.1f)
-            {
-                float directionSign = Mathf.Sign(TargetPos.x - transform.localPosition.x);
-                Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
-                targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
-            }
-        }
+    //         // Check for significant movement to determine the rotation
+    //         if (Mathf.Abs(transform.localPosition.x - TargetPos.x) > 0.1f)
+    //         {
+    //             float directionSign = Mathf.Sign(TargetPos.x - transform.localPosition.x);
+    //             Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
+    //             targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
+    //         }
+    //     }
 
-        // Apply the target rotation smoothly in all cases
-        childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
-    }
+    //     // Apply the target rotation smoothly in all cases
+    //     childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
+    // }
 
-    private void OldController()
-    {
-        float horizontalInput = 0;
-        // Move the player left and right
-        if (IsClick)
-        {
-            horizontalInput = Input.GetAxisRaw("Mouse X");
-        }
-        // print(horizontalInput);
-        float newPositionX = transform.localPosition.x + (horizontalInput * sideSpeed * Time.deltaTime);
-        newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
-        Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
-        transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.35f);
-        if (Mathf.Abs(horizontalInput) > 0)
-        {
-            float rot = Mathf.Sign(horizontalInput);
-            // print(rot);
-            Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
-            // print(moveDirection);
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
-        }
-        else
-        {
-            childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
-        }
-    }
+    // private void OldController()
+    // {
+    //     float horizontalInput = 0;
+    //     // Move the player left and right
+    //     if (IsClick)
+    //     {
+    //         horizontalInput = Input.GetAxisRaw("Mouse X");
+    //     }
+    //     // print(horizontalInput);
+    //     float newPositionX = transform.localPosition.x + (horizontalInput * sideSpeed * Time.deltaTime);
+    //     newPositionX = Mathf.Clamp(newPositionX, minXLimit, maxXLimit);
+    //     Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
+    //     transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.35f);
+    //     if (Mathf.Abs(horizontalInput) > 0)
+    //     {
+    //         float rot = Mathf.Sign(horizontalInput);
+    //         // print(rot);
+    //         Vector3 moveDirection = new Vector3(rot, 0f, 1).normalized;
+    //         // print(moveDirection);
+    //         Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+    //         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
+    //     }
+    //     else
+    //     {
+    //         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, Quaternion.Euler(Vector3.forward), Time.deltaTime * rotSpeed);
+    //     }
+    // }
 
-    private void ViewPortControl()
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
+    // private void ViewPortControl()
+    // {
+    //     Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
 
-        if (IsClick)
-        {
-            // Convert mouse position to viewport position
-            Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
-            float inverse = Mathf.InverseLerp(0.1f, 0.9f, viewPortPos.x);
-            // Calculate new X position within the bounds (-5 to 5)
-            float newPositionX = Mathf.Lerp(minXLimit, maxXLimit, inverse);
-            Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
+    //     if (IsClick)
+    //     {
+    //         // Convert mouse position to viewport position
+    //         Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
+    //         float inverse = Mathf.InverseLerp(0.1f, 0.9f, viewPortPos.x);
+    //         // Calculate new X position within the bounds (-5 to 5)
+    //         float newPositionX = Mathf.Lerp(minXLimit, maxXLimit, inverse);
+    //         Vector3 targetPos = new Vector3(newPositionX, transform.localPosition.y, transform.localPosition.z);
 
-            // Smoothly move the player to the target position
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
+    //         // Smoothly move the player to the target position
+    //         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
 
-            // Check for significant movement to determine the rotation
-            if (Mathf.Abs(transform.localPosition.x - newPositionX) > 0.5f)
-            {
-                float directionSign = Mathf.Sign(newPositionX - transform.localPosition.x);
-                Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
-                targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
-            }
+    //         // Check for significant movement to determine the rotation
+    //         if (Mathf.Abs(transform.localPosition.x - newPositionX) > 0.5f)
+    //         {
+    //             float directionSign = Mathf.Sign(newPositionX - transform.localPosition.x);
+    //             Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
+    //             targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
+    //         }
 
-        }
-        // Apply the target rotation smoothly in all cases
-        childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
-    }
+    //     }
+    //     // Apply the target rotation smoothly in all cases
+    //     childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
+    // }
     Vector3 befFrameMous;
     float targetX;
+    bool JustClicked = false;
     private void ViewPortControl2()
     {
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
-        if (IsDown)
+        if (IsDown || IsUp)
         {
-
-            ResetTargetX();
+            JustClicked = true;
         }
+
+        else
         if (IsClick)
         {
+            if (JustClicked)
+            {
+                ResetTargetX();
+                JustClicked = false;
+            }
             Vector3 vel = rb.linearVelocity;
             vel.x = 0;
             rb.linearVelocity = vel;
             // Convert mouse position to viewport position
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
-            float xDif = (viewPortPos.x - befFrameMous.x) * 40 ;
+            float xDif = (viewPortPos.x - befFrameMous.x) * 40;
             targetX += xDif;
             Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
             // targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
@@ -287,6 +295,7 @@ public class PlayerMovement : MovementForgeRun
     {
         befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
         targetX = transform.localPosition.x;
+        JustClicked = true;
     }
 
     public override void UseParentedMovement(bool val)

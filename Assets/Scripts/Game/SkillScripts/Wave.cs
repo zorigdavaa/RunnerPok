@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityUtilities;
+using ZPackage;
 
 public class Wave : BaseSkill
 {
@@ -20,13 +22,29 @@ public class Wave : BaseSkill
     {
         CoolDown = new Countdown(true, 3f);
         Model.localScale = Vector3.one * 0.2f;
-                        Model.gameObject.SetActive(false);
+        Model.gameObject.SetActive(false);
+        Z.Player.OnStateChanged += OnstateChange;
+    }
+
+    private void OnstateChange(object sender, PlayerState e)
+    {
+        if (e == PlayerState.Fight)
+        {
+            UseAble = true;
+            Casting = false;
+            Model.gameObject.SetActive(false);
+            ownTime = 0;
+        }
+        else
+        {
+            UseAble = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CoolDown.Progress())
+        if (UseAble && !Casting && CoolDown.Progress())
         {
             Use(this, null);
             // CoolDown.Reset();
