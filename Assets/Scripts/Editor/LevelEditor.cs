@@ -95,7 +95,7 @@ public class LevelEditor : Editor
         bool sameNameDirec = Directory.Exists(filePath);
         if (!sameNameDirec)
         {
-            Directory.CreateDirectory(filePath);
+            AssetDatabase.CreateFolder("Assets/Prefabs/Level", fileName + " Data");
             AssetDatabase.Refresh();
         }
         relateviePath = "Assets/Prefabs/Level" + $"/{fileName} Data";
