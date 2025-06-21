@@ -5723,6 +5723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
   Levels:
+  - {fileID: 7278324688581108722, guid: 04386f5161e910849a14d4e0a968d300, type: 3}
   - {fileID: 7278324688581108722, guid: 6fd974ac1df82564aba0dab4a6f7a42a, type: 3}
   - {fileID: 7278324688581108722, guid: 0d1cd2bc242c92942ba998315335fef1, type: 3}
   LastInstLvl: {fileID: 0}
@@ -7486,7 +7487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 731553563712976111, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -160.1283
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 731553563712976111, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
       propertyPath: m_AnchoredPosition.x

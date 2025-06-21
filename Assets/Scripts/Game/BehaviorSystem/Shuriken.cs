@@ -17,12 +17,14 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
     public ObjectPool<Shuriken> Pool { get; set; }
     protected Coroutine AutoGotoPoolCor;
     protected Transform Graphics;
+    bool isReleased = false;
 
 
 
     public void GetFrompool()
     {
         gameObject.SetActive(true);
+        isReleased = false;
         transform.rotation = Quaternion.identity;
         // transform.position = Vector3.zero;
         AutoGotoPoolCor = StartCoroutine(LocalCoroutine());
@@ -37,6 +39,7 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
     //Should Only called from Release
     public virtual void GotoPool()
     {
+        isReleased = true;
         gameObject.SetActive(false);
         transform.position = Vector3.zero;
     }
@@ -77,7 +80,7 @@ public class Shuriken : BaseEquipedItem, IPoolItem<Shuriken>
 
     public virtual void Impact(Enemy enemy)
     {
-        if (enemy && enemy.IsAlive)
+        if (enemy && enemy.IsAlive && !isReleased)
         {
             // enemy.TakeDamage(data.damageData);
             enemy.TakeDamage(DamageData);

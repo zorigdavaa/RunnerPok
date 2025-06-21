@@ -177,14 +177,7 @@ namespace ZPackage
         {
             print(Level);
             Level++;
-            if (Level < 10)
-            {
-                PlayerPrefs.SetInt("nextLevelScore", (int)(Level * 5 + Score * 1.2f + 50));
-            }
-            else
-            {
-                PlayerPrefs.SetInt("nextLevelScore", (int)(Mathf.Sqrt(Level * Score) * 0.3 + Score));
-            }
+
         }
         private void StartGame()
         {

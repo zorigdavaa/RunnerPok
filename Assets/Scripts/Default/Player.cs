@@ -419,6 +419,7 @@ public class Player : Character, IItemEquipper
     {
         if (skills.Contains(skill))
         {
+            Debug.LogError("Skill already added: " + skill.name);
             return;
         }
         skills.Add(skill);

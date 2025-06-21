@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0887a59dcb199854eab8aa7521c4d4e1, type: 3}
+  m_Name: SkillChooseSec
+  m_EditorClassIdentifier: 
+  Type: 0
+  levelTiles:
+  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+  SectionEnd: {fileID: 0}
+  SectionStart: {fileID: 1152342366785983181, guid: 6f34c9e4187be37498ad707d94f9f45c, type: 3}
+  SelfGenCount: 5
