@@ -95,7 +95,7 @@ public class Player : Character, IItemEquipper
         Movement = GetComponent<PlayerMovement>();
         Movement.SetSpeed(1);
         // animationController.OnSpearShoot += SpearShoot;
-        soundManager = FindObjectOfType<SoundManager>();
+        soundManager = FindFirstObjectByType<SoundManager>();
         // cameraController = FindObjectOfType<CameraController>();
         GameManager.Instance.GameOverEvent += OnGameOver;
         GameManager.Instance.OnGamePlay += OnGamePlay;
@@ -427,24 +427,51 @@ public class Player : Character, IItemEquipper
         coin.GotoPosAndAdd();
     }
 
-    internal void AddToSkill(BaseSkill skill)
+    internal void AddToSkill(SkillSO skill)
     {
-        if (skills.Contains(skill))
+        if (HasSkill(skill))
         {
             Debug.LogError("Skill already added: " + skill.name);
             return;
         }
-        skills.Add(skill);
+        var InsObj = Instantiate(skill.Prefab, transform.position, Quaternion.identity, transform);
+        InsObj.SetSO(skill);
+        InsObj.OnEquipped();
+        skills.Add(InsObj);
         // skill.Equip();
+    }
+    public bool HasSkill(SkillSO skillSO)
+    {
+        return skills.Any(s => s.SO == skillSO);
     }
 
     internal void RemoveSkill(BaseSkill skill)
     {
         if (skills.Contains(skill))
         {
+            skill.OnUnEquip();
             skills.Remove(skill);
+            Destroy(skill.gameObject);
             // skill.UnEquip();
         }
+    }
+
+    public void UpgradeSkill(SkillSO current)
+    {
+        if (current.nextLevel == null)
+        {
+            Debug.LogWarning("No upgrade available for this skill.");
+            return;
+        }
+
+        // Find existing skill
+        var existing = skills.FirstOrDefault(s => s.SO == current);
+        if (existing != null)
+        {
+            RemoveSkill(existing); // Remove old skill
+        }
+
+        AddToSkill(current.nextLevel);     // Add upgraded skill
     }
 
     // public Transform GetRightFoot()

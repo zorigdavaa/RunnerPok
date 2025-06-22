@@ -9,13 +9,13 @@ public class BaseSkill : MonoBehaviour
     public bool UseAble = false;
     public Countdown CoolDown;
     public SkillSO SO;
-    public virtual void Equip()
+    public virtual void OnEquipped()
     {
-        Z.Player.AddToSkill(this);
+        // Z.Player.AddToSkill(this);
     }
-    public virtual void UnEquip()
+    public virtual void OnUnEquip()
     {
-        Z.Player.RemoveSkill(this);
+        // Z.Player.RemoveSkill(this);
     }
 
     public void SetSO(SkillSO SO)

@@ -9,7 +9,7 @@ using ZPackage;
 public class DoubleShot : BaseSkill
 {
 
-    public override void Equip()
+    public override void OnEquipped()
     {
         Z.Player.OnShoot += OnPlayerShoot;
     }

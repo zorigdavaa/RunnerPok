@@ -11,16 +11,16 @@ public class ChainLightObject : BaseSkill
     public bool Casting { get; set; }
     public List<LightningPositionTrackData> Lightnings;
     // FunctionUpdater updater;
-    public override void Equip()
+    public override void OnEquipped()
     {
         CoolDown = new Countdown(true, 3);
-        base.Equip();
+        base.OnEquipped();
         Lightnings = new List<LightningPositionTrackData>();
         // updater = FunctionUpdater.Create(() => { Use(this, null); }, 3, name);
     }
-    public override void UnEquip()
+    public override void OnUnEquip()
     {
-        base.UnEquip();
+        base.OnUnEquip();
         FunctionUpdater.StopTimer(name);
     }
 

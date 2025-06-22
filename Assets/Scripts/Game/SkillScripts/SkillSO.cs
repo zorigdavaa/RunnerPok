@@ -11,12 +11,12 @@ public class SkillSO : ScriptableObject
     public Sprite Sprite;
     [TextArea] public string Text;
     public SkillSO nextLevel;
+    public int skillLevel = 1;
     public KeyValuePair<Character, BaseSkill> Weilders;
     public BaseSkill Prefab;
     public virtual void Equip()
     {
-        var InsObj = Instantiate(Prefab, Z.Player.transform.position, Quaternion.identity, Z.Player.transform);
-        InsObj.Equip();
+
     }
 
     public virtual void UnEquip()

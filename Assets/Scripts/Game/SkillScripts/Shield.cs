@@ -11,14 +11,14 @@ public class Shield : BaseSkill
     public Action<object, object> OnDestroyEvent { get; internal set; }
 
     // Start is called before the first frame update
-    public override void Equip()
+    public override void OnEquipped()
     {
         Z.Player.OnBeforeDamdageTaken += OnBeforeDamdageTaken;
         OnDestroyEvent += Use;
     }
     public override void Use(object sender, object e)
     {
-        UnEquip();
+        Z.Player.RemoveSkill(this);
     }
 
     private void OnBeforeDamdageTaken(ref float damage)
@@ -38,9 +38,8 @@ public class Shield : BaseSkill
         }
     }
 
-    public override void UnEquip()
+    public override void OnUnEquip()
     {
-        Z.Player.RemoveSkill(this);
-        Destroy(gameObject);
+
     }
 }

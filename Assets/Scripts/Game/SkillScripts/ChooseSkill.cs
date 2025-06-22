@@ -27,8 +27,8 @@ public class ChooseSkill : MonoBehaviour
     }
     public void Choose()
     {
-        // Z.Player.AddToSkill(skill);
-        skill.Equip();
+        Z.Player.AddToSkill(skill);
+        // skill.Equip();
         Skills.Instance.PlayerChosen(this);
     }
 }

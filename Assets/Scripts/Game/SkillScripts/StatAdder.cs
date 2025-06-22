@@ -12,9 +12,9 @@ public class StatAdder : BaseSkill
     public float AddHealth = 1;
     public float Armor = 1;
     public float AddProj = 0;
-    public override void Equip()
+    public override void OnEquipped()
     {
-        base.Equip();
+        base.OnEquipped();
         // Z.Player.AddToSkill(this);
         if (AddHealth != 0)
         {
@@ -47,7 +47,7 @@ public class StatAdder : BaseSkill
 
     }
 
-    public override void UnEquip()
+    public override void OnUnEquip()
     {
         // Z.Player.AddToSkill(this);
         if (AddHealth != 0)
