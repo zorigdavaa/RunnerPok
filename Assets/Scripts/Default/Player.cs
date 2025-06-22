@@ -290,7 +290,7 @@ public class Player : Character, IItemEquipper
         int projCount = Stats.AddProjCount.GetValue();
         projCount = Mathf.Clamp(projCount, 1, 10);
         List<Shuriken> shurikens = new List<Shuriken>();
-        float maxAngle = 6f * projCount;
+        float maxAngle = 5f * projCount;
         for (int i = 0; i < projCount; i++)
         {
             float angle = Mathf.Lerp(-maxAngle, maxAngle, projCount == 1 ? 0.5f : (float)i / (projCount - 1));

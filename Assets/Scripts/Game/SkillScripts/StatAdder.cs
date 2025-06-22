@@ -11,6 +11,7 @@ public class StatAdder : BaseSkill
     // public float AddRange = 1;//calculated in second
     public float AddHealth = 1;
     public float Armor = 1;
+    public float AddProj = 0;
     public override void Equip()
     {
         base.Equip();
@@ -34,6 +35,10 @@ public class StatAdder : BaseSkill
         if (Armor != 0)
         {
             Z.Player.Stats.Armor.AddModifier(Armor);
+        }
+        if (AddProj != 0)
+        {
+            Z.Player.Stats.Armor.AddModifier(AddProj);
         }
     }
 
@@ -64,6 +69,10 @@ public class StatAdder : BaseSkill
         if (Armor != 0)
         {
             Z.Player.Stats.Armor.RemoveModifier(Armor);
+        }
+        if (AddProj != 0)
+        {
+            Z.Player.Stats.Armor.RemoveModifier(AddProj);
         }
         Z.Player.RemoveSkill(this);
     }

@@ -9,17 +9,12 @@ public class TripleShot : DoubleShot
 {
     public override void Use(object sender, object e)
     {
-        Shuriken first = (Shuriken)e;
         var pool = (ObjectPool<Shuriken>)sender;
+        Shuriken first = pool.Get();
+        first.transform.position += Vector3.right * 1.5f;
         Shuriken second = pool.Get();
+        second.transform.position -= Vector3.right * 1.5f;
         Shuriken third = pool.Get();
-        first.transform.rotation = Quaternion.identity;
-        // first.SideMovement = 0f;
-        // second.SideMovement = -2f;
-        second.transform.position -= Vector3.right * 0.5f;
-        third.transform.position += Vector3.right * 0.5f;
-        second.transform.rotation = Quaternion.LookRotation(Z.Player.transform.forward + Vector3.right * 0.5f);
-        third.transform.rotation = Quaternion.LookRotation(Z.Player.transform.forward + Vector3.left * 0.5f);
         // third.SideMovement = 2f;
     }
 }
