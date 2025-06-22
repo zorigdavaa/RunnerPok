@@ -47,6 +47,8 @@ MonoBehaviour:
   SecIDX: 0
   Sections: []
   SectionDatas:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 6205effbc8d8aef4e956e68fd8559ac5, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}

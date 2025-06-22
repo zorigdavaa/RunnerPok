@@ -76,6 +76,7 @@ public class LevelEditor : Editor
         string assetPath = AssetDatabase.GenerateUniqueAssetPath($"{relateviePath}/Section.asset");
         AssetDatabase.CreateAsset(newSection, assetPath);
         script.SectionDatas.Add(newSection);
+        newSection.FillSelf();
         EditorUtility.SetDirty(script);
         AssetDatabase.SaveAssets();
     }

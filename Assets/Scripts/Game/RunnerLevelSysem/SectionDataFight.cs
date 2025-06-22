@@ -24,6 +24,8 @@ public class SectionDataFight : SectionData
     public int EnemyCount = 5;
     public override void FillYourSelf()
     {
+        levelTiles = new List<Tile>();
+        LevelEnemies = new List<EnemyWave>();
         levelTiles.Clear();
         LevelEnemies.Clear();
         List<Animal> AllEnemies = new List<Animal>();
