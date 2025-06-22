@@ -15,4 +15,5 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 8a7550dfbe6ddfb458a9521d4ea1d7c2, type: 3}
   Text: Triple Shot
   nextLevel: {fileID: 11400000, guid: b72345af1aef2024498e83287d1b4e4a, type: 2}
+  skillLevel: 2
   Prefab: {fileID: -2263101204685220846, guid: 43255d786a1bf744390f335cdbc8cdb4, type: 3}
