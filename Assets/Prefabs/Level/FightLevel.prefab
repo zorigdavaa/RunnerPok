@@ -47,9 +47,14 @@ MonoBehaviour:
   SecIDX: 0
   Sections: []
   SectionDatas:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 7a176ed61f4d087439179f05a53b69bf, type: 2}
   - {fileID: 11400000, guid: 6205effbc8d8aef4e956e68fd8559ac5, type: 2}
+  - {fileID: 11400000, guid: 7a176ed61f4d087439179f05a53b69bf, type: 2}
+  - {fileID: 11400000, guid: fb29f9d5640e45441bf0f8f9b66a126c, type: 2}
+  - {fileID: 11400000, guid: 7a176ed61f4d087439179f05a53b69bf, type: 2}
+  - {fileID: 11400000, guid: c5cf465f72523b540850da041b1e72ff, type: 2}
+  - {fileID: 11400000, guid: 7a176ed61f4d087439179f05a53b69bf, type: 2}
+  - {fileID: 11400000, guid: bd5398ec2a548324c9080086d6d65f0a, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}

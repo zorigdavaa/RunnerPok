@@ -11,10 +11,11 @@ using UnityEngine.AddressableAssets;
 public class LevelEditor : Editor
 {
     SerializedProperty sectionDataSP;
-    string relateviePath = "Assets/Prefabs/Level";
+    string relateviePath;
 
     private void OnEnable()
     {
+        relateviePath = "Assets/Prefabs/Level" + $"/{target.name} Data";
         sectionDataSP = serializedObject.FindProperty("SectionDatas");
     }
     public override void OnInspectorGUI()
@@ -29,6 +30,39 @@ public class LevelEditor : Editor
         EditorGUILayout.PropertyField(sectionDataSP, new GUIContent("Section Data"), true);
         serializedObject.ApplyModifiedProperties();
         DrawPropertiesExcluding(serializedObject, sectionDataSP.name);
+        if (GUILayout.Button("Remove Unused Sections"))
+        {
+            RemoveUnused();
+        }
+    }
+
+    private void RemoveUnused()
+    {
+        if (!AssetDatabase.IsValidFolder(relateviePath))
+        {
+            Debug.LogWarning($"The path {relateviePath} does not exist. Please create the directory first.");
+            return;
+        }
+        Level script = (Level)target;
+        List<string> toRemove = new List<string>();
+        // var files = Directory.GetFiles(relateviePath, "Section*.asset");
+        string[] guids = AssetDatabase.FindAssets("Section", new[] { relateviePath });
+        foreach (var guid in guids)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+            SectionData section = AssetDatabase.LoadAssetAtPath<SectionData>(assetPath);
+            if (!script.SectionDatas.Contains(section))
+            {
+                toRemove.Add(guid);
+            }
+        }
+        foreach (var guid in toRemove)
+        {
+            string assetPath = AssetDatabase.GUIDToAssetPath(guid);
+            AssetDatabase.DeleteAsset(assetPath);
+        }
+        EditorUtility.SetDirty(script);
+        AssetDatabase.SaveAssets();
     }
 
     private void ShowContextMenu()
@@ -41,8 +75,17 @@ public class LevelEditor : Editor
         menu.AddItem(new GUIContent("Create/Obs"), false, () => AddToSection(SectionType.Obstacle));
         menu.AddItem(new GUIContent("Insert Last"), false, () => sectionDataSP.InsertArrayElementAtIndex(sectionDataSP.arraySize));
         menu.AddItem(new GUIContent("Reset Value"), false, ResetValue);
+        menu.AddItem(new GUIContent("Remove null"), false, RemoveNull);
 
         menu.ShowAsContext();
+    }
+
+    private void RemoveNull()
+    {
+        Level script = (Level)target;
+        script.SectionDatas.RemoveAll(section => section == null);
+        EditorUtility.SetDirty(script);
+        serializedObject.Update();
     }
 
     public void AddToSection(SectionType type)
@@ -90,10 +133,8 @@ public class LevelEditor : Editor
 
     public void CreateDirectory()
     {
-        var currentDir = Directory.GetCurrentDirectory() + "/Assets/Prefabs/Level";
         var fileName = target.name;
-        string filePath = currentDir + $"/{fileName} Data";
-        bool sameNameDirec = Directory.Exists(filePath);
+        bool sameNameDirec = AssetDatabase.IsValidFolder($"Assets/Prefabs/Level/{fileName} Data");
         if (!sameNameDirec)
         {
             AssetDatabase.CreateFolder("Assets/Prefabs/Level", fileName + " Data");
