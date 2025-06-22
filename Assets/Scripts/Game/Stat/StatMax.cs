@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StatMax : BaseStat
+public class StatMax : BaseStat<float>
 {
     [SerializeField] float MaxValue = 100;
     public StatMax(float baseValue)

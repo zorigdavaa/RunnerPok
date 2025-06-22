@@ -14,9 +14,9 @@ public class DoubleShot : BaseSkill
         Z.Player.OnShoot += OnPlayerShoot;
     }
 
-    private void OnPlayerShoot(object sender, Shuriken e)
+    private void OnPlayerShoot(object sender, List<Shuriken> e)
     {
-        Use(sender, e);
+        Use(sender, e[0]);
     }
 
     public override void Use(object sender, object e)

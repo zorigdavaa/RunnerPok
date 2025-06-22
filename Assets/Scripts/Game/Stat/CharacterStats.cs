@@ -8,6 +8,7 @@ public class CharacterStats : MonoBehaviour
     public Stat Armor;
     public Stat AttackSpeed;
     public Stat BaseDamage;
+    public StatInt AddProjCount;
     // Start is called before the first frame update
     void Start()
     {

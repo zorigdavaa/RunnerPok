@@ -1,13 +1,12 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Stat : BaseStat<float>
+public class StatInt : BaseStat<int>
 {
-    public float AdditionalValue = 0;
-    public List<float> Modifiers = new List<float>();
-    public virtual void AddModifier(float value)
+    public int AdditionalValue = 0;
+    public List<int> Modifiers = new List<int>();
+    public virtual void AddModifier(int value)
     {
         if (value != 0)
         {
@@ -16,7 +15,7 @@ public class Stat : BaseStat<float>
         }
     }
 
-    public virtual void RemoveModifier(float value)
+    public virtual void RemoveModifier(int value)
     {
         if (value != 0 && Modifiers.Contains(value))
         {
@@ -24,7 +23,7 @@ public class Stat : BaseStat<float>
             AdditionalValue -= value;
         }
     }
-    public override float GetValue()
+    public override int GetValue()
     {
         return BaseValue + AdditionalValue;
     }

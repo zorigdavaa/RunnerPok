@@ -2488,6 +2488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5693683130625880137, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: ProjectileCount.BaseValue
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6477016897789823786, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: playerParent
       value: 

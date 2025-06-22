@@ -86,7 +86,7 @@ public class Player : Character, IItemEquipper
     public Coin CoinPF;
     public Transform ForwardTransForm;
     [SerializeField] List<BaseSkill> skills;
-    public EventHandler<Shuriken> OnShoot;
+    public EventHandler<List<Shuriken>> OnShoot;
 
     // Start is called before the first frame update
     void Start()
@@ -287,10 +287,22 @@ public class Player : Character, IItemEquipper
 
     private void AttackProjectile(object sender, EventArgs e)
     {
-        Shuriken shuriken = Pool.Get();
-        shuriken.OnShoot(this);
+        int projCount = Stats.AddProjCount.GetValue();
+        projCount = Mathf.Clamp(projCount, 1, 10);
+        List<Shuriken> shurikens = new List<Shuriken>();
+        float maxAngle = 6f * projCount;
+        for (int i = 0; i < projCount; i++)
+        {
+            float angle = Mathf.Lerp(-maxAngle, maxAngle, projCount == 1 ? 0.5f : (float)i / (projCount - 1));
+            Quaternion rotation = Quaternion.Euler(0, angle, 0);
+            Shuriken shuriken = Pool.Get();
+            shuriken.transform.rotation = rotation;
 
-        OnShoot?.Invoke(Pool, shuriken);
+            shuriken.OnShoot(this);
+            shurikens.Add(shuriken);
+        }
+
+        OnShoot?.Invoke(Pool, shurikens);
     }
     public void ChangeState(PlayerState _state)
     {
