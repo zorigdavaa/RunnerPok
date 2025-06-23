@@ -14,6 +14,7 @@ public class SectionData : ScriptableObject
     public List<Tile> levelTiles;
     public Tile SectionEnd;
     public Tile SectionStart;
+    public GameObject VisualPrefab;
 
     public virtual LevelSection CreateMono()
     {
