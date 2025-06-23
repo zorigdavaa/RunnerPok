@@ -21,8 +21,9 @@ public class SectionDataEditor : Editor
 
             if (sectionData.VisualPrefab)
             {
-                Debug.LogWarning("Visual prefab already exists. Please delete it first.");
-                return;
+                AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(sectionData.VisualPrefab));
+                // Debug.LogWarning("Visual prefab already exists. Please delete it first.");
+                // return;
             }
 
             GameObject CreatingObj = new GameObject(sectionData.name);

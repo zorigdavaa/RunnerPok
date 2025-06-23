@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   levelTiles:
-  - {fileID: 1152342366785983181, guid: c9d2860a2869849eab48cde5238ca3d5, type: 3}
-  - {fileID: 1152342366785983181, guid: f74aad4f2381847b68d4fd5fe6517738, type: 3}
-  - {fileID: 6317272806129293980, guid: 09e339f85c2994e4fbcdc9739afd3d8d, type: 3}
-  - {fileID: 1152342366785983181, guid: 309075768fce842bbbde18d398789008, type: 3}
-  - {fileID: 1152342366785983181, guid: c9d2860a2869849eab48cde5238ca3d5, type: 3}
+  - {fileID: 5044468542435672352, guid: 85a3a8df855b1d14d814a212a45caa40, type: 3}
+  - {fileID: 1152342366785983181, guid: 7f160efbb58d3ae4abefd6640c7a76a2, type: 3}
   - {fileID: 1152342366785983181, guid: ae71ec917e81e934eb94964c6ffca414, type: 3}
-  - {fileID: 1152342366785983181, guid: b9afba61048174747bdebd74329f507a, type: 3}
   SectionEnd: {fileID: 0}
   SectionStart: {fileID: 0}
-  VisualPrefab: {fileID: 7853978352634247186, guid: a99ca958b278394448b3ebe4f723c92b, type: 3}
-  SelfGenCount: 7
+  VisualPrefab: {fileID: 3366811725502611415, guid: a99ca958b278394448b3ebe4f723c92b, type: 3}
+  SelfGenCount: 3
