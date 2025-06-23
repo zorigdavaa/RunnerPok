@@ -2489,6 +2489,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5693683130625880137, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
+      propertyPath: AddProjCount.BaseValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5693683130625880137, guid: d4e7be398bdbab64e92f1ac57d93f34f, type: 3}
       propertyPath: ProjectileCount.BaseValue
       value: 0
       objectReference: {fileID: 0}
@@ -5415,13 +5419,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mp: {x: 0, y: 0, z: 0}
   AllSkills:
-  - {fileID: 11400000, guid: e20af5bbd40af8e48ad301e0c341ecb6, type: 2}
-  - {fileID: 11400000, guid: 6dd3060932ab4f34791beedecc236fa1, type: 2}
-  - {fileID: 11400000, guid: b72345af1aef2024498e83287d1b4e4a, type: 2}
   - {fileID: 11400000, guid: cc1003ae49bfa224b90bee70e70427cc, type: 2}
   - {fileID: 11400000, guid: 26c60fee1b732634aac07592fbbc58a5, type: 2}
   - {fileID: 11400000, guid: a8ddc47602cb7c241b7e0349cc68bf34, type: 2}
   - {fileID: 11400000, guid: b5ebf915a017cb4429e48a658e280a44, type: 2}
+  - {fileID: 11400000, guid: b5ebf915a017cb4429e48a658e280a44, type: 2}
+  - {fileID: 11400000, guid: f601131073ef049e9be29bcce7043975, type: 2}
+  - {fileID: 11400000, guid: 2f150a6e867a34c70b94f47e9ed0351e, type: 2}
+  - {fileID: 11400000, guid: dac57c7812d724b5dbc55e009726bc75, type: 2}
   ChooseSkills:
   - {fileID: 104102517}
   - {fileID: 1342705760}
