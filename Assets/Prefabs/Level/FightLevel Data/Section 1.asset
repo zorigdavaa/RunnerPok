@@ -13,10 +13,20 @@ MonoBehaviour:
   m_Name: Section 1
   m_EditorClassIdentifier: 
   Type: 2
-  levelTiles: []
+  levelTiles:
+  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   SectionEnd: {fileID: 0}
   SectionStart: {fileID: 0}
   SelfGenCount: 5
-  LevelEnemies: []
+  LevelEnemies:
+  - Wait: 0
+    AfterDelay: 0
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+    - {fileID: 8161862714446864042, guid: 0da1edc07e6f44540b5a83be05bf6f8e, type: 3}
+    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+    - {fileID: 8161862714446864042, guid: 887bc7c9ee65fa94da252c556948be6a, type: 3}
   EnemyWave: 1
   EnemyCount: 5

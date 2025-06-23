@@ -49,5 +49,9 @@ public class SectionDataFight : SectionData
             }
             LevelEnemies.Add(newWave);
         }
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+        UnityEditor.AssetDatabase.SaveAssets();
+#endif
     }
 }
