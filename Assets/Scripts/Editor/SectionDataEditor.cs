@@ -18,14 +18,16 @@ public class SectionDataEditor : Editor
 
         if (GUILayout.Button("Create Visual"))
         {
+
             if (sectionData.VisualPrefab)
             {
-                Debug.LogWarning("Visual prefab already exists. Please delete it first if you want to recreate it.");
+                Debug.LogWarning("Visual prefab already exists. Please delete it first.");
                 return;
             }
 
-            GameObject parentGameObject = new GameObject(sectionData.name);
-            Tile parentTile = parentGameObject.AddComponent<Tile>();
+            GameObject CreatingObj = new GameObject(sectionData.name);
+            Tile parentTile = CreatingObj.AddComponent<Tile>();
+
 
             Vector3 nextPosition = Vector3.zero;
             for (int i = 0; i < sectionData.levelTiles.Count; i++)
@@ -43,7 +45,7 @@ public class SectionDataEditor : Editor
                     parentTile.end = tile.end;
 
                 // Object prefabSource = PrefabUtility.GetCorrespondingObjectFromSource(tile);
-                Tile tileInstance = (Tile)PrefabUtility.InstantiatePrefab(tile, parentGameObject.transform);
+                Tile tileInstance = (Tile)PrefabUtility.InstantiatePrefab(tile, CreatingObj.transform);
                 tileInstance.transform.position = nextPosition;
                 Tile tileObj = tileInstance.GetComponent<Tile>();
                 nextPosition = tileObj.end.position;
@@ -56,11 +58,11 @@ public class SectionDataEditor : Editor
             string prefabPath = $"{folderPath}/{sectionData.name}_Visual.prefab";
             Debug.Log($"Saving prefab to: {prefabPath}");
 
-            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(parentGameObject, prefabPath);
+            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(CreatingObj, prefabPath);
             sectionData.VisualPrefab = prefab.GetComponent<Tile>();
 
             AssetDatabase.SaveAssets();
-            GameObject.DestroyImmediate(parentGameObject); // clean up scene
+            GameObject.DestroyImmediate(CreatingObj); // clean up scene
 #endif
         }
     }
