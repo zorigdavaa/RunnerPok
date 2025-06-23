@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 05e39e6b93b488a479fb0f1e37e4b798
+    m_Address: Assets/Prefabs/Tiles/TileObs 19.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0736c67bd4164044fbe8f25c7711ef16
     m_Address: Assets/Prefabs/Obs/SpeedUpBig.prefab
     m_ReadOnly: 0
@@ -82,6 +88,12 @@ MonoBehaviour:
     - Coin
     - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 27ebd9fa17b5b47d3bd06f5cddb8a9df
+    m_Address: Assets/Prefabs/Tiles/TileObs 22.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 309075768fce842bbbde18d398789008
     m_Address: Assets/Prefabs/Tiles/TileObs 5.prefab
     m_ReadOnly: 0
@@ -90,6 +102,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3245dd3cd9aa07646922280df34aaff3
     m_Address: Assets/Prefabs/Tiles/TileObs 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 324d149d10efa48c388b8164ab7c4651
+    m_Address: Assets/Prefabs/Tiles/TileObs 21.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - ObsTile
@@ -148,6 +166,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Coin
     - CollectTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56256bce078a74242ba16c3f4b64275d
+    m_Address: Assets/Prefabs/Tiles/TileObs 20.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5961c4a99897a7e48b6bc62274d64c6f
     m_Address: Assets/Prefabs/Obs/obstacle spike.prefab
