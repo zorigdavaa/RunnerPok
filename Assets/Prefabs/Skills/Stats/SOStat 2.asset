@@ -17,3 +17,4 @@ MonoBehaviour:
   nextLevel: {fileID: 0}
   skillLevel: 2
   Prefab: {fileID: 1125413224699669934, guid: 98c7042616c4746708a4679ced81a148, type: 3}
+  CanEquipOverlap: 1

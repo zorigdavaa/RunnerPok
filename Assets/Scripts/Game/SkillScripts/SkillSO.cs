@@ -14,6 +14,7 @@ public class SkillSO : ScriptableObject
     public int skillLevel = 1;
     public KeyValuePair<Character, BaseSkill> Weilders;
     public BaseSkill Prefab;
+    public bool CanEquipOverlap = false;
     public virtual void Equip()
     {
 

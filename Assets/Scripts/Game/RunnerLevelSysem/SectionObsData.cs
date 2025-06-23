@@ -23,8 +23,8 @@ public class SectionObsData : SectionData
     }
     public override void FillYourSelf()
     {
-        levelTiles.Clear();
-        Obstacles.Clear();
+        levelTiles = new List<Tile>();
+        Obstacles = new List<GameObject>();
         List<GameObject> AllObs = new List<GameObject>();
         AsyncOperationHandle loading;
         loading = Addressables.LoadAssetsAsync<GameObject>("default", (obj) =>

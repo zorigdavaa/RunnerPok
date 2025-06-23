@@ -19,6 +19,7 @@ public abstract class BaseSection : MonoBehaviour
     public Tile SectionEnd;
     public Tile SectionStart;
     public Level curLevel;
+    public Tile VisualPrefab;
     public BaseSection()
     {
         levelTiles = new List<Tile>();
@@ -34,6 +35,12 @@ public abstract class BaseSection : MonoBehaviour
         // Debug.Log("Start of " + name);
         Init(level);
         level.player.ChangeState(PlayerState.Obs);
+        if (VisualPrefab)
+        {
+            curLevel.SpawnTile(VisualPrefab);
+            levelTiles.Clear();
+
+        }
     }
 
     public void Init(Level level)
@@ -48,29 +55,21 @@ public abstract class BaseSection : MonoBehaviour
 
     public virtual void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 100;
-        if (isNearEndofLand && HasNextTile())
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 150;
+        if (isNearEndofLand)
         {
-            Tile tileToIns = levelTiles[index];
-            curLevel.SpawnTile(tileToIns);
-            Debug.Log("at index of " + index + " tiles of " + tileToIns.name);
-            index++;
-            if (!HasNextTile())
+            if (HasNextTile())
             {
-
-                EndSection();
-                // if (HasNextSection)
-                // {
-                //     SecIDX++;
-                //     SecTileIDx = 0;
-                //     StartNewSection();
-                // }
-                // else
-                // {
-                //     CurSection = null;
-                //     Z.GM.LevelComplete(this, 0);
-                // }
+                Tile tileToIns = levelTiles[index];
+                curLevel.SpawnTile(tileToIns);
+                Debug.Log("at index of " + index + " tiles of " + tileToIns.name);
+                index++;
             }
+            else
+            {
+                EndSection();
+            }
+
         }
         // level.SpawnTile(SectionStart);
     }

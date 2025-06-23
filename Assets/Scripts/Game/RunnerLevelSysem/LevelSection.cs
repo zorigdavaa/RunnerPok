@@ -18,6 +18,7 @@ public class LevelSection : BaseSection
         levelTiles = data.levelTiles;
         SectionEnd = data.SectionEnd;
         SectionStart = data.SectionStart;
+        VisualPrefab = data.VisualPrefab;
     }
 }
 public enum SectionType

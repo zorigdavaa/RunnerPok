@@ -26,8 +26,6 @@ public class SectionDataFight : SectionData
     {
         levelTiles = new List<Tile>();
         LevelEnemies = new List<EnemyWave>();
-        levelTiles.Clear();
-        LevelEnemies.Clear();
         List<Animal> AllEnemies = new List<Animal>();
         Debug.Log("Fire Section");
         var loading = Addressables.LoadAssetAsync<GameObject>("default");

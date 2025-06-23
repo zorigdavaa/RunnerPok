@@ -14,7 +14,7 @@ public class SectionData : ScriptableObject
     public List<Tile> levelTiles;
     public Tile SectionEnd;
     public Tile SectionStart;
-    public GameObject VisualPrefab;
+    public Tile VisualPrefab;
 
     public virtual LevelSection CreateMono()
     {
@@ -36,6 +36,7 @@ public class SectionData : ScriptableObject
         section.levelTiles = levelTiles;
         section.SectionEnd = SectionEnd;
         section.SectionStart = SectionStart;
+        section.VisualPrefab = VisualPrefab;
 
         return section;
     }
@@ -48,7 +49,7 @@ public class SectionData : ScriptableObject
 
     public virtual void FillYourSelf()
     {
-        levelTiles.Clear();
+        levelTiles = new List<Tile>();
         List<Tile> AllTiles = new List<Tile>();
         Debug.Log("base Section");
         AsyncOperationHandle loading;

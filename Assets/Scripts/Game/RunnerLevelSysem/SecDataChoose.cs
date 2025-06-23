@@ -21,7 +21,7 @@ public class SecDataChoose : SectionData
     }
     public override void FillYourSelf()
     {
-        levelTiles.Clear();
+        levelTiles = new List<Tile>();
         Debug.Log("Fire Section");
         var loading = Addressables.LoadAssetAsync<GameObject>("default");
         loading.WaitForCompletion();

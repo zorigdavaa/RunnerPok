@@ -429,7 +429,7 @@ public class Player : Character, IItemEquipper
 
     internal void AddToSkill(SkillSO skill)
     {
-        if (HasSkill(skill))
+        if (HasSkill(skill) && !skill.CanEquipOverlap)
         {
             Debug.LogError("Skill already added: " + skill.name);
             return;

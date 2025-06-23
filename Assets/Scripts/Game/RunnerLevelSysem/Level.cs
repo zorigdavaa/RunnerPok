@@ -74,7 +74,7 @@ public class Level : MonoBehaviour
         // if (isNearEndofLand && CurSectionHasTile)
         if (CurSection == null && BaseTilePf != null)
         {
-            bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 70;
+            bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 100;
             if (isNearEndofLand)
             {
                 // Debug.Log("SS");

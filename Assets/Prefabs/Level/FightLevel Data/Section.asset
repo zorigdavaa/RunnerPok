@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   SectionEnd: {fileID: 0}
   SectionStart: {fileID: 0}
+  VisualPrefab: {fileID: 4569394053519689631, guid: 93a556f3df1564e5e99bddf61e0a1898, type: 3}
   SelfGenCount: 5
   LevelEnemies:
   - Wait: 0
