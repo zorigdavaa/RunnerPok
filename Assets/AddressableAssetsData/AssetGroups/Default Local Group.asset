@@ -394,6 +394,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Animal
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: efb994744bab42e4a88890d0fdcf86df
+    m_Address: Assets/Materials/Tile.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f74aad4f2381847b68d4fd5fe6517738
     m_Address: Assets/Prefabs/Tiles/TileObs 4.prefab
     m_ReadOnly: 0
