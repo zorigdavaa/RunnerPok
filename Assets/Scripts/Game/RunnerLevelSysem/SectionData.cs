@@ -19,7 +19,7 @@ public class SectionData : ScriptableObject
     public virtual LevelSection CreateMono()
     {
         LevelSection section;
-        GameObject newSection = new GameObject();
+        GameObject newSection = new GameObject(this.name);
         switch (Type)
         {
             case SectionType.Collect:
@@ -76,5 +76,14 @@ public class SectionData : ScriptableObject
         {
             levelTiles.Add(AllTiles[Random.Range(0, AllTiles.Count)]);
         }
+        SaveChanges();
+    }
+
+    public void SaveChanges()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(this);
+        UnityEditor.AssetDatabase.SaveAssets();
+#endif
     }
 }

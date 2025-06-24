@@ -37,8 +37,11 @@ public abstract class BaseSection : MonoBehaviour
         level.player.ChangeState(PlayerState.Obs);
         if (VisualPrefab)
         {
-            curLevel.SpawnTile(VisualPrefab);
-            levelTiles.Clear();
+            // curLevel.SpawnTile(VisualPrefab);
+            levelTiles = new List<Tile>
+            {
+                VisualPrefab
+            };
 
         }
     }
@@ -67,6 +70,7 @@ public abstract class BaseSection : MonoBehaviour
             }
             else
             {
+                Debug.Log("End of section " + name);
                 EndSection();
             }
 

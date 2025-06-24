@@ -41,5 +41,6 @@ public class SectionObsData : SectionData
         {
             Obstacles.Add(AllObs[Random.Range(0, AllObs.Count)]);
         }
+        SaveChanges();
     }
 }

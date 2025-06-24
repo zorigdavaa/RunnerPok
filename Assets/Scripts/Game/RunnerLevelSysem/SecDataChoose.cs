@@ -29,5 +29,6 @@ public class SecDataChoose : SectionData
         var load2 = Addressables.LoadAssetAsync<GameObject>("SkillChose");
         load2.WaitForCompletion();
         SectionStart = load2.Result.GetComponent<Tile>();
+        SaveChanges();
     }
 }

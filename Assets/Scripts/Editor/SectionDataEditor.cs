@@ -40,16 +40,14 @@ public class SectionDataEditor : Editor
                     continue;
                 }
 
-                if (i == 0)
-                    parentTile.start = tile.start;
-                else if (i == sectionData.levelTiles.Count - 1)
-                    parentTile.end = tile.end;
-
                 // Object prefabSource = PrefabUtility.GetCorrespondingObjectFromSource(tile);
                 Tile tileInstance = (Tile)PrefabUtility.InstantiatePrefab(tile, CreatingObj.transform);
                 tileInstance.transform.position = nextPosition;
-                Tile tileObj = tileInstance.GetComponent<Tile>();
-                nextPosition = tileObj.end.position;
+                nextPosition = tileInstance.end.position;
+                if (i == 0)
+                    parentTile.start = tileInstance.start;
+                else if (i == sectionData.levelTiles.Count - 1)
+                    parentTile.end = tileInstance.end;
             }
 
 #if UNITY_EDITOR

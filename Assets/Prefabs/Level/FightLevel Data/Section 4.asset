@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   levelTiles:
-  - {fileID: 5044468542435672352, guid: 85a3a8df855b1d14d814a212a45caa40, type: 3}
-  - {fileID: 1152342366785983181, guid: 7f160efbb58d3ae4abefd6640c7a76a2, type: 3}
-  - {fileID: 1152342366785983181, guid: ae71ec917e81e934eb94964c6ffca414, type: 3}
+  - {fileID: 1152342366785983181, guid: a6de2ef3f9fec4aa492f230f7a2d54be, type: 3}
+  - {fileID: 1152342366785983181, guid: 722e594e48b78cd4ba131b981da948e0, type: 3}
+  - {fileID: 1152342366785983181, guid: 309075768fce842bbbde18d398789008, type: 3}
   SectionEnd: {fileID: 0}
   SectionStart: {fileID: 0}
-  VisualPrefab: {fileID: 3366811725502611415, guid: a99ca958b278394448b3ebe4f723c92b, type: 3}
+  VisualPrefab: {fileID: 2277925161258131349, guid: a99ca958b278394448b3ebe4f723c92b, type: 3}
   SelfGenCount: 3
