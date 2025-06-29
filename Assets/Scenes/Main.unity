@@ -6285,18 +6285,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1456237096}
     m_Modifications:
-    - target: {fileID: 5406720027591442359, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1432493848630218988, guid: 81e8696a8f84a9242abde3cb66fda4cd, type: 3}
-    - target: {fileID: 5406720027591442359, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5406720027591442359, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
-      propertyPath: m_Color.r
-      value: 0.3486873
-      objectReference: {fileID: 0}
     - target: {fileID: 5406720029277859411, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
       propertyPath: m_Name
       value: ButtonNext
@@ -6308,10 +6296,6 @@ PrefabInstance:
     - target: {fileID: 5406720029277859436, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5406720029277859436, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5406720029277859436, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6384,18 +6368,6 @@ PrefabInstance:
     - target: {fileID: 5406720029277859436, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5406720029277859438, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5406720029277859438, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b344ad8f50c90d3429b0ab98c5623e42, type: 3}
-    - target: {fileID: 5406720029277859439, guid: b8880694f3b75b6498f97f4fc8922acc, type: 3}
-      propertyPath: m_CullTransparentMesh
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

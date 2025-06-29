@@ -72,7 +72,7 @@ namespace ZPackage
             set
             {
                 level = value;
-                // PlayerPrefs.SetInt("level", value);
+                PlayerPrefs.SetInt("level", value);
                 Z.CanM.HudLevel(value.ToString());
                 // if (progressBar)
                 // {
@@ -177,7 +177,7 @@ namespace ZPackage
         {
             print(Level);
             Level++;
-
+            Debug.Log("Level Completed " + Level);
         }
         private void StartGame()
         {

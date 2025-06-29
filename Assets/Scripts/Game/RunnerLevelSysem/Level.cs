@@ -110,6 +110,7 @@ public class Level : MonoBehaviour
 
     private void LevelComplete()
     {
+        Debug.Log("Waiting for End to LevelComplete");
         float ztoTest = lastSpawnedTile.end.transform.position.z - 2;
         FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > ztoTest, () => { Z.GM.LevelComplete(this, 0); });
     }
