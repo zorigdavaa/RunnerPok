@@ -19,6 +19,9 @@ public class RollObs : MonoBehaviour, ICollisionAction
         Roller.isKinematic = false;
         Roller.linearVelocity = Vector3.back * 30;
         Roller.angularVelocity = new Vector3(10, 0, 0);
-        GetComponent<LeftRightMover>().IsMoving = false;
+        if (GetComponent<LeftRightMover>() != null)
+        {
+            GetComponent<LeftRightMover>().IsMoving = false;
+        }
     }
 }
