@@ -357,6 +357,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ObsTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c26a12d34a2934f24a73b9310ac8dfdf
+    m_Address: Assets/Prefabs/Tiles/TileObs 23.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c8b0c71da65c78049aa7c2f13deccd56
     m_Address: Assets/Prefabs/Obs/MovingSaw.prefab
     m_ReadOnly: 0
@@ -393,11 +399,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Animal
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: efb994744bab42e4a88890d0fdcf86df
-    m_Address: Assets/Materials/Tile.mat
-    m_ReadOnly: 0
-    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f74aad4f2381847b68d4fd5fe6517738
     m_Address: Assets/Prefabs/Tiles/TileObs 4.prefab

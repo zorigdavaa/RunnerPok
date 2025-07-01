@@ -44,7 +44,7 @@ public class FightSection : LevelSection
     }
     public override void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 50;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 100;
         if (isNearEndofLand)
         {
             // Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
