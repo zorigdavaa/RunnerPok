@@ -74,7 +74,7 @@ public class Level : MonoBehaviour
         // if (isNearEndofLand && CurSectionHasTile)
         if (CurSection == null && BaseTilePf != null)
         {
-            bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 100;
+            bool isNearEndofLand = player.transform.position.z > nextSpawnPosition.z - 50;
             if (isNearEndofLand)
             {
                 // Debug.Log("SS");
@@ -304,6 +304,31 @@ public class Level : MonoBehaviour
 
 
     internal void NextNearPlayer()
+    {
+        int indexOfPLayerTile = SpawnedTiles.IndexOf(PlayerBeingTile);
+        if (PlayerBeingTile.end.position.z < Z.Player.transform.position.z + 30)
+        {
+            indexOfPLayerTile++;
+        }
+
+        nextSpawnPosition = SpawnedTiles[indexOfPLayerTile].end.position;
+        List<Tile> removeTiles = new List<Tile>();
+        for (int i = 0; i < SpawnedTiles.Count; i++)
+        {
+            if (i > indexOfPLayerTile)
+            {
+                removeTiles.Add(SpawnedTiles[i]);
+            }
+        }
+        foreach (var item in removeTiles)
+        {
+            SpawnedTiles.Remove(item);
+            Destroy(item.gameObject);
+        }
+    }
+
+
+    internal void NextNearPlayerOld()
     {
         nextSpawnPosition = PlayerBeingTile.end.position;
         List<Tile> removeTiles = new List<Tile>();

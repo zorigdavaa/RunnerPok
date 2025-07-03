@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using ZPackage;
 using Random = UnityEngine.Random;
 
 // [CreateAssetMenu(fileName = "BossSection", menuName = "ScriptableObjects/BossSection")]
@@ -25,7 +26,8 @@ public class BossSection : FightSection
         }
         Tile tileToIns = levelTiles[0];
         Tile tile = level.SpawnTile(tileToIns);
-        tile.OnTileEnter += OnFightSectionEnter;
+        // tile.OnTileEnter += OnFightSectionEnter;
+        FunctionTimer.WaitUntilAndCall(this, () => Z.Player.transform.position.z > tile.start.transform.position.z, () => { OnFightSectionEnter(this, EventArgs.Empty); });
         if (InsEnemies.Any())
         {
             InsEnemsAtTile(tile);

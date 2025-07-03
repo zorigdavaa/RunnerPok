@@ -12,12 +12,13 @@ namespace ZPackage
             {
                 if (instance == null)
                 {
-                    instance = FindObjectOfType<T>(true);
+                    instance = FindFirstObjectByType<T>(FindObjectsInactive.Include);
                     if (instance == null)
                     {
-                        GameObject obj = new GameObject();
-                        obj.name = typeof(T).Name;
-                        instance = obj.AddComponent<T>();
+                        Debug.LogError("Not Found Instance");
+                        // GameObject obj = new GameObject();
+                        // obj.name = typeof(T).Name;
+                        // instance = obj.AddComponent<T>();
                     }
                 }
                     

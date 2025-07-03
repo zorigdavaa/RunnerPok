@@ -44,7 +44,7 @@ public class FightSection : LevelSection
     }
     public override void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 100;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - Z.TileDistance;
         if (isNearEndofLand)
         {
             // Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
@@ -54,6 +54,7 @@ public class FightSection : LevelSection
     }
     public override void EndSection()
     {
+        curLevel.NextNearPlayer();
         Debug.Log("End Fight " + EnemyWaveIdx);
         base.EndSection();
         curLevel.player.ChangeState(PlayerState.Obs);
@@ -95,7 +96,7 @@ public class FightSection : LevelSection
             for (int i = 0; i < InsEnems.Count; i++)
             {
                 Vector3 RandomPosXZ = new Vector3(Random.Range(-4, 4), 0, 0);
-                Enemy insEnemy = GameObject.Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 20 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
+                Enemy insEnemy = GameObject.Instantiate(InsEnems[i], playerParent.position + Vector3.forward * 25 + RandomPosXZ, Quaternion.Euler(0, 180, 0), playerParent);
                 insEnemy.Ondeath += OnEnemyDeath;
                 RemEnemyCount++;
             }

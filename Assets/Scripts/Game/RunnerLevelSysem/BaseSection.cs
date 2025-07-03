@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using ZPackage;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -58,7 +59,7 @@ public abstract class BaseSection : MonoBehaviour
 
     public virtual void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 150;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - Z.TileDistance;
         if (isNearEndofLand)
         {
             if (HasNextTile())

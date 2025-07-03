@@ -17,7 +17,7 @@ namespace ZPackage
             {
                 if (_player == null)
                 {
-                    _player = Object.FindObjectOfType<Player>();
+                    _player = Object.FindFirstObjectByType<Player>(FindObjectsInactive.Include);
                 }
                 return _player;
             }
@@ -30,6 +30,7 @@ namespace ZPackage
                 SetLayerRecursively(child.gameObject, layer);
             }
         }
+        public static int TileDistance = 200;
 
     }
 }

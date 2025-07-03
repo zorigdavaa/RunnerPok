@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d2308dfd81a4a9a859f1c9123fb2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNearDistance: 20
+  PlayerNearDistance: 60
   DestroySelf: 1
   WhenNear:
     m_PersistentCalls:

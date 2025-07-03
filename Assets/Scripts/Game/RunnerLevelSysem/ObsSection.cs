@@ -53,7 +53,7 @@ public class ObsSection : LevelSection
     }
     public override void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 100;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - Z.TileDistance;
         if (isNearEndofLand)
         {
             Tile tileToIns = curLevel.BaseTilePf;
@@ -74,6 +74,7 @@ public class ObsSection : LevelSection
     }
     public override void EndSection()
     {
+                curLevel.NextNearPlayer();
         curLevel.player.ChangeState(PlayerState.Obs);
         base.EndSection();
     }

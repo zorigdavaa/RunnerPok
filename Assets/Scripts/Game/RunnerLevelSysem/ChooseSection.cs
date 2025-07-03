@@ -35,7 +35,7 @@ public class ChooseSection : LevelSection
 
     public override void UpdateSection()
     {
-        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - 100;
+        bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - Z.TileDistance;
         if (isNearEndofLand)
         {
             // Tile tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];

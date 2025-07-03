@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using ZPackage;
 
@@ -101,7 +102,23 @@ public class PlayerMovement : MovementForgeRun
                 if (vel.z < Speed)
                 {
                     // vel.z = Speed;
-                    vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
+                    Vector3 groundNormal = GetGroundNormal();
+                    if (groundNormal.y < 0.98f)
+                    {
+                        // Calculate direction to move along the slope
+                        Vector3 upHill = -Vector3.Cross(Vector3.Cross(Vector3.up, groundNormal), groundNormal).normalized;
+
+                        // Apply forward movement along the slope
+                        Vector3 desiredVelocity = upHill * Speed;
+
+                        // Keep only y and z if you're moving only in z direction
+                        vel.y = desiredVelocity.y; // adds vertical movement
+                        vel.z = Mathf.Lerp(vel.z, desiredVelocity.z, 0.2f);
+                    }
+                    else // flat 
+                    {
+                        vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
+                    }
                 }
                 else
                 {
@@ -135,13 +152,24 @@ public class PlayerMovement : MovementForgeRun
                     //Move your cube GameObject to the point where you clicked
                     TargetLocalPos = transform.parent.InverseTransformPoint(hitPoint + Vector3.forward * 2);
                     TargetLocalPos.x = Mathf.Clamp(TargetLocalPos.x, minXLimit, maxXLimit);
-                    TargetLocalPos.z = Mathf.Clamp(TargetLocalPos.z, -1, 8);
+                    TargetLocalPos.z = Mathf.Clamp(TargetLocalPos.z, -1, 10);
                 }
                 transform.localPosition = Vector3.Lerp(transform.localPosition, TargetLocalPos, 5 * Time.fixedDeltaTime);
                 // befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
             }
         }
     }
+
+    private Vector3 GetGroundNormal()
+    {
+        Ray ray = new Ray(transform.position + transform.up * 0.2f, -transform.up);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 0.6f, LayerMask.GetMask("Road")))
+        {
+            return hitInfo.normal;
+        }
+        return Vector3.up;
+    }
+
     // float beforeFrameX;
     // private void RaycastControl()
     // {
