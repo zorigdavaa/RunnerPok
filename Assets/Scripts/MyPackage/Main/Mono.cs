@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ZPackage
 {
@@ -29,13 +30,16 @@ namespace ZPackage
         public static bool IsSettings => GameManager.Instance.State == GameState.Settings;
 
         ///<summary>Input.GetMouseButton(0)</summary>
-        public static bool IsClick => Input.GetMouseButton(0);
+        // public static bool IsClick => Input.GetMouseButton(0);
+        public static bool IsClick => InputSystem.actions.FindAction("Click")?.WasPressedThisFrame() == true;
 
         ///<summary>Input.GetMouseButtonDown(0)</summary>
-        public static bool IsDown => Input.GetMouseButtonDown(0);
+        // public static bool IsDown => Input.GetMouseButtonDown(0);
+        public static bool IsDown => InputSystem.actions.FindAction("Down")?.WasPressedThisFrame() == true;
 
         ///<summary>Input.GetMouseButtonUp(0)</summary>
-        public static bool IsUp => Input.GetMouseButtonUp(0);
+        // public static bool IsUp => Input.GetMouseButtonUp(0);
+        public static bool IsUp => InputSystem.actions.FindAction("Up")?.WasPressedThisFrame() == true;
 
         ///<summary>Input.mousePosition</summary>
         public static Vector3 MP => Input.mousePosition;

@@ -111,10 +111,10 @@ public class Player : Character, IItemEquipper
     {
         ForwardTransForm.position = new Vector3(0, 0, transform.position.z);
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartThrow(true);
-        }
+        // if (Input.GetKeyDown(KeyCode.A))
+        // {
+        //     StartThrow(true);
+        // }
         // if (Input.GetMouseButtonUp(0))
         // {
         //     if (GetState() == PlayerState.Obs && Movement.IsGrounded())

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using ZPackage;
 
 public class PlayerMovement : MovementForgeRun
@@ -142,7 +143,7 @@ public class PlayerMovement : MovementForgeRun
             if (IsClick)
             {
                 Vector3 TargetLocalPos = Vector3.zero;
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                Ray ray = cam.ScreenPointToRay(Pointer.current.position.ReadValue());
 
                 if (ControlRaycastPlane.Raycast(ray, out float enter))
                 {
@@ -299,7 +300,7 @@ public class PlayerMovement : MovementForgeRun
             vel.x = 0;
             rb.linearVelocity = vel;
             // Convert mouse position to viewport position
-            Vector3 viewPortPos = cam.ScreenToViewportPoint(Input.mousePosition);
+            Vector3 viewPortPos = cam.ScreenToViewportPoint(Pointer.current.position.ReadValue());
             float xDif = (viewPortPos.x - befFrameMous.x) * 40;
             targetX += xDif;
             Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
@@ -321,7 +322,8 @@ public class PlayerMovement : MovementForgeRun
 
     public void ResetTargetX()
     {
-        befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
+        // befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
+        befFrameMous = cam.ScreenToViewportPoint(Pointer.current.position.ReadValue());
         targetX = transform.localPosition.x;
         JustClicked = true;
     }
