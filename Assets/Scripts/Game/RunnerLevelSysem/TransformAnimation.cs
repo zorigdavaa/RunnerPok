@@ -32,6 +32,8 @@ public class TransformAnimation : MonoBehaviour
     public Vector3 TargetRot = Vector3.zero;
     public Vector3 TargetScale = Vector3.one;
     private Vector3 TargetPos;
+
+    [ContextMenu("Animate")]
     public void Animate()
     {
         StartCoroutine(LocalCor());

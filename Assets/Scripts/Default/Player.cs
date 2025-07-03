@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 using UnityEngine.Pool;
 using ZPackage.Utility;
 using System.Linq;
-using Cinemachine;
+using Unity.Cinemachine;
+// using Cinemachine;
 
 public class Player : Character, IItemEquipper
 {
@@ -23,10 +24,10 @@ public class Player : Character, IItemEquipper
     [SerializeField] Transform chest;
     [SerializeField] Transform hand;
     // public Shuriken Shuriken;
-    public List<CinemachineVirtualCamera> cameras;
+    public List<CinemachineCamera> cameras;
     int currentCameraIndex = 0;
     int OldCameraIndex = -1;
-    CinemachineVirtualCamera currentCamera;
+    CinemachineCamera currentCamera;
     PlayerState State = PlayerState.None;
     public ItemData DefaultShuriken;
 
