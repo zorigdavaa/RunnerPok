@@ -306,7 +306,7 @@ public class Level : MonoBehaviour
     internal void NextNearPlayer()
     {
         int indexOfPLayerTile = SpawnedTiles.IndexOf(PlayerBeingTile);
-        if (PlayerBeingTile.end.position.z < Z.Player.transform.position.z + 30)
+        if (PlayerBeingTile.end.position.z < Z.Player.transform.position.z + 40)
         {
             indexOfPLayerTile++;
         }

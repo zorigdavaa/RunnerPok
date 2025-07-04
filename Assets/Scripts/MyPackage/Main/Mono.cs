@@ -11,6 +11,20 @@ namespace ZPackage
 {
     public class Mb : MonoBehaviour
     {
+        private static InputAction clickAction;
+        public static InputAction ClickAction
+        {
+            get
+            {
+                if (clickAction == null)
+                {
+                    clickAction = InputSystem.actions.FindAction("Click");
+                    clickAction.Enable();
+                }
+                return clickAction;
+            }
+        }
+
         ///<summary>Эхлэж байгааг шалгана</summary>
         public static bool IsStarting => GameManager.Instance.State == GameState.Starting;
 
@@ -31,18 +45,18 @@ namespace ZPackage
 
         ///<summary>Input.GetMouseButton(0)</summary>
         // public static bool IsClick => Input.GetMouseButton(0);
-        public static bool IsClick => InputSystem.actions.FindAction("Click")?.WasPressedThisFrame() == true;
+        public static bool IsClick => ClickAction.IsPressed();
 
         ///<summary>Input.GetMouseButtonDown(0)</summary>
         // public static bool IsDown => Input.GetMouseButtonDown(0);
-        public static bool IsDown => InputSystem.actions.FindAction("Down")?.WasPressedThisFrame() == true;
+        public static bool IsDown => ClickAction.WasPressedThisFrame();
 
         ///<summary>Input.GetMouseButtonUp(0)</summary>
         // public static bool IsUp => Input.GetMouseButtonUp(0);
-        public static bool IsUp => InputSystem.actions.FindAction("Up")?.WasPressedThisFrame() == true;
+        public static bool IsUp => ClickAction.WasReleasedThisFrame();
 
         ///<summary>Input.mousePosition</summary>
-        public static Vector3 MP => Input.mousePosition;
+        public static Vector3 MP => Pointer.current.position.ReadValue();
 
         [HideInInspector]
         public Vector3 mp;

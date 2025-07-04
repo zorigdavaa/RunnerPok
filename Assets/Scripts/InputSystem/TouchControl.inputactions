@@ -6,93 +6,20 @@
             "id": "2bf332f0-78aa-4099-8a6a-559c17209b67",
             "actions": [
                 {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "5dd316d2-1382-4756-a2f6-fc8d098b5779",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "37456dd4-9973-416a-bae2-3eddd6f481ee",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Click",
                     "type": "Button",
                     "id": "b546e646-265d-40a0-ade7-89d28462b5cd",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "0453d45b-68e1-4ac7-b669-286a5fe87045",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "47070aed-ec12-46da-a456-9f253c2855a3",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ce43aa82-7313-454c-8cda-290485e74dfc",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2699aa60-c236-490e-9f40-d82a0200db6a",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f707593d-f5f8-4dee-8146-4d61147ed28a",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "491fe13c-e198-4d50-bee7-fa1dffa11fb5",
-                    "path": "<Touchscreen>/Press",
+                    "path": "<Pointer>/press",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "",
