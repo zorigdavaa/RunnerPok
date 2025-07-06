@@ -30,18 +30,22 @@ public class FightSection : LevelSection
     {
         Reset();
         base.StartSection(level);
-        // Tile tileToIns = levelTiles[0];
+        Tile tileToIns = levelTiles[0];
         // // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
-        // Tile tile = level.SpawnTile(tileToIns);
+        level.SpawnTile(tileToIns);
         // tile.OnTileEnter += OnFightSectionEnter;
         EnterThisSection();
     }
     private void EnterThisSection()
     {
         // Debug.Log("eNTER FIREsECTION");
-        float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
+        Tile tile = GetEnteringTile();
+        float ztoTest = tile.start.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnFightSectionEnter(this, EventArgs.Empty); });
     }
+
+
+
     public override void UpdateSection()
     {
         bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - Z.TileDistance;

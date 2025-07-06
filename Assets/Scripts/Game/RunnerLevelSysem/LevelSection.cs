@@ -20,6 +20,10 @@ public class LevelSection : BaseSection
         SectionStart = data.SectionStart;
         VisualPrefab = data.VisualPrefab;
     }
+    public Tile GetEnteringTile()
+    {
+        return transform.GetChild(0).GetComponent<Tile>();
+    }
 }
 public enum SectionType
 {

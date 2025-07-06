@@ -346,6 +346,11 @@ public class Level : MonoBehaviour
         }
     }
 
+    // internal Tile GetEnteringTile(LevelSection section)
+    // {
+    //     section.transform
+    // }
+
     // List<Type> AvailAbleSection = new List<Type>()
     //         {
     //             typeof(FightSection)
