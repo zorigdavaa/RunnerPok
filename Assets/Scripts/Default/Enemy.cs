@@ -7,7 +7,7 @@ public abstract class Enemy : Character
 {
     public override void TakeDamage(DamageData data)
     {
-        Debug.Log("damage " + data.damage);
+        // Debug.Log("damage " + data.damage);
         float multiploer = data.Type.GetEffectiveMultiplier(_Element);
         float finalDamage = data.damage * multiploer;
         // Stats.Health -= (int)finalDamage;
