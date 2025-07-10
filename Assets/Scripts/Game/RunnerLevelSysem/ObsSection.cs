@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -56,7 +57,16 @@ public class ObsSection : LevelSection
         bool isNearEndofLand = curLevel.player.transform.position.z > curLevel.nextSpawnPosition.z - Z.TileDistance;
         if (isNearEndofLand)
         {
-            Tile tileToIns = curLevel.BaseTilePf;
+            Tile tileToIns;
+            if (!levelTiles.Any())
+            {
+
+                tileToIns = curLevel.BaseTilePf;
+            }
+            else
+            {
+                tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
+            }
             curLevel.SpawnTile(tileToIns);
         }
         bool isNearOfObs = curLevel.player.transform.position.z > insPos.z - 70;
@@ -74,7 +84,7 @@ public class ObsSection : LevelSection
     }
     public override void EndSection()
     {
-                curLevel.NextNearPlayer();
+        curLevel.NextNearPlayer();
         curLevel.player.ChangeState(PlayerState.Obs);
         base.EndSection();
     }

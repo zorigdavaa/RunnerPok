@@ -334,7 +334,8 @@ public class PlayerMovement : MovementForgeRun
         {
             if (val)
             {
-                Vector3 toBeParentPos = new Vector3(0, 0, transform.position.z);
+                // Vector3 toBeParentPos = new Vector3(0, 0, transform.position.z);
+                Vector3 toBeParentPos = transform.position;
                 playerParent.transform.position = toBeParentPos;
                 transform.SetParent(playerParent);
                 Vector3 tobeLocaPos = transform.localPosition;
