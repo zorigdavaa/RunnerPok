@@ -27,6 +27,8 @@ public class ObsSection : LevelSection
         SpawnObs();
     }
     int index = 0;
+    //Todo Inspos is not working when Diogonal tile
+    
     Vector3 insPos;
     private void SpawnObs()
     {
