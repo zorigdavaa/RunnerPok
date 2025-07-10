@@ -30,7 +30,7 @@ public class FightSection : LevelSection
     {
         Reset();
         base.StartSection(level);
-        Tile tileToIns = levelTiles[0];
+        Tile tileToIns = curLevel.BaseTilePf;
         // // Tile tileToIns = CurSection.levelTiles[SecTileIDx % CurSection.levelTiles.Count];
         level.SpawnTile(tileToIns);
         // tile.OnTileEnter += OnFightSectionEnter;
