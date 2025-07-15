@@ -17,6 +17,7 @@ public class Initializer : MonoBehaviour
     const float SecondsToWait = 1f;
 #endif
 
+
     float timer = 0f;
     bool mainSceneLoaded = false;
 
