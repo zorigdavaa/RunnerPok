@@ -1778,6 +1778,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: 0 BaseTile
       objectReference: {fileID: 0}
+    - target: {fileID: 2613500358483002773, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687533507467367710, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5743295237307838519, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6925134933511567402, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

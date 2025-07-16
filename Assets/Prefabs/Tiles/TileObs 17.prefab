@@ -1272,6 +1272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileObs 17
       objectReference: {fileID: 0}
+    - target: {fileID: 1588071559146037746, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1765375381020493247, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_LocalPosition.z
       value: 70
@@ -1295,6 +1299,26 @@ PrefabInstance:
     - target: {fileID: 2945519930564742407, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_LocalPosition.z
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904948516715219845, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Radius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904948516715219845, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Range.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904948516715219845, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Range.y
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904948516715219845, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_SegmentsPerUnit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904948516715219845, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_RebuildFrequency
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
