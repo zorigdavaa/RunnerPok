@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -158,11 +159,28 @@ public class SplIns : MonoBehaviour
         averageDistance = clampedMax / RandomCount;
         for (int i = 0; i < count; i++)
         {
-            Vector3 insPOS = Container.Spline.GetPointAtLinearDistance(0, currentDistance, out float resultPointT);
-            currentDistance += averageDistance;
+            if (currentDistance > clampedMax)
+            {
+                break;
+            }
             int index = GetPrefabIndex();
-            GameObject pf = itemsToInstantiate[index].Prefab;
-            InsItems.Add(Instantiate(pf, insPOS, Quaternion.identity, transform));
+            ChancePF chancePF = itemsToInstantiate[index];
+            currentDistance += chancePF.additionalDistance;
+            Vector3 insPOS = Container.Spline.GetPointAtLinearDistance(0, currentDistance, out float resultPointT);
+            Container.Evaluate(resultPointT, out float3 pos, out float3 tangent, out float3 up);
+            Quaternion rotation = Quaternion.LookRotation(tangent, up);
+            currentDistance += averageDistance;
+            GameObject pf = chancePF.Prefab;
+            GameObject Ins_obj = Instantiate(pf, Vector3.zero, Quaternion.identity, transform);
+
+            // var remappedForward = math.normalizesafe(GetAxis(1));
+            // var remappedUp = math.normalizesafe(GetAxis(2));
+            // var axisRemapRotation = Quaternion.Inverse(quaternion.LookRotationSafe(remappedForward, remappedUp));
+
+            // Quaternion Rot = quaternion.LookRotationSafe(forward, up) * axisRemapRotation;
+            Ins_obj.transform.localPosition = insPOS;
+            Ins_obj.transform.localRotation = rotation;
+            InsItems.Add(Ins_obj);
         }
     }
 
@@ -197,4 +215,18 @@ public class SplIns : MonoBehaviour
 
         return 0;
     }
+    // private readonly float3[] m_AlignAxisToVector = new float3[6]
+    // {
+    //         math.right(),
+    //         math.up(),
+    //         math.forward(),
+    //         math.left(),
+    //         math.down(),
+    //         math.back()
+    // };
+
+    // protected float3 GetAxis(int i)
+    // {
+    //     return m_AlignAxisToVector[i];
+    // }
 }
