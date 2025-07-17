@@ -118,9 +118,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotObsj: {fileID: 7971523318513972453}
-  RotationAngle: {x: 1, y: 0, z: 0}
+  RotationAngle: {x: 0, y: 0, z: 0}
   LocalRotation: {x: 2, y: 0, z: 0}
   speed: 5
+  CircleMaterial: {fileID: 0}
   radius: 1
   segments: 30
   width: 0.1
@@ -149,6 +150,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
