@@ -13,10 +13,17 @@ public class ObsData : MonoBehaviour
             new Vector3(0, 0,0),
             new Vector3(0, 180,0),
         };
-        Vector3 Rotation = Rotations[Random.Range(0, 1)];
-        transform.rotation = Quaternion.Euler(Rotation);
-
+        List<Vector3> Poses = new List<Vector3>
+        {
+            new Vector3(0, 0,0),
+            new Vector3(0, 180,0),
+        };
+        int randomIndex = Random.Range(0, 1);
         TransformAnimation transformAnimation = GetComponent<TransformAnimation>();
+        Vector3 Rotation = Rotations[randomIndex];
+        transform.rotation = Quaternion.Euler(Rotation);
+        transformAnimation.TargetRot = Rotation;
+
         transformAnimation.Pos = new Vector3(0, 0, 0);
     }
 }
