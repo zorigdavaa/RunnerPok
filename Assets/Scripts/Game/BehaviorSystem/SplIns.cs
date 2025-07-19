@@ -175,6 +175,7 @@ public class SplIns : MonoBehaviour
             currentDistance += averageDistance;
             GameObject pf = chancePF.Prefab;
             GameObject Ins_obj = Instantiate(pf, Vector3.zero, Quaternion.identity, transform);
+            Ins_obj.GetComponent<ObsData>()?.ObsDataMethod();
 
             // var remappedForward = math.normalizesafe(GetAxis(1));
             // var remappedUp = math.normalizesafe(GetAxis(2));

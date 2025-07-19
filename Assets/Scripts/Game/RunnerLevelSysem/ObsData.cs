@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObsData : MonoBehaviour
 {
     public float ownLengh;
+    public ObsDataType obsData;
 
     public void LongObsRandomness()
     {
@@ -13,11 +14,11 @@ public class ObsData : MonoBehaviour
             new Vector3(0, 0,0),
             new Vector3(0, 180,0),
         };
-        List<Vector3> Poses = new List<Vector3>
-        {
-            new Vector3(0, 0,0),
-            new Vector3(0, 180,0),
-        };
+        // List<Vector3> Poses = new List<Vector3>
+        // {
+        //     new Vector3(0, 0,0),
+        //     new Vector3(0, 180,0),
+        // };
         int randomIndex = Random.Range(0, 1);
         TransformAnimation transformAnimation = GetComponent<TransformAnimation>();
         Vector3 Rotation = Rotations[randomIndex];
@@ -26,4 +27,19 @@ public class ObsData : MonoBehaviour
 
         transformAnimation.Pos = new Vector3(0, 0, 0);
     }
+    public void ObsDataMethod()
+    {
+        switch (obsData)
+        {
+            case ObsDataType.Long:
+                LongObsRandomness(); break;
+
+            default:
+                break;
+        }
+    }
+}
+public enum ObsDataType
+{
+    None, Long
 }
