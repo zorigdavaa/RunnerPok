@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5778986194484456025}
   - component: {fileID: 5647357945592603485}
   m_Layer: 0
-  m_Name: Long
+  m_Name: LongL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Pos: {x: 7, y: 0, z: 0}
-  TargetRot: {x: 0, y: 180, z: 0}
+  TargetRot: {x: 0, y: 0, z: 0}
   TargetScale: {x: 1, y: 1, z: 1}
 --- !u!114 &5778986194484456025
 MonoBehaviour:
@@ -112,7 +112,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2853948278981394064, guid: 7f450d7d72de686428f2ab6dc93e2088, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2853948278981394064, guid: 7f450d7d72de686428f2ab6dc93e2088, type: 3}
       propertyPath: m_LocalPosition.y
@@ -174,7 +174,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2853948278981394064, guid: 7f450d7d72de686428f2ab6dc93e2088, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2853948278981394064, guid: 7f450d7d72de686428f2ab6dc93e2088, type: 3}
       propertyPath: m_LocalPosition.y
@@ -236,7 +236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2853948278981394064, guid: 7f450d7d72de686428f2ab6dc93e2088, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 2853948278981394064, guid: 7f450d7d72de686428f2ab6dc93e2088, type: 3}
       propertyPath: m_LocalPosition.y

@@ -175,7 +175,6 @@ public class SplIns : MonoBehaviour
             currentDistance += averageDistance;
             GameObject pf = chancePF.Prefab;
             GameObject Ins_obj = Instantiate(pf, Vector3.zero, Quaternion.identity, transform);
-            Ins_obj.GetComponent<ObsData>()?.ObsDataMethod();
 
             // var remappedForward = math.normalizesafe(GetAxis(1));
             // var remappedUp = math.normalizesafe(GetAxis(2));
@@ -184,6 +183,7 @@ public class SplIns : MonoBehaviour
             // Quaternion Rot = quaternion.LookRotationSafe(forward, up) * axisRemapRotation;
             Ins_obj.transform.localPosition = insPOS;
             Ins_obj.transform.localRotation = rotation;
+            Ins_obj.GetComponent<ObsData>()?.ObsDataMethod();
             InsItems.Add(Ins_obj);
         }
     }

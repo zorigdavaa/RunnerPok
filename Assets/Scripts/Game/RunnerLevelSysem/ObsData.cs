@@ -22,8 +22,8 @@ public class ObsData : MonoBehaviour
         int randomIndex = Random.Range(0, 1);
         TransformAnimation transformAnimation = GetComponent<TransformAnimation>();
         Vector3 Rotation = Rotations[randomIndex];
-        transform.rotation = Quaternion.Euler(Rotation);
-        transformAnimation.TargetRot = Rotation;
+        transform.localRotation = transform.localRotation * Quaternion.Euler(Rotation);
+        transformAnimation.TargetRot = transform.localRotation.eulerAngles;
 
         transformAnimation.Pos = new Vector3(0, 0, 0);
     }

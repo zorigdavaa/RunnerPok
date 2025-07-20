@@ -22,6 +22,10 @@ public class TransformAnimation : MonoBehaviour
             Animate();
         }
     }
+    void OnValidate()
+    {
+        SetTargetPos();
+    }
 
     public void SetTargetPos()
     {
@@ -44,6 +48,7 @@ public class TransformAnimation : MonoBehaviour
         yield return new WaitForSeconds(Delay);
         float t = 0;
         float time = 0;
+
         Quaternion initRot = transform.rotation;
         Vector3 initPOs = transform.position;
         Vector3 initScale = transform.localScale;
