@@ -68,7 +68,7 @@ public class PlayerMovement : MovementForgeRun
     public void PlayerControl()
     {
         // Check if the player is grounded
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.13f, groundLayer);
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
         if (isGrounded)
         {
             animController.Jump(false);
@@ -96,37 +96,8 @@ public class PlayerMovement : MovementForgeRun
         }
         else
         {
-            if (isGrounded && rb.linearVelocity.y < 1)
-            {
-                Vector3 vel = rb.linearVelocity;
-
-                if (vel.z < Speed)
-                {
-                    // vel.z = Speed;
-                    Vector3 groundNormal = GetGroundNormal();
-                    if (groundNormal.y < 0.98f)
-                    {
-                        // Calculate direction to move along the slope
-                        Vector3 upHill = -Vector3.Cross(Vector3.Cross(Vector3.up, groundNormal), groundNormal).normalized;
-
-                        // Apply forward movement along the slope
-                        Vector3 desiredVelocity = upHill * Speed;
-
-                        // Keep only y and z if you're moving only in z direction
-                        vel.y = desiredVelocity.y; // adds vertical movement
-                        vel.z = Mathf.Lerp(vel.z, desiredVelocity.z, 0.2f);
-                    }
-                    else // flat 
-                    {
-                        vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
-                    }
-                }
-                else
-                {
-                    vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
-                }
-                rb.linearVelocity = vel;
-            }
+            // OldForward();
+            Forward();
 
         }
         // if (IsPlaying)
@@ -158,6 +129,72 @@ public class PlayerMovement : MovementForgeRun
                 transform.localPosition = Vector3.Lerp(transform.localPosition, TargetLocalPos, 5 * Time.fixedDeltaTime);
                 // befFrameMous = cam.ScreenToViewportPoint(Input.mousePosition);
             }
+        }
+    }
+    private void Forward()
+    {
+        // if (isGrounded && rb.linearVelocity.y < 1)
+        if (isGrounded)
+        {
+            Vector3 vel = rb.linearVelocity;
+
+            Vector3 desiredVelocirt = vel.normalized * Speed;
+            if (vel.magnitude < Speed)
+            {
+                // Step 1: Get the character's forward direction
+                Vector3 flatForward = (transform.forward - Vector3.up * 0.1f).normalized;
+
+                // Step 2: Project it onto the slope
+                Vector3 groundNormal = GetGroundNormal();
+                Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
+
+                // Step 3: Use that as your desired direction
+                desiredVelocirt = slopeForward * Speed;
+                vel = Vector3.Lerp(vel, desiredVelocirt, 0.2f);
+
+
+            }
+            else
+            {
+                vel = Vector3.MoveTowards(vel, desiredVelocirt, 1 * Time.fixedDeltaTime);
+            }
+            rb.linearVelocity = vel;
+        }
+    }
+
+    private void OldForward()
+    {
+        // if (isGrounded && rb.linearVelocity.y < 1)
+        if (isGrounded)
+        {
+            Vector3 vel = rb.linearVelocity;
+
+            if (vel.z < Speed)
+            {
+                // vel.z = Speed;
+                Vector3 groundNormal = GetGroundNormal();
+                if (groundNormal.y < 0.98f)
+                {
+                    // Calculate direction to move along the slope
+                    Vector3 upHill = -Vector3.Cross(Vector3.Cross(Vector3.up, groundNormal), groundNormal).normalized;
+
+                    // Apply forward movement along the slope
+                    Vector3 desiredVelocity = upHill * Speed;
+
+                    // Keep only y and z if you're moving only in z direction
+                    vel.y = desiredVelocity.y; // adds vertical movement
+                    vel.z = Mathf.Lerp(vel.z, desiredVelocity.z, 0.2f);
+                }
+                else // flat 
+                {
+                    vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
+                }
+            }
+            else
+            {
+                vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
+            }
+            rb.linearVelocity = vel;
         }
     }
 
@@ -316,6 +353,10 @@ public class PlayerMovement : MovementForgeRun
                 targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
             }
         }
+        if (IsUp)
+        {
+            Jump();
+        }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
     }
@@ -361,7 +402,11 @@ public class PlayerMovement : MovementForgeRun
     {
         if (Player.GetState() == PlayerState.Obs && IsGrounded())
         {
-            rb.linearVelocity += Vector3.up * 10;
+            rb.linearVelocity += Vector3.up * 9;
+            if (rb.linearVelocity.z < Speed / 1.3f)
+            {
+                rb.linearVelocity += Vector3.forward * 9;
+            }
         }
     }
 
