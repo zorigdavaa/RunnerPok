@@ -55,4 +55,9 @@ public class BaseAnim : MonoBehaviour
     {
         animator.SetFloat("velY", y);
     }
+
+    internal void Slide(bool val)
+    {
+        animator.SetBool("isSliding", val);
+    }
 }

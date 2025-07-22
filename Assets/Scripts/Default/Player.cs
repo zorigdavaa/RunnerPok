@@ -123,6 +123,10 @@ public class Player : Character, IItemEquipper
         //     }
         // }
         UpdateAction?.Invoke();
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Movement.Slide();
+        }
     }
 
     private void FixedUpdate()

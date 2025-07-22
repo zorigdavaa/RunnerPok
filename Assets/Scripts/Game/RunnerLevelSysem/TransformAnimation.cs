@@ -24,6 +24,10 @@ public class TransformAnimation : MonoBehaviour
     }
     void OnValidate()
     {
+        if (!Model)
+        {
+            Model = transform;
+        }
         SetTargetPos();
     }
 

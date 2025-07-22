@@ -20,6 +20,7 @@ public class PlayerMovement : MovementForgeRun
     Transform childModel;
     public bool ControlAble;
     public ZControlType ControlType = ZControlType.None;
+    public MovementState movementState;
     Camera cam;
     Plane ControlRaycastPlane;
     private void Start()
@@ -46,6 +47,18 @@ public class PlayerMovement : MovementForgeRun
         {
             ResetTargetX();
         }
+    }
+    public void SetMovementState(MovementState state)
+    {
+        movementState = state;
+        // if (state == MovementState.Sliding)
+        // {
+        //     animController.Slide(true);
+        // }
+        // else
+        // {
+        //     animController.Slide(false);
+        // }
     }
     // private void Update()
     // {
@@ -134,7 +147,7 @@ public class PlayerMovement : MovementForgeRun
     private void Forward()
     {
         // if (isGrounded && rb.linearVelocity.y < 1)
-        if (isGrounded)
+        if (isGrounded && movementState != MovementState.Sliding)
         {
             Vector3 vel = rb.linearVelocity;
 
@@ -407,6 +420,42 @@ public class PlayerMovement : MovementForgeRun
             {
                 rb.linearVelocity += Vector3.forward * 9;
             }
+        }
+    }
+    public AnimationCurve slideCurve;
+    Coroutine slideCoroutine = null;
+    public void Slide()
+    {
+        if (Player.GetState() == PlayerState.Obs && IsGrounded())
+        {
+            if (slideCoroutine == null)
+            {
+                slideCoroutine = StartCoroutine(LocalCor());
+            }
+        }
+        IEnumerator LocalCor()
+        {
+            float t = 0;
+            float time = 0;
+            float duration = 1.5f;
+            animController.Slide(true);
+            while (time < duration)
+            {
+                time += Time.deltaTime;
+                t = time / duration;
+
+                // Step 1: Get the character's forward direction
+                Vector3 flatForward = (Vector3.forward - Vector3.up * 0.2f).normalized;
+                // Step 2: Project it onto the slope
+                Vector3 groundNormal = GetGroundNormal();
+                Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
+                // Step 3: Use that as your desired direction
+                Vector3 desiredVelocity = slopeForward * Speed * slideCurve.Evaluate(t);
+                rb.linearVelocity = desiredVelocity;
+                yield return null;
+            }
+            animController.Slide(false);
+            slideCoroutine = null;
         }
     }
 
