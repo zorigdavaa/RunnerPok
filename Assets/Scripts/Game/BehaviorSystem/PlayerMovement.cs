@@ -356,8 +356,9 @@ public class PlayerMovement : MovementForgeRun
             Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
             // targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
             befFrameMous = viewPortPos;
-            // Smoothly move the player to the target position
+
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
+            // Smoothly move the player to the target position
             // Check for significant movement to determine the rotation
             if (Mathf.Abs(transform.localPosition.x - targetPos.x) > 0.5f)
             {
