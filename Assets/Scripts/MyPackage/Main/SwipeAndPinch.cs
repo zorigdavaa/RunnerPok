@@ -3,88 +3,28 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-public class SwipeAndPinch : MonoBehaviour
+public static class SwipeAndPinch 
 {
-    private Vector2 startPos;
-    private float startTime;
-    private bool isTouching = false;
+    private static Vector2 startPos;
+    private static float startTime;
+    private static bool isTouching = false;
 
-    [Header("Swipe Settings")]
-    public float swipeThreshold = 50f;
-    public float maxSwipeTime = 0.5f;
+    private static float lastPinchDistance = 0f;
 
-    [Header("Pinch Settings")]
-    public float pinchSensitivity = 5f;
-    private float lastPinchDistance = 0f;
-
-    void OnEnable()
+    public enum SwipeDirection
     {
-        EnhancedTouchSupport.Enable();
-        Touch.onFingerDown += OnFingerDown;
-        Touch.onFingerUp += OnFingerUp;
+        None,
+        Up,
+        Down,
+        Left,
+        Right
     }
 
-    void OnDisable()
+    public static SwipeDirection GetSwipe()
     {
-        Touch.onFingerDown -= OnFingerDown;
-        Touch.onFingerUp -= OnFingerUp;
-        EnhancedTouchSupport.Disable();
-    }
+        SwipeDirection direction = SwipeDirection.None;
 
-    void Update()
-    {
-#if UNITY_EDITOR
-        HandleMouseSwipe();
-        HandleMousePinch();
-#endif
-
-#if UNITY_ANDROID || UNITY_IOS
-        HandleTouchPinch();
-#endif
-    }
-
-    // ---------------- Touch: Swipe ----------------
-    void OnFingerDown(Finger finger)
-    {
-        if (Touch.activeTouches.Count == 1)
-        {
-            startPos = finger.screenPosition;
-            startTime = Time.time;
-        }
-    }
-
-    void OnFingerUp(Finger finger)
-    {
-        if (Touch.activeTouches.Count == 1)
-        {
-            Vector2 endPos = finger.screenPosition;
-            float duration = Time.time - startTime;
-            DetectSwipe(startPos, endPos, duration);
-        }
-    }
-
-    void DetectSwipe(Vector2 start, Vector2 end, float duration)
-    {
-        if (duration > maxSwipeTime) return;
-
-        Vector2 delta = end - start;
-        if (delta.magnitude < swipeThreshold) return;
-
-        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
-        {
-            if (delta.x > 0) OnSwipeRight();
-            else OnSwipeLeft();
-        }
-        else
-        {
-            if (delta.y > 0) OnSwipeUp();
-            else OnSwipeDown();
-        }
-    }
-
-    // ---------------- Editor: Swipe ----------------
-    void HandleMouseSwipe()
-    {
+#if UNITY_EDITOR || UNITY_STANDALONE
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             startPos = Mouse.current.position.ReadValue();
@@ -97,13 +37,73 @@ public class SwipeAndPinch : MonoBehaviour
             Vector2 endPos = Mouse.current.position.ReadValue();
             float duration = Time.time - startTime;
             isTouching = false;
-            DetectSwipe(startPos, endPos, duration);
+            direction = DetectSwipe(startPos, endPos, duration);
+        }
+#endif
+
+#if UNITY_ANDROID || UNITY_IOS
+        EnhancedTouchSupport.Enable();
+
+        if (Touch.activeTouches.Count == 1)
+        {
+            var finger = Touch.activeTouches[0];
+
+            if (finger.phase == UnityEngine.InputSystem.TouchPhase.Began)
+            {
+                startPos = finger.screenPosition;
+                startTime = Time.time;
+            }
+
+            if (finger.phase == UnityEngine.InputSystem.TouchPhase.Ended)
+            {
+                Vector2 endPos = finger.screenPosition;
+                float duration = Time.time - startTime;
+                direction = DetectSwipe(startPos, endPos, duration);
+            }
+        }
+#endif
+
+        return direction;
+    }
+
+    private static SwipeDirection DetectSwipe(Vector2 start, Vector2 end, float duration)
+    {
+        float maxSwipeTime = 0.5f;
+        float swipeThreshold = 50f;
+
+        if (duration > maxSwipeTime) return SwipeDirection.None;
+
+        Vector2 delta = end - start;
+        if (delta.magnitude < swipeThreshold) return SwipeDirection.None;
+
+        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+        {
+            return delta.x > 0 ? SwipeDirection.Right : SwipeDirection.Left;
+        }
+        else
+        {
+            return delta.y > 0 ? SwipeDirection.Up : SwipeDirection.Down;
         }
     }
 
-    // ---------------- Mobile: Pinch ----------------
-    void HandleTouchPinch()
+    public static float GetPinchDelta()
     {
+        float pinchDelta = 0f;
+
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (Mouse.current != null)
+        {
+            float scroll = Mouse.current.scroll.ReadValue().y;
+            if (Mathf.Abs(scroll) > 0.01f)
+            {
+                pinchDelta = scroll;
+            }
+        }
+#endif
+
+#if UNITY_ANDROID || UNITY_IOS
+        EnhancedTouchSupport.Enable();
+
         if (Touch.activeTouches.Count == 2)
         {
             var t1 = Touch.activeTouches[0];
@@ -111,17 +111,9 @@ public class SwipeAndPinch : MonoBehaviour
 
             float currentDistance = Vector2.Distance(t1.screenPosition, t2.screenPosition);
 
-            if (lastPinchDistance != 0f)
+            if (lastPinchDistance > 0f)
             {
-                float delta = currentDistance - lastPinchDistance;
-
-                if (Mathf.Abs(delta) > pinchSensitivity)
-                {
-                    if (delta > 0)
-                        OnPinchOut();
-                    else
-                        OnPinchIn();
-                }
+                pinchDelta = currentDistance - lastPinchDistance;
             }
 
             lastPinchDistance = currentDistance;
@@ -130,27 +122,8 @@ public class SwipeAndPinch : MonoBehaviour
         {
             lastPinchDistance = 0f;
         }
+#endif
+
+        return pinchDelta;
     }
-
-    // ---------------- Editor: Pinch (Mouse Wheel) ----------------
-    void HandleMousePinch()
-    {
-        float scrollDelta = Mouse.current.scroll.ReadValue().y;
-
-        if (Mathf.Abs(scrollDelta) > 0.1f)
-        {
-            if (scrollDelta > 0)
-                OnPinchOut();
-            else
-                OnPinchIn();
-        }
-    }
-
-    // ---------------- Callbacks ----------------
-    void OnSwipeUp() => Debug.Log("Swipe Up");
-    void OnSwipeDown() => Debug.Log("Swipe Down");
-    void OnSwipeLeft() => Debug.Log("Swipe Left");
-    void OnSwipeRight() => Debug.Log("Swipe Right");
-    void OnPinchIn() => Debug.Log("Pinch In (Zoom Out)");
-    void OnPinchOut() => Debug.Log("Pinch Out (Zoom In)");
 }

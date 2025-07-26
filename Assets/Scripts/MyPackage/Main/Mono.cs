@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace ZPackage
@@ -89,6 +90,21 @@ namespace ZPackage
                 yield return new WaitForSeconds(waitTime);
                 call();
             }
+        }
+        public static GameObject GetUIObjectUnderPointer()
+        {
+            PointerEventData pointerData = new PointerEventData(EventSystem.current);
+            pointerData.position = MP;
+
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, results);
+
+            if (results.Count > 0)
+            {
+                return results[0].gameObject; // Topmost UI element
+            }
+
+            return null;
         }
     }
 }

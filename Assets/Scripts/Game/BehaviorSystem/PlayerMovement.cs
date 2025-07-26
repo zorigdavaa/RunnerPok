@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using ZPackage;
+using UnityEngine.EventSystems;
 
 public class PlayerMovement : MovementForgeRun
 {
@@ -367,9 +368,19 @@ public class PlayerMovement : MovementForgeRun
                 targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
             }
         }
-        if (IsUp)
+        if (IsUp && GetUIObjectUnderPointer() == null)
         {
+
             Jump();
+        }
+        if (SwipeAndPinch.GetSwipe() == SwipeAndPinch.SwipeDirection.Down)
+        {
+            Slide();
+        }
+        var swipe = SwipeAndPinch.GetSwipe();
+        if (swipe != SwipeAndPinch.SwipeDirection.None)
+        {
+            Debug.Log("Swipe: " + swipe);
         }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
