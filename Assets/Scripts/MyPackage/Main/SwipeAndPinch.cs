@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
-public static class SwipeAndPinch 
+public static class SwipeAndPinch
 {
     private static Vector2 startPos;
     private static float startTime;
@@ -30,6 +30,7 @@ public static class SwipeAndPinch
             startPos = Mouse.current.position.ReadValue();
             startTime = Time.time;
             isTouching = true;
+            Debug.Log("Mouse Pressed at: " + startPos);
         }
 
         if (Mouse.current.leftButton.wasReleasedThisFrame && isTouching)
@@ -38,6 +39,7 @@ public static class SwipeAndPinch
             float duration = Time.time - startTime;
             isTouching = false;
             direction = DetectSwipe(startPos, endPos, duration);
+            Debug.Log($"Mouse Released at: {endPos} | Duration: {duration} | Direction: {direction}");
         }
 #endif
 
@@ -69,12 +71,20 @@ public static class SwipeAndPinch
     private static SwipeDirection DetectSwipe(Vector2 start, Vector2 end, float duration)
     {
         float maxSwipeTime = 0.5f;
-        float swipeThreshold = 50f;
+        float swipeThreshold = 100f;
 
-        if (duration > maxSwipeTime) return SwipeDirection.None;
+        if (duration > maxSwipeTime)
+        {
+            Debug.Log($"Duration too long {duration}");
+            return SwipeDirection.None;
+        }
 
         Vector2 delta = end - start;
-        if (delta.magnitude < swipeThreshold) return SwipeDirection.None;
+        if (delta.magnitude < swipeThreshold)
+        {
+            Debug.Log($"delta not Reached {delta}");
+            return SwipeDirection.None;
+        }
 
         if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
         {
