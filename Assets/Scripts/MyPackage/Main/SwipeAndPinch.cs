@@ -20,6 +20,31 @@ public static class SwipeAndPinch
         Right
     }
 
+    private static float highestY = float.MinValue;
+    private static float dragThreshold = 100f;
+
+    public static bool DownDrag()
+    {
+        var pointer = Pointer.current;
+
+
+        if (pointer == null)
+            return false;
+        float pointerY = pointer.position.ReadValue().y;
+        if (highestY < pointerY)
+        {
+            highestY = pointerY;
+        }
+        if (highestY - pointerY > dragThreshold)
+        {
+            highestY = pointerY;
+            return true;
+        }
+
+        return false;
+
+    }
+
     public static SwipeDirection GetSwipe()
     {
         SwipeDirection direction = SwipeDirection.None;

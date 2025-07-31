@@ -123,6 +123,10 @@ public class Player : Character, IItemEquipper
         //     }
         // }
         UpdateAction?.Invoke();
+        if (IsUp && State == PlayerState.Fight)
+        {
+            OnOffhandItemInvoke(this, EventArgs.Empty);
+        }
         // if (Input.GetKeyDown(KeyCode.S))
         // {
         //     Movement.Slide();
@@ -270,7 +274,7 @@ public class Player : Character, IItemEquipper
         // Movement.SetSpeed(1);
         // Movement.SetControlAble(true); 
         Movement.SetControlType(ZControlType.TwoSide);
-        SubscribeWeaponEvents();
+        // SubscribeWeaponEvents();
         InitHandPool();
         InitOffHandPool();
     }

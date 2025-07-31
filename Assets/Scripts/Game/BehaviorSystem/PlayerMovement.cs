@@ -377,10 +377,9 @@ public class PlayerMovement : MovementForgeRun
         {
             Slide();
         }
-        var swipe = SwipeAndPinch.GetSwipe();
-        if (swipe != SwipeAndPinch.SwipeDirection.None)
+        if (IsClick && SwipeAndPinch.DownDrag())
         {
-            Debug.Log("Swipe: " + swipe);
+            Slide();
         }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
