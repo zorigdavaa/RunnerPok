@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerBuffItems : MonoBehaviour, ISave
 {
@@ -28,9 +29,12 @@ public class PlayerBuffItems : MonoBehaviour, ISave
     [SerializeField] List<ItemData> buffItemDatas;
     [SerializeField] ItemInfoCanvas itemInfoCanvas;
     public GameObject UIPF;
+    public InputAction QPress;
+    public InputAction EPress;
     void Awake()
     {
         itemInfoCanvas.Awake();
+
     }
 
     // Start is called before the first frame update
@@ -52,6 +56,20 @@ public class PlayerBuffItems : MonoBehaviour, ISave
             item.OnItemChanged += OnSlotObjChanged;
             item.isUnequipSlot = true;
         }
+        QPress = InputSystem.actions.FindAction("Q");
+        EPress = InputSystem.actions.FindAction("E");
+        QPress.performed += OnPressQ;
+        EPress.performed += OnPressE;
+    }
+
+    private void OnPressE(InputAction.CallbackContext context)
+    {
+        SaveManager.Save();
+    }
+
+    private void OnPressQ(InputAction.CallbackContext context)
+    {
+        SaveManager.Load();
     }
 
     private void OnSlotObjChanged(object sender, ItemInstanceUI e)
@@ -67,20 +85,6 @@ public class PlayerBuffItems : MonoBehaviour, ISave
         OnSlotChanged?.Invoke(casted, e);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            // Save();
-            SaveManager.Save();
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            // Load();
-            SaveManager.Load();
-        }
-    }
     public void Save()
     {
         Debug.Log("Saving");

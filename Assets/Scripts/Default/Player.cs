@@ -125,7 +125,15 @@ public class Player : Character, IItemEquipper
         UpdateAction?.Invoke();
         if (IsUp && State == PlayerState.Fight)
         {
-            OnOffhandItemInvoke(this, EventArgs.Empty);
+            if (GetEquippedItem(WhereSlot.OtherHand))
+            {
+
+                OnOffhandItemInvoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                Debug.Log("Off Hand Item NUll");
+            }
         }
         // if (Input.GetKeyDown(KeyCode.S))
         // {
@@ -264,6 +272,7 @@ public class Player : Character, IItemEquipper
     }
     public override void Die()
     {
+        rb.isKinematic = true;
         GameManager.Instance.GameOver(this, EventArgs.Empty);
         Movement.SetSpeed(0);
         animationController.Die();

@@ -7557,6 +7557,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
+      propertyPath: EPress.m_Name
+      value: E Press
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
+      propertyPath: QPress.m_Name
+      value: Q Press
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610115472004179956, guid: d2b881b7287dafb42b243deeb5b9fb41, type: 3}
+      propertyPath: WPress.m_Name
+      value: W Press
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

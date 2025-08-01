@@ -172,7 +172,10 @@ public class PlayerMovement : MovementForgeRun
             {
                 vel = Vector3.MoveTowards(vel, desiredVelocirt, 1 * Time.fixedDeltaTime);
             }
-            rb.linearVelocity = vel;
+            if (!rb.isKinematic)
+            {
+                rb.linearVelocity = vel;
+            }
         }
     }
 
@@ -373,13 +376,20 @@ public class PlayerMovement : MovementForgeRun
 
             Jump();
         }
-        if (SwipeAndPinch.GetSwipe() == SwipeAndPinch.SwipeDirection.Down)
-        {
-            Slide();
-        }
+        // if (SwipeAndPinch.GetSwipe() == SwipeAndPinch.SwipeDirection.Down)
+        // {
+        //     Slide();
+        // }
         if (IsClick && SwipeAndPinch.DownDrag())
         {
-            Slide();
+            if (IsGrounded())
+            {
+                Slide();
+            }
+            else
+            {
+                rb.AddForce(Vector3.down * 500);
+            }
         }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
@@ -437,7 +447,7 @@ public class PlayerMovement : MovementForgeRun
     Coroutine slideCoroutine = null;
     public void Slide()
     {
-        if (Player.GetState() == PlayerState.Obs && IsGrounded())
+        if (Player.GetState() == PlayerState.Obs)
         {
             if (slideCoroutine == null)
             {
