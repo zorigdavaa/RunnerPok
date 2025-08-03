@@ -458,12 +458,23 @@ public class PlayerMovement : MovementForgeRun
         {
             float t = 0;
             float time = 0;
-            float duration = 1.5f;
+            float duration = 1f;
             animController.Slide(true);
+            CapsuleCollider coliider = GetComponent<CapsuleCollider>();
+            Vector3 center = coliider.center;
+            bool colliderAdjusted = false;
             while (time < duration)
             {
                 time += Time.deltaTime;
                 t = time / duration;
+                if (!colliderAdjusted && t >= 0.1f)
+                {
+                    coliider.height = 1f;
+
+                    center.y = 0.5f;
+                    coliider.center = center;
+                    colliderAdjusted = true;
+                }
 
                 // Step 1: Get the character's forward direction
                 Vector3 flatForward = (Vector3.forward - Vector3.up * 0.2f).normalized;
@@ -476,6 +487,9 @@ public class PlayerMovement : MovementForgeRun
                 yield return null;
             }
             animController.Slide(false);
+            coliider.height = 2f;
+            center.y = 1f;
+            coliider.center = center;
             slideCoroutine = null;
         }
     }
