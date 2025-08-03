@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 185498841009352912}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 7106732617806471767}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 3240528353329354140}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 7158662356878950773}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 3565462442680302717}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 2941075250910527528}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 5074179260242394549}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 2512862146199200693}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -1439,7 +1439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 572052781554099871}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba80fada99ca34059a3630258ed53f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 3601687049750808594}
   duration: 1
   AnimateAtStart: 0
   Delay: 0
@@ -1658,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 479149200812386840, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1477584444987647026, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Name
       value: TileObs 16
@@ -1686,9 +1690,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7327758342603152568, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8083786892500956411, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214008839398138131, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: generatedMesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9180398201714007912, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].Position.z
