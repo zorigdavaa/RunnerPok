@@ -67,18 +67,58 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -0
+        z: -4.416541
       TangentOut:
         x: 0
         y: 0
-        z: 0
+        z: 4.416541
       Rotation:
         value:
-          x: 0
-          y: 0
-          z: 0
-          w: 1
+          x: 0.000006305527
+          y: -0.22199713
+          z: 0.000023310067
+          w: 0.97504735
+    - Position:
+        x: -19.119886
+        y: -0.0010001659
+        z: 39.812225
+      TangentIn:
+        x: 0.0000014640391
+        y: -1.4551915e-10
+        z: -18.261803
+      TangentOut:
+        x: -0.00000074133277
+        y: 4.3655746e-11
+        z: 18.261797
+      Rotation:
+        value:
+          x: 0.000010596205
+          y: 0.09455528
+          z: 0.000046399375
+          w: 0.9955196
+    - Position:
+        x: 15.280114
+        y: -0.0010001659
+        z: 79.71223
+      TangentIn:
+        x: -0
+        y: -0
+        z: -5.2681785
+      TangentOut:
+        x: 0
+        y: 0
+        z: 5.2681785
+      Rotation:
+        value:
+          x: 0.000010308194
+          y: 0.3482976
+          z: 0.00002774276
+          w: 0.937384
     m_MetaData:
+    - Mode: 0
+      Tension: 0.5
+    - Mode: 4
+      Tension: 0.5
     - Mode: 0
       Tension: 0.5
     m_Closed: 0
@@ -251,6 +291,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 479149200812386840, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 479149200812386840, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1477584444987647026, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Name
       value: 4 Base Turn
@@ -263,6 +311,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 17.07136
       objectReference: {fileID: 0}
+    - target: {fileID: 7327758342603152568, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214008839398138131, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: width
+      value: 15.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214008839398138131, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: resolution
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214008839398138131, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: generatedMesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8214008839398138131, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: splineContainer
+      value: 
+      objectReference: {fileID: 2723016969727997109}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

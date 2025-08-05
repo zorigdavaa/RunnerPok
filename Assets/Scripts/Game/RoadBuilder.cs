@@ -1,16 +1,23 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
-[ExecuteInEditMode]
+
+[ExecuteAlways]
 [RequireComponent(typeof(SplineContainer), typeof(MeshFilter), typeof(MeshRenderer))]
 public class RoadBuilder : MonoBehaviour
 {
+    public bool UseDefaultPoint = true;
+    public List<Vector2> MeshPoints = new List<Vector2>();
     public SplineContainer splineContainer = null;
     public float width = 4f;
+    [Range(0.001f, 1f)]
     public float resolution = 0.1f; // 0.1 = every 10% of spline
     public float thickness = 0.2f;
     public Mesh generatedMesh = null;
+    bool shouldRegenerate = false;
+    /// <summary>The main Spline to extrude.</summary>
 
     void Start()
     {
@@ -18,20 +25,54 @@ public class RoadBuilder : MonoBehaviour
         {
             GenerateRoad();
         }
+    }
+    void Update()
+    {
+        if (shouldRegenerate)
+        {
+            shouldRegenerate = false;
+            GenerateRoad();
+        }
+    }
+    void OnEnable()
+    {
+        GenerateRoad();
+        Spline.Changed += OnSplineChanged;
+    }
+
+    private void OnSplineChanged(Spline spline, int arg2, SplineModification modification)
+    {
+        if (splineContainer.Spline == spline)
+        {
+            // If the spline changed, we need to regenerate the road mesh
+            shouldRegenerate = true;
+
+        }
+    }
+
+    void OnDisable()
+    {
+        Spline.Changed -= OnSplineChanged;
+        CleanUp();
+    }
+
+    private void CleanUp()
+    {
+        if (generatedMesh)
+        {
+            DestroyImmediate(generatedMesh);
+            generatedMesh = null;
+        }
 
     }
 
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        UnityEditor.EditorApplication.delayCall += () =>
+        if (gameObject.activeSelf)
         {
-            // Check still valid and not in Play mode
-            if (this != null && splineContainer != null && !Application.isPlaying)
-            {
-                GenerateRoad();
-            }
-        };
+            shouldRegenerate = true;
+        }
     }
 #endif
 
@@ -41,7 +82,7 @@ public class RoadBuilder : MonoBehaviour
         Spline spline = splineContainer.Spline;
         if (spline == null || spline.Count < 2) return;
 
-        List<Vector2> shape2D = GetRoadShape(); // Cross-section shape
+        List<Vector2> shape2D = GetRoadShape(); // Cross-section shape (like a horizontal line)
         int shapeVertsCount = shape2D.Count;
 
         List<Vector3> vertices = new();
@@ -53,14 +94,19 @@ public class RoadBuilder : MonoBehaviour
 
         Vector3 prevPos = spline.EvaluatePosition(0f);
 
-        // --- Generate vertices ---
         for (int i = 0; i <= segmentCount; i++)
         {
             float t = i / (float)segmentCount;
             Vector3 pos = spline.EvaluatePosition(t);
-            Vector3 forward = spline.EvaluateTangent(t);
-            Vector3 up = Vector3.up;
-            Vector3 right = Vector3.Cross(up, forward).normalized;
+            Vector3 tangent = spline.EvaluateTangent(t);
+
+            // Calculate orientation frame (Frenet frame)
+            Vector3 normal = Vector3.up;
+            if (Mathf.Abs(Vector3.Dot(tangent, normal)) > 0.99f)
+                normal = Vector3.forward; // Avoid gimbal lock
+
+            Vector3 right = Vector3.Cross(normal, tangent).normalized;
+            Vector3 up = Vector3.Cross(tangent, right).normalized;
 
             if (i > 0)
                 splineDistance += Vector3.Distance(pos, prevPos);
@@ -78,7 +124,7 @@ public class RoadBuilder : MonoBehaviour
             }
         }
 
-        // --- Build triangles ---
+        // Generate triangles
         for (int seg = 0; seg < segmentCount; seg++)
         {
             int baseIndex = seg * shapeVertsCount;
@@ -86,28 +132,26 @@ public class RoadBuilder : MonoBehaviour
 
             for (int i = 0; i < shapeVertsCount - 1; i++)
             {
-                triangles.Add(baseIndex + i + 1);
-                triangles.Add(nextBaseIndex + i);
                 triangles.Add(baseIndex + i);
+                triangles.Add(nextBaseIndex + i);
+                triangles.Add(baseIndex + i + 1);
 
                 triangles.Add(baseIndex + i + 1);
-                triangles.Add(nextBaseIndex + i + 1);
                 triangles.Add(nextBaseIndex + i);
-
+                triangles.Add(nextBaseIndex + i + 1);
             }
 
-            // close side face (last to first in ring)
-            triangles.Add(baseIndex);
-            triangles.Add(nextBaseIndex + shapeVertsCount - 1);
+            // Close the ring
             triangles.Add(baseIndex + shapeVertsCount - 1);
+            triangles.Add(nextBaseIndex + shapeVertsCount - 1);
+            triangles.Add(baseIndex);
 
             triangles.Add(baseIndex);
-            triangles.Add(nextBaseIndex);
             triangles.Add(nextBaseIndex + shapeVertsCount - 1);
-
+            triangles.Add(nextBaseIndex);
         }
 
-        // --- Front cap ---
+        // Add front cap
         Vector3 frontCenter = Vector3.zero;
         for (int i = 0; i < shapeVertsCount; i++)
             frontCenter += vertices[i];
@@ -120,11 +164,11 @@ public class RoadBuilder : MonoBehaviour
         {
             int next = (i + 1) % shapeVertsCount;
             triangles.Add(frontCenterIndex);
-            triangles.Add(next);
             triangles.Add(i);
+            triangles.Add(next);
         }
 
-        // --- Back cap ---
+        // Add back cap
         int lastRingStart = segmentCount * shapeVertsCount;
         Vector3 backCenter = Vector3.zero;
         for (int i = 0; i < shapeVertsCount; i++)
@@ -138,11 +182,11 @@ public class RoadBuilder : MonoBehaviour
         {
             int next = (i + 1) % shapeVertsCount;
             triangles.Add(backCenterIndex);
-            triangles.Add(lastRingStart + i);
             triangles.Add(lastRingStart + next);
+            triangles.Add(lastRingStart + i);
         }
 
-        // --- Create mesh ---
+        // Create and assign mesh
         Mesh mesh = new Mesh();
         mesh.name = "RoadMesh";
         mesh.SetVertices(vertices);
@@ -150,6 +194,7 @@ public class RoadBuilder : MonoBehaviour
         mesh.SetTriangles(triangles, 0);
         mesh.RecalculateNormals();
 
+#if UNITY_EDITOR
         if (!Application.isPlaying)
         {
             string folderPath = "Assets/GeneratedRoads";
@@ -157,38 +202,43 @@ public class RoadBuilder : MonoBehaviour
             string assetPath = $"{folderPath}/{meshName}.asset";
 
             System.IO.Directory.CreateDirectory(folderPath);
-
             Mesh existing = UnityEditor.AssetDatabase.LoadAssetAtPath<Mesh>(assetPath);
             if (existing != null)
             {
                 UnityEditor.EditorUtility.CopySerialized(mesh, existing);
-                UnityEditor.AssetDatabase.SaveAssets();
             }
             else
             {
                 UnityEditor.AssetDatabase.CreateAsset(mesh, assetPath);
-                UnityEditor.AssetDatabase.SaveAssets();
             }
-
+            UnityEditor.AssetDatabase.SaveAssets();
         }
+#endif
 
         GetComponent<MeshFilter>().sharedMesh = mesh;
         GetComponent<MeshCollider>().sharedMesh = mesh;
         generatedMesh = mesh;
-
     }
     List<Vector2> GetRoadShape()
     {
-        float w = width * 0.5f;
-        float t = -thickness;
-        return new List<Vector2>()
-    {
-        new Vector2(-w, t), // bottom-left
-        new Vector2(w, t),  // bottom-right
-        new Vector2(w, 0),  // top-right
-        new Vector2(-w, 0), // top-left
-        // new Vector2(-w, t) // Optional: duplicate start for closed loop
-    };
+        if (UseDefaultPoint)
+        {
+            float w = width * 0.5f;
+            float t = -thickness;
+            return new List<Vector2>()
+            {
+                new Vector2(-w, t), // bottom-left
+                new Vector2(-w, 0), // top-left
+                new Vector2(w, 0),  // top-right
+                new Vector2(w, t),  // bottom-right
+                // new Vector2(-w, t) // Optional: duplicate start for closed loop
+            };
+        }
+        else
+        {
+            return MeshPoints;
+        }
+
     }
 
 }

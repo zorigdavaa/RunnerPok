@@ -201,9 +201,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b315341158ed4e86a7e344eb4b07992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseDefaultPoint: 1
+  MeshPoints: []
   splineContainer: {fileID: 9180398201714007912}
   width: 20
-  resolution: 2.57
+  resolution: 1
   thickness: 0.5
   generatedMesh: {fileID: 0}
 --- !u!114 &4369159714587105943
