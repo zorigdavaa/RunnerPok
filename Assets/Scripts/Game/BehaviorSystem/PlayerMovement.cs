@@ -436,6 +436,10 @@ public class PlayerMovement : MovementForgeRun
     {
         if (Player.GetState() == PlayerState.Obs && IsGrounded())
         {
+            if (slideCoroutine != null)
+            {
+                StopSlide();
+            }
             rb.linearVelocity += Vector3.up * 9;
             if (rb.linearVelocity.z < Speed / 1.3f)
             {
@@ -443,6 +447,19 @@ public class PlayerMovement : MovementForgeRun
             }
         }
     }
+
+    private void StopSlide()
+    {
+        StopCoroutine(slideCoroutine);
+        animController.Slide(false);
+        CapsuleCollider coliider = GetComponent<CapsuleCollider>();
+        Vector3 center = coliider.center;
+        coliider.height = 2f;
+        center.y = 1f;
+        coliider.center = center;
+        slideCoroutine = null;
+    }
+
     public AnimationCurve slideCurve;
     Coroutine slideCoroutine = null;
     public void Slide()
