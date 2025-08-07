@@ -440,10 +440,10 @@ public class PlayerMovement : MovementForgeRun
             {
                 StopSlide();
             }
-            rb.linearVelocity += Vector3.up * 9;
+            rb.linearVelocity += Vector3.up * 8;
             if (rb.linearVelocity.z < Speed / 1.3f)
             {
-                rb.linearVelocity += Vector3.forward * 9;
+                rb.linearVelocity += Vector3.forward * 7;
             }
         }
     }
@@ -513,6 +513,6 @@ public class PlayerMovement : MovementForgeRun
 
     public bool IsGrounded()
     {
-        return Physics.CheckSphere(transform.position, 0.2f, LayerMask.GetMask("Road"));
+        return Physics.CheckSphere(transform.position, 0.25f, LayerMask.GetMask("Road"));
     }
 }
