@@ -373,7 +373,6 @@ public class PlayerMovement : MovementForgeRun
         }
         if (IsUp && GetUIObjectUnderPointer() == null)
         {
-
             Jump();
         }
         // if (SwipeAndPinch.GetSwipe() == SwipeAndPinch.SwipeDirection.Down)
@@ -445,6 +444,10 @@ public class PlayerMovement : MovementForgeRun
             {
                 rb.linearVelocity += Vector3.forward * 7;
             }
+        }
+        if (!IsGrounded())
+        {
+            print("Not Grounded");
         }
     }
 

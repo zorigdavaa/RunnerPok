@@ -14,15 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   levelTiles:
-  - {fileID: 1152342366785983181, guid: 398a48a143ddf41f780c55b07b9c5d6f, type: 3}
-  - {fileID: 1152342366785983181, guid: 75ee3591e8bce4a26894627216633007, type: 3}
-  - {fileID: 1152342366785983181, guid: 9094a2c41d09d471f850ace66eb2f796, type: 3}
-  - {fileID: 1152342366785983181, guid: b575b2c8820904215b1cc760c5b28128, type: 3}
-  - {fileID: 1152342366785983181, guid: 239e5f6b619064351869e19c5d53b8d7, type: 3}
-  - {fileID: 1152342366785983181, guid: 0371141a3162e479793b536966bdd77e, type: 3}
-  - {fileID: 1152342366785983181, guid: ff169aa65941040148c8732b8d588e40, type: 3}
-  - {fileID: 1152342366785983181, guid: 75ee3591e8bce4a26894627216633007, type: 3}
-  - {fileID: 1152342366785983181, guid: 75ee3591e8bce4a26894627216633007, type: 3}
+  - {fileID: 1152342366785983181, guid: 3245dd3cd9aa07646922280df34aaff3, type: 3}
+  - {fileID: 1152342366785983181, guid: 05e39e6b93b488a479fb0f1e37e4b798, type: 3}
+  - {fileID: 5044468542435672352, guid: 85a3a8df855b1d14d814a212a45caa40, type: 3}
+  - {fileID: 1152342366785983181, guid: 05e39e6b93b488a479fb0f1e37e4b798, type: 3}
+  - {fileID: 1152342366785983181, guid: 722e594e48b78cd4ba131b981da948e0, type: 3}
   SectionEnd: {fileID: 0}
   SectionStart: {fileID: 0}
   VisualPrefab: {fileID: 0}

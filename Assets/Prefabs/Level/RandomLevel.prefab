@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4271100086985549274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7575097222021754785}
+  - component: {fileID: 7278324688581108722}
+  - component: {fileID: 1757764476451148991}
+  m_Layer: 0
+  m_Name: RandomLevel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7575097222021754785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271100086985549274}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 100, y: 161, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7278324688581108722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271100086985549274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb18150c93af1584c9fa5f2bfe56d53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SecIDX: 0
+  Sections: []
+  SectionDatas:
+  - {fileID: 11400000, guid: d5a85188b80d84dc2994ad99f6824da6, type: 2}
+  - {fileID: 11400000, guid: 7a176ed61f4d087439179f05a53b69bf, type: 2}
+  - {fileID: 11400000, guid: c4bd40855e89f4394bafda60ffa2be55, type: 2}
+  player: {fileID: 0}
+  nextSpawnPosition: {x: 0, y: 0, z: 0}
+  PlayerBeingTile: {fileID: 0}
+  speedUpPF: {fileID: 1846571084168223024, guid: 0736c67bd4164044fbe8f25c7711ef16, type: 3}
+  BaseTilePf: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+  HealthMultiplier: 1
+  DamageMultiplier: 1
+  SectionsParent: {fileID: 0}
+  lastSpawnedTile: {fileID: 0}
+  SpawnedTiles: []
+  BeforSectionTiles: []
+--- !u!114 &1757764476451148991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4271100086985549274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e115196dead74ea39501ceb91bc8736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secPatterns:
+  - {fileID: 11400000, guid: e62b9be48ac294148b593138abee0f61, type: 2}
+  - {fileID: 11400000, guid: 4cba8c0fc4c0e47aaba46b2faf2a61d5, type: 2}
+  NormalTiles:
+  - {fileID: 1152342366785983181, guid: 398a48a143ddf41f780c55b07b9c5d6f, type: 3}
+  - {fileID: 1152342366785983181, guid: 9094a2c41d09d471f850ace66eb2f796, type: 3}
+  - {fileID: 1152342366785983181, guid: b575b2c8820904215b1cc760c5b28128, type: 3}
+  - {fileID: 1152342366785983181, guid: 239e5f6b619064351869e19c5d53b8d7, type: 3}
+  - {fileID: 1152342366785983181, guid: 0371141a3162e479793b536966bdd77e, type: 3}
+  - {fileID: 1152342366785983181, guid: ff169aa65941040148c8732b8d588e40, type: 3}
+  - {fileID: 1152342366785983181, guid: 75ee3591e8bce4a26894627216633007, type: 3}
+  FightEnemies:
+  - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
+  - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
+  - {fileID: 8161862714446864042, guid: 887bc7c9ee65fa94da252c556948be6a, type: 3}
+  - {fileID: 8161862714446864042, guid: 0da1edc07e6f44540b5a83be05bf6f8e, type: 3}
+  - {fileID: 8161862714446864042, guid: b38fad85ffd557348b0e35ef28d7aa91, type: 3}
+  ChooseSections:
+  - {fileID: 11400000, guid: 7a176ed61f4d087439179f05a53b69bf, type: 2}
