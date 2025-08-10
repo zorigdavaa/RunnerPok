@@ -133,7 +133,7 @@ public partial class @TouchControl: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""f707593d-f5f8-4dee-8146-4d61147ed28a"",
                     ""path"": ""<Pointer>/press"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Click"",

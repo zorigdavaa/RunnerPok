@@ -101,6 +101,7 @@ namespace ZPackage
 
             if (results.Count > 0)
             {
+                Debug.Log(results[0].gameObject + " is top most UI");
                 return results[0].gameObject; // Topmost UI element
             }
 

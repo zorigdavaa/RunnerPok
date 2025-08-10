@@ -66,12 +66,12 @@ public abstract class BaseSection : MonoBehaviour
             {
                 Tile tileToIns = levelTiles[index];
                 curLevel.SpawnTile(tileToIns);
-                Debug.Log("at index of " + index + " tiles of " + tileToIns.name);
+                // Debug.Log("at index of " + index + " tiles of " + tileToIns.name);
                 index++;
             }
             else
             {
-                Debug.Log("End of section " + name);
+                // Debug.Log("End of section " + name);
                 EndSection();
             }
 

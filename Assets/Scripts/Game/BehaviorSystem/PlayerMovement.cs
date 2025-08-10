@@ -35,7 +35,15 @@ public class PlayerMovement : MovementForgeRun
         }
         cam = Camera.main;
         ControlRaycastPlane = new Plane(Vector3.up, Vector3.zero);
+        ClickAction.performed += Clicked;
     }
+
+    //Performed is called when click and hold for 0.5 sec
+    private void Clicked(InputAction.CallbackContext context)
+    {
+        // Debug.Log("Click Performed");
+    }
+
     public void SetControlAble(bool value)
     {
         ControlAble = value;
@@ -340,6 +348,7 @@ public class PlayerMovement : MovementForgeRun
         if (IsDown || IsUp)
         {
             JustClicked = true;
+            SwipeAndPinch.ResetHighestY();
         }
 
         else
@@ -371,7 +380,8 @@ public class PlayerMovement : MovementForgeRun
                 targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
             }
         }
-        if (IsUp && GetUIObjectUnderPointer() == null)
+        // if (IsUp && GetUIObjectUnderPointer() == null)
+        if (IsUp)
         {
             Jump();
         }
@@ -444,6 +454,7 @@ public class PlayerMovement : MovementForgeRun
             {
                 rb.linearVelocity += Vector3.forward * 7;
             }
+            print("Jumped");
         }
         if (!IsGrounded())
         {

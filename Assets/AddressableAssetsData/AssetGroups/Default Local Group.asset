@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0371141a3162e479793b536966bdd77e
+    m_Address: Assets/Prefabs/Tiles Random/RTile 4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 05e39e6b93b488a479fb0f1e37e4b798
     m_Address: Assets/Prefabs/Tiles/TileObs 19.prefab
     m_ReadOnly: 0
@@ -88,6 +94,12 @@ MonoBehaviour:
     - Coin
     - CollectTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 239e5f6b619064351869e19c5d53b8d7
+    m_Address: Assets/Prefabs/Tiles Random/RTile 3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 27ebd9fa17b5b47d3bd06f5cddb8a9df
     m_Address: Assets/Prefabs/Tiles/TileObs 22.prefab
     m_ReadOnly: 0
@@ -120,6 +132,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3821c71094deee641b07c11ac9d0d500
     m_Address: Assets/Prefabs/Obs/RotMishok.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 398a48a143ddf41f780c55b07b9c5d6f
+    m_Address: Assets/Prefabs/Tiles Random/RTile.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Obstacle
@@ -241,6 +259,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - ObsTile
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75ee3591e8bce4a26894627216633007
+    m_Address: Assets/Prefabs/Tiles Random/RTile 6.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 79f4d2da32efb4641a51df85c9c5be07
     m_Address: Assets/Prefabs/Obs/MovingSaw (1).prefab
     m_ReadOnly: 0
@@ -288,6 +312,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Animal
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9094a2c41d09d471f850ace66eb2f796
+    m_Address: Assets/Prefabs/Tiles Random/RTile 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9eccb436512f1484580e9d52d8b66e38
     m_Address: Assets/Prefabs/Tiles/End 2 jump.prefab
@@ -338,6 +368,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - ObsTile
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b575b2c8820904215b1cc760c5b28128
+    m_Address: Assets/Prefabs/Tiles Random/RTile 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b67534568e7f2cd43bc5a07395ea8745
     m_Address: Assets/Prefabs/Obs/Barrier.prefab
@@ -414,6 +450,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fd775694cd60a344a83064b831071a77
     m_Address: Assets/Prefabs/Obs/DoubleRot.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Obstacle
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ff169aa65941040148c8732b8d588e40
+    m_Address: Assets/Prefabs/Tiles Random/RTile 5.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Obstacle

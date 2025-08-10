@@ -85,14 +85,14 @@ namespace ZPackage
 
         public List<SecPattern> SectionsPatternData = new List<SecPattern>()
         {
-            new SecPattern()
-            {
-                sectionTypes = new List<SectionType>()
-                {
-                     SectionType.Choose,SectionType.Normal,SectionType.Fight, SectionType.Choose,SectionType.Normal,SectionType.Fight
-                },
+            // new SecPattern()
+            // {
+            //     sectionTypes = new List<SectionType>()
+            //     {
+            //          SectionType.Choose,SectionType.Normal,SectionType.Fight, SectionType.Choose,SectionType.Normal,SectionType.Fight
+            //     },
 
-            },
+            // },
         };
 
     }

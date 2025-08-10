@@ -386,6 +386,10 @@ PrefabInstance:
       propertyPath: Pos.x
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
       value: 35
@@ -455,6 +459,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
@@ -674,6 +682,10 @@ PrefabInstance:
       propertyPath: Pos.x
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
       value: 35
@@ -743,6 +755,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
@@ -1128,6 +1144,10 @@ PrefabInstance:
       propertyPath: Pos.x
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
       value: 35
@@ -1197,6 +1217,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
@@ -1342,6 +1366,10 @@ PrefabInstance:
       propertyPath: Pos.x
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
       value: 35
@@ -1411,6 +1439,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
@@ -1482,6 +1514,10 @@ PrefabInstance:
       propertyPath: Pos.x
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
       value: 35
@@ -1551,6 +1587,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance

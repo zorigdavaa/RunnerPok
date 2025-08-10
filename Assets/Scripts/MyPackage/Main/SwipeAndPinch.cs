@@ -5,6 +5,17 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public static class SwipeAndPinch
 {
+    // private static InputAction clickAction;
+    // public static InputAction ClickAction
+    // {
+    //     get {
+    //         if (clickAction == null)
+    //         {
+    //             clickAction = InputSystem.actions.FindAction("Click");
+    //         }
+    //         return clickAction; }
+    // }
+    
     private static Vector2 startPos;
     private static float startTime;
     private static bool isTouching = false;
@@ -19,6 +30,7 @@ public static class SwipeAndPinch
         Left,
         Right
     }
+    
 
     private static float highestY = float.MinValue;
     private static float dragThreshold = 100f;
@@ -43,6 +55,10 @@ public static class SwipeAndPinch
 
         return false;
 
+    }
+    public static void ResetHighestY()
+    {
+        highestY = Pointer.current.position.ReadValue().y;
     }
 
     public static SwipeDirection GetSwipe()
