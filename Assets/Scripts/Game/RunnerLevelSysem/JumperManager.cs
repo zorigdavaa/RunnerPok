@@ -9,7 +9,11 @@ public class JumperManager : MonoBehaviour
     void Start()
     {
         Jumpers = GetComponentsInChildren<Jumper>().OrderBy(x => x.transform.position.z).ToList();
-        Transform end = transform.Find("End");
+        Transform end = transform.Find("NewEnd");
+        if (end == null)
+        {
+            end = transform.Find("End");
+        }
         for (int i = 0; i < Jumpers.Count; i++)
         {
             Jumper current = Jumpers[i];

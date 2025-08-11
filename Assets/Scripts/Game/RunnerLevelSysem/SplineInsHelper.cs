@@ -14,6 +14,7 @@ public class SplineInsHelper : MonoBehaviour
             splineInstantiate = GetComponent<SplineInstantiate>();
         }
         splineInstantiate.Randomize();
+        splineInstantiate.UpdateInstances();
         // splineInstantiate.enabled = false;
         // splineInstantiate.enabled = true;
     }
