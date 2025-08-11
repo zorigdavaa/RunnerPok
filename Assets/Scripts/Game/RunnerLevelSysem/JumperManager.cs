@@ -17,17 +17,17 @@ public class JumperManager : MonoBehaviour
         for (int i = 0; i < Jumpers.Count; i++)
         {
             Jumper current = Jumpers[i];
-            Vector3 taget;
+            Transform taget;
             if (i < Jumpers.Count - 1)
             {
-                taget = Jumpers[i + 1].transform.position;
+                taget = Jumpers[i + 1].transform;
 
             }
             else
             {
-                taget = end.transform.position;
+                taget = end.transform;
             }
-            current.NextJumpTarget = taget;
+            current.NextJumper = taget;
         }
     }
 }

@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5152581822960862953, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
       propertyPath: NextJumper
       value: 
@@ -332,19 +336,39 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 243893644774797305, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2433158986964601170}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1477584444987647026, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1264949310870583253}
   m_SourcePrefab: {fileID: 100100000, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
 --- !u!4 &290613617463058132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 243893644774797305, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   m_PrefabInstance: {fileID: 534253188757336365}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1435350070108198175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1477584444987647026, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+  m_PrefabInstance: {fileID: 534253188757336365}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1264949310870583253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435350070108198175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde856947fbd2463abf84b07f3687d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6317272806129293980 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
   m_PrefabInstance: {fileID: 534253188757336365}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1435350070108198175}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f75fffe7ce8add4fbfad188e788102d, type: 3}
@@ -402,50 +426,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5152581822960862953, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
       propertyPath: NextJumper
       value: 
       objectReference: {fileID: 3723246295180588299}
-    - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
-      propertyPath: CurrentTile
-      value: 
-      objectReference: {fileID: 6317272806129293980}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3362261294800038520, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5360897338530524960}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
---- !u!1 &187700581264196683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3362261294800038520, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
-  m_PrefabInstance: {fileID: 3185169162510724659}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5360897338530524960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187700581264196683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d497cbb8fbaa94f99ccb6707b2d2bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Model: {fileID: 0}
-  speed: 1
-  Oppozit: 0
-  startOffset: 0
-  UseRandomOffset: 0
-  MovementType: 0
-  IsMoving: 1
-  ShoulDRot: 0
-  RotSpeed: {x: 0, y: 0, z: 0}
-  min: {x: -5, y: 0, z: 0}
-  max: {x: 5, y: 0, z: 0}
 --- !u!4 &2176468958131625749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3605026524838981926, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}

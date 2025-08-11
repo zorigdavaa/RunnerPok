@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -114,6 +118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -175,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
       propertyPath: m_Name
       value: Rain (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -266,6 +278,58 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Spacing.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Spacing.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_PositionOffset.max.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_PositionOffset.max.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_PositionOffset.min.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_PositionOffset.min.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_PositionOffset.setup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_RotationOffset.max.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_RotationOffset.setup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_PositionOffset.randomX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_RotationOffset.randomY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_ItemsToInstantiate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_ItemsToInstantiate.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 3639075683096581620, guid: 89a7205ddedaf4153ba173c0623a4ff2, type: 3}
     - target: {fileID: 7327758342603152568, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -374,6 +438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -436,6 +504,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -497,6 +569,10 @@ PrefabInstance:
     - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
       propertyPath: m_Name
       value: Rain (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080657430532533212, guid: ad4ec26f9c5ee9748857086cc0ac80f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -277,12 +277,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - SkillChooseSecDefault
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7a503784a857bda4da3470d9e6b750d0
-    m_Address: Assets/Prefabs/Tiles/TileObs 12.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ObsTile
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7cf5d2a0021a04acb8bd19524f110584
     m_Address: Assets/Prefabs/Character/Bosses/BatBoss.prefab
     m_ReadOnly: 0

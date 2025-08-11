@@ -9,7 +9,17 @@ public class Jumper : MonoBehaviour, ICollisionAction
 {
     [SerializeField] Vector3 JumperForce;
     // public Tile CurrentTile;
-    public Transform NextJumper;
+    public Transform nextJumper;
+    public Transform NextJumper
+    {
+        get { return nextJumper; }
+        set
+        {
+            nextJumper = value;
+            NextJumpTarget = value.position;
+        }
+    }
+
     public Vector3 NextJumpTarget;
     [SerializeField] Animation anim;
     public Transform pointer;
@@ -20,7 +30,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
         if (NextJumper)
         {
             // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumper.transform.position, 60f);
-            NextJumpTarget = NextJumper.position;
+            NextJumpTarget = NextJumper.position; ;
             // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(transform.position, NextJumpTarget, 45f);
         }
         // else
