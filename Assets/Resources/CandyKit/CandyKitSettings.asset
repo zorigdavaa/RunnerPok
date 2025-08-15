@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e86c58fc47c4d7388264bb266ce6e2, type: 3}
   m_Name: CandyKitSettings
   m_EditorClassIdentifier: 
-  FacebookAppID: 
-  FacebookAppClientToken: 
+  FacebookAppID: 2509299336110147
+  FacebookAppClientToken: 78675cb7198298352f22a17dfaedaefe
   MaxSDKKey: 
   SubmitFpsCritical: 1
   SubmitFpsAverage: 1
   FpsCriticalThreshold: 20
   Android:
-    GameAnalyticsGameKey: 
-    GameAnalyticsGameSecret: 
+    GameAnalyticsGameKey: a7bf71d24be64079c3f17381bea03079
+    GameAnalyticsGameSecret: fe2b88d79858d2eb90ddbf27fbefba501dfda9e6
     TenjinSDKKey: 
     BannerAdUnitId: 
     InterstitialAdUnitId: 

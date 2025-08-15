@@ -9,5 +9,10 @@ namespace CandyKitSDK
         public static string IAPRevenuePref = "CkIAPRevenue";
         public static string PremiumUserPref = "CkIsPremium";
         public static string AdWatchCount = "CkAdWatchCount";
+        internal static string CVRevenue = "CkCVRevenue";
+        public static string FirstTime = "CkFirstTime";
+        public static string FirstIAP = "CkFirstIAP";
+        public static string RevenueStep = "CKRevenueStep";
+        public static string RevenueReach = "CKRevenueReach";
     }
 }

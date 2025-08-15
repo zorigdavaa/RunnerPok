@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.applovin.mediation.ads": "8.3.1",
+    "com.gameanalytics.sdk": "7.10.5",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "2.6.0",
     "com.unity.cinemachine": "3.1.4",
@@ -8,10 +10,10 @@
     "com.unity.ide.rider": "3.0.36",
     "com.unity.ide.visualstudio": "2.0.23",
     "com.unity.ide.vscode": "1.2.5",
-    "com.unity.inputsystem": "1.14.0",
+    "com.unity.inputsystem": "1.14.2",
     "com.unity.multiplayer.center": "1.0.0",
     "com.unity.postprocessing": "3.4.0",
-    "com.unity.purchasing": "4.12.2",
+    "com.unity.purchasing": "5.0.0",
     "com.unity.recorder": "5.1.2",
     "com.unity.shadergraph": "17.2.0",
     "com.unity.test-framework": "1.5.1",
@@ -51,5 +53,25 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "AppLovin MAX Unity",
+      "url": "https://unity.packages.applovin.com",
+      "scopes": [
+        "com.applovin.mediation.ads",
+        "com.applovin.mediation.adapters",
+        "com.applovin.mediation.dsp"
+      ]
+    },
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.google.external-dependency-manager",
+        "com.gameanalytics",
+        "com.google"
+      ]
+    }
+  ]
 }

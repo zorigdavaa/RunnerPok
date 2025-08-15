@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// #if UNITY_ANDROID
+#if UNITY_ANDROID
 // using Google.Play.Review;
-// #endif
+#endif
 
 
 public class CkInAppReviewObject : MonoBehaviour

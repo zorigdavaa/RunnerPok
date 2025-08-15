@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Services.Core;
 
-// #if !UNITY_EDITOR
-// using GameAnalyticsSDK;
-// #endif
+#if !UNITY_EDITOR
+using GameAnalyticsSDK;
+#endif
 
 namespace CandyKitSDK
 {
@@ -14,7 +14,7 @@ namespace CandyKitSDK
         private CandyKitSettingsScriptableObject m_Settings;
         public CkInAppReviewObject ckInAppReviewObject;
         public CkIAPManager ckIAPManager;
-        // CKSpecialEvents cKSpecialEvents;
+        CKSpecialEvents cKSpecialEvents;
         private bool IsLocked = true;
 
         public void Initialize(float waitDuration, CandyKitSettingsScriptableObject settings, CandyKit.OnCandyKitReady onReady)
@@ -45,15 +45,15 @@ namespace CandyKitSDK
             // ckInAppReviewObject = Instantiate(Resources.Load<CkInAppReviewObject>("CkInAppReviewObject"));
             // ckInAppReviewObject.Initialize();
         }
-        // private void CreateCkSpecialEvent()
-        // {
-        //     if (m_Settings.SubmitFpsAverage || m_Settings.SubmitFpsCritical)
-        //     {
-        //         GameObject obj = new GameObject("CKSpecialEvent");
-        //         cKSpecialEvents = obj.AddComponent<CKSpecialEvents>();
-        //         DontDestroyOnLoad(obj);
-        //     }
-        // }
+        private void CreateCkSpecialEvent()
+        {
+            if (m_Settings.SubmitFpsAverage || m_Settings.SubmitFpsCritical)
+            {
+                GameObject obj = new GameObject("CKSpecialEvent");
+                cKSpecialEvents = obj.AddComponent<CKSpecialEvents>();
+                DontDestroyOnLoad(obj);
+            }
+        }
 
 
         private IEnumerator WaitForReadiness(float duration, CandyKit.OnCandyKitReady onReady)
@@ -66,19 +66,37 @@ namespace CandyKitSDK
 
             print("UGS Initialized");
 
-// #if !UNITY_EDITOR
-//             while (!GameAnalytics.IsRemoteConfigsReady())
-//             {
-//                 yield return null;
-//             }
-// #endif
+#if !UNITY_EDITOR
+            while (!GameAnalytics.IsRemoteConfigsReady())
+            {
+                yield return null;
+            }
+#endif
 
-            ABTestManager.Instance.Init();
+            // ABTestManager.Instance.Initialize();
 
             RestartSdkObjects();
-            // CreateCkSpecialEvent();
+            CreateCkSpecialEvent();
             IsLocked = false;
+            // if (!CountryCode.IsInNoTenjinCountries())
+            // {
+            //     while (CandyKit.m_Tenjin == null || CandyKit.m_Tenjin.CampaignName == null)
+            //     {
+            //         yield return new WaitForSeconds(0.5f);
+            //         print("CK--> Waiting for Tenjin");
+            //     }
+            //     string campaignName = CandyKit.m_Tenjin.CampaignName.ToLower();
+            //     bool isIAPCampaign = campaignName.Contains("iap") || campaignName.Contains("hybrid");
 
+            //     if (isIAPCampaign)
+            //     {
+            //         ABTestManager.Instance.InitWith("champion_no_rv");
+            //     }
+            //     else
+            //     {
+            //         ABTestManager.Instance.InitWith("control");
+            //     }
+            // }
             onReady();
         }
 
