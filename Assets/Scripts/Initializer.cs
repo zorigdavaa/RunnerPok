@@ -15,7 +15,7 @@ public class Initializer : MonoBehaviour
 
     void OnReady()
     {
-        SceneManager.LoadScene("Demo");
+        SceneManager.LoadScene("Main");
         Debug.Log("On ready");
     }
 
