@@ -125,15 +125,15 @@ public class Player : Character, IItemEquipper
         UpdateAction?.Invoke();
         if (IsUp && State == PlayerState.Fight)
         {
-            if (GetEquippedItem(WhereSlot.OtherHand))
-            {
+            OnOffhandItemInvoke(this, EventArgs.Empty);
+            // if (GetEquippedItem(WhereSlot.OtherHand))
+            // {
 
-                OnOffhandItemInvoke(this, EventArgs.Empty);
-            }
-            else
-            {
-                Debug.Log("Off Hand Item NUll");
-            }
+            // }
+            // else
+            // {
+            //     Debug.Log("Off Hand Item NUll");
+            // }
         }
         // if (Input.GetKeyDown(KeyCode.S))
         // {
@@ -253,11 +253,22 @@ public class Player : Character, IItemEquipper
     ObjectPool<Shuriken> OffHandPool;
     private void InitOffHandPool()
     {
+
+        GameObject throwObj =
+            GetEquippedItem(WhereSlot.OtherHand) != null ? GetEquippedItem(WhereSlot.OtherHand).data.pf : DefaultShuriken.pf;
         OffHandPool = new ObjectPool<Shuriken>(() =>
         {
-            Shuriken spear = Instantiate(GetEquippedItem(WhereSlot.OtherHand).data.pf, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
+            Shuriken spear = Instantiate(throwObj, transform.position, Quaternion.identity, transform.parent).GetComponent<Shuriken>();
             spear.Pool = OffHandPool;
-            spear.SetInstance(GetEquippedItem(WhereSlot.OtherHand));
+            if (GetEquippedItem(WhereSlot.OtherHand) != null)
+            {
+
+                spear.SetInstance(GetEquippedItem(WhereSlot.OtherHand));
+            }
+            else
+            {
+                spear.SetDamage();
+            }
             return spear;
             // return new GameObject();
         }, (s) =>

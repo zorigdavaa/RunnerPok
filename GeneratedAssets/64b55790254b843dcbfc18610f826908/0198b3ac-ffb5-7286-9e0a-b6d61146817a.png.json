@@ -1,0 +1,20 @@
+{
+    "asset": "64b55790254b843dcbfc18610f826908",
+    "fileName": "0198b3ac-ffb5-7286-9e0a-b6d61146817a.png",
+    "prompt": "few coins",
+    "negativePrompt": "simple",
+    "model": "62fdcd63-818d-4b75-9b35-9fcab365924e",
+    "modelName": "Creepy Style Character Icons",
+    "customSeed": -1,
+    "w3CTraceId": "72e0c12196076da29ef5d0f9f2bc1141",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

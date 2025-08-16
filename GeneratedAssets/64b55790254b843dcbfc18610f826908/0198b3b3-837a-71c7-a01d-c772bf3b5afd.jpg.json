@@ -1,0 +1,20 @@
+{
+    "asset": "64b55790254b843dcbfc18610f826908",
+    "fileName": "0198b3b3-837a-71c7-a01d-c772bf3b5afd.jpg",
+    "prompt": "hexagon shaped stacked very few coins",
+    "negativePrompt": "it will be used for in app purchase",
+    "model": "14a54973-678e-4e71-bbf0-225f1ee93761",
+    "modelName": "Game Items (Flux)",
+    "customSeed": -1,
+    "w3CTraceId": "9bcab258fe76da185cd429f3619f9ba3",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
