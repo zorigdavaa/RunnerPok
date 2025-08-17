@@ -224,6 +224,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5882283718236796589}
     - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+      propertyPath: nextJumper
+      value: 
+      objectReference: {fileID: 5882283718236796589}
+    - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
       propertyPath: CurrentTile
       value: 
       objectReference: {fileID: 1152342366785983181}
@@ -1477,6 +1481,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5707393686864251119}
     - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+      propertyPath: nextJumper
+      value: 
+      objectReference: {fileID: 5707393686864251119}
+    - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
       propertyPath: CurrentTile
       value: 
       objectReference: {fileID: 1152342366785983181}
@@ -1854,6 +1862,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
       propertyPath: NextJumper
+      value: 
+      objectReference: {fileID: 2762625631241805574}
+    - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}
+      propertyPath: nextJumper
       value: 
       objectReference: {fileID: 2762625631241805574}
     - target: {fileID: 8209108399054310361, guid: ffd86b0e6ae9d0d4a905d171da897385, type: 3}

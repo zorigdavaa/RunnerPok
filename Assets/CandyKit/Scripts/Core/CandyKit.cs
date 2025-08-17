@@ -60,7 +60,12 @@ namespace CandyKitSDK
 
                 m_Settings = Resources.Load<CandyKitSettingsScriptableObject>("CandyKit/CandyKitSettings");
 
-                InitializeApplovin();
+                // InitializeApplovin();
+
+                //remove 
+                GameObject instanceObject = new("CandyKitObject");
+                m_Instance = instanceObject.AddComponent<CandyKitObject>();
+                m_Instance.Initialize(m_ReadinessWaitDuration, m_Settings, OnReady);
 
                 InitializeUnityGamingService();
                 SetInstallDate();
@@ -76,7 +81,7 @@ namespace CandyKitSDK
         public static int GetDaySinceInstall()
         {
             DateTime installDate = GetInstallDate().Date; // removes the time portion
-            DateTime today = DateTime.Now.Date;           
+            DateTime today = DateTime.Now.Date;
             TimeSpan timeSpan = today - installDate;
             return timeSpan.Days;
         }
@@ -429,42 +434,42 @@ namespace CandyKitSDK
             gamingServiceObject.Initialize(OnGamingServiceInitializationSuccess, OnGamingServiceInitializationFailed);
         }
 
-//         private static void InitializeFirebase()
-//         {
-// #if !UNITY_EDITOR
-//             Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
-//             {
-//                 var dependencyStatus = task.Result;
-//                 if (dependencyStatus == Firebase.DependencyStatus.Available)
-//                 {
-//                     var app = Firebase.FirebaseApp.DefaultInstance;
-//                     if (MaxSdk.HasUserConsent())
-//                     {
-//                         FirebaseAnalytics.SetConsent
-//                         (
-//                             new Dictionary<ConsentType, ConsentStatus>
-//                             {
-//                                 { ConsentType.AnalyticsStorage, ConsentStatus.Granted },
-//                                 { ConsentType.AdStorage, ConsentStatus.Granted },
-//                                 { ConsentType.AdPersonalization, ConsentStatus.Granted },
-//                                 { ConsentType.AdUserData, ConsentStatus.Granted },
-//                             }
-//                         );
+        //         private static void InitializeFirebase()
+        //         {
+        // #if !UNITY_EDITOR
+        //             Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+        //             {
+        //                 var dependencyStatus = task.Result;
+        //                 if (dependencyStatus == Firebase.DependencyStatus.Available)
+        //                 {
+        //                     var app = Firebase.FirebaseApp.DefaultInstance;
+        //                     if (MaxSdk.HasUserConsent())
+        //                     {
+        //                         FirebaseAnalytics.SetConsent
+        //                         (
+        //                             new Dictionary<ConsentType, ConsentStatus>
+        //                             {
+        //                                 { ConsentType.AnalyticsStorage, ConsentStatus.Granted },
+        //                                 { ConsentType.AdStorage, ConsentStatus.Granted },
+        //                                 { ConsentType.AdPersonalization, ConsentStatus.Granted },
+        //                                 { ConsentType.AdUserData, ConsentStatus.Granted },
+        //                             }
+        //                         );
 
-//                         // Enable Firebase Analytics
-//                         FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
-//                         Debug.Log("CK--> Firebase initialized with Google Analytics consent granted.");
-//                     }
+        //                         // Enable Firebase Analytics
+        //                         FirebaseAnalytics.SetAnalyticsCollectionEnabled(true);
+        //                         Debug.Log("CK--> Firebase initialized with Google Analytics consent granted.");
+        //                     }
 
-//                     // Log a message to confirm consent settings
-//                 }
-//                 else
-//                 {
-//                     UnityEngine.Debug.LogError($"CK--> Could not resolve all Firebase dependencies: {dependencyStatus}");
-//                 }
-//             });
-// #endif
-//         }
+        //                     // Log a message to confirm consent settings
+        //                 }
+        //                 else
+        //                 {
+        //                     UnityEngine.Debug.LogError($"CK--> Could not resolve all Firebase dependencies: {dependencyStatus}");
+        //                 }
+        //             });
+        // #endif
+        //         }
 
 
         private static void OnGamingServiceInitializationSuccess()

@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.applovin.mediation.adapters.unityads.android": {
+      "version": "4160100.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unity.packages.applovin.com"
+    },
+    "com.applovin.mediation.adapters.unityads.ios": {
+      "version": "4160100.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://unity.packages.applovin.com"
+    },
     "com.applovin.mediation.ads": {
       "version": "8.3.1",
       "depth": 0,
@@ -30,11 +44,11 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {
+        "com.unity.burst": "1.8.4",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.mathematics": "1.1.0",
-        "com.unity.modules.uielements": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
-        "com.unity.burst": "1.8.4"
+        "com.unity.modules.uielements": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },

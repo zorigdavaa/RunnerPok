@@ -165,6 +165,7 @@ PlayerSettings:
   androidMinAspectRatio: 1
   applicationIdentifier:
     Android: io.zapwave.runnerpok
+    Standalone: io.zapwave.runnerpok
   buildNumber:
     Standalone: 0
     VisionOS: 0
