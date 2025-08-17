@@ -60,12 +60,7 @@ namespace CandyKitSDK
 
                 m_Settings = Resources.Load<CandyKitSettingsScriptableObject>("CandyKit/CandyKitSettings");
 
-                // InitializeApplovin();
-
-                //remove 
-                GameObject instanceObject = new("CandyKitObject");
-                m_Instance = instanceObject.AddComponent<CandyKitObject>();
-                m_Instance.Initialize(m_ReadinessWaitDuration, m_Settings, OnReady);
+                InitializeApplovin();
 
                 InitializeUnityGamingService();
                 SetInstallDate();
