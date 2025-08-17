@@ -338,6 +338,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Obstacle
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad58d697acd38874290ce7dd5661ba54
+    m_Address: Assets/Prefabs/Obs/SpeedUp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SpeedUp
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae71ec917e81e934eb94964c6ffca414
     m_Address: Assets/Prefabs/Tiles/TileObs 3.prefab
     m_ReadOnly: 0

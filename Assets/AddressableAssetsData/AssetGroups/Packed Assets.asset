@@ -13,16 +13,8 @@ MonoBehaviour:
   m_Name: Packed Assets
   m_EditorClassIdentifier: 
   m_GroupName: Packed Assets
-  m_Data:
-    m_SerializedData: []
   m_GUID: 84c1b67f24884ef4ebd94bcd92d08bb3
-  m_SerializeEntries:
-  - m_GUID: ad58d697acd38874290ce7dd5661ba54
-    m_Address: Assets/Prefabs/Obs/SpeedUp.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - SpeedUp
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8046b71a405f24028813696428badbab, type: 2}
   m_SchemaSet:
