@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FacebookAppID: 2509299336110147
   FacebookAppClientToken: 78675cb7198298352f22a17dfaedaefe
-  MaxSDKKey: 
+  MaxSDKKey: test
   SubmitFpsCritical: 1
   SubmitFpsAverage: 1
   FpsCriticalThreshold: 20
@@ -22,9 +22,9 @@ MonoBehaviour:
     GameAnalyticsGameKey: a7bf71d24be64079c3f17381bea03079
     GameAnalyticsGameSecret: fe2b88d79858d2eb90ddbf27fbefba501dfda9e6
     TenjinSDKKey: 
-    BannerAdUnitId: 
-    InterstitialAdUnitId: 
-    RewardedVideoAdUnitId: 
+    BannerAdUnitId: test
+    InterstitialAdUnitId: test
+    RewardedVideoAdUnitId: test
     NoAdsProductID: 
     ckProducts:
     - {fileID: 11400000, guid: f8d4eb6621f047f4b8eeb0f0de318f72, type: 2}
