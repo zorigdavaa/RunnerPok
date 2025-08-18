@@ -20,6 +20,22 @@ public class SplIns : MonoBehaviour
         public float Probability;
         public float additionalDistance;
         public Vector3Offset posOffset;
+        public Vector3Offset rotOffset;
+
+        internal Vector3 GetOffSet()
+        {
+            float x = Random.Range(posOffset.min.x, posOffset.max.x);
+            float y = Random.Range(posOffset.min.y, posOffset.max.y);
+            float z = Random.Range(posOffset.min.z, posOffset.max.z);
+            return new Vector3(x, y, z);
+        }
+        internal Quaternion GetRotOffSet()
+        {
+            float x = Random.Range(rotOffset.min.x, rotOffset.max.x);
+            float y = Random.Range(rotOffset.min.y, rotOffset.max.y);
+            float z = Random.Range(rotOffset.min.z, rotOffset.max.z);
+            return Quaternion.Euler(x, y, z);
+        }
         // public Vector3Offset rotOffset;
     }
 
@@ -162,6 +178,8 @@ public class SplIns : MonoBehaviour
         averageDistance = clampedMax / RandomCount;
         for (int i = 0; i < count; i++)
         {
+            Debug.Log($"Spawning {count} objects along spline.");
+
             if (currentDistance > clampedMax)
             {
                 break;
@@ -175,12 +193,15 @@ public class SplIns : MonoBehaviour
             currentDistance += averageDistance;
             GameObject pf = chancePF.Prefab;
             GameObject Ins_obj = Instantiate(pf, Vector3.zero, Quaternion.identity, transform);
+            Ins_obj.gameObject.SetActive(true);
 
             // var remappedForward = math.normalizesafe(GetAxis(1));
             // var remappedUp = math.normalizesafe(GetAxis(2));
             // var axisRemapRotation = Quaternion.Inverse(quaternion.LookRotationSafe(remappedForward, remappedUp));
 
             // Quaternion Rot = quaternion.LookRotationSafe(forward, up) * axisRemapRotation;
+            insPOS += chancePF.GetOffSet();
+            rotation *= chancePF.GetRotOffSet();
             Ins_obj.transform.localPosition = insPOS;
             Ins_obj.transform.localRotation = rotation;
             Ins_obj.GetComponent<ObsData>()?.ObsDataMethod();
