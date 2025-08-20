@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pf: {fileID: 3727168934407258221, guid: 4cf787b8cc797f8429f5ada25d2a4631, type: 3}
   itemName: BounceShur
-  Icon: {fileID: 4227053565995980960, guid: 7261f09847d319b479a032a61f199148, type: 3}
+  Icon: {fileID: 21300000, guid: 1ed797d1345a94d57bb5413d77436ba7, type: 3}
   Where: 1
   Desc: this item Bounces up to 5 times Near Enemies
   Info: 'damage={damage}

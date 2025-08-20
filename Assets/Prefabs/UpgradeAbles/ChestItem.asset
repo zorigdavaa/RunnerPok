@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pf: {fileID: 4856505954130395814, guid: b8cee5eb7c4cf4ed0bfc21fcee1c00dc, type: 3}
   itemName: ChestItem
-  Icon: {fileID: 21300000, guid: d3e8568d1d75efe4ca177d90c70761f7, type: 3}
+  Icon: {fileID: 21300000, guid: 5afa9facb958b4beb881bf11a1959ee4, type: 3}
   Where: 4
   Desc: ChestItem
   Info: 'damage={damage}
