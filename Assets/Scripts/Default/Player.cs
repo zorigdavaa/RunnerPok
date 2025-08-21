@@ -535,6 +535,10 @@ public class Player : Character, IItemEquipper
             default: return transform;
         }
     }
+    public bool HasMoney(float compareMoney)
+    {
+        return GameManager.Instance.Coin > compareMoney;
+    }
 }
 
 public enum PlayerState

@@ -1,19 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDownHandler
 {
-    public ItemInstanceUI Item;
+    ItemInstanceUI Item;
+    public ItemInstanceUI GetItem() => Item;
     public WhereSlot Where;
     // public bool WearSlot = false;
     public Image WearSlotImage;
     public Sprite[] SlotSprites;
     public EventHandler<ItemInstanceUI> OnItemChanged;
     public bool isUnequipSlot = false;
+    public TextMeshProUGUI priceText;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,9 +51,11 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
             baseItemUI.currentSlot.RemoveItem();
         }
         Item = baseItemUI;
-        Item.transform.position = transform.position;
-        Item.transform.SetParent(transform);
-        Item.currentSlot = this;
+        GetItem().transform.position = transform.position;
+        GetItem().transform.SetParent(transform);
+        GetItem().currentSlot = this;
+        priceText.text = baseItemUI.Price.ToString();
+        priceText.gameObject.SetActive(true);
         // if (WearSlot)
         // {
         // }
@@ -59,20 +64,21 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
         // }
         if (isUnequipSlot)
         {
-            Item.UnEquipItem();
-            Where = Item.data.Where;
+            GetItem().UnEquipItem();
+            Where = GetItem().data.Where;
             SetImageUsingSlot();
         }
         else
         {
-            Item.EquipItem();
+            GetItem().EquipItem();
         }
-        OnItemChanged?.Invoke(this, Item);
+        OnItemChanged?.Invoke(this, GetItem());
     }
     internal void RemoveItem()
     {
         Item = null;
-        OnItemChanged?.Invoke(this, Item);
+        priceText.gameObject.SetActive(false);
+        OnItemChanged?.Invoke(this, GetItem());
         // transform.SetSiblingIndex(transform.parent.childCount - 1);
         // gameObject.SetActive(false);
     }
@@ -84,9 +90,9 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (Item != null)
+        if (GetItem() != null)
         {
-            ItemInfoCanvas.Instance.ShowInfoOf(Item);
+            ItemInfoCanvas.Instance.ShowInfoOf(GetItem());
         }
     }
 }

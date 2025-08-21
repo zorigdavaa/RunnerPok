@@ -16,7 +16,8 @@ public class SaveManager : MonoBehaviour
         else
         {
             Instance = this;
-            Saves = FindObjectsOfType<MonoBehaviour>(true).OfType<ISave>().ToList();
+            // Saves = FindObjectsOfType<MonoBehaviour>(true).OfType<ISave>().ToList();
+            Saves = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<ISave>().ToList();
             Debug.Log("Saves.Count: " + Saves.Count);
         }
     }

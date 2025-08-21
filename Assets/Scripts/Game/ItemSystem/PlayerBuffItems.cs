@@ -16,7 +16,8 @@ public class PlayerBuffItems : MonoBehaviour, ISave
         {
             if (_instacne == null)
             {
-                _instacne = FindObjectOfType<PlayerBuffItems>(true);
+                // _instacne = FindObjectOfType<PlayerBuffItems>(true);
+                _instacne = FindAnyObjectByType<PlayerBuffItems>(FindObjectsInactive.Include);
             }
             return _instacne;
         }
@@ -91,9 +92,9 @@ public class PlayerBuffItems : MonoBehaviour, ISave
         SlotSave SavingData = new SlotSave();
         for (int i = 0; i < equipSlots.Count; i++)
         {
-            if (equipSlots[i].Item != null)
+            if (equipSlots[i].GetItem() != null)
             {
-                SavingData.EquipDataNew.Add(new ItemSaveData(equipSlots[i].Item.ID, equipSlots[i].Item.data.itemName));
+                SavingData.EquipDataNew.Add(new ItemSaveData(equipSlots[i].GetItem().ID, equipSlots[i].GetItem().data.itemName));
             }
             else
             {
@@ -102,9 +103,9 @@ public class PlayerBuffItems : MonoBehaviour, ISave
         }
         for (int i = 0; i < unEquipslots.Count; i++)
         {
-            if (unEquipslots[i].Item != null)
+            if (unEquipslots[i].GetItem() != null)
             {
-                SavingData.UneqiupDataNew.Add(new ItemSaveData(unEquipslots[i].Item.ID, unEquipslots[i].Item.data.itemName));
+                SavingData.UneqiupDataNew.Add(new ItemSaveData(unEquipslots[i].GetItem().ID, unEquipslots[i].GetItem().data.itemName));
             }
             else
             {
@@ -177,7 +178,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
                     addedComponent.data = data;
                     // insObj.SetIcon(data.Icon);
                     insObj.transform.localScale = Vector3.one;
-                    UISlot sameTypeSlot = equipSlots.Where(x => x.Where == addedComponent.data.Where && x.Item == null).FirstOrDefault();
+                    UISlot sameTypeSlot = equipSlots.Where(x => x.Where == addedComponent.data.Where && x.GetItem() == null).FirstOrDefault();
                     if (sameTypeSlot)
                     {
                         sameTypeSlot.AddItem(addedComponent);
@@ -209,7 +210,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
     {
         foreach (var slot in equipSlots)
         {
-            if (slot.Where == where && slot.Item == null)
+            if (slot.Where == where && slot.GetItem() == null)
             {
                 return slot;
             }
@@ -221,7 +222,7 @@ public class PlayerBuffItems : MonoBehaviour, ISave
     {
         foreach (var slot in unEquipslots)
         {
-            if (slot.Item == null)
+            if (slot.GetItem() == null)
             {
                 return slot;
             }

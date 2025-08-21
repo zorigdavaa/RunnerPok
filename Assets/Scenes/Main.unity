@@ -719,6 +719,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9208676709075099636, guid: 93ba0dfa80084a8458119aff2e6696d6, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 9208676709075099637, guid: 93ba0dfa80084a8458119aff2e6696d6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2302,6 +2306,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4323377936253049716, guid: 5d6fc2db54a86a24a848a838b12ff497, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 6044982920872720123, guid: 5d6fc2db54a86a24a848a838b12ff497, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3159,6 +3167,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7675826601332790545, guid: 34fff68db04d64148a5f759905caa3ed, type: 3}
+    - target: {fileID: 6337005739825099877, guid: 6e8576fdc55e3034cabec6b0d97b1606, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3264,13 +3276,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 463869251}
   - {fileID: 1427064312}
   - {fileID: 1696713320}
   - {fileID: 1456237096}
   - {fileID: 5859635849220810485}
   - {fileID: 2109900363}
   - {fileID: 978744484}
+  - {fileID: 463869251}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7041,6 +7053,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4323377936253049716, guid: 5d6fc2db54a86a24a848a838b12ff497, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
     - target: {fileID: 8754509146955382868, guid: 5d6fc2db54a86a24a848a838b12ff497, type: 3}
       propertyPath: m_Name
       value: tabBtn
@@ -8023,6 +8039,14 @@ PrefabInstance:
     - target: {fileID: 2670322050184894090, guid: 5c7b55f261faf0d4d913816a31ec5e52, type: 3}
       propertyPath: m_Name
       value: Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 2670322050748961539, guid: 5c7b55f261faf0d4d913816a31ec5e52, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 2670322051384936868, guid: 5c7b55f261faf0d4d913816a31ec5e52, type: 3}
+      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
+      value: 1801810542
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

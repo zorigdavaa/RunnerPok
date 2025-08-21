@@ -11,7 +11,9 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     public ItemData data;
     public string ID;
     public int level = 1;
+    public float Price = 1;
     public UISlot currentSlot;
+    string priceSaveString => ID + "price";
     public void Start()
     {
         SetIcon(data.Icon);
@@ -70,10 +72,12 @@ public abstract class BaseItemUI : MonoBehaviour, IUpgradeAble, ISaveAble
     public void SaveData()
     {
         PlayerPrefs.SetInt(ID, level);
+        PlayerPrefs.SetFloat(priceSaveString, Price);
     }
     public void RetrieveData()
     {
         level = PlayerPrefs.GetInt(ID, 1);
+        Price = PlayerPrefs.GetFloat(priceSaveString, 1);
     }
     public void SetIcon(Sprite icon)
     {
