@@ -6,6 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using ZPackage;
 
 public class PlayerBuffItems : MonoBehaviour, ISave
 {
@@ -59,8 +60,14 @@ public class PlayerBuffItems : MonoBehaviour, ISave
         }
         QPress = InputSystem.actions.FindAction("Q");
         EPress = InputSystem.actions.FindAction("E");
-        QPress.performed += OnPressQ;
-        EPress.performed += OnPressE;
+        // QPress.performed += OnPressQ;
+        // EPress.performed += OnPressE;
+        GameManager.Instance.OnGamePlay += OnGamePlay;
+    }
+
+    private void OnGamePlay(object sender, EventArgs e)
+    {
+        // Save();
     }
 
     private void OnPressE(InputAction.CallbackContext context)

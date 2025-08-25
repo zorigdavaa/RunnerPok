@@ -16,7 +16,7 @@ public class ItemInfoCanvas : MonoBehaviour
         {
             if (_instance == null)
             {
-                return FindObjectOfType<ItemInfoCanvas>(true);
+                return FindFirstObjectByType<ItemInfoCanvas>(FindObjectsInactive.Include);
             }
             return _instance;
         }

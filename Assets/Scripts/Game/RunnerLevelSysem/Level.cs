@@ -43,7 +43,14 @@ public class Level : MonoBehaviour
             Sections.Add(section);
             // LevelObjects.Add(new LevelSection());
         }
-
+        if (HealthMultiplier == 1)
+        {
+            HealthMultiplier = 1 + 0.05f * GameManager.Instance.Level;
+        }
+        if (DamageMultiplier == 1)
+        {
+            DamageMultiplier = 1 + 0.05f * GameManager.Instance.Level;
+        }
     }
 
     private void CreateSectionParent()
