@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using ZPackage;
 
 public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDownHandler
 {
@@ -68,7 +69,7 @@ public class UISlot : MonoBehaviour, IDropHandler, IPointerUpHandler, IPointerDo
             Where = GetItem().data.Where;
             SetImageUsingSlot();
         }
-        else
+        else // If it is EQuipping
         {
             GetItem().EquipItem();
         }

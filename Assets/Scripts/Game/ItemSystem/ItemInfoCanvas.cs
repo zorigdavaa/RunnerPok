@@ -63,12 +63,20 @@ public class ItemInfoCanvas : MonoBehaviour
 
     private void WearorRemove()
     {
-        if (itemUI.currentSlot.isUnequipSlot)
+        if (itemUI.currentSlot.isUnequipSlot) // Wearing
         {
             var freeSlot = PlayerBuffItems.Instance.GetByTypeFromEquipedFree(itemUI.data.Where);
             if (freeSlot)
             {
-                freeSlot.AddItem(itemUI);
+                if (Z.Player.HasMoney(itemUI.Price))
+                {
+                    Z.Player.UseMoney(itemUI.Price);
+                    freeSlot.AddItem(itemUI);
+                }
+                else
+                {
+                    Z.CanM.ShowPlusOne(itemUI.currentSlot.transform.position, "Need More Coin", Color.red);
+                }
             }
             else
             {
@@ -77,11 +85,12 @@ public class ItemInfoCanvas : MonoBehaviour
                 Z.CanM.ShowPlusOne(UsedSlot.transform.position, "Already Worn", Color.red);
             }
         }
-        else
+        else // UnWearing
         {
             var freeSlot = PlayerBuffItems.Instance.GetFreefromUnEquip();
             if (freeSlot)
             {
+                Z.Player.GiveMoney(itemUI.Price);
                 freeSlot.AddItem(itemUI);
             }
         }

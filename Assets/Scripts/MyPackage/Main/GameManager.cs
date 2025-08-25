@@ -157,7 +157,7 @@ namespace ZPackage
         public void Load()
         {
             // Debug.Log("Load from GameManager");
-            Coin = PlayerPrefs.GetInt("coin", 0);
+            Coin = PlayerPrefs.GetInt("coin", 5);
             Level = PlayerPrefs.GetInt("level", 1);
             // Score = 0;
             ThrowCount = 3;

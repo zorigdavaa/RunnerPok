@@ -535,9 +535,19 @@ public class Player : Character, IItemEquipper
             default: return transform;
         }
     }
-    public bool HasMoney(float compareMoney)
+    public bool HasMoney(int compareMoney)
     {
-        return GameManager.Instance.Coin > compareMoney;
+        return GameManager.Instance.Coin >= compareMoney;
+    }
+
+    internal void UseMoney(int price)
+    {
+        GameManager.Instance.Coin -= price;
+    }
+
+    internal void GiveMoney(int price)
+    {
+        GameManager.Instance.Coin += price;
     }
 }
 
