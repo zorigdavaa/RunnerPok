@@ -24,6 +24,7 @@ public class PlayerMovement : MovementForgeRun
     public MovementState movementState;
     Camera cam;
     Plane ControlRaycastPlane;
+    public bool addingForwardForece = false;
     private void Start()
     {
         Player = Z.Player;
@@ -90,7 +91,8 @@ public class PlayerMovement : MovementForgeRun
     public void PlayerControl()
     {
         // Check if the player is grounded
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+        // isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = IsGrounded();
         if (isGrounded)
         {
             animController.Jump(false);
@@ -155,6 +157,7 @@ public class PlayerMovement : MovementForgeRun
     }
     private void Forward()
     {
+        addingForwardForece = false;
         // if (isGrounded && rb.linearVelocity.y < 1)
         if (isGrounded && movementState != MovementState.Sliding)
         {
@@ -184,6 +187,7 @@ public class PlayerMovement : MovementForgeRun
             {
                 rb.linearVelocity = vel;
             }
+            addingForwardForece = true;
         }
     }
 
@@ -391,7 +395,7 @@ public class PlayerMovement : MovementForgeRun
         // }
         if (IsClick && SwipeAndPinch.DownDrag())
         {
-            if (IsGrounded())
+            if (isGrounded)
             {
                 Slide();
             }
@@ -441,14 +445,14 @@ public class PlayerMovement : MovementForgeRun
     {
         childModel.transform.rotation = Quaternion.identity;
     }
+    int jumpFrameSkipper = 2;
+    int lastJumpFrame = 0;
     public void Jump()
     {
-        if (Player.GetState() == PlayerState.Obs && IsGrounded())
+        if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper < Time.frameCount)
         {
-            if (slideCoroutine != null)
-            {
-                StopSlide();
-            }
+            lastJumpFrame = Time.frameCount;
+            StopSlide();
             rb.linearVelocity += Vector3.up * 8;
             if (rb.linearVelocity.z < Speed / 1.3f)
             {
@@ -456,22 +460,26 @@ public class PlayerMovement : MovementForgeRun
             }
             print("Jumped");
         }
-        if (!IsGrounded())
+        if (!isGrounded)
         {
             print("Not Grounded");
         }
     }
 
-    private void StopSlide()
+    public void StopSlide()
     {
-        StopCoroutine(slideCoroutine);
-        animController.Slide(false);
-        CapsuleCollider coliider = GetComponent<CapsuleCollider>();
-        Vector3 center = coliider.center;
-        coliider.height = 2f;
-        center.y = 1f;
-        coliider.center = center;
-        slideCoroutine = null;
+        if (slideCoroutine != null)
+        {
+            StopCoroutine(slideCoroutine);
+            animController.Slide(false);
+            CapsuleCollider coliider = GetComponent<CapsuleCollider>();
+            Vector3 center = coliider.center;
+            coliider.height = 2f;
+            center.y = 1f;
+            coliider.center = center;
+            slideCoroutine = null;
+        }
+
     }
 
     public AnimationCurve slideCurve;
@@ -517,6 +525,7 @@ public class PlayerMovement : MovementForgeRun
                 rb.linearVelocity = desiredVelocity;
                 yield return null;
             }
+
             animController.Slide(false);
             coliider.height = 2f;
             center.y = 1f;

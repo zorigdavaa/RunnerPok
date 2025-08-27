@@ -156,14 +156,18 @@ public class Player : Character, IItemEquipper
             Respawn();
         }
     }
-
+    Coroutine respawnCor;
     private void Respawn()
     {
-        StartCoroutine(LocalCoroutine());
+        if (respawnCor == null)
+        {
+            respawnCor = StartCoroutine(LocalCoroutine());
+        }
         IEnumerator LocalCoroutine()
         {
             yield return new WaitForSeconds(1);
             transform.position = Z.LS.LastInstLvl.PlayerBeingTile.start.position + Vector3.up;
+            respawnCor = null;
         }
     }
 
