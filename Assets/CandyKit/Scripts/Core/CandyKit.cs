@@ -22,7 +22,7 @@ namespace CandyKitSDK
         public static bool m_IsDebug = false;
         public static bool m_IsInitialized = false;
         public static CandyKitObject m_Instance;
-        public static CkAdHandler m_CkAdHandler;
+        public static BaseAdManager m_CkAdHandler;
         public static CkIAPManager m_IAPManager;
         public static CkTenjinObject m_Tenjin;
         private static CandyKitSettingsScriptableObject m_Settings;
@@ -314,13 +314,13 @@ namespace CandyKitSDK
             m_CkAdHandler.ShowInterstitial(placement, onSuccess);
         }
 
-        public static bool IsRewardedAdReady()
-        {
-            if (!MaxSdk.IsInitialized())
-                return false;
+        // public static bool IsRewardedAdReady()
+        // {
+        //     if (!MaxSdk.IsInitialized())
+        //         return false;
 
-            return m_CkAdHandler.IsRewardedAdReady();
-        }
+        //     return m_CkAdHandler.IsRewardedAdReady();
+        // }
 
         public static void ShowRewardedVideo(string placement, CkRewardedAdCallback callback)
         {
@@ -373,6 +373,7 @@ namespace CandyKitSDK
 
         private static void InitializeApplovin()
         {
+#if Max_SDK
             MaxSdkCallbacks.OnSdkInitializedEvent += (MaxSdkBase.SdkConfiguration sdkConfiguration) =>
             {
                 if (m_IsDebug)
@@ -390,9 +391,20 @@ namespace CandyKitSDK
             //     MaxSdk.GetSdkConfiguration().conse
             // }
             Debug.Log("CK--> Max Init");
+            void OnMaxInitialized(MaxSdkBase.SdkConfiguration configuration)
+            {
+                initializeLastThings();
+
+            }
+#else
+            initializeLastThings();
+#endif
+
         }
 
-        private static void OnMaxInitialized(MaxSdkBase.SdkConfiguration configuration)
+
+
+        private static void initializeLastThings()
         {
             InitializeGameAnalytics();
             // if (!CountryCode.IsInNoTenjinCountries())
@@ -402,13 +414,16 @@ namespace CandyKitSDK
             // InitializeFirebase();
 
             GameObject adHandlerGo = new("CkAdHandler");
+#if Max_SDK
             m_CkAdHandler = adHandlerGo.AddComponent<CkAdHandler>();
+#else
+            m_CkAdHandler = adHandlerGo.AddComponent<LevelPlayAdManager>();
+#endif
             m_CkAdHandler.Initialize(m_Settings);
 
             GameObject instanceObject = new("CandyKitObject");
             m_Instance = instanceObject.AddComponent<CandyKitObject>();
             m_Instance.Initialize(m_ReadinessWaitDuration, m_Settings, OnReady);
-
         }
 
         // private static void InitializeTenjin()
@@ -487,7 +502,9 @@ namespace CandyKitSDK
         }
         internal static void MaxDebugger()
         {
+#if Max_SDK
             MaxSdk.ShowMediationDebugger();
+#endif
         }
 
         #endregion

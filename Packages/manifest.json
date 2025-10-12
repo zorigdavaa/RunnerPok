@@ -1,9 +1,5 @@
 {
   "dependencies": {
-    "com.applovin.mediation.adapters.unityads.android": "4160100.0.0",
-    "com.applovin.mediation.adapters.unityads.ios": "4160100.0.0",
-    "com.applovin.mediation.ads": "8.3.1",
-    "com.unity.2d.enhancers": "1.0.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.addressables": "2.7.3",
     "com.unity.cinemachine": "3.1.4",
@@ -17,6 +13,7 @@
     "com.unity.postprocessing": "3.5.0",
     "com.unity.purchasing": "4.13.0",
     "com.unity.recorder": "5.1.2",
+    "com.unity.services.levelplay": "9.0.0",
     "com.unity.shadergraph": "17.2.0",
     "com.unity.test-framework": "1.6.0",
     "com.unity.timeline": "1.8.9",
@@ -56,15 +53,6 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "scopedRegistries": [
-    {
-      "name": "AppLovin MAX Unity",
-      "url": "https://unity.packages.applovin.com",
-      "scopes": [
-        "com.applovin.mediation.ads",
-        "com.applovin.mediation.adapters",
-        "com.applovin.mediation.dsp"
-      ]
-    },
     {
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",

@@ -7,8 +7,10 @@ namespace CandyKitSDK
 {
     public delegate void CkRewardedAdCallback(bool isSuccess);
 
-    public class CkAdHandler : MonoBehaviour
+    public class CkAdHandler : BaseAdManager
     {
+#if Max_SDK
+
         private int interstitialRetryAttempt;
         private int rewardedVideoRetryAttempt;
 
@@ -430,5 +432,6 @@ namespace CandyKitSDK
             }
         }
 
+#endif
     }
 }
