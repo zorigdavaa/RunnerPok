@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using System;
 using Object = UnityEngine.Object;
+using Unity.Services.LevelPlay;
+
 
 
 
@@ -397,12 +399,17 @@ namespace CandyKitSDK
 
             }
 #else
-            initializeLastThings();
+            LevelPlay.OnInitSuccess += OnLevelPlayInitialized;
+            LevelPlay.Init(m_Settings.MaxSDKKey);
+
 #endif
 
         }
 
-
+        private static void OnLevelPlayInitialized(LevelPlayConfiguration configuration)
+        {
+            initializeLastThings();
+        }
 
         private static void initializeLastThings()
         {
