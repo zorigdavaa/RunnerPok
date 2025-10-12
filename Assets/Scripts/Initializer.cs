@@ -15,6 +15,7 @@ public class Initializer : MonoBehaviour
 
     void OnReady()
     {
+        CandyKit.ShowBanner();
         SceneManager.LoadScene("Main");
         Debug.Log("On ready");
     }

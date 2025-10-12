@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using CandyKitSDK;
+
 #if ANALYTICS_SDKS
 using GameAnalyticsSDK;
 #endif
@@ -211,6 +213,7 @@ namespace ZPackage
                 State = GameState.LevelCompleted;
                 NextLevel();
                 GALevelCompleteEvent();
+                CandyKit.ShowInterstitial("level_complete", null);
             }
         }
         public void GameOver(object sender, EventArgs e)

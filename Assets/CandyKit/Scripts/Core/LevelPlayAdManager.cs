@@ -70,7 +70,7 @@ public class LevelPlayAdManager : BaseAdManager
             .SetDisplayOnLoad(true)
             .SetRespectSafeArea(true)
             .Build();
-        LevelPlayBannerAd bannerAd = new LevelPlayBannerAd(m_Settings.Android.BannerAdUnitId, config);
+        bannerAd = new LevelPlayBannerAd(m_Settings.Android.BannerAdUnitId, config);
 
         //Subscribe RewardedAd events
         bannerAd.OnAdLoaded += BannerOnAdLoadedEvent;
