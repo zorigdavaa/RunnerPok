@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.00000004371139
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalRotation.y
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7136343522725066999, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -89,6 +89,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance
@@ -159,6 +163,10 @@ PrefabInstance:
     - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: Pos.x
       value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457354047230846127, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
+      propertyPath: TargetRot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5778986194484456025, guid: 2af7c8db7df97f24c9635ced9b48c308, type: 3}
       propertyPath: PlayerNearDistance

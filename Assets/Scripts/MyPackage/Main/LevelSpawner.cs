@@ -73,7 +73,7 @@ namespace ZPackage
         {
             Random.InitState(GameManager.Instance.Level);
             GameObject LevelGo = new GameObject();
-            LevelGo.name = GameManager.Instance.Level + " Level";
+            LevelGo.name = GameManager.Instance.Level + " Level Generated";
             Level lvl = LevelGo.AddComponent<Level>();
             await lvl.LoadAssets();
             int SectionCount = 10;
