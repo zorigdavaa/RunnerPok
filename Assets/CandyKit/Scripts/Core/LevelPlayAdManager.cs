@@ -26,6 +26,7 @@ public class LevelPlayAdManager : BaseAdManager
     }
     public override void ShowBanner()
     {
+        Debug.Log("CK--> Show Banner");
         bannerAd.ShowAd();
     }
     public override void HideBanner()
@@ -82,7 +83,11 @@ public class LevelPlayAdManager : BaseAdManager
         bannerAd.OnAdLeftApplication += BannerOnAdLeftApplicationEvent;
         bannerAd.OnAdExpanded += BannerOnAdExpandedEvent;
     }
-
+    public override float GetBannerHeight()
+    {
+        var size = bannerAd.GetAdSize();
+        return size.Height;
+    }
 
 
     void CreateRewardedAd()
