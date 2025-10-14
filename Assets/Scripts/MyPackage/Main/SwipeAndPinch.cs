@@ -15,7 +15,7 @@ public static class SwipeAndPinch
     //         }
     //         return clickAction; }
     // }
-    
+
     private static Vector2 startPos;
     private static float startTime;
     private static bool isTouching = false;
@@ -30,10 +30,10 @@ public static class SwipeAndPinch
         Left,
         Right
     }
-    
+
 
     private static float highestY = float.MinValue;
-    private static float dragThreshold = 100f;
+    private static float dragThreshold = 200f;
 
     public static bool DownDrag()
     {
