@@ -18,16 +18,34 @@ public class CollisionDamdage : MonoBehaviour, ICollisionAction
                 GameObject particle = Instantiate(feathersVFX, transform.position, Quaternion.identity);
                 Destroy(particle, 2);
             }
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
+    {
+
+        StartCoroutine(LoadFeatherVFX());
+    }
+    IEnumerator LoadFeatherVFX()
     {
         yield return null;
         Damage *= Z.LS.LastInstLvl.DamageMultiplier;
-        feathersVFX = Resources.Load<GameObject>("Game/FeatherExplosion.prefab");
+        // Begin loading asynchronously
+        ResourceRequest request = Resources.LoadAsync<GameObject>("Game/FeatherExplosion");
+
+        // Wait until loading finishes
+        yield return request;
+
+        // Get the loaded asset
+        feathersVFX = request.asset as GameObject;
+
+        if (feathersVFX == null)
+        {
+            Debug.LogError("FeatherExplosion prefab not found in Resources/Game!");
+            yield break;
+        }
     }
 
     // Update is called once per frame
