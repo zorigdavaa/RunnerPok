@@ -3,17 +3,35 @@ using UnityEngine;
 
 public class ThreeObs : MonoBehaviour
 {
-    public List<Transform> Parents;
+    public List<RoadObs> RoadObss;
+    public List<bool> isBlockedList = new List<bool>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        foreach (var item in Parents)
+        Init();
+
+    }
+
+    private void Init()
+    {
+        isBlockedList = new List<bool>();
+        foreach (var item in RoadObss)
         {
-            int showChild = Random.Range(0, item.childCount);
-            for (int i = 0; i < item.childCount; i++)
-            {
-                item.GetChild(i).gameObject.SetActive(i == showChild);
-            }
+            bool isBlocked = item.Init();
+            isBlockedList.Add(isBlocked);
+        }
+        if (!isBlockedList.Contains(false))
+        {
+            int randIndex = Random.Range(0, isBlockedList.Count);
+            isBlockedList[randIndex] = false;
+            RoadObss[randIndex].MakeUnblocked();
         }
     }
+    [ContextMenu("Test")]
+    public void Test()
+    {
+        Init();
+    }
 }
+
+
