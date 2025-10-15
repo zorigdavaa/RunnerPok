@@ -453,10 +453,10 @@ public class PlayerMovement : MovementForgeRun
         {
             lastJumpFrame = Time.frameCount;
             StopSlide();
-            rb.linearVelocity += Vector3.up * 8;
+            rb.linearVelocity += Vector3.up * 6;
             if (rb.linearVelocity.z < Speed / 1.3f)
             {
-                rb.linearVelocity += Vector3.forward * 7;
+                rb.linearVelocity += Vector3.forward * 3;
             }
             print("Jumped");
         }

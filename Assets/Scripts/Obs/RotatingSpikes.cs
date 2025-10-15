@@ -29,8 +29,8 @@ public class RotatingSpikes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotObsj.RotateAround(transform.position, RotationAngle, speed);
-        RotObsj.Rotate(LocalRotation);
+        RotObsj?.RotateAround(transform.position, RotationAngle, speed);
+        RotObsj?.Rotate(LocalRotation);
     }
     void CreateCircle()
     {
