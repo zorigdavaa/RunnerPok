@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -32,8 +34,38 @@ public static class SwipeAndPinch
     }
 
 
-    private static float highestY = float.MinValue;
-    private static float dragThreshold = 200f;
+    // private static float highestY = float.MinValue;
+    static float GetThreshold()
+    {
+#if UNITY_EDITOR
+        return 100f;
+#else
+        return 200f;
+#endif
+        // return dragThreshold;
+    }
+
+    public static List<Vector3> pointerPos = new List<Vector3>();
+
+    internal static void TrackPos()
+    {
+        if (pointerPos.Count > 10)
+        {
+            pointerPos.RemoveAt(0);
+        }
+        pointerPos.Add(Pointer.current.position.ReadValue());
+    }
+    static Vector3 GetAverage()
+    {
+        Vector3 sum = Vector3.zero;
+        foreach (var pos in pointerPos)
+        {
+            sum += pos;
+        }
+        Vector3 average = sum / pointerPos.Count;
+        return average;
+        // Debug.Log("Average Position: " + average);
+    }
 
     public static bool DownDrag()
     {
@@ -43,22 +75,45 @@ public static class SwipeAndPinch
         if (pointer == null)
             return false;
         float pointerY = pointer.position.ReadValue().y;
-        if (highestY < pointerY)
+        float averageY = GetAverage().y;
+        if (averageY - pointerY > GetThreshold())
         {
-            highestY = pointerY;
+            return true;
         }
-        if (highestY - pointerY > dragThreshold)
+        // if (highestY < pointerY)
+        // {
+        //     highestY = pointerY;
+        // }
+        // if (highestY - pointerY > dragThreshold)
+        // {
+        //     highestY = pointerY;
+        //     return true;
+        // }
+        return false;
+
+    }
+
+    public static void ResetHighestY()
+    {
+        // highestY = Pointer.current.position.ReadValue().y;
+    }
+
+    public static bool UpDrag()
+    {
+        var pointer = Pointer.current;
+
+
+        if (pointer == null)
+            return false;
+        float pointerY = pointer.position.ReadValue().y;
+        float averageY = GetAverage().y;
+        if (pointerY - averageY > GetThreshold())
         {
-            highestY = pointerY;
             return true;
         }
 
         return false;
 
-    }
-    public static void ResetHighestY()
-    {
-        highestY = Pointer.current.position.ReadValue().y;
     }
 
     public static SwipeDirection GetSwipe()
@@ -177,4 +232,5 @@ public static class SwipeAndPinch
 
         return pinchDelta;
     }
+
 }

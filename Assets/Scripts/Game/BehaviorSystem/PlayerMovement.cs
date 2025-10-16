@@ -189,6 +189,10 @@ public class PlayerMovement : MovementForgeRun
             }
             addingForwardForece = true;
         }
+        else if (!isGrounded && rb.linearVelocity.y < 0.5f)
+        {
+            rb.AddForce(Vector3.down * 10);
+        }
     }
 
     private void OldForward()
@@ -348,11 +352,12 @@ public class PlayerMovement : MovementForgeRun
     bool JustClicked = false;
     private void ViewPortControl2()
     {
+        SwipeAndPinch.TrackPos();
         Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up); // Default forward rotation
         if (IsDown || IsUp)
         {
             JustClicked = true;
-            SwipeAndPinch.ResetHighestY();
+            // SwipeAndPinch.ResetHighestY();
         }
 
         else
@@ -385,7 +390,7 @@ public class PlayerMovement : MovementForgeRun
             }
         }
         // if (IsUp && GetUIObjectUnderPointer() == null)
-        if (IsUp)
+        if (IsUp || SwipeAndPinch.UpDrag())
         {
             Jump();
         }
@@ -445,19 +450,25 @@ public class PlayerMovement : MovementForgeRun
     {
         childModel.transform.rotation = Quaternion.identity;
     }
-    int jumpFrameSkipper = 2;
+    int jumpFrameSkipper = 1;
     int lastJumpFrame = 0;
+    Coroutine jumpCoroutine = null;
     public void Jump()
     {
-        if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper < Time.frameCount)
+        if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount)
         {
+            transform.position += Vector3.up * 0.26f;
             lastJumpFrame = Time.frameCount;
             StopSlide();
-            rb.linearVelocity += Vector3.up * 6;
-            if (rb.linearVelocity.z < Speed / 1.3f)
-            {
-                rb.linearVelocity += Vector3.forward * 3;
-            }
+            // jumpCoroutine = StartCoroutine(JumpCoroutine());
+            Vector3 vel = rb.linearVelocity;
+            vel += Vector3.up * 9;
+            // vel.z = 8;
+            rb.linearVelocity = vel;
+            // if (rb.linearVelocity.z < Speed / 1.3f)
+            // {
+            //     rb.linearVelocity += Vector3.forward * 3;
+            // }
             print("Jumped");
         }
         if (!isGrounded)
@@ -465,6 +476,9 @@ public class PlayerMovement : MovementForgeRun
             print("Not Grounded");
         }
     }
+    [SerializeField] AnimationCurve jumpCurve;
+
+
 
     public void StopSlide()
     {
@@ -497,7 +511,7 @@ public class PlayerMovement : MovementForgeRun
         {
             float t = 0;
             float time = 0;
-            float duration = 1f;
+            float duration = 0.8f;
             animController.Slide(true);
             CapsuleCollider coliider = GetComponent<CapsuleCollider>();
             Vector3 center = coliider.center;
