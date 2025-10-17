@@ -86,6 +86,7 @@ public class Jumper : MonoBehaviour, ICollisionAction
             player.Movement.StopSlide();
             anim.Play();
             CalcForce(character.transform.position);
+            player.Movement.SetGravity(false);
             character.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             character.GetComponent<Rigidbody>().linearVelocity = JumperForce;
         }
@@ -111,6 +112,6 @@ public class Jumper : MonoBehaviour, ICollisionAction
             jumpAng += 10;
         }
         JumperForce = PhysicsHelper.CalcBallisticVelocityVectorNew(From, NextJumpTarget, jumpAng);
-        // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, 70f);
+        // JumperForce = PhysicsHelper.CalcBallisticVelocityVector(From, NextJumpTarget, jumpAng);
     }
 }
