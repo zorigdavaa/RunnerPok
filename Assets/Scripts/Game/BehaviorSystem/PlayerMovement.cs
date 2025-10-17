@@ -350,6 +350,7 @@ public class PlayerMovement : MovementForgeRun
     Vector3 befFrameMous;
     float targetX;
     bool JustClicked = false;
+    public ShouldDoMovement shouldDoMovement = ShouldDoMovement.None;
     private void ViewPortControl2()
     {
         SwipeAndPinch.TrackPos();
@@ -392,7 +393,8 @@ public class PlayerMovement : MovementForgeRun
         // if (IsUp && GetUIObjectUnderPointer() == null)
         if (IsUp || SwipeAndPinch.UpDrag())
         {
-            Jump();
+            // Jump();
+            shouldDoMovement = ShouldDoMovement.Jump;
         }
         // if (SwipeAndPinch.GetSwipe() == SwipeAndPinch.SwipeDirection.Down)
         // {
@@ -400,17 +402,37 @@ public class PlayerMovement : MovementForgeRun
         // }
         if (IsClick && SwipeAndPinch.DownDrag())
         {
-            if (isGrounded)
+            if (!isGrounded)
+            {
+                animController.SetRoll(true);
+                rb.AddForce(Vector3.down * 500);
+            }
+            shouldDoMovement = ShouldDoMovement.Slide;
+        }
+        if (shouldDoMovement != ShouldDoMovement.None)
+        {
+            if (shouldDoMovement == ShouldDoMovement.Jump && CanJump())
+            {
+                Jump();
+            }
+            else if (shouldDoMovement == ShouldDoMovement.Slide && CanSlide())
             {
                 Slide();
             }
-            else
-            {
-                rb.AddForce(Vector3.down * 500);
-            }
+            shouldDoMovement = ShouldDoMovement.None;
         }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
+    }
+
+    private bool CanSlide()
+    {
+        return Player.GetState() == PlayerState.Obs && isGrounded && slideCoroutine == null;
+    }
+
+    private bool CanJump()
+    {
+        return Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount;
     }
 
     public void ResetTargetX()
@@ -452,29 +474,29 @@ public class PlayerMovement : MovementForgeRun
     }
     int jumpFrameSkipper = 1;
     int lastJumpFrame = 0;
-    Coroutine jumpCoroutine = null;
+
     public void Jump()
     {
-        if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount)
-        {
-            transform.position += Vector3.up * 0.26f;
-            lastJumpFrame = Time.frameCount;
-            StopSlide();
-            // jumpCoroutine = StartCoroutine(JumpCoroutine());
-            Vector3 vel = rb.linearVelocity;
-            vel += Vector3.up * 9;
-            // vel.z = 8;
-            rb.linearVelocity = vel;
-            // if (rb.linearVelocity.z < Speed / 1.3f)
-            // {
-            //     rb.linearVelocity += Vector3.forward * 3;
-            // }
-            print("Jumped");
-        }
-        if (!isGrounded)
-        {
-            print("Not Grounded");
-        }
+        // if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount)
+        // {
+        transform.position += Vector3.up * 0.26f;
+        lastJumpFrame = Time.frameCount;
+        StopSlide();
+        Vector3 vel = rb.linearVelocity;
+        vel += Vector3.up * 9;
+        // vel.z = 8;
+        rb.linearVelocity = vel;
+        // if (rb.linearVelocity.z < Speed / 1.3f)
+        // {
+        //     rb.linearVelocity += Vector3.forward * 3;
+        // }
+        print("Jumped");
+        shouldDoMovement = ShouldDoMovement.None;
+        // }
+        // if (!isGrounded)
+        // {
+        //     print("Not Grounded");
+        // }
     }
     [SerializeField] AnimationCurve jumpCurve;
 
@@ -486,6 +508,7 @@ public class PlayerMovement : MovementForgeRun
         {
             StopCoroutine(slideCoroutine);
             animController.Slide(false);
+            animController.SetRoll(false);
             CapsuleCollider coliider = GetComponent<CapsuleCollider>();
             Vector3 center = coliider.center;
             coliider.height = 2f;
@@ -500,19 +523,20 @@ public class PlayerMovement : MovementForgeRun
     Coroutine slideCoroutine = null;
     public void Slide()
     {
-        if (Player.GetState() == PlayerState.Obs)
-        {
-            if (slideCoroutine == null)
-            {
-                slideCoroutine = StartCoroutine(LocalCor());
-            }
-        }
+        // if (Player.GetState() == PlayerState.Obs)
+        // {
+        //     if (slideCoroutine == null)
+        //     {
+        //     }
+        // }
+        slideCoroutine = StartCoroutine(LocalCor());
         IEnumerator LocalCor()
         {
             float t = 0;
             float time = 0;
             float duration = 0.8f;
             animController.Slide(true);
+            shouldDoMovement = ShouldDoMovement.None;
             CapsuleCollider coliider = GetComponent<CapsuleCollider>();
             Vector3 center = coliider.center;
             bool colliderAdjusted = false;
@@ -541,6 +565,7 @@ public class PlayerMovement : MovementForgeRun
             }
 
             animController.Slide(false);
+            animController.SetRoll(false);
             coliider.height = 2f;
             center.y = 1f;
             coliider.center = center;
@@ -552,4 +577,12 @@ public class PlayerMovement : MovementForgeRun
     {
         return Physics.CheckSphere(transform.position, 0.25f, LayerMask.GetMask("Road"));
     }
+
+
+}
+public enum ShouldDoMovement
+{
+    None,
+    Jump,
+    Slide
 }

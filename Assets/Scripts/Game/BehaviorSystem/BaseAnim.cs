@@ -60,4 +60,9 @@ public class BaseAnim : MonoBehaviour
     {
         animator.SetBool("isSliding", val);
     }
+
+    internal void SetRoll(bool v)
+    {
+        animator.SetBool("isRolling", v);
+    }
 }
