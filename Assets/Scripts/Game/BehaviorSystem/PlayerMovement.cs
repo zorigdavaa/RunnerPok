@@ -167,11 +167,12 @@ public class PlayerMovement : MovementForgeRun
             if (vel.magnitude < Speed)
             {
                 // Step 1: Get the character's forward direction
-                Vector3 flatForward = (transform.forward - Vector3.up * 0.1f).normalized;
+                Vector3 flatForward = (transform.forward - Vector3.up * 0.5f).normalized;
 
                 // Step 2: Project it onto the slope
                 Vector3 groundNormal = GetGroundNormal();
                 Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
+                Debug.DrawLine(transform.position, transform.position + slopeForward * 5, Color.red, 0.1f);
 
                 // Step 3: Use that as your desired direction
                 desiredVelocirt = slopeForward * Speed;
@@ -185,14 +186,16 @@ public class PlayerMovement : MovementForgeRun
             }
             if (!rb.isKinematic)
             {
+                vel += Vector3.down * 2;
                 rb.linearVelocity = vel;
             }
             addingForwardForece = true;
         }
         else if (!isGrounded && rb.linearVelocity.y < 0.5f && forceDownGravity)
         {
-            rb.AddForce(Vector3.down * 10);
+            rb.AddForce(Vector3.down * 10); 
         }
+
     }
 
     private void OldForward()
