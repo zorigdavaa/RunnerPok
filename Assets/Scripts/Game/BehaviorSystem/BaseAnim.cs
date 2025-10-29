@@ -44,7 +44,7 @@ public class BaseAnim : MonoBehaviour
     {
         if (currentAnimation != animStr)
         {
-            animator.CrossFade(animStr, 0f, 0);
+            animator.CrossFade(animStr, 0.1f, 0);
             beforeAmimation = currentAnimation;
             currentAnimation = animStr;
             // transitionToIdle = false;

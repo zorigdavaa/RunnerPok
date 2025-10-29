@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 8818148501639231403, guid: 83628a2e699576147adabb30587f44d4, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a5bb9ea87b40eee419fa0f75ab9729ee, type: 2}
+      objectReference: {fileID: 9100000, guid: a3503f5943c8c4593a04c2c74d9767ed, type: 2}
     - target: {fileID: 8818148501639231403, guid: 83628a2e699576147adabb30587f44d4, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
@@ -149,7 +149,7 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5251567383407730794, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: dac86f607eceafb41b4e1fcd5efc473a, type: 2}
     - target: {fileID: 5543355099279209163, guid: 52525fa3141136f4480fff6735ff618b, type: 3}
@@ -382,6 +382,22 @@ MonoBehaviour:
   rotSpeed: 10
   ControlAble: 0
   ControlType: 0
+  movementState: 0
+  addingForwardForece: 0
+  shouldDoMovement: 0
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  slideCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  forceDownGravity: 0
 --- !u!114 &5693683130625880137 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4085528633957685224, guid: 52525fa3141136f4480fff6735ff618b, type: 3}

@@ -157,6 +157,7 @@ public class PlayerMovement : MovementForgeRun
     }
     private void Forward()
     {
+        //Todo Animation Change using Change Animation
         addingForwardForece = false;
         if (JustJumped)
         {
@@ -400,6 +401,7 @@ public class PlayerMovement : MovementForgeRun
         //     rb.linearVelocity += Vector3.forward * 3;
         // }
         print("Jumped");
+        animController.ChangeAnimation("Jump");
         shouldDoMovement = ShouldDoMovement.None;
         SetGravity(true);
         // }
@@ -418,8 +420,9 @@ public class PlayerMovement : MovementForgeRun
         if (slideCoroutine != null)
         {
             StopCoroutine(slideCoroutine);
-            animController.Slide(false);
-            animController.SetRoll(false);
+            // animController.Slide(false);
+            // animController.SetRoll(false);
+            animController.ChangeAnimation("Run");
             CapsuleCollider coliider = GetComponent<CapsuleCollider>();
             Vector3 center = coliider.center;
             coliider.height = 2f;
@@ -446,7 +449,8 @@ public class PlayerMovement : MovementForgeRun
             float t = 0;
             float time = 0;
             float duration = 0.8f;
-            animController.Slide(true);
+            // animController.Slide(true);
+            animController.ChangeAnimation("LandRoll");
             shouldDoMovement = ShouldDoMovement.None;
             CapsuleCollider coliider = GetComponent<CapsuleCollider>();
             Vector3 center = coliider.center;
@@ -474,9 +478,9 @@ public class PlayerMovement : MovementForgeRun
                 rb.linearVelocity = desiredVelocity;
                 yield return null;
             }
-
-            animController.Slide(false);
-            animController.SetRoll(false);
+            animController.ChangeAnimation("Run");
+            // animController.Slide(false);
+            // animController.SetRoll(false);
             coliider.height = 2f;
             center.y = 1f;
             coliider.center = center;
