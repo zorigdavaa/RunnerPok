@@ -12,6 +12,22 @@ public class RunningState : BaseMovementState
         // throw new System.NotImplementedException();
     }
 
+    public override void FixedUpdateState(PlayerMovement manager)
+    {
+        if (manager.ParentedMove)
+        {
+            manager.playerParent.Translate(Vector3.forward * manager.Speed * Time.deltaTime);
+            Vector3 vel = manager.rb.linearVelocity;
+            vel.z = 0;
+            manager.rb.linearVelocity = vel;
+        }
+        else
+        {
+            // OldForward();
+            manager.Forward();
+        }
+    }
+
     public override void UpdateState(PlayerMovement manager)
     {
         if (manager.isGrounded)

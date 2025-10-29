@@ -4,10 +4,22 @@ public class JumpingState : BaseMovementState
 {
     public override void BeginState(PlayerMovement manager)
     {
-        // throw new System.NotImplementedException();
+        manager.transform.position += Vector3.up * 0.3f;
+        manager.lastJumpFrame = Time.frameCount;
+        // StopSlide();
+        Vector3 vel = manager.rb.linearVelocity;
+        vel.y = 9;
+        manager.rb.linearVelocity = vel;
+        // animController.ChangeAnimation("Jump");
+        // manager.SetGravity(true);
     }
 
     public override void EndState(PlayerMovement manager)
+    {
+        // throw new System.NotImplementedException();
+    }
+
+    public override void FixedUpdateState(PlayerMovement manager)
     {
         // throw new System.NotImplementedException();
     }
@@ -22,9 +34,14 @@ public class JumpingState : BaseMovementState
         {
             manager.animController.ChangeAnimation("Fall");
         }
+
+        if (!manager.isGrounded && manager.rb.linearVelocity.y < 0.5f)
+        {
+            manager.rb.AddForce(Vector3.down * 10);
+        }
         if (!manager.JustJumped && manager.isGrounded)
         {
-            manager.SetMovementState(manager.runningState);
+            manager.SetMovementState(null);
         }
     }
 }

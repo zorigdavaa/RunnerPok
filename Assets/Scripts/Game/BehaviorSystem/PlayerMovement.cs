@@ -14,7 +14,7 @@ public class PlayerMovement : MovementForgeRun
     public float minXLimit = -8f; // Minimum X position limit
     public float maxXLimit = 8f; // Maximum X position limit
     public float rotSpeed = 10f; // Maximum X position limit
-    bool ParentedMove = true;
+    public bool ParentedMove = true;
     Transform childModel;
     public bool ControlAble;
     public ZControlType ControlType = ZControlType.None;
@@ -26,6 +26,7 @@ public class PlayerMovement : MovementForgeRun
     public RunningState runningState = new RunningState();
     public SlidingState slideState = new SlidingState();
     public JumpingState jumpingState = new JumpingState();
+    public DeadState deadState = new DeadState();
     private void Start()
     {
         Player = Z.Player;
@@ -72,28 +73,10 @@ public class PlayerMovement : MovementForgeRun
     private void Update()
     {
         isGrounded = IsGrounded();
-        // if (isGrounded)
-        // {
-        //     if (slideCoroutine != null)
-        //     {
-        //         animController.ChangeAnimation("LandRoll");
-        //     }
-        //     else
-        //     {
-        //         animController.ChangeAnimation("Run");
-        //     }
-        // }
-        // else
-        // {
-        //     if (rb.linearVelocity.y > 0.5f)
-        //     {
-        //         animController.ChangeAnimation("Jump");
-        //     }
-        //     else
-        //     {
-        //         animController.ChangeAnimation("Fall");
-        //     }
-        // }
+        if (movementState == null)
+        {
+            SetMovementState(runningState);
+        }
         movementState.UpdateState(this);
         // if (Input.GetKeyDown(KeyCode.Q))
         // {
@@ -113,23 +96,10 @@ public class PlayerMovement : MovementForgeRun
 
     public void PlayerControl()
     {
-
-
+        movementState?.FixedUpdateState(this);
         // Move the player forward
         // transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-        if (ParentedMove)
-        {
-            playerParent.Translate(Vector3.forward * Speed * Time.deltaTime);
-            Vector3 vel = rb.linearVelocity;
-            vel.z = 0;
-            rb.linearVelocity = vel;
-        }
-        else
-        {
-            // OldForward();
-            Forward();
 
-        }
         // if (IsPlaying)
         // {
         if (ControlType == ZControlType.TwoSide)
@@ -161,15 +131,15 @@ public class PlayerMovement : MovementForgeRun
             }
         }
     }
-    private void Forward()
+    public void Forward()
     {
         //Todo Animation Change using Change Animation
         addingForwardForece = false;
-        if (JustJumped)
-        {
-            // Debug.Log($"Just last jump is {lastJumpFrame} Time frame is {Time.frameCount} ");
-            return;
-        }
+        // if (JustJumped)
+        // {
+        //     // Debug.Log($"Just last jump is {lastJumpFrame} Time frame is {Time.frameCount} ");
+        //     return;
+        // }
 
         if (isGrounded)
         {
@@ -197,14 +167,13 @@ public class PlayerMovement : MovementForgeRun
             // rb.AddForce(Vector3.down * 5, ForceMode.Acceleration);
 
         }
-        else if (!isGrounded && rb.linearVelocity.y < 0.5f && forceDownGravity)
-        {
-            rb.AddForce(Vector3.down * 10);
-        }
-
+        // else if (!isGrounded && rb.linearVelocity.y < 0.5f && forceDownGravity)
+        // {
+        //     rb.AddForce(Vector3.down * 10);
+        // }
     }
 
-    private Vector3 GetGroundNormal()
+    public Vector3 GetGroundNormal()
     {
         // Ray ray = new Ray(transform.position + transform.up * 0.2f, -transform.up);
         Ray ray = new Ray(transform.position + transform.up * 0.2f + Vector3.forward * 0.2f, -transform.up);
@@ -219,6 +188,8 @@ public class PlayerMovement : MovementForgeRun
     float targetX;
     bool JustClicked = false;
     public ShouldDoMovement shouldDoMovement = ShouldDoMovement.None;
+    float shouldDoTime = 0;
+    bool shouldDoTimeRecent => Time.time - shouldDoTime < 0.2f;
     private void ViewPortControl2()
     {
         SwipeAndPinch.TrackPos();
@@ -259,25 +230,23 @@ public class PlayerMovement : MovementForgeRun
             }
         }
         // if (IsUp && GetUIObjectUnderPointer() == null)
-        if (IsUp || SwipeAndPinch.UpDrag())
+        if (IsClick && SwipeAndPinch.UpDrag())
         {
             // Jump();
             shouldDoMovement = ShouldDoMovement.Jump;
+            shouldDoTime = Time.time;
         }
-        // if (SwipeAndPinch.GetSwipe() == SwipeAndPinch.SwipeDirection.Down)
-        // {
-        //     Slide();
-        // }
         if (IsClick && SwipeAndPinch.DownDrag())
         {
             if (!isGrounded)
             {
-                animController.SetRoll(true);
+                // animController.SetRoll(true);
                 rb.AddForce(Vector3.down * 500);
             }
             shouldDoMovement = ShouldDoMovement.Slide;
+            shouldDoTime = Time.time;
         }
-        if (shouldDoMovement != ShouldDoMovement.None)
+        if (shouldDoMovement != ShouldDoMovement.None && shouldDoTimeRecent)
         {
             if (shouldDoMovement == ShouldDoMovement.Jump && CanJump())
             {
@@ -287,7 +256,7 @@ public class PlayerMovement : MovementForgeRun
             {
                 Slide();
             }
-            shouldDoMovement = ShouldDoMovement.None;
+            // shouldDoMovement = ShouldDoMovement.None;
         }
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
@@ -295,7 +264,7 @@ public class PlayerMovement : MovementForgeRun
 
     private bool CanSlide()
     {
-        return Player.GetState() == PlayerState.Obs && isGrounded && slideCoroutine == null;
+        return Player.GetState() == PlayerState.Obs && isGrounded && movementState != slideState;
     }
 
     private bool CanJump()
@@ -341,126 +310,98 @@ public class PlayerMovement : MovementForgeRun
         childModel.transform.rotation = Quaternion.identity;
     }
     int jumpFrameSkipper = 2;
-    int lastJumpFrame = 0;
+    public int lastJumpFrame = 0;
 
 
     public void Jump()
     {
-        // if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount)
-        // {
-        transform.position += Vector3.up * 0.3f;
-        lastJumpFrame = Time.frameCount;
-        StopSlide();
-        Vector3 vel = rb.linearVelocity;
-        // vel += Vector3.up * 9;
-        vel.y = 9;
-        // vel.z = 8;
-        rb.linearVelocity = vel;
-        // if (rb.linearVelocity.z < Speed / 1.3f)
-        // {
-        //     rb.linearVelocity += Vector3.forward * 3;
-        // }
-        print("Jumped");
-        animController.ChangeAnimation("Jump");
-        shouldDoMovement = ShouldDoMovement.None;
-        SetGravity(true);
+
         SetMovementState(jumpingState);
-        // }
-        // if (!isGrounded)
-        // {
-        //     print("Not Grounded");
-        // }
+        shouldDoMovement = ShouldDoMovement.None;
     }
     public bool JustJumped => lastJumpFrame + jumpFrameSkipper >= Time.frameCount;
     [SerializeField] AnimationCurve jumpCurve;
 
 
 
-    public void StopSlide()
-    {
-        if (slideCoroutine != null)
-        {
-            StopCoroutine(slideCoroutine);
-            // animController.Slide(false);
-            // animController.SetRoll(false);
-            animController.ChangeAnimation("Run");
-            CapsuleCollider coliider = GetComponent<CapsuleCollider>();
-            Vector3 center = coliider.center;
-            coliider.height = 2f;
-            center.y = 1f;
-            coliider.center = center;
-            slideCoroutine = null;
-        }
+    // public void StopSlide()
+    // {
+    //     if (slideCoroutine != null)
+    //     {
+    //         StopCoroutine(slideCoroutine);
+    //         // animController.Slide(false);
+    //         // animController.SetRoll(false);
+    //         animController.ChangeAnimation("Run");
+    //         CapsuleCollider coliider = GetComponent<CapsuleCollider>();
+    //         Vector3 center = coliider.center;
+    //         coliider.height = 2f;
+    //         center.y = 1f;
+    //         coliider.center = center;
+    //         slideCoroutine = null;
+    //     }
 
-    }
+    // }
 
     public AnimationCurve slideCurve;
-    Coroutine slideCoroutine = null;
+    // Coroutine slideCoroutine = null;
     public void Slide()
     {
-        // if (Player.GetState() == PlayerState.Obs)
-        // {
-        //     if (slideCoroutine == null)
-        //     {
-        //     }
-        // }
         SetMovementState(slideState);
-        slideCoroutine = StartCoroutine(LocalCor());
-        IEnumerator LocalCor()
-        {
-            float t = 0;
-            float time = 0;
-            float duration = 0.8f;
-            // animController.Slide(true);
+        shouldDoMovement = ShouldDoMovement.None;
+        // slideCoroutine = StartCoroutine(LocalCor());
+        // IEnumerator LocalCor()
+        // {
+        //     float t = 0;
+        //     float time = 0;
+        //     float duration = 0.8f;
+        //     // animController.Slide(true);
+        //     CapsuleCollider coliider = GetComponent<CapsuleCollider>();
+        //     Vector3 center = coliider.center;
+        //     bool colliderAdjusted = false;
+        //     while (time < duration)
+        //     {
+        //         time += Time.deltaTime;
+        //         t = time / duration;
+        //         if (!colliderAdjusted && t >= 0.1f)
+        //         {
+        //             coliider.height = 1f;
 
-            shouldDoMovement = ShouldDoMovement.None;
-            CapsuleCollider coliider = GetComponent<CapsuleCollider>();
-            Vector3 center = coliider.center;
-            bool colliderAdjusted = false;
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                t = time / duration;
-                if (!colliderAdjusted && t >= 0.1f)
-                {
-                    coliider.height = 1f;
+        //             center.y = 0.5f;
+        //             coliider.center = center;
+        //             colliderAdjusted = true;
+        //         }
 
-                    center.y = 0.5f;
-                    coliider.center = center;
-                    colliderAdjusted = true;
-                }
-
-                // Step 1: Get the character's forward direction
-                Vector3 flatForward = (Vector3.forward - Vector3.up * 0.2f).normalized;
-                // Step 2: Project it onto the slope
-                Vector3 groundNormal = GetGroundNormal();
-                Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
-                // Step 3: Use that as your desired direction
-                Vector3 desiredVelocity = slopeForward * Speed * slideCurve.Evaluate(t);
-                rb.linearVelocity = desiredVelocity;
-                yield return null;
-            }
-            // animController.ChangeAnimation("Run");
-            // animController.Slide(false);
-            // animController.SetRoll(false);
-            coliider.height = 2f;
-            center.y = 1f;
-            coliider.center = center;
-            slideCoroutine = null;
-            SetMovementState(runningState);
-        }
+        //         // Step 1: Get the character's forward direction
+        //         Vector3 flatForward = (Vector3.forward - Vector3.up * 0.2f).normalized;
+        //         // Step 2: Project it onto the slope
+        //         Vector3 groundNormal = GetGroundNormal();
+        //         Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
+        //         // Step 3: Use that as your desired direction
+        //         Vector3 desiredVelocity = slopeForward * Speed * slideCurve.Evaluate(t);
+        //         rb.linearVelocity = desiredVelocity;
+        //         yield return null;
+        //     }
+        //     // animController.ChangeAnimation("Run");
+        //     // animController.Slide(false);
+        //     // animController.SetRoll(false);
+        //     coliider.height = 2f;
+        //     center.y = 1f;
+        //     coliider.center = center;
+        //     slideCoroutine = null;
+        //     SetMovementState(runningState);
+        // }
     }
 
     public bool IsGrounded()
     {
         return Physics.CheckSphere(transform.position, 0.15f, LayerMask.GetMask("Road"));
     }
-    [SerializeField] bool forceDownGravity = false;
+    // [SerializeField] bool forceDownGravity = false;
 
-    internal void SetGravity(bool v)
-    {
-        forceDownGravity = v;
-    }
+    // internal void SetGravity(bool v)
+    // {
+    //     forceDownGravity = v;
+    // }
 }
 public enum ShouldDoMovement
 {

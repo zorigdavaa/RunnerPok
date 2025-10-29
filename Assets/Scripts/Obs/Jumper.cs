@@ -83,10 +83,10 @@ public class Jumper : MonoBehaviour, ICollisionAction
         if (character is Player player)
         {
             // player.Movement.UseParentedMovement(false);
-            player.Movement.StopSlide();
+            // player.Movement.StopSlide();
             anim.Play();
             CalcForce(character.transform.position);
-            player.Movement.SetGravity(false);
+            // player.Movement.SetGravity(false);
             character.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             character.GetComponent<Rigidbody>().linearVelocity = JumperForce;
         }

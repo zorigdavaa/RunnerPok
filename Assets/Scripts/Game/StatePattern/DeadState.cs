@@ -12,6 +12,11 @@ public class DeadState : BaseMovementState
         throw new System.NotImplementedException();
     }
 
+    public override void FixedUpdateState(PlayerMovement manager)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void UpdateState(PlayerMovement manager)
     {
         throw new System.NotImplementedException();
