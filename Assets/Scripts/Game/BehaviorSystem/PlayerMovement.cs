@@ -269,7 +269,7 @@ public class PlayerMovement : MovementForgeRun
 
     private bool CanJump()
     {
-        return Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount;
+        return Player.GetState() == PlayerState.Obs && isGrounded && JustJumped;
     }
 
     public void ResetTargetX()
@@ -309,7 +309,7 @@ public class PlayerMovement : MovementForgeRun
     {
         childModel.transform.rotation = Quaternion.identity;
     }
-    int jumpFrameSkipper = 2;
+    // int jumpFrameSkipper = 2;
     public int lastJumpFrame = 0;
 
 
@@ -319,7 +319,7 @@ public class PlayerMovement : MovementForgeRun
         SetMovementState(jumpingState);
         shouldDoMovement = ShouldDoMovement.None;
     }
-    public bool JustJumped => lastJumpFrame + jumpFrameSkipper >= Time.frameCount;
+    public bool JustJumped => lastJumpFrame + 4 >= Time.frameCount;
     [SerializeField] AnimationCurve jumpCurve;
 
 

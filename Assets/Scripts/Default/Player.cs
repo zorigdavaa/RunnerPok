@@ -290,7 +290,8 @@ public class Player : Character, IItemEquipper
         rb.isKinematic = true;
         GameManager.Instance.GameOver(this, EventArgs.Empty);
         Movement.SetSpeed(0);
-        animationController.Die();
+        Movement.SetMovementState(Movement.deadState);
+        // animationController.Die();
     }
 
     private void OnGamePlay(object sender, EventArgs e)
