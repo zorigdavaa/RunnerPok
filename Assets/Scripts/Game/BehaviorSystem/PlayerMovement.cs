@@ -9,10 +9,7 @@ using UnityEngine.EventSystems;
 
 public class PlayerMovement : MovementForgeRun
 {
-
-    public float sideSpeed = 5f; // Speed at which the player moves left and right
     Player Player;
-    public Transform groundCheck; // Transform representing a point at the bottom of the player to check for ground
     public LayerMask groundLayer; // Layer mask for ground objects
     public float minXLimit = -8f; // Minimum X position limit
     public float maxXLimit = 8f; // Maximum X position limit
@@ -21,10 +18,14 @@ public class PlayerMovement : MovementForgeRun
     Transform childModel;
     public bool ControlAble;
     public ZControlType ControlType = ZControlType.None;
-    public MovementState movementState;
+    public BaseMovementState movementState = null;
     Camera cam;
     Plane ControlRaycastPlane;
     public bool addingForwardForece = false;
+
+    public RunningState runningState = new RunningState();
+    public SlidingState slideState = new SlidingState();
+    public JumpingState jumpingState = new JumpingState();
     private void Start()
     {
         Player = Z.Player;
@@ -37,6 +38,7 @@ public class PlayerMovement : MovementForgeRun
         cam = Camera.main;
         ControlRaycastPlane = new Plane(Vector3.up, Vector3.zero);
         ClickAction.performed += Clicked;
+        movementState = runningState;
     }
 
     //Performed is called when click and hold for 0.5 sec
@@ -58,29 +60,50 @@ public class PlayerMovement : MovementForgeRun
             ResetTargetX();
         }
     }
-    public void SetMovementState(MovementState state)
+    public void SetMovementState(BaseMovementState state)
     {
-        movementState = state;
-        // if (state == MovementState.Sliding)
+        if (movementState != state)
+        {
+            movementState?.EndState(this);
+            movementState = state;
+            movementState?.BeginState(this);
+        }
+    }
+    private void Update()
+    {
+        isGrounded = IsGrounded();
+        // if (isGrounded)
         // {
-        //     animController.Slide(true);
+        //     if (slideCoroutine != null)
+        //     {
+        //         animController.ChangeAnimation("LandRoll");
+        //     }
+        //     else
+        //     {
+        //         animController.ChangeAnimation("Run");
+        //     }
         // }
         // else
         // {
-        //     animController.Slide(false);
+        //     if (rb.linearVelocity.y > 0.5f)
+        //     {
+        //         animController.ChangeAnimation("Jump");
+        //     }
+        //     else
+        //     {
+        //         animController.ChangeAnimation("Fall");
+        //     }
+        // }
+        movementState.UpdateState(this);
+        // if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     UseParentedMovement(true);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     UseParentedMovement(false);
         // }
     }
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Q))
-    //     {
-    //         UseParentedMovement(true);
-    //     }
-    //     else if (Input.GetKeyDown(KeyCode.E))
-    //     {
-    //         UseParentedMovement(false);
-    //     }
-    // }
 
     // void FixedUpdate()
     // {
@@ -90,24 +113,7 @@ public class PlayerMovement : MovementForgeRun
 
     public void PlayerControl()
     {
-        // Check if the player is grounded
-        // isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-        isGrounded = IsGrounded();
-        if (isGrounded)
-        {
-            animController.Jump(false);
-            // UseParentedMovement(true);
-        }
-        else
-        {
-            animController.Jump(true);
-            animController.VelY(rb.linearVelocity.y);
-            // if (rb.velocity.y < 0f)
-            // {
-            //     rb.velocity += Vector3.down * 0.8f;
-            // }
-            // rb.velocity += Vector3.down * 1.2f;
-        }
+
 
         // Move the player forward
         // transform.Translate(Vector3.forward * Speed * Time.deltaTime);
@@ -165,15 +171,11 @@ public class PlayerMovement : MovementForgeRun
             return;
         }
 
-        // if (isGrounded && rb.linearVelocity.y < 1)
-        if (isGrounded && movementState != MovementState.Sliding)
+        if (isGrounded)
         {
             Vector3 vel = rb.linearVelocity;
-            // Step 1: Get the character's forward direction
             Vector3 flatForward = (transform.forward - Vector3.up * 0.5f).normalized;
-            // Step 2: Project it onto the slope
             Vector3 groundNormal = GetGroundNormal();
-            // Vector3 desiredVelocirt = vel.normalized * Speed;
             Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
             Vector3 desiredVelocirt = slopeForward * Speed;
 
@@ -182,12 +184,6 @@ public class PlayerMovement : MovementForgeRun
             {
                 // vel = Vector3.Lerp(vel, desiredVelocirt, 0.125f);
                 vel = desiredVelocirt;
-
-
-                // // Step 3: Use that as your desired direction
-                // desiredVelocirt = slopeForward * Speed;
-
-
             }
             else
             {
@@ -195,7 +191,6 @@ public class PlayerMovement : MovementForgeRun
             }
             if (!rb.isKinematic)
             {
-                // vel += Vector3.down * 2;
                 rb.linearVelocity = vel;
             }
             addingForwardForece = true;
@@ -207,42 +202,6 @@ public class PlayerMovement : MovementForgeRun
             rb.AddForce(Vector3.down * 10);
         }
 
-    }
-
-    private void OldForward()
-    {
-        // if (isGrounded && rb.linearVelocity.y < 1)
-        if (isGrounded)
-        {
-            Vector3 vel = rb.linearVelocity;
-
-            if (vel.z < Speed)
-            {
-                // vel.z = Speed;
-                Vector3 groundNormal = GetGroundNormal();
-                if (groundNormal.y < 0.98f)
-                {
-                    // Calculate direction to move along the slope
-                    Vector3 upHill = -Vector3.Cross(Vector3.Cross(Vector3.up, groundNormal), groundNormal).normalized;
-
-                    // Apply forward movement along the slope
-                    Vector3 desiredVelocity = upHill * Speed;
-
-                    // Keep only y and z if you're moving only in z direction
-                    vel.y = desiredVelocity.y; // adds vertical movement
-                    vel.z = Mathf.Lerp(vel.z, desiredVelocity.z, 0.2f);
-                }
-                else // flat 
-                {
-                    vel.z = Mathf.Lerp(vel.z, Speed, 0.2f);
-                }
-            }
-            else
-            {
-                vel.z = Mathf.MoveTowards(vel.z, Speed, 1 * Time.fixedDeltaTime);
-            }
-            rb.linearVelocity = vel;
-        }
     }
 
     private Vector3 GetGroundNormal()
@@ -384,6 +343,7 @@ public class PlayerMovement : MovementForgeRun
     int jumpFrameSkipper = 2;
     int lastJumpFrame = 0;
 
+
     public void Jump()
     {
         // if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount)
@@ -404,13 +364,14 @@ public class PlayerMovement : MovementForgeRun
         animController.ChangeAnimation("Jump");
         shouldDoMovement = ShouldDoMovement.None;
         SetGravity(true);
+        SetMovementState(jumpingState);
         // }
         // if (!isGrounded)
         // {
         //     print("Not Grounded");
         // }
     }
-    bool JustJumped => lastJumpFrame + jumpFrameSkipper >= Time.frameCount;
+    public bool JustJumped => lastJumpFrame + jumpFrameSkipper >= Time.frameCount;
     [SerializeField] AnimationCurve jumpCurve;
 
 
@@ -443,6 +404,7 @@ public class PlayerMovement : MovementForgeRun
         //     {
         //     }
         // }
+        SetMovementState(slideState);
         slideCoroutine = StartCoroutine(LocalCor());
         IEnumerator LocalCor()
         {
@@ -450,7 +412,7 @@ public class PlayerMovement : MovementForgeRun
             float time = 0;
             float duration = 0.8f;
             // animController.Slide(true);
-            animController.ChangeAnimation("LandRoll");
+
             shouldDoMovement = ShouldDoMovement.None;
             CapsuleCollider coliider = GetComponent<CapsuleCollider>();
             Vector3 center = coliider.center;
@@ -478,13 +440,14 @@ public class PlayerMovement : MovementForgeRun
                 rb.linearVelocity = desiredVelocity;
                 yield return null;
             }
-            animController.ChangeAnimation("Run");
+            // animController.ChangeAnimation("Run");
             // animController.Slide(false);
             // animController.SetRoll(false);
             coliider.height = 2f;
             center.y = 1f;
             coliider.center = center;
             slideCoroutine = null;
+            SetMovementState(runningState);
         }
     }
 
