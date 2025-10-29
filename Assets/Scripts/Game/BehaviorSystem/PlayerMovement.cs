@@ -162,21 +162,23 @@ public class PlayerMovement : MovementForgeRun
         if (isGrounded && movementState != MovementState.Sliding)
         {
             Vector3 vel = rb.linearVelocity;
+            // Step 1: Get the character's forward direction
+            Vector3 flatForward = (transform.forward - Vector3.up * 0.5f).normalized;
+            // Step 2: Project it onto the slope
+            Vector3 groundNormal = GetGroundNormal();
+            // Vector3 desiredVelocirt = vel.normalized * Speed;
+            Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
+            Vector3 desiredVelocirt = slopeForward * Speed;
 
-            Vector3 desiredVelocirt = vel.normalized * Speed;
+            Debug.DrawLine(transform.position, transform.position + slopeForward * 5, Color.red, 0.1f);
             if (vel.magnitude < Speed)
             {
-                // Step 1: Get the character's forward direction
-                Vector3 flatForward = (transform.forward - Vector3.up * 0.5f).normalized;
+                // vel = Vector3.Lerp(vel, desiredVelocirt, 0.125f);
+                vel = desiredVelocirt;
 
-                // Step 2: Project it onto the slope
-                Vector3 groundNormal = GetGroundNormal();
-                Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
-                Debug.DrawLine(transform.position, transform.position + slopeForward * 5, Color.red, 0.1f);
 
-                // Step 3: Use that as your desired direction
-                desiredVelocirt = slopeForward * Speed;
-                vel = Vector3.Lerp(vel, desiredVelocirt, 0.2f);
+                // // Step 3: Use that as your desired direction
+                // desiredVelocirt = slopeForward * Speed;
 
 
             }
@@ -186,14 +188,15 @@ public class PlayerMovement : MovementForgeRun
             }
             if (!rb.isKinematic)
             {
-                vel += Vector3.down * 2;
+                // vel += Vector3.down * 2;
                 rb.linearVelocity = vel;
             }
             addingForwardForece = true;
+            rb.AddForce(Vector3.down * 5, ForceMode.Acceleration);
         }
         else if (!isGrounded && rb.linearVelocity.y < 0.5f && forceDownGravity)
         {
-            rb.AddForce(Vector3.down * 10); 
+            rb.AddForce(Vector3.down * 10);
         }
 
     }
@@ -236,7 +239,8 @@ public class PlayerMovement : MovementForgeRun
 
     private Vector3 GetGroundNormal()
     {
-        Ray ray = new Ray(transform.position + transform.up * 0.2f, -transform.up);
+        // Ray ray = new Ray(transform.position + transform.up * 0.2f, -transform.up);
+        Ray ray = new Ray(transform.position + transform.up * 0.2f + Vector3.forward * 0.2f, -transform.up);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 0.6f, LayerMask.GetMask("Road")))
         {
             return hitInfo.normal;
