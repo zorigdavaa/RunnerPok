@@ -158,6 +158,12 @@ public class PlayerMovement : MovementForgeRun
     private void Forward()
     {
         addingForwardForece = false;
+        if (JustJumped)
+        {
+            // Debug.Log($"Just last jump is {lastJumpFrame} Time frame is {Time.frameCount} ");
+            return;
+        }
+
         // if (isGrounded && rb.linearVelocity.y < 1)
         if (isGrounded && movementState != MovementState.Sliding)
         {
@@ -192,7 +198,8 @@ public class PlayerMovement : MovementForgeRun
                 rb.linearVelocity = vel;
             }
             addingForwardForece = true;
-            rb.AddForce(Vector3.down * 5, ForceMode.Acceleration);
+            // rb.AddForce(Vector3.down * 5, ForceMode.Acceleration);
+
         }
         else if (!isGrounded && rb.linearVelocity.y < 0.5f && forceDownGravity)
         {
@@ -373,18 +380,19 @@ public class PlayerMovement : MovementForgeRun
     {
         childModel.transform.rotation = Quaternion.identity;
     }
-    int jumpFrameSkipper = 1;
+    int jumpFrameSkipper = 2;
     int lastJumpFrame = 0;
 
     public void Jump()
     {
         // if (Player.GetState() == PlayerState.Obs && isGrounded && lastJumpFrame + jumpFrameSkipper <= Time.frameCount)
         // {
-        transform.position += Vector3.up * 0.26f;
+        transform.position += Vector3.up * 0.3f;
         lastJumpFrame = Time.frameCount;
         StopSlide();
         Vector3 vel = rb.linearVelocity;
-        vel += Vector3.up * 9;
+        // vel += Vector3.up * 9;
+        vel.y = 9;
         // vel.z = 8;
         rb.linearVelocity = vel;
         // if (rb.linearVelocity.z < Speed / 1.3f)
@@ -400,6 +408,7 @@ public class PlayerMovement : MovementForgeRun
         //     print("Not Grounded");
         // }
     }
+    bool JustJumped => lastJumpFrame + jumpFrameSkipper >= Time.frameCount;
     [SerializeField] AnimationCurve jumpCurve;
 
 
@@ -477,7 +486,7 @@ public class PlayerMovement : MovementForgeRun
 
     public bool IsGrounded()
     {
-        return Physics.CheckSphere(transform.position, 0.25f, LayerMask.GetMask("Road"));
+        return Physics.CheckSphere(transform.position, 0.15f, LayerMask.GetMask("Road"));
     }
     [SerializeField] bool forceDownGravity = false;
 
