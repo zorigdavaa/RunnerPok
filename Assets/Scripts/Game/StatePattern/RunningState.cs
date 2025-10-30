@@ -34,5 +34,12 @@ public class RunningState : BaseMovementState
         {
             manager.animController.ChangeAnimation("Run");
         }
+        else
+        {
+            if (manager.rb.linearVelocity.y < 0.5f)
+            {
+                manager.animController.ChangeAnimation("Fall");
+            }
+        }
     }
 }

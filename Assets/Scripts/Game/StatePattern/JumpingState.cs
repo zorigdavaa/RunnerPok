@@ -8,7 +8,7 @@ public class JumpingState : BaseMovementState
         manager.lastJumpFrame = Time.frameCount;
         // StopSlide();
         Vector3 vel = manager.rb.linearVelocity;
-        vel.y = 9;
+        vel.y = 10;
         manager.rb.linearVelocity = vel;
         // animController.ChangeAnimation("Jump");
         // manager.SetGravity(true);
@@ -35,9 +35,9 @@ public class JumpingState : BaseMovementState
             manager.animController.ChangeAnimation("Fall");
         }
 
-        if (!manager.isGrounded && manager.rb.linearVelocity.y < 0.5f)
+        if (!manager.isGrounded && manager.rb.linearVelocity.y < 0.1f)
         {
-            manager.rb.AddForce(Vector3.down * 10);
+            // manager.rb.AddForce(Vector3.down * 10);
         }
         if (!manager.JustJumped && manager.isGrounded)
         {

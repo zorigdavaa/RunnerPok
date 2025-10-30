@@ -167,6 +167,7 @@ public class Player : Character, IItemEquipper
         {
             yield return new WaitForSeconds(1);
             transform.position = Z.LS.LastInstLvl.PlayerBeingTile.start.position + Vector3.up;
+            rb.linearVelocity = Vector3.zero;
             respawnCor = null;
         }
     }

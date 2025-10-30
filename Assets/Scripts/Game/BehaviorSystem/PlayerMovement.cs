@@ -165,13 +165,12 @@ public class PlayerMovement : MovementForgeRun
                 rb.linearVelocity = vel;
             }
             addingForwardForece = true;
-            // rb.AddForce(Vector3.down * 5, ForceMode.Acceleration);
 
         }
         // else if (!isGrounded && rb.linearVelocity.y < 0.5f && forceDownGravity)
         else
         {
-            rb.AddForce(Vector3.down * 30, ForceMode.Acceleration);
+            // rb.AddForce(Vector3.down * 30, ForceMode.Acceleration);
         }
     }
 
