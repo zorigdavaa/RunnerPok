@@ -44,14 +44,27 @@ public class SlidingState : BaseMovementState
             coliider.center = center;
             colliderAdjusted = true;
         }
-        // Step 1: Get the character's forward direction
-        Vector3 flatForward = (Vector3.forward - Vector3.up * 0.2f).normalized;
-        // Step 2: Project it onto the slope
-        Vector3 groundNormal = manager.GetGroundNormal();
-        Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
-        // Step 3: Use that as your desired direction
-        Vector3 desiredVelocity = slopeForward * manager.Speed * manager.slideCurve.Evaluate(t);
-        manager.rb.linearVelocity = desiredVelocity;
+        if (manager.isGrounded)
+        {
+            // Step 1: Get the character's forward direction
+            Vector3 flatForward = (Vector3.forward - Vector3.up * 0.2f).normalized;
+            // Step 2: Project it onto the slope
+            Vector3 groundNormal = manager.GetGroundNormal();
+            Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
+            // Step 3: Use that as your desired direction
+            Vector3 desiredVelocity = slopeForward * manager.Speed * manager.slideCurve.Evaluate(t);
+            manager.rb.linearVelocity = desiredVelocity;
+        }
+        else
+        {
+            manager.rb.AddForce(Vector3.down * 10);
+            // if (true)
+            // {
+
+            //     manager.rb.linearVelocity = desiredVelocity;
+            // }
+        }
+
         manager.animController.ChangeAnimation("LandRoll");
         if (t >= 1)
         {

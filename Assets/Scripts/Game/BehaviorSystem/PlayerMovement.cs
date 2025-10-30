@@ -86,7 +86,7 @@ public class PlayerMovement : MovementForgeRun
         // {
         //     UseParentedMovement(false);
         // }
-        print($"cam jump: {CanJump()} isgrounded: {isGrounded}");
+        // print($"cam jump: {CanJump()} isgrounded: {isGrounded}");
     }
 
     // void FixedUpdate()
@@ -148,9 +148,9 @@ public class PlayerMovement : MovementForgeRun
             Vector3 flatForward = (transform.forward - Vector3.up * 0.5f).normalized;
             Vector3 groundNormal = GetGroundNormal();
             Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
-            Vector3 desiredVelocirt = slopeForward * Speed;
-
-            Debug.DrawLine(transform.position, transform.position + slopeForward * 5, Color.red, 0.1f);
+            Vector3 desiredVelocirt = slopeForward;
+            desiredVelocirt = (desiredVelocirt + Vector3.forward).normalized * Speed;
+            // Debug.DrawLine(transform.position, transform.position + slopeForward * 5, Color.red, 0.1f);
             if (vel.magnitude < Speed)
             {
                 // vel = Vector3.Lerp(vel, desiredVelocirt, 0.125f);
@@ -169,9 +169,10 @@ public class PlayerMovement : MovementForgeRun
 
         }
         // else if (!isGrounded && rb.linearVelocity.y < 0.5f && forceDownGravity)
-        // {
-        //     rb.AddForce(Vector3.down * 10);
-        // }
+        else
+        {
+            rb.AddForce(Vector3.down * 30, ForceMode.Acceleration);
+        }
     }
 
     public Vector3 GetGroundNormal()
