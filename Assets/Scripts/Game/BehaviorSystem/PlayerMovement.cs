@@ -86,6 +86,7 @@ public class PlayerMovement : MovementForgeRun
         // {
         //     UseParentedMovement(false);
         // }
+        print($"cam jump: {CanJump()} isgrounded: {isGrounded}");
     }
 
     // void FixedUpdate()
@@ -269,7 +270,7 @@ public class PlayerMovement : MovementForgeRun
 
     private bool CanJump()
     {
-        return Player.GetState() == PlayerState.Obs && isGrounded && JustJumped;
+        return Player.GetState() == PlayerState.Obs && isGrounded && !JustJumped;
     }
 
     public void ResetTargetX()
