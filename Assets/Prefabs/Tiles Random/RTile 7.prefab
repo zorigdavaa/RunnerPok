@@ -77,8 +77,12 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+      propertyPath: m_Seed
+      value: -405716527
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Spacing.x
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Spacing.y
