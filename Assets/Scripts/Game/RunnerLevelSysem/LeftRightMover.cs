@@ -39,8 +39,8 @@ public class LeftRightMover : MonoBehaviour
     }
     public Vector3 min = new Vector3(0, 0, 0);
     public Vector3 max = new Vector3(7, 0, 0);
-    private Vector3 LocalMin;
-    private Vector3 LocalMax;
+    [SerializeField] Vector3 LocalMin;
+    [SerializeField] Vector3 LocalMax;
     void Update()
     {
         if (IsMoving)

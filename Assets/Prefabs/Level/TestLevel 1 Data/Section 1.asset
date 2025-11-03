@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b193b0acac06aa540b5b0041ff0bfe78, type: 3}
+  m_Name: Section 1
+  m_EditorClassIdentifier: 
+  Type: 2
+  levelTiles:
+  - {fileID: -9221847826947795489, guid: 00000000000000000000000000000000, type: 0}
+  SectionEnd: {fileID: 0}
+  SectionStart: {fileID: 0}
+  VisualPrefab: {fileID: 0}
+  SelfGenCount: 5
+  LevelEnemies:
+  - Wait: 0
+    AfterDelay: 0
+    Beforedelay: 0
+    EnemyPF:
+    - {fileID: -4500414691403974338, guid: 00000000000000000000000000000000, type: 0}
+    - {fileID: -4500414691403974338, guid: 00000000000000000000000000000000, type: 0}
+    - {fileID: -5924903763317076426, guid: 00000000000000000000000000000000, type: 0}
+    - {fileID: -5924903763317076426, guid: 00000000000000000000000000000000, type: 0}
+    - {fileID: 388169736967076605, guid: 00000000000000000000000000000000, type: 0}
+  EnemyWave: 1
+  EnemyCount: 5
