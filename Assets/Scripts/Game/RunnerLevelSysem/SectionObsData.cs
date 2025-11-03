@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -26,17 +27,32 @@ public class SectionObsData : SectionData
         levelTiles = new List<Tile>();
         Obstacles = new List<GameObject>();
         List<GameObject> AllObs = new List<GameObject>();
-        AsyncOperationHandle loading;
-        loading = Addressables.LoadAssetsAsync<GameObject>("default", (obj) =>
+
+        var paths = AddressableHelper.GetPrefabPathssByLabel("default");
+        foreach (var path in paths)
         {
-            levelTiles.Add(obj.GetComponent<Tile>());
-        });
-        loading.WaitForCompletion();
-        loading = Addressables.LoadAssetsAsync<GameObject>("Obstacle", (obj) =>
+            // string path = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            levelTiles.Add(prefab.GetComponent<Tile>());
+        }
+        paths = AddressableHelper.GetPrefabPathssByLabel("Obstacle");
+        foreach (var path in paths)
         {
-            AllObs.Add(obj);
-        });
-        loading.WaitForCompletion();
+            // string path = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            AllObs.Add(prefab);
+        }
+        // AsyncOperationHandle loading;
+        // loading = Addressables.LoadAssetsAsync<GameObject>("default", (obj) =>
+        // {
+        //     levelTiles.Add(obj.GetComponent<Tile>());
+        // });
+        // loading.WaitForCompletion();
+        // loading = Addressables.LoadAssetsAsync<GameObject>("Obstacle", (obj) =>
+        // {
+        //     AllObs.Add(obj);
+        // });
+        // loading.WaitForCompletion();
         for (int i = 0; i < SelfGenCount; i++)
         {
             Obstacles.Add(AllObs[Random.Range(0, AllObs.Count)]);

@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -49,34 +52,50 @@ public class SectionData : ScriptableObject
 
     public virtual void FillYourSelf()
     {
+#if UNITY_EDITOR
         levelTiles = new List<Tile>();
         List<Tile> AllTiles = new List<Tile>();
         Debug.Log("base Section");
-        AsyncOperationHandle loading;
+        // AsyncOperationHandle loading;
         if (Type == SectionType.Collect)
         {
-            loading = Addressables.LoadAssetsAsync<GameObject>("CollectTile", (obj) =>
+            var paths = AddressableHelper.GetPrefabPathssByLabel("CollectTile");
+            // loading = Addressables.LoadAssetsAsync<GameObject>("CollectTile", (obj) =>
+            // {
+            //     AllTiles.Add(obj.GetComponent<Tile>());
+            //     // Debug.Log(obj.name);
+            // });
+            foreach (var path in paths)
             {
-                AllTiles.Add(obj.GetComponent<Tile>());
-                // Debug.Log(obj.name);
-            });
+                // string path = AssetDatabase.GUIDToAssetPath(guid);
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                AllTiles.Add(prefab.GetComponent<Tile>());
+            }
         }
         else
         {
-            loading = Addressables.LoadAssetsAsync<GameObject>("ObsTile", (obj) =>
+            var paths = AddressableHelper.GetPrefabPathssByLabel("ObsTile");
+            foreach (var path in paths)
             {
-                AllTiles.Add(obj.GetComponent<Tile>());
-                // Debug.Log(obj.name);
-            });
+                // string path = AssetDatabase.GUIDToAssetPath(guid);
+                GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+                AllTiles.Add(prefab.GetComponent<Tile>());
+            }
+            // loading = Addressables.LoadAssetsAsync<GameObject>("ObsTile", (obj) =>
+            // {
+            //     AllTiles.Add(obj.GetComponent<Tile>());
+            //     // Debug.Log(obj.name);
+            // });
         }
 
-        loading.WaitForCompletion();
+        // loading.WaitForCompletion();
         // await loading.Task;
         for (int i = 0; i < SelfGenCount; i++)
         {
             levelTiles.Add(AllTiles[Random.Range(0, AllTiles.Count)]);
         }
         SaveChanges();
+#endif
     }
 
     public void SaveChanges()

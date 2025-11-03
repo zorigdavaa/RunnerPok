@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -24,18 +27,35 @@ public class SectionDataFight : SectionData
     public int EnemyCount = 5;
     public override void FillYourSelf()
     {
+#if UNITY_EDITOR
         levelTiles = new List<Tile>();
         LevelEnemies = new List<EnemyWave>();
         List<Animal> AllEnemies = new List<Animal>();
         Debug.Log("Fire Section");
-        var loading = Addressables.LoadAssetAsync<GameObject>("default");
-        var loadAnimals = Addressables.LoadAssetsAsync<GameObject>("Animal", (obj) =>
+        // var loading = Addressables.LoadAssetAsync<GameObject>("default");
+        // var loadAnimals = Addressables.LoadAssetsAsync<GameObject>("Animal", (obj) =>
+        // {
+        //     AllEnemies.Add(obj.GetComponent<Animal>());
+        // });
+        // loading.WaitForCompletion();
+        // levelTiles.Add(loading.Result.GetComponent<Tile>());
+        // loadAnimals.WaitForCompletion();
+
+        var paths = AddressableHelper.GetPrefabPathssByLabel("default");
+        foreach (var path in paths)
         {
-            AllEnemies.Add(obj.GetComponent<Animal>());
-        });
-        loading.WaitForCompletion();
-        levelTiles.Add(loading.Result.GetComponent<Tile>());
-        loadAnimals.WaitForCompletion();
+            // string path = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            levelTiles.Add(prefab.GetComponent<Tile>());
+        }
+        paths = AddressableHelper.GetPrefabPathssByLabel("Animal");
+        foreach (var path in paths)
+        {
+            // string path = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            AllEnemies.Add(prefab.GetComponent<Animal>());
+        }
+
         // levelTiles
         // loading.WaitForCompletion();
         for (int i = 0; i < EnemyWave; i++)
@@ -48,5 +68,6 @@ public class SectionDataFight : SectionData
             LevelEnemies.Add(newWave);
         }
         SaveChanges();
+#endif
     }
 }
