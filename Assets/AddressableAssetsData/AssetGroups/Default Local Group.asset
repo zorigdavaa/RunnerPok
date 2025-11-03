@@ -307,6 +307,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Animal
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ba239d227f3740a18f45b78f5904820
+    m_Address: Assets/Prefabs/Others/TutorCanvas.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Tutor
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9094a2c41d09d471f850ace66eb2f796
     m_Address: Assets/Prefabs/Tiles Random/RTile 1.prefab
     m_ReadOnly: 0

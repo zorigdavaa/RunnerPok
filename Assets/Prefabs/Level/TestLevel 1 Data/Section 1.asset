@@ -24,10 +24,6 @@ MonoBehaviour:
     AfterDelay: 0
     Beforedelay: 0
     EnemyPF:
-    - {fileID: 8161862714446864042, guid: b38fad85ffd557348b0e35ef28d7aa91, type: 3}
-    - {fileID: 8161862714446864042, guid: dd4bb3c81c58ed34bba6d56ee05bc431, type: 3}
     - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
-    - {fileID: 8161862714446864042, guid: e34300d56777ff74c82894cdefa313e4, type: 3}
-    - {fileID: 8161862714446864042, guid: 0da1edc07e6f44540b5a83be05bf6f8e, type: 3}
   EnemyWave: 1
   EnemyCount: 5
