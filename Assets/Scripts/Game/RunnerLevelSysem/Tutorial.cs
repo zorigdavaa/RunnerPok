@@ -17,12 +17,15 @@ public class Tutorial : MonoBehaviour
 
         IEnumerator LocalCor()
         {
+            Debug.Log("waiting play");
             yield return new WaitUntil(() => Z.GM.State == GameState.Playing);
+            Debug.Log("waiting level ins");
             yield return new WaitUntil(() => transform.Find("Sections/Section").childCount > 1);
 
             Transform target = transform.GetChild(0).GetChild(0).GetChild(1);
             while (target.position.z - Z.Player.transform.position.z > 1)
             {
+                Debug.Log("waiting player reach");
                 yield return null;
             }
             yield return JumpTutorial();
@@ -35,7 +38,7 @@ public class Tutorial : MonoBehaviour
             }
             yield return SlideTutorial();
 
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
     public async Task LoadAssets()
@@ -61,6 +64,7 @@ public class Tutorial : MonoBehaviour
 
             while (!SwipeAndPinch.UpDrag())
             {
+                Debug.Log("waiting player drag up");
                 animation["DragUp"].time += Time.unscaledDeltaTime;
                 yield return null;
             }
@@ -82,6 +86,7 @@ public class Tutorial : MonoBehaviour
 
             while (!SwipeAndPinch.DownDrag())
             {
+                Debug.Log("waiting player drag down");
                 animation["DragDown"].time += Time.unscaledDeltaTime;
                 yield return null;
             }
