@@ -27,6 +27,7 @@ public class Level : MonoBehaviour
     BaseSection CurSection = null;
     public float HealthMultiplier = 1;
     public float DamageMultiplier = 1;
+    public int LevelCoin = 10;
     public GameObject SectionsParent;
     public void Start()
     {
