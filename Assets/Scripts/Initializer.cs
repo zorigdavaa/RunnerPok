@@ -19,5 +19,7 @@ public class Initializer : MonoBehaviour
         SceneManager.LoadScene("Main");
         Debug.Log("On ready");
     }
-
+    //Todo 
+    // Coin Manager hiih Coinii toog level file deer ogood tootoi ijil coin spawn hiih
+    // Deeguur ywdag haalttai zam hiih 
 }
