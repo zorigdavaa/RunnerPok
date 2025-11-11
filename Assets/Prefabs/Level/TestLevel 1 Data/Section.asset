@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   levelTiles:
-  - {fileID: 1152342366785983181, guid: 05e39e6b93b488a479fb0f1e37e4b798, type: 3}
   - {fileID: 1152342366785983181, guid: a6de2ef3f9fec4aa492f230f7a2d54be, type: 3}
-  - {fileID: 1152342366785983181, guid: 7f160efbb58d3ae4abefd6640c7a76a2, type: 3}
+  - {fileID: 1152342366785983181, guid: fc4d48816ba2e4527b26c59afb010be8, type: 3}
+  - {fileID: 1152342366785983181, guid: e250c20abfa7d4f64b41e4d2186f6a23, type: 3}
   - {fileID: 1152342366785983181, guid: 1983c63e378104dd7b552ecca9bf91ab, type: 3}
   - {fileID: 1152342366785983181, guid: 722e594e48b78cd4ba131b981da948e0, type: 3}
   SectionEnd: {fileID: 0}
