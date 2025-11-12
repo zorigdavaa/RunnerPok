@@ -52,6 +52,7 @@ public class Level : MonoBehaviour
         {
             DamageMultiplier = 1 + 0.05f * GameManager.Instance.Level;
         }
+        CoinManager.Instance.RandomInsCoin(this);
     }
 
     private void CreateSectionParent()
