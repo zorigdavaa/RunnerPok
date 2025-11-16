@@ -4,7 +4,7 @@ public class JumpingState : BaseMovementState
 {
     public override void BeginState(PlayerMovement manager)
     {
-        manager.transform.position += Vector3.up * 0.5f;
+        manager.transform.position += Vector3.up * 0.25f;
         manager.lastJumpFrame = Time.frameCount;
         // StopSlide();
         Vector3 vel = manager.rb.linearVelocity;
