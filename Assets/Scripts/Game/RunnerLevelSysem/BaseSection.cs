@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 public abstract class BaseSection : MonoBehaviour
 {
 
-    public virtual SectionType SectionType { get => SectionType.Obstacle; }
+    public virtual SectionType SectionType { get => SectionType.None; }
     public EventHandler Oncomplete;
     public List<Tile> levelTiles;
     public List<EnemyWave> LevelEnemies;

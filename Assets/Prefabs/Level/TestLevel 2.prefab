@@ -49,6 +49,7 @@ MonoBehaviour:
   Sections: []
   SectionDatas:
   - {fileID: 11400000, guid: c792ce9e6bddc4c73a4b9a4ccd37e5b8, type: 2}
+  - {fileID: 11400000, guid: 96127cf4ef9e2468a80645d046bd9201, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}

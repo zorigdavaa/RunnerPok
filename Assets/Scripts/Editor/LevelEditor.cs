@@ -72,7 +72,8 @@ public class LevelEditor : Editor
         // Main menu
         menu.AddItem(new GUIContent("Create/Fight"), false, () => AddToSection(SectionType.Fight));
         menu.AddItem(new GUIContent("Create/ChooseSkill"), false, () => AddToSection(SectionType.Choose));
-        menu.AddItem(new GUIContent("Create/Obs"), false, () => AddToSection(SectionType.Obstacle));
+        menu.AddItem(new GUIContent("Create/Normal"), false, () => AddToSection(SectionType.None));
+        menu.AddItem(new GUIContent("Create/Obsacles"), false, () => AddToSection(SectionType.Obstacle));
         menu.AddItem(new GUIContent("Insert Last"), false, () => sectionDataSP.InsertArrayElementAtIndex(sectionDataSP.arraySize));
         menu.AddItem(new GUIContent("Reset Value"), false, ResetValue);
         menu.AddItem(new GUIContent("Remove null"), false, RemoveNull);
@@ -93,7 +94,7 @@ public class LevelEditor : Editor
         SectionData newSection;
         if (type == SectionType.Fight)
         {
-            newSection = ScriptableObject.CreateInstance<SectionDataFight>();
+            newSection = CreateInstance<SectionDataFight>();
         }
         else if (type == SectionType.Choose)
         {
@@ -109,9 +110,13 @@ public class LevelEditor : Editor
             serializedObject.ApplyModifiedProperties();
             return;
         }
+        else if (type == SectionType.Obstacle)
+        {
+            newSection = CreateInstance<SectionObsData>();
+        }
         else
         {
-            newSection = ScriptableObject.CreateInstance<SectionData>();
+            newSection = CreateInstance<SectionData>();
         }
         newSection.Type = type;
         Level script = (Level)target;
