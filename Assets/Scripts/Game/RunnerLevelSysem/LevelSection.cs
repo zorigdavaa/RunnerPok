@@ -27,6 +27,6 @@ public class LevelSection : BaseSection
 }
 public enum SectionType
 {
-    None, Obstacle, Fight, Collect, Choose, BossFight, Normal
+    None, Obstacle, Fight, Collect, Choose, BossFight, Normal, Complex
 }
 

@@ -74,6 +74,7 @@ public class LevelEditor : Editor
         menu.AddItem(new GUIContent("Create/ChooseSkill"), false, () => AddToSection(SectionType.Choose));
         menu.AddItem(new GUIContent("Create/Normal"), false, () => AddToSection(SectionType.None));
         menu.AddItem(new GUIContent("Create/Obsacles"), false, () => AddToSection(SectionType.Obstacle));
+        menu.AddItem(new GUIContent("Create/Complex"), false, () => AddToSection(SectionType.Complex));
         menu.AddItem(new GUIContent("Insert Last"), false, () => sectionDataSP.InsertArrayElementAtIndex(sectionDataSP.arraySize));
         menu.AddItem(new GUIContent("Reset Value"), false, ResetValue);
         menu.AddItem(new GUIContent("Remove null"), false, RemoveNull);
@@ -113,6 +114,10 @@ public class LevelEditor : Editor
         else if (type == SectionType.Obstacle)
         {
             newSection = CreateInstance<SectionObsData>();
+        }
+        else if (type == SectionType.Complex)
+        {
+            newSection = CreateInstance<SectionCData>();
         }
         else
         {

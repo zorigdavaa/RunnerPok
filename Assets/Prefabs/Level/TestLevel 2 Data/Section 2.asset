@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187c2ced4bcbf4333a207e2712641d89, type: 3}
+  m_Name: Section 2
+  m_EditorClassIdentifier: 
+  Type: 7
+  levelTiles:
+  - {fileID: 5819066695919233969, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
+  SectionEnd: {fileID: 0}
+  SectionStart: {fileID: 0}
+  VisualPrefab: {fileID: 0}
+  SelfGenCount: 5
+  Obstacles:
+  - {fileID: 8910741647142185109, guid: fd775694cd60a344a83064b831071a77, type: 3}
+  - {fileID: 7711093006480926846, guid: 17afc05afb4407a429fa4d486c2f56dc, type: 3}
+  - {fileID: 692810108806621334, guid: 5961c4a99897a7e48b6bc62274d64c6f, type: 3}
+  - {fileID: 5457769200273235278, guid: 398a48a143ddf41f780c55b07b9c5d6f, type: 3}
+  - {fileID: 7344499060778775290, guid: 1b9fa7f38fff1024aa238f7098a030a6, type: 3}
