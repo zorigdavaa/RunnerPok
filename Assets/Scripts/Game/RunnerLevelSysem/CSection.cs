@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 //Complex Section
 public class CSection : LevelSection
 {
+    public override SectionType SectionType => SectionType.Complex;
     public List<GameObject> Obstacles;
     public GameObject UpHillObs;
     public GameObject Coin;
@@ -23,7 +24,6 @@ public class CSection : LevelSection
         EnterThisSection();
     }
     int NumberOfTiles = 20;
-    int index = 0;
     //Todo Inspos is not working when Diogonal tile
 
     Vector3 insPos;
@@ -35,7 +35,7 @@ public class CSection : LevelSection
     }
     private void EnterThisSection()
     {
-        Debug.Log("eNTER ObsSection");
+        Debug.Log("eNTER Complex Section");
         float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnObsSectionEnter(this, EventArgs.Empty); });
     }
@@ -56,18 +56,18 @@ public class CSection : LevelSection
             }
             curLevel.SpawnTile(tileToIns);
         }
-        // bool isNearOfObs = curLevel.player.transform.position.z > insPos.z - 70;
-        // if (isNearOfObs)
-        // {
-        //     if (NumberOfTiles > 0)
-        //     {
-        //         SpawnObs();
-        //     }
-        //     else
-        //     {
-        //         EndSection();
-        //     }
-        // } 
+        bool isNearOfObs = curLevel.player.transform.position.z > insPos.z - 70;
+        if (isNearOfObs)
+        {
+            if (NumberOfTiles > 0)
+            {
+                SpawnObs();
+            }
+            else
+            {
+                EndSection();
+            }
+        }
     }
 
     void OnObsSectionEnter(object sender, EventArgs e)
@@ -83,8 +83,9 @@ public class CSection : LevelSection
     private void SpawnObs()
     {
 
-        GameObject obs = Obstacles[index];
-        GameObject insGO = GameObject.Instantiate(obs, insPos, Quaternion.identity, curLevel.transform);
+        // GameObject obs = Obstacles[index];
+
+        GameObject insGO = Instantiate(UpHillObs, insPos, Quaternion.identity, curLevel.transform);
         ObsData data = insGO.GetComponent<ObsData>();
         if (data)
         {
@@ -95,7 +96,6 @@ public class CSection : LevelSection
         {
             insPos += Vector3.forward * 25;
         }
-        index++;
     }
 
     public override void SetKey()

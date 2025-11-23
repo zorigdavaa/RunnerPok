@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Seed
-      value: -424623554
+      value: -327704890
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_Spacing.x
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_PositionOffset.max.x
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_PositionOffset.max.y
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_PositionOffset.min.x
-      value: -10
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 4281074217556687559, guid: 0e7bc24e620875149adf2e7f54d10c58, type: 3}
       propertyPath: m_PositionOffset.min.y

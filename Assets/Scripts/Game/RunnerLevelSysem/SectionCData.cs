@@ -6,6 +6,9 @@ using UnityEngine;
 public class SectionCData : SectionData
 {
     public List<GameObject> Obstacles;
+    public GameObject UpHillObs;
+    public GameObject Coin;
+    public List<GameObject> Boosters;
 
     public override LevelSection CreateMono()
     {
@@ -18,6 +21,10 @@ public class SectionCData : SectionData
         section.SectionEnd = SectionEnd;
         section.SectionStart = SectionStart;
         section.Obstacles = Obstacles;
+
+        section.Coin = Coin;
+        section.Boosters = Boosters;
+        section.UpHillObs = UpHillObs;
         return section;
     }
     public override void FillYourSelf()
@@ -40,6 +47,23 @@ public class SectionCData : SectionData
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
             AllObs.Add(prefab);
         }
+        paths = AddressableHelper.GetPrefabPathssByLabel("Coin");
+        foreach (var path in paths)
+        {
+            // string path = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            Coin = prefab;
+            break;
+        }
+        paths = AddressableHelper.GetPrefabPathssByLabel("UpHill");
+        foreach (var path in paths)
+        {
+            // string path = AssetDatabase.GUIDToAssetPath(guid);
+            GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            UpHillObs = prefab;
+            break;
+        }
+
         // AsyncOperationHandle loading;
         // loading = Addressables.LoadAssetsAsync<GameObject>("default", (obj) =>
         // {
