@@ -14,6 +14,7 @@ public class CSection : LevelSection
     public override SectionType SectionType => SectionType.Complex;
     public List<GameObject> Obstacles;
     public GameObject UpHillObs;
+    public GameObject Train;
     public GameObject Coin;
     public List<GameObject> Boosters;
 
@@ -61,7 +62,7 @@ public class CSection : LevelSection
         {
             if (NumberOfTiles > 0)
             {
-                SpawnObs();
+                SpwawnUpHill();
             }
             else
             {
@@ -80,23 +81,65 @@ public class CSection : LevelSection
         curLevel.player.ChangeState(PlayerState.Obs);
         base.EndSection();
     }
-    private void SpawnObs()
+    private void SpwawnUpHill()
     {
+        LanePattern pattern = (LanePattern)Random.Range(0, 5);
 
-        // GameObject obs = Obstacles[index];
+        // GameObject insGO = Instantiate(UpHillObs, insPos, Quaternion.identity, curLevel.transform);
+        SpawnPattern(pattern, insPos.z);
+        insPos += Vector3.forward * 50;
+        // ObsData data = insGO.GetComponent<ObsData>();
+        // if (data)
+        // {
+        //     insPos += (Vector3.forward * data.ownLengh);
+        //     insPos += Vector3.forward * 20;
+        // }
+        // else
+        // {
+        //     insPos += Vector3.forward * 50;
+        // }
+    }
+    void SpawnPattern(LanePattern pattern, float spawnZ)
+    {
+        switch (pattern)
+        {
+            case LanePattern.Single:
+                SpawnInLane(Random.Range(0, 3), spawnZ);
+                break;
 
-        GameObject insGO = Instantiate(UpHillObs, insPos, Quaternion.identity, curLevel.transform);
-        ObsData data = insGO.GetComponent<ObsData>();
-        if (data)
-        {
-            insPos += (Vector3.forward * data.ownLengh);
-            insPos += Vector3.forward * 10;
-        }
-        else
-        {
-            insPos += Vector3.forward * 25;
+            case LanePattern.DoubleLeftCenter:
+                SpawnInLane(0, spawnZ);
+                SpawnInLane(1, spawnZ);
+                break;
+
+            case LanePattern.DoubleCenterRight:
+                SpawnInLane(1, spawnZ);
+                SpawnInLane(2, spawnZ);
+                break;
+            case LanePattern.DoubleLeftRight:
+                SpawnInLane(0, spawnZ);
+                SpawnInLane(2, spawnZ);
+                break;
+
+            case LanePattern.Triple:
+                SpawnInLane(0, spawnZ);
+                SpawnInLane(1, spawnZ);
+                SpawnInLane(2, spawnZ);
+                break;
         }
     }
+    public float[] laneX = new float[] { -6f, 0f, 6f };   // Left, Center, Right
+
+    void SpawnInLane(int lane, float z, GameObject insObj = null)
+    {
+        if (insObj == null)
+        {
+            insObj = UpHillObs;
+        }
+        Vector3 pos = new Vector3(laneX[lane], 0, z);
+        Instantiate(insObj, pos, Quaternion.identity, curLevel.transform);
+    }
+
 
     public override void SetKey()
     {
@@ -141,4 +184,13 @@ public class CSection : LevelSection
             return; // Exit early if no enemies were loaded
         }
     }
+}
+
+public enum LanePattern
+{
+    Single,
+    DoubleLeftCenter,
+    DoubleCenterRight,
+    DoubleLeftRight,
+    Triple
 }

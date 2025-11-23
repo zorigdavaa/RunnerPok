@@ -120,6 +120,7 @@ MonoBehaviour:
     - UpHill
     - New Label
     - TileCoin
+    - Train
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 0cef7a3f7dac1457f9075aad07333120, type: 2}
