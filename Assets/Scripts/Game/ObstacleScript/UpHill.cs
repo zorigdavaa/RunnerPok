@@ -1,15 +1,19 @@
 using UnityEngine;
 
-public class UpHill : MonoBehaviour
+public class UpHill : ObsData
 {
+
     // GameObject TriAngleUpHill;
     GameObject Body;
     Transform End;
+    float segmentLength = 20f;
     void Awake()
     {
         // TriAngleUpHill = transform.Find("TriAngle").gameObject;
         Body = transform.Find("Body").gameObject;
         End = transform.Find("End");
+        segmentLength = End.position.z - transform.position.z;
+        ownLengh = segmentLength;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +32,8 @@ public class UpHill : MonoBehaviour
         for (int i = 0; i < times; i++)
         {
             Instantiate(Body, End.position, Quaternion.identity, transform);
-            End.position += new Vector3(0, 0, 20);
+            End.position += new Vector3(0, 0, segmentLength);
+            ownLengh += segmentLength;
         }
     }
 }

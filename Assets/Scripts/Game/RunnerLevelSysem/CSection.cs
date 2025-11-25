@@ -18,9 +18,9 @@ public class CSection : LevelSection
     public GameObject Coin;
     public List<GameObject> Boosters;
     public List<Lane> Lanes = new List<Lane>() {
-        new Lane(){ LaneXPosition = -6f, Objects = new List<GameObject>() },
-        new Lane(){ LaneXPosition = 0f, Objects = new List<GameObject>() },
-        new Lane(){ LaneXPosition = 6f, Objects = new List<GameObject>() }
+        new Lane(){ LaneXPosition = -6f, LaneSegments = new List<LaneSegment>() },
+        new Lane(){ LaneXPosition = 0f, LaneSegments = new List<LaneSegment>() },
+        new Lane(){ LaneXPosition = 6f, LaneSegments = new List<LaneSegment>() }
     };
 
     public override void StartSection(Level level)
@@ -92,7 +92,7 @@ public class CSection : LevelSection
 
         // GameObject insGO = Instantiate(UpHillObs, insPos, Quaternion.identity, curLevel.transform);
         SpawnPattern(pattern, insPos.z);
-        insPos += Vector3.forward * 50;
+        insPos += Vector3.forward * 100;
         // ObsData data = insGO.GetComponent<ObsData>();
         // if (data)
         // {
@@ -106,53 +106,60 @@ public class CSection : LevelSection
     }
     void SpawnPattern(LanePattern pattern, float spawnZ)
     {
-        List<GameObject> spawnedObjs = new List<GameObject>();
+        // List<GameObject> spawnedObjs = new List<GameObject>();
         switch (pattern)
         {
             case LanePattern.Single:
-                spawnedObjs.Add(SpawnInLane(Random.Range(0, 3), spawnZ));
+                SpawnInLane(Random.Range(0, 3), spawnZ);
                 break;
 
             case LanePattern.DoubleLeftCenter:
-                spawnedObjs.Add(SpawnInLane(0, spawnZ));
-                spawnedObjs.Add(SpawnInLane(1, spawnZ));
+                SpawnInLane(0, spawnZ);
+                SpawnInLane(1, spawnZ);
                 break;
 
             case LanePattern.DoubleCenterRight:
-                spawnedObjs.Add(SpawnInLane(1, spawnZ));
-                spawnedObjs.Add(SpawnInLane(2, spawnZ));
+                SpawnInLane(1, spawnZ);
+                SpawnInLane(2, spawnZ);
                 break;
             case LanePattern.DoubleLeftRight:
-                spawnedObjs.Add(SpawnInLane(0, spawnZ));
-                spawnedObjs.Add(SpawnInLane(2, spawnZ));
+                SpawnInLane(0, spawnZ);
+                SpawnInLane(2, spawnZ);
                 break;
 
             case LanePattern.Triple:
-                spawnedObjs.Add(SpawnInLane(0, spawnZ));
-                spawnedObjs.Add(SpawnInLane(1, spawnZ));
-                spawnedObjs.Add(SpawnInLane(2, spawnZ));
+                SpawnInLane(0, spawnZ);
+                SpawnInLane(1, spawnZ);
+                SpawnInLane(2, spawnZ);
                 break;
         }
-        foreach (var item in spawnedObjs)
+        foreach (var item in Lanes)
         {
-            int ExtendCount = Random.Range(1, 4);
-            if (Random.value < 0.3f)
-            {
-                item.GetComponent<UpHill>().ExtendUphill(ExtendCount);
-            }
+            int ExtendCount = Random.Range(1, 6);
+            item.GetAtZ(spawnZ)?.SegmentObject.GetComponent<UpHill>().ExtendUphill(ExtendCount);
+            // if (Random.value < 0.3f)
+            // {
+            // }
         }
     }
     // public float[] laneX = new float[] { -6f, 0f, 6f };   // Left, Center, Right
 
-    GameObject SpawnInLane(int lane, float z, GameObject insObj = null)
+    GameObject SpawnInLane(int laneIdx, float z, GameObject insObj = null)
     {
         if (insObj == null)
         {
             insObj = UpHillObs;
         }
-        Vector3 pos = new Vector3(Lanes[lane].LaneXPosition, 0, z);
+        Lane lane = Lanes[laneIdx];
+        Vector3 pos = new Vector3(lane.LaneXPosition, 0, z);
         GameObject Obj = Instantiate(insObj, pos, Quaternion.identity, curLevel.transform);
-        Lanes[lane].Objects.Add(Obj);
+        LaneSegment segment = new LaneSegment()
+        {
+            Start = z,
+            End = z + 50f,
+            SegmentObject = Obj
+        };
+        lane.LaneSegments.Add(segment);
         return Obj;
     }
 

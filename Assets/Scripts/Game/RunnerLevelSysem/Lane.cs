@@ -5,6 +5,17 @@ using UnityEngine;
 public class Lane
 {
     public float LaneXPosition;
-    public List<GameObject> Objects;
+    public List<LaneSegment> LaneSegments;
+    public LaneSegment GetAtZ(float zPos)
+    {
+        foreach (var segment in LaneSegments)
+        {
+            if (zPos >= segment.Start && zPos <= segment.End)
+            {
+                return segment;
+            }
+        }
+        return null;
+    }
 
 }
