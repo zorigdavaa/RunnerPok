@@ -17,6 +17,11 @@ public class CSection : LevelSection
     public GameObject Train;
     public GameObject Coin;
     public List<GameObject> Boosters;
+    public List<Lane> Lanes = new List<Lane>() {
+        new Lane(){ LaneXPosition = -6f, Objects = new List<GameObject>() },
+        new Lane(){ LaneXPosition = 0f, Objects = new List<GameObject>() },
+        new Lane(){ LaneXPosition = 6f, Objects = new List<GameObject>() }
+    };
 
     public override void StartSection(Level level)
     {
@@ -101,43 +106,54 @@ public class CSection : LevelSection
     }
     void SpawnPattern(LanePattern pattern, float spawnZ)
     {
+        List<GameObject> spawnedObjs = new List<GameObject>();
         switch (pattern)
         {
             case LanePattern.Single:
-                SpawnInLane(Random.Range(0, 3), spawnZ);
+                spawnedObjs.Add(SpawnInLane(Random.Range(0, 3), spawnZ));
                 break;
 
             case LanePattern.DoubleLeftCenter:
-                SpawnInLane(0, spawnZ);
-                SpawnInLane(1, spawnZ);
+                spawnedObjs.Add(SpawnInLane(0, spawnZ));
+                spawnedObjs.Add(SpawnInLane(1, spawnZ));
                 break;
 
             case LanePattern.DoubleCenterRight:
-                SpawnInLane(1, spawnZ);
-                SpawnInLane(2, spawnZ);
+                spawnedObjs.Add(SpawnInLane(1, spawnZ));
+                spawnedObjs.Add(SpawnInLane(2, spawnZ));
                 break;
             case LanePattern.DoubleLeftRight:
-                SpawnInLane(0, spawnZ);
-                SpawnInLane(2, spawnZ);
+                spawnedObjs.Add(SpawnInLane(0, spawnZ));
+                spawnedObjs.Add(SpawnInLane(2, spawnZ));
                 break;
 
             case LanePattern.Triple:
-                SpawnInLane(0, spawnZ);
-                SpawnInLane(1, spawnZ);
-                SpawnInLane(2, spawnZ);
+                spawnedObjs.Add(SpawnInLane(0, spawnZ));
+                spawnedObjs.Add(SpawnInLane(1, spawnZ));
+                spawnedObjs.Add(SpawnInLane(2, spawnZ));
                 break;
         }
+        foreach (var item in spawnedObjs)
+        {
+            int ExtendCount = Random.Range(1, 4);
+            if (Random.value < 0.3f)
+            {
+                item.GetComponent<UpHill>().ExtendUphill(ExtendCount);
+            }
+        }
     }
-    public float[] laneX = new float[] { -6f, 0f, 6f };   // Left, Center, Right
+    // public float[] laneX = new float[] { -6f, 0f, 6f };   // Left, Center, Right
 
-    void SpawnInLane(int lane, float z, GameObject insObj = null)
+    GameObject SpawnInLane(int lane, float z, GameObject insObj = null)
     {
         if (insObj == null)
         {
             insObj = UpHillObs;
         }
-        Vector3 pos = new Vector3(laneX[lane], 0, z);
-        Instantiate(insObj, pos, Quaternion.identity, curLevel.transform);
+        Vector3 pos = new Vector3(Lanes[lane].LaneXPosition, 0, z);
+        GameObject Obj = Instantiate(insObj, pos, Quaternion.identity, curLevel.transform);
+        Lanes[lane].Objects.Add(Obj);
+        return Obj;
     }
 
 
