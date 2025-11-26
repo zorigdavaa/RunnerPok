@@ -150,6 +150,7 @@ public class PlayerMovement : MovementForgeRun
             Vector3 slopeForward = Vector3.ProjectOnPlane(flatForward, groundNormal).normalized;
             Vector3 desiredVelocirt = slopeForward;
             desiredVelocirt = (desiredVelocirt + Vector3.forward).normalized * Speed;
+            desiredVelocirt = new Vector3(vel.x, desiredVelocirt.y, desiredVelocirt.z);
             // Debug.DrawLine(transform.position, transform.position + slopeForward * 5, Color.red, 0.1f);
             if (vel.magnitude < Speed)
             {
@@ -209,9 +210,10 @@ public class PlayerMovement : MovementForgeRun
                 ResetTargetX();
                 JustClicked = false;
             }
-            Vector3 vel = rb.linearVelocity;
-            vel.x = 0;
-            rb.linearVelocity = vel;
+            // Vector3 vel = rb.linearVelocity;
+            // vel.x = 0;
+            // rb.linearVelocity = vel;
+            rb.linearVelocity = rb.linearVelocity.ChangeX(0);
             // Convert mouse position to viewport position
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Pointer.current.position.ReadValue());
             float xDif = (viewPortPos.x - befFrameMous.x) * 40;
@@ -219,16 +221,29 @@ public class PlayerMovement : MovementForgeRun
             Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
             // targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
             befFrameMous = viewPortPos;
+            float targetDifX = targetPos.x - transform.localPosition.x;
 
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
-            // Smoothly move the player to the target position
-            // Check for significant movement to determine the rotation
-            if (Mathf.Abs(transform.localPosition.x - targetPos.x) > 0.5f)
+            if (Mathf.Abs(targetDifX) > 1f)
             {
-                float directionSign = Mathf.Sign(targetPos.x - transform.localPosition.x);
+                // transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
+                float sideSpeed = targetDifX * 5;
+                rb.linearVelocity = rb.linearVelocity.ChangeX(sideSpeed);
+                // print(rb.linearVelocity.x + " and targetX " + (targetPos.x - transform.localPosition.x));
+                float directionSign = Mathf.Sign(targetDifX);
                 Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
                 targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
             }
+            else
+            {
+                // Slow down horizontal movement when close to target
+                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
+            }
+            // // Smoothly move the player to the target position
+            // // Check for significant movement to determine the rotation
+            // if (Mathf.Abs(targetDifX) > 0.5f)
+            // {
+
+            // }
         }
         // if (IsUp && GetUIObjectUnderPointer() == null)
         if (IsClick && SwipeAndPinch.UpDrag())
@@ -262,6 +277,14 @@ public class PlayerMovement : MovementForgeRun
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
     }
+    float FixValue(float v)
+    {
+        float min = 1.0f;
+        if (v < -min || v > min) return v;   // clamp negative
+        return v < 0 ? -min : min;     // collapse inner zone
+    }
+
+
 
     private bool CanSlide()
     {

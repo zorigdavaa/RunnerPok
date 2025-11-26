@@ -166,7 +166,7 @@ public class Player : Character, IItemEquipper
         IEnumerator LocalCoroutine()
         {
             yield return new WaitForSeconds(1);
-            transform.position = Z.LS.LastInstLvl.PlayerBeingTile.start.position + Vector3.up;
+            transform.position = Z.LS.LastInstLvl.PlayerBeingTile.start.position + Vector3.up * 3;
             rb.linearVelocity = Vector3.zero;
             respawnCor = null;
         }

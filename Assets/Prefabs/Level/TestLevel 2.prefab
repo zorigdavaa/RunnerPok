@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7575097222021754785}
   - component: {fileID: 7278324688581108722}
-  - component: {fileID: 6769341177699627753}
   m_Layer: 0
   m_Name: TestLevel 2
   m_TagString: Untagged
@@ -49,8 +48,8 @@ MonoBehaviour:
   Sections: []
   SectionDatas:
   - {fileID: 11400000, guid: cdbe649d68a0742428c3684c71e6e508, type: 2}
-  - {fileID: 11400000, guid: c792ce9e6bddc4c73a4b9a4ccd37e5b8, type: 2}
   - {fileID: 11400000, guid: 96127cf4ef9e2468a80645d046bd9201, type: 2}
+  - {fileID: 11400000, guid: c792ce9e6bddc4c73a4b9a4ccd37e5b8, type: 2}
   player: {fileID: 0}
   nextSpawnPosition: {x: 0, y: 0, z: 0}
   PlayerBeingTile: {fileID: 0}
@@ -63,15 +62,3 @@ MonoBehaviour:
   lastSpawnedTile: {fileID: 0}
   SpawnedTiles: []
   BeforSectionTiles: []
---- !u!114 &6769341177699627753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4271100086985549274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b792c0ed4800c4de487a844224cf1089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

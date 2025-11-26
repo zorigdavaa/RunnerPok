@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,4 +19,11 @@ public class Lane
         return null;
     }
 
+    internal void UpdateSegments()
+    {
+        foreach (var item in LaneSegments)
+        {
+            item.End = item.Start + item.SegmentObject.GetComponent<ObsData>().ownLengh;
+        }
+    }
 }

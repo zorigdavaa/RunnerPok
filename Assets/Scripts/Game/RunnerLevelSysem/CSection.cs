@@ -22,28 +22,26 @@ public class CSection : LevelSection
         new Lane(){ LaneXPosition = 0f, LaneSegments = new List<LaneSegment>() },
         new Lane(){ LaneXPosition = 6f, LaneSegments = new List<LaneSegment>() }
     };
+    CoinSpawner CoinSpawner;
 
     public override void StartSection(Level level)
     {
         Reset();
         base.StartSection(level);
         EnterThisSection();
+        CoinSpawner = new CoinSpawner(Coin);
     }
     int NumberOfTiles = 20;
     //Todo Inspos is not working when Diogonal tile
 
     Vector3 insPos;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void EnterThisSection()
     {
         Debug.Log("eNTER Complex Section");
         float ztoTest = curLevel.lastSpawnedTile.end.transform.position.z;
         FunctionTimer.WaitUntilAndCall(curLevel, () => Z.Player.transform.position.z > ztoTest, () => { OnObsSectionEnter(this, EventArgs.Empty); });
+        insPos = transform.position + Vector3.forward * 50;
     }
     public override void UpdateSection()
     {
@@ -67,7 +65,10 @@ public class CSection : LevelSection
         {
             if (NumberOfTiles > 0)
             {
+                NumberOfTiles--;
                 SpwawnUpHill();
+                CoinSpawner.InsObjRaycast(10, transform, Lanes, insPos);
+                insPos += Vector3.forward * 100;
             }
             else
             {
@@ -88,11 +89,11 @@ public class CSection : LevelSection
     }
     private void SpwawnUpHill()
     {
-        LanePattern pattern = (LanePattern)Random.Range(0, 5);
+        LanePattern pattern = (LanePattern)Random.Range(0, 4);
 
         // GameObject insGO = Instantiate(UpHillObs, insPos, Quaternion.identity, curLevel.transform);
         SpawnPattern(pattern, insPos.z);
-        insPos += Vector3.forward * 100;
+
         // ObsData data = insGO.GetComponent<ObsData>();
         // if (data)
         // {
@@ -135,8 +136,14 @@ public class CSection : LevelSection
         }
         foreach (var item in Lanes)
         {
-            int ExtendCount = Random.Range(1, 6);
-            item.GetAtZ(spawnZ)?.SegmentObject.GetComponent<UpHill>().ExtendUphill(ExtendCount);
+            int ExtendCount = Random.Range(1, 5);
+            GameObject obj = item.GetAtZ(spawnZ)?.SegmentObject;
+            if (obj)
+            {
+                obj.GetComponent<UpHill>().ExtendUphill(ExtendCount);
+                item.UpdateSegments();
+            }
+
             // if (Random.value < 0.3f)
             // {
             // }
@@ -152,11 +159,11 @@ public class CSection : LevelSection
         }
         Lane lane = Lanes[laneIdx];
         Vector3 pos = new Vector3(lane.LaneXPosition, 0, z);
-        GameObject Obj = Instantiate(insObj, pos, Quaternion.identity, curLevel.transform);
+        GameObject Obj = Instantiate(insObj, pos, Quaternion.identity, transform);
         LaneSegment segment = new LaneSegment()
         {
             Start = z,
-            End = z + 50f,
+            End = z + Obj.GetComponent<ObsData>().ownLengh,
             SegmentObject = Obj
         };
         lane.LaneSegments.Add(segment);
