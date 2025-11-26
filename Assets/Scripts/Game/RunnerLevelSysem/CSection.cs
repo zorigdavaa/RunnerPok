@@ -67,7 +67,8 @@ public class CSection : LevelSection
             {
                 NumberOfTiles--;
                 SpwawnUpHill();
-                CoinSpawner.InsObjRaycast(10, transform, Lanes, insPos);
+                // CoinSpawner.InsObjRaycast(10, transform, Lanes, insPos);
+                Helpers.InsObjRaycast(10, transform, Lanes, insPos, Coin);
                 insPos += Vector3.forward * 100;
             }
             else

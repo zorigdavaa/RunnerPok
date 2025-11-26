@@ -277,14 +277,6 @@ public class PlayerMovement : MovementForgeRun
         // Apply the target rotation smoothly in all cases
         childModel.transform.rotation = Quaternion.Lerp(childModel.rotation, targetRotation, Time.deltaTime * rotSpeed);
     }
-    float FixValue(float v)
-    {
-        float min = 1.0f;
-        if (v < -min || v > min) return v;   // clamp negative
-        return v < 0 ? -min : min;     // collapse inner zone
-    }
-
-
 
     private bool CanSlide()
     {
