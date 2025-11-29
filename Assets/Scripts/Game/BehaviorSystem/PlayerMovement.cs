@@ -218,31 +218,30 @@ public class PlayerMovement : MovementForgeRun
             Vector3 viewPortPos = cam.ScreenToViewportPoint(Pointer.current.position.ReadValue());
             float xDif = (viewPortPos.x - befFrameMous.x) * 40;
             targetX += xDif;
-            Vector3 targetPos = new Vector3(targetX, transform.localPosition.y, transform.localPosition.z);
+            Vector3 targetPos = new Vector3(targetX, transform.position.y, transform.position.z);
             // targetPos.x = Mathf.Clamp(targetPos.x, minXLimit, maxXLimit);
             befFrameMous = viewPortPos;
-            float targetDifX = targetPos.x - transform.localPosition.x;
+            float targetDifX = targetPos.x - transform.position.x;
 
-            if (Mathf.Abs(targetDifX) > 1f)
+            if (Mathf.Abs(targetDifX) > 0.2f)
             {
-                // transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
-                float sideSpeed = targetDifX * 5;
+                // transform.position = Vector3.Lerp(transform.position, targetPos, 0.125f);
+                // Vector3 lerped = Vector3.Lerp(transform.position, targetPos, 0.125f);
+                // rb.MovePosition(lerped);
+                float sideSpeed = targetDifX * 4;
+                // sideSpeed = Helpers.FixValue(sideSpeed);
+                // sideSpeed = Mathf.Clamp(sideSpeed, 1, 15);
                 rb.linearVelocity = rb.linearVelocity.ChangeX(sideSpeed);
-                // print(rb.linearVelocity.x + " and targetX " + (targetPos.x - transform.localPosition.x));
+                // print(rb.linearVelocity.x + " and targetX " + (targetPos.x - transform.position.x));
+
                 float directionSign = Mathf.Sign(targetDifX);
                 Vector3 moveDirection = new Vector3(directionSign, 0f, 1f).normalized;
                 targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up); // Rotate towards movement direction
             }
-            else
-            {
-                // Slow down horizontal movement when close to target
-                transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, 0.125f);
-            }
-            // // Smoothly move the player to the target position
-            // // Check for significant movement to determine the rotation
-            // if (Mathf.Abs(targetDifX) > 0.5f)
+            // else
             // {
-
+            //     // Slow down horizontal movement when close to target
+            // transform.position = Vector3.Lerp(transform.position, targetPos, 0.125f);
             // }
         }
         // if (IsUp && GetUIObjectUnderPointer() == null)

@@ -6,6 +6,7 @@ public static class Helpers
     public static float FixValue(float v)
     {
         float min = 1.0f;
+        // float max = 10.0f;
         if (v < -min || v > min) return v;   // clamp negative
         return v < 0 ? -min : min;     // collapse inner zone
     }

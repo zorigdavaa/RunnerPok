@@ -31,7 +31,10 @@ public class UpHill : ObsData
         Debug.Log("Extend Uphill Called");
         for (int i = 0; i < times; i++)
         {
-            Instantiate(Body, End.position, Quaternion.identity, transform);
+            GameObject InsBody = Instantiate(Body, End.position, Quaternion.identity, transform);
+            Vector3 scale = InsBody.transform.localScale;
+            scale.z += 0.0001f;
+            InsBody.transform.localScale = scale;
             End.position += new Vector3(0, 0, segmentLength);
             ownLengh += segmentLength;
         }
