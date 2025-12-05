@@ -20,11 +20,11 @@ MonoBehaviour:
   VisualPrefab: {fileID: 0}
   SelfGenCount: 5
   Obstacles:
-  - {fileID: 692810108806621334, guid: 5961c4a99897a7e48b6bc62274d64c6f, type: 3}
-  - {fileID: 692810108806621334, guid: 5961c4a99897a7e48b6bc62274d64c6f, type: 3}
-  - {fileID: 2156008215045183929, guid: ad1fb51cdb7794f40aa9f07f01deb026, type: 3}
+  - {fileID: 3747290940581470390, guid: 8eec5727ecc5847a6bb4db999bebfd00, type: 3}
+  - {fileID: 7213770368874482836, guid: 695ff127c8aec4492bc94269ff166c45, type: 3}
   - {fileID: 883989323217913990, guid: 35ec4ad103d76224584f2aca32cb5f55, type: 3}
-  - {fileID: 7711093006480926846, guid: 17afc05afb4407a429fa4d486c2f56dc, type: 3}
+  - {fileID: 7213770368874482836, guid: aadf79f169c1f4817a464ed1d7c936cf, type: 3}
+  - {fileID: 2987949774503194648, guid: 1d0724a2c4f944548a4489c2403d00d7, type: 3}
   UpHillObs: {fileID: 1143842442807572168, guid: e104ceba8be954533a3efd65afbbdbe3, type: 3}
   Coin: {fileID: 5076642301061011366, guid: 787b15b9028cc6745a08b25a6b26da90, type: 3}
   Boosters: []

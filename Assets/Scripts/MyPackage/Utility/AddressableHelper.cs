@@ -1,7 +1,7 @@
-#if UNITY_EDITOR
 using UnityEditor;
-using UnityEditor.AddressableAssets.Settings;
+#if UNITY_EDITOR
 using UnityEditor.AddressableAssets;
+#endif
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -10,6 +10,7 @@ public static class AddressableHelper
     public static List<string> GetPrefabPathssByLabel(string label)
     {
         List<string> guids = new List<string>();
+#if UNITY_EDITOR
         var settings = AddressableAssetSettingsDefaultObject.Settings;
         if (settings == null) return guids;
 
@@ -26,7 +27,8 @@ public static class AddressableHelper
                 }
             }
         }
+#endif
         return guids;
     }
 }
-#endif
+

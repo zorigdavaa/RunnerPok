@@ -14,7 +14,7 @@ public class CSection : LevelSection
     public override SectionType SectionType => SectionType.Complex;
     public List<GameObject> Obstacles;
     public GameObject UpHillObs;
-    public GameObject Train;
+    // public GameObject Train;
     public GameObject Coin;
     public List<GameObject> Boosters;
     public List<Lane> Lanes = new List<Lane>() {
@@ -22,14 +22,14 @@ public class CSection : LevelSection
         new Lane(){ LaneXPosition = 0f, LaneSegments = new List<LaneSegment>() },
         new Lane(){ LaneXPosition = 6f, LaneSegments = new List<LaneSegment>() }
     };
-    CoinSpawner CoinSpawner;
+    // CoinSpawner CoinSpawner;
 
     public override void StartSection(Level level)
     {
         Reset();
         base.StartSection(level);
         EnterThisSection();
-        CoinSpawner = new CoinSpawner(Coin);
+        // CoinSpawner = new CoinSpawner(Coin);
     }
     int NumberOfTiles = 20;
     //Todo Inspos is not working when Diogonal tile
@@ -59,6 +59,10 @@ public class CSection : LevelSection
                 tileToIns = levelTiles[Random.Range(0, levelTiles.Count)];
             }
             curLevel.SpawnTile(tileToIns);
+            if (Random.value > 0.6f)
+            {
+                SpawnObstacle();
+            }
         }
         bool isNearOfObs = curLevel.player.transform.position.z > insPos.z - 70;
         if (isNearOfObs)
@@ -69,12 +73,24 @@ public class CSection : LevelSection
                 SpwawnUpHill();
                 // CoinSpawner.InsObjRaycast(10, transform, Lanes, insPos);
                 Helpers.InsObjRaycast(10, transform, Lanes, insPos, Coin);
+
                 insPos += Vector3.forward * 100;
             }
             else
             {
                 EndSection();
             }
+
+        }
+    }
+
+    private void SpawnObstacle()
+    {
+        if (Obstacles.Count > 0)
+        {
+            GameObject obs = Obstacles[Random.Range(0, Obstacles.Count)];
+            // GameObject insObs = Instantiate(obs, insPos + Vector3.right * Random.Range(-6f, 6f) + Vector3.forward * (Random.Range(-5, 10)), Quaternion.identity, transform);
+            Helpers.InsObjRaycast(Random.Range(1, 5), transform, Lanes, insPos + Vector3.right * Random.Range(-6f, 6f) + Vector3.forward * Random.Range(-5, 10), obs);
         }
     }
 

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ComplexSection", menuName = "ScriptableObjects/ComplexSection")]
@@ -29,6 +31,7 @@ public class SectionCData : SectionData
     }
     public override void FillYourSelf()
     {
+#if UNITY_EDITOR
         levelTiles = new List<Tile>();
         Obstacles = new List<GameObject>();
         List<GameObject> AllObs = new List<GameObject>();
@@ -80,5 +83,6 @@ public class SectionCData : SectionData
             Obstacles.Add(AllObs[Random.Range(0, AllObs.Count)]);
         }
         SaveChanges();
+#endif
     }
 }
